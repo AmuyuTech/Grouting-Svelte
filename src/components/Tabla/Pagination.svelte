@@ -18,10 +18,10 @@
   export let serverSide = false;
 
   export let labels = {
-    first: "First",
-    last: "Last",
-    next: "Next",
-    previous: "Previous",
+    first: "Primero",
+    last: "Ultimo",
+    next: "Siguiente",
+    previous: "Anterior",
     ...globalLabels
   };
 

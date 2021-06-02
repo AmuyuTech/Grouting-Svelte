@@ -14,9 +14,9 @@
   export let dir = "none";
   export let key;
   export let labels = {
-    asc: { title: "Ascending", html: "&#8593;" },
-    desc: { title: "Desceding", html: "&#8595;" },
-    unsorted: { title: "Unsorted", html: "&#8645;" },
+    asc: { title: "Ascendente", html: "&#8593;" },
+    desc: { title: "Descendente", html: "&#8595;" },
+    unsorted: { title: "Sin Ordenar", html: "&#8645;" },
     ...globalLabels
   };
 

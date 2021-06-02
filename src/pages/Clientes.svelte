@@ -36,6 +36,18 @@
       event.detail.key
     );
   }
+  function filterData(){
+    const s = search.trim().toLowerCase()
+    if(s.length >  0){
+      Data = items.filter(v => {
+        console.log(s, Object.values(v).toString().indexOf(s), Object.values(v).toString())
+        return Object.values(v).toString().toLowerCase().indexOf(s) !== -1
+      })
+    }else {
+      Data = items
+    }
+    
+  }
 </script>
 
 <div class="header-row">
@@ -89,6 +101,7 @@
     >
     <input
       bind:value={search}
+      on:keyup={filterData}
       class="input text-input"
       placeholder="Buscar..."
     />
@@ -100,7 +113,7 @@
 </div>
 
 
-<Table {page} {pageSize} rows={Data} let:rows={rows2}>
+<Table {page} {pageSize} rows={Data} let:rows={rows2} text={search}>
   <thead slot="head">
     <tr>
       <th>
