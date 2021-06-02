@@ -1,6 +1,58 @@
 <script>
-    let search = ''
-    function filterData(){}
+	import { Usuarios } from './../stores.js';
+  import Sort from "./../components/Tabla/Sort.svelte";
+  
+  import Table from "./../components/Tabla/Table.svelte";
+  import { sortNumber, sortString } from "./../components/Tabla/sorting";
+  let search = "";
+  let items = [];
+ 
+  let Data = []
+  Clientes.subscribe(clientes$ =>  {
+    Data = clientes$
+    items = Data
+  })
+
+
+  let page = 0;
+  let pageSize = 10; 
+
+  function onCellClick(row) {
+  }
+
+  function onSortString(event) {
+    event.detail.rows = sortString(
+      event.detail.rows,
+      event.detail.dir,
+      event.detail.key
+    );
+  }
+
+  function onSortNumber(event) {
+    event.detail.rows = sortNumber(
+      event.detail.rows,
+      event.detail.dir,
+      event.detail.key
+    );
+  }
+  function onSortDate(event) {
+    event.detail.rows = sortNumber(
+      event.detail.rows,
+      event.detail.dir,
+      event.detail.key
+    );
+  }
+  function filterData(){
+    const s = search.trim().toLowerCase()
+    if(s.length >  0){
+      Data = items.filter(v => {
+        return Object.values(v).toString().toLowerCase().indexOf(s) !== -1
+      })
+    }else {
+      Data = items
+    }
+    
+  }
 </script>
 
 <div class="header-row">
@@ -43,8 +95,38 @@
       >
       <input  bind:value={search} on:keyup={filterData} class="text-input input" placeholder="Buscar...">
     </div>
-  
-    <button>Reporte de Stock</button>
-    <button>Catalogo</button>
     <button class="button"style="margin-left: auto;">Registrar Producto</button>
   </div>
+  <Table {page} {pageSize} rows={Data} let:rows={rows2} text={search}>
+    <thead slot="head">
+      <tr>
+        <th>
+          Fecha
+          <Sort key="fecha" on:sort={onSortDate} />
+        </th>
+        <th>
+          Usuario
+          <Sort key="usuario" on:sort={onSortString} />
+        </th>
+        <th>
+          Origen
+          <Sort key="origen" on:sort={onSortString} />
+        </th>
+        <th>
+          Destino
+          <Sort key="destino" on:sort={onSortString} />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {#each rows2 as row, index (row)}
+        <tr {index} on:click={() => onCellClick(row)}>
+          <td data-label="Fecha">{row.fecha}</td>
+          <td data-label="Usuario">{row.usuario}</td>
+          <td data-label="Origen">{row.origen}</td>
+          <td data-label="DEstino">{row.destino}</td>
+        </tr>
+      {/each}
+    </tbody>
+  </Table>
+  

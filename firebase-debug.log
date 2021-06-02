@@ -1,0 +1,11 @@
+[debug] [2021-06-02T19:52:36.218Z] ----------------------------------------------------------------------
+[debug] [2021-06-02T19:52:36.220Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2021-06-02T19:52:36.221Z] CLI Version:   9.12.1
+[debug] [2021-06-02T19:52:36.221Z] Platform:      win32
+[debug] [2021-06-02T19:52:36.221Z] Node Version:  v14.13.0
+[debug] [2021-06-02T19:52:36.225Z] Time:          Wed Jun 02 2021 15:52:36 GMT-0400 (hora de Bolivia)
+[debug] [2021-06-02T19:52:36.225Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-06-02T19:52:36.241Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-06-02T19:52:36.242Z] > authorizing via signed-in user (tralafarlaw@gmail.com)
+[info] i  emulators: Starting emulators: auth, functions, firestore, database, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore, database, hosting"}}

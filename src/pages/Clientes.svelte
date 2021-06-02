@@ -40,7 +40,6 @@
     const s = search.trim().toLowerCase()
     if(s.length >  0){
       Data = items.filter(v => {
-        console.log(s, Object.values(v).toString().indexOf(s), Object.values(v).toString())
         return Object.values(v).toString().toLowerCase().indexOf(s) !== -1
       })
     }else {
