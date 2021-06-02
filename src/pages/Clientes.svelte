@@ -1,11 +1,11 @@
 <script>
 	import { Clientes } from './../stores.js';
-  import DataTable from './../components/Datatable/src/Datatable.svelte'
-import Datatable from './../components/Datatable/src/Datatable.svelte';
-import { data, rows } from '../components/Datatable/src/stores/data.js';
+  
+  import Sort from "./../components/Tabla/Sort.svelte";
+  
+  import Table from "./../components/Tabla/Table.svelte";
+  import { sortNumber, sortString } from "./../components/Tabla/sorting";
   let search = "";
-  let rowsPerPage = 10;
-  let currentPage = 0;
   let items = [];
  
   let Data = []
@@ -13,29 +13,29 @@ import { data, rows } from '../components/Datatable/src/stores/data.js';
     Data = clientes$
     items = Data
   })
-  const settings = {
-    sortable: true,
-    pagination: true,
-    scrollY: true,
-    rowsPerPage: 10,
-    columnFilter: false,
-    css: true,
-    labels: {
-        search: 'Search...',    // search input placeholer
-        filter: 'Filter',       // filter inputs placeholder
-        noRows: 'Vacio',
-        info: 'Mostrando {start} a {end} de {rows} filas',
-        previous: 'Anterior',
-        next: 'Siguiente',       
-    },
-    blocks: {
-        searchInput: false, 
-        paginationButtons: true,
-        paginationRowCount: true,
-    }
-}    
-  
-  function filterData() {}
+
+
+  let page = 0;
+  let pageSize = 10; 
+
+  function onCellClick(row) {
+  }
+
+  function onSortString(event) {
+    event.detail.rows = sortString(
+      event.detail.rows,
+      event.detail.dir,
+      event.detail.key
+    );
+  }
+
+  function onSortNumber(event) {
+    event.detail.rows = sortNumber(
+      event.detail.rows,
+      event.detail.dir,
+      event.detail.key
+    );
+  }
 </script>
 
 <div class="header-row">
@@ -89,7 +89,6 @@ import { data, rows } from '../components/Datatable/src/stores/data.js';
     >
     <input
       bind:value={search}
-      on:keyup={filterData}
       class="input text-input"
       placeholder="Buscar..."
     />
@@ -101,22 +100,33 @@ import { data, rows } from '../components/Datatable/src/stores/data.js';
 </div>
 
 
-  <Datatable settings={settings} data={Data} s={search}>
-    <thead>
-      <th data-key="nit">CI/NIT</th>
-      <th data-key="nombre">Nombre</th>
-      <th data-key="telefono">Telefono</th>
+<Table {page} {pageSize} rows={Data} let:rows={rows2}>
+  <thead slot="head">
+    <tr>
+      <th>
+        NIT
+        <Sort key="nit" on:sort={onSortString} />
+      </th>
+      <th>
+        Nombre
+        <Sort key="nombre" on:sort={onSortString} />
+      </th>
+      <th>
+        Telefono
+        <Sort key="nit" on:sort={onSortNumber} />
+      </th>
+    </tr>
   </thead>
   <tbody>
-      {#each $rows as row}
-      <tr>
-          <td>{row.nit}</td>
-          <td>{row.nombre}</td>
-          <td>{row.telefono}</td>
+    {#each rows2 as row, index (row)}
+      <tr {index} on:click={() => onCellClick(row)}>
+        <td data-label="Name">{row.nit}</td>
+        <td data-label="Lastname">{row.nombre}</td>
+        <td data-label="Age">{row.telefono}</td>
       </tr>
-      {/each}
+    {/each}
   </tbody>
-  </Datatable>
+</Table>
 
 <style>
   

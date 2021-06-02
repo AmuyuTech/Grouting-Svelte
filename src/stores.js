@@ -24,5 +24,5 @@ export const Clientes = readable([], set => {
             })
         })
         set(data)
-    })
+    }, e => console.error(e))
 })
