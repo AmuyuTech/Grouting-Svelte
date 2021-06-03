@@ -47,6 +47,9 @@
     }
     
   }
+  function newCliente(){
+    push('/Clientes/New')
+  }
 </script>
 
 <div class="header-row">
@@ -105,10 +108,7 @@
       placeholder="Buscar..."
     />
   </div>
-
-  <button>Reporte de Stock</button>
-  <button>Catalogo</button>
-  <button class="button"style="margin-left: auto;">Registrar Producto</button>
+  <button class="button"style="margin-left: auto;" on:click={newCliente}>Registrar Cliente</button>
 </div>
 
 

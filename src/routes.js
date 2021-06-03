@@ -11,6 +11,7 @@ import Ventas from "./pages/Ventas.svelte";
 import NotFound from "./pages/NotFound.svelte";
 import MainPage from "./pages/MainPage.svelte";
 import ProductForm from "./forms/ProductForm.svelte";
+import ClientesForm from "./forms/ClientesForm.svelte";
 
 export default {
   // Exact path
@@ -25,6 +26,7 @@ export default {
   "/Usuarios": Usuarios,
   "/Ventas": Ventas,
   "/Productos/:id": ProductForm,
+  "/Clientes/:id": ClientesForm,
   //'':,
 
   // Using named parameters, with last being optional

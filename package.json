@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "browser-image-compression": "^1.0.14",
+    "faker": "^5.5.3",
     "firebase": "^8.6.3",
     "rxfire": "^4.0.0",
     "rxjs": "^7.1.0",

@@ -5,6 +5,7 @@
   import { registrarProducto } from "../firebaseAPI";
   import { onMount } from "svelte";
   import { toast } from '@zerodevx/svelte-toast'
+  import products from './../assets/products.js'
   export let params = {};
   const IMGBB_KEY = "70fa84e6fd037e5fea9b30d1ab78222a";
   onMount(async () => {
@@ -35,6 +36,9 @@
       photourl.trim().length() > 0
     );
   }
+  function uploadAll(){
+    products.forEach(p => registrarProducto(p))
+  }
   function aceptar() {
     let data = {
       categorias,
@@ -63,7 +67,7 @@
     registrarProducto(data).then(
       (s) => {
         toast.pop();
-        toast.push("Success!", {
+        toast.push("Exito!", {
           theme: {
             "--toastBackground": "#48BB78",
             "--toastProgressBackground": "#2F855A",
@@ -223,14 +227,13 @@
   <button
     class="button"
     style="margin-left: auto;"
-    disabled={!isValid}
     on:click={aceptar}>Aceptar</button
   >
   <button class="button" on:click={cancelar}>Cancelar</button>
 </div>
 
 <style>
-  .row {
+  :global(.row) {
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -238,7 +241,7 @@
     width: 100%;
     margin-top: 1rem;
   }
-  .col {
+  :global(.col) {
     flex: 2;
     display: flex;
     flex-grow: 1;
@@ -253,7 +256,7 @@
     flex-direction: column;
     position: relative;
   }
-  .input-containerd {
+  :global(.input-containerd) {
     flex: 1;
     flex-grow: 1;
     margin-left: 2rem;

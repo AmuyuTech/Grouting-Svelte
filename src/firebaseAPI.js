@@ -51,19 +51,7 @@ export function registrarGasto(Gasto$) {
   _GastosCollection.add(Gasto$);
 }
 export async function registrarProducto(Producto$) {
-  function zeroFill(number, width) {
-    width -= number.toString().length;
-    if (width > 0) {
-      return new Array(width + (/\./.test(number) ? 2 : 1)).join("0") + number;
-    }
-    return number + ""; // always return a string
-  }
-  let id = await getProductoNextId().then(
-    (v) => v,
-    (e) => 0
-  );
-
-  _ProductosCollection.doc(zeroFill(id, 5)).set(Producto$);
+  _ProductosCollection.add(Producto$);
 }
 export function registrarAlmacen(Almacen$) {
   _AlmacenesCollection.add(Almacen$);
