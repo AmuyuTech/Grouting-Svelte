@@ -24,3 +24,12 @@ db.useEmulator("localhost", 8080);
 const rtdb = app.database();
 rtdb.useEmulator("localhost", 9000);
 export const rt = rtdb.ref();
+
+/**
+ * * si se traban lo puertos limpiar con :
+ * ! search $PORT process 
+ * ? netstat -ano | findstr :5001
+ * * Protocol localAddress RemoteAddress Estado PID
+ * ! matar el proceso $PID
+ * ? taskkill /F /PID 2564
+ */
