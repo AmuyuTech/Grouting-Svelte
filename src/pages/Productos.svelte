@@ -1,5 +1,6 @@
 <script>
 	import { Productos } from './../stores.js';
+  import {push} from 'svelte-spa-router'
   let Data = []
   let filterdedData = []
   Productos.subscribe(productos$ =>  {
@@ -14,6 +15,9 @@
     }else {
       filterdedData = Data.filter(p => p.nombre.toLowerCase().includes(s))
     }
+  }
+  function newProd() {
+    push('/Productos/New')
   }
 </script>
 
@@ -60,7 +64,7 @@
 
   <button>Reporte de Stock</button>
   <button>Catalogo</button>
-  <button class="button"style="margin-left: auto;">Registrar Producto</button>
+  <button class="button" style="margin-left: auto;" on:click={newProd}>Registrar Producto</button>
 </div>
 
 <div class="grid">

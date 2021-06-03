@@ -143,22 +143,22 @@
 <h1>{params.id === "new" ? "Nuevo Producto" : " Editar Producto"}</h1>
 <div class="row">
   <div class="col">
-    <div class="input-container">
+    <div class="input-containerd">
       <label for="nombre">Nombre</label>
       <input type="text" bind:value={nombre} name="nombre" />
     </div>
     <div class="row">
-      <div class="input-container">
+      <div class="input-containerd">
         <label for="codigo">Codigo</label>
         <input type="text" bind:value={codigo} name="codigo" />
       </div>
-      <div class="input-container">
+      <div class="input-containerd">
         <label for="codigodebarras">Codigo de Barras</label>
         <input type="text" bind:value={codigodebarras} name="codigodebarras" />
       </div>
     </div>
     <div class="row">
-      <div class="input-container">
+      <div class="input-containerd">
         <label for="precioFerreteria">Precio Ferreteria</label>
         <input
           type="number"
@@ -166,17 +166,17 @@
           name="precioFerreteria"
         />
       </div>
-      <div class="input-container">
+      <div class="input-containerd">
         <label for="precioObras">Precio Obras</label>
         <input type="number" bind:value={precioObras} name="precioObras" />
       </div>
-      <div class="input-container">
+      <div class="input-containerd">
         <label for="precioOficina">Precio Oficina</label>
         <input type="number" bind:value={precioOficina} name="precioOficina" />
       </div>
     </div>
     <div class="row">
-      <div class="input-container">
+      <div class="input-containerd">
         <label for="descuentoFerreteria">Descuento Ferreteria</label>
         <input
           type="number"
@@ -184,7 +184,7 @@
           name="descuentoFerreteria"
         />
       </div>
-      <div class="input-container">
+      <div class="input-containerd">
         <label for="descuentoObras">Descuento Obras</label>
         <input
           type="number"
@@ -192,7 +192,7 @@
           name="descuentoObras"
         />
       </div>
-      <div class="input-container">
+      <div class="input-containerd">
         <label for="descuentoOficina">Descuento Oficina</label>
         <input
           type="number"
@@ -202,7 +202,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="input-container">
+      <div class="input-containerd">
         <label for="descripcion">Descripcion</label>
         <textarea type="text" bind:value={descripcion} name="descripcion" />
       </div>
@@ -253,10 +253,13 @@
     flex-direction: column;
     position: relative;
   }
-  .input-container {
+  .input-containerd {
     flex: 1;
     flex-grow: 1;
     margin-left: 2rem;
+    position: relative;
+    height: auto;
+    width: auto;
   }
   .button {
     width: 10rem;
