@@ -2,5 +2,6 @@
 /public/build/
 
 .DS_Store
-.log
+*.log
 firebase-debug.log
+firestore-debug.log
