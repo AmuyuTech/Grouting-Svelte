@@ -1,7 +1,11 @@
 <script>
     import { push } from 'svelte-spa-router'
     let search = ''
-    function filterData(){}
+    let facturas = []
+    let pagesize = 10
+    let datefilterStart = ''
+    let datefilterEnd = ''
+    
     function registerFact() {
       push('/Facturas/New')
     }
@@ -45,7 +49,8 @@
           /></g
         ></svg
       >
-      <input  bind:value={search} on:keyup={filterData} class="text-input input" placeholder="Buscar...">
+      <!--input  bind:value={search} on:keyup={filterData} class="text-input input" placeholder="Buscar..." --> 
+      
     </div>
   >
     <button class="button"style="margin-left: auto;" on:click={registerFact}>Registrar Factura</button>
