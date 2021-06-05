@@ -26,8 +26,8 @@ if (test) {
   auth.useEmulator("http://localhost:9099");
   db.useEmulator("localhost", 8080);
   rtdb.useEmulator("localhost", 9000);
-  export const rt = rtdb.ref();
 }
+export const rt = rtdb.ref();
 /**
  * * si se traban lo puertos limpiar con :
  * ! search $PORT process
