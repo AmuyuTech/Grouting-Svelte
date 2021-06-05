@@ -53,7 +53,7 @@
                 nombre: i.nombre,
                 cantidad: i.cantidad,
                 pendiente: auxdesp[pos],
-                add: 0
+                add: 0,
             });
         });
         despachos = [
@@ -145,9 +145,11 @@
         {#each despachos as desp, i}
             <div style="display: flex; width: 100%; margin-left:2rem;">
                 <p>Usuario: {desp.nombre}</p>
-                <p style="margin-rigth: auto;">{despachos.fecha}</p>
+                <p style="margin-rigth: auto; margin-left: 1rem;">
+                    {desp.fecha}
+                </p>
             </div>
-            <div>
+            <div style="margin-left: 3rem; margin-right: 2rem;">
                 {#each desp.items as item, i}
                     <div class="line">
                         <span style="flex-grow: 1;">{item.nombre}</span>
@@ -157,12 +159,15 @@
                         <span style="flex-grow: 1;"
                             >Pendiente: {item.pendiente}</span
                         >
-                        <input
-                            style="flex-grow: 1;"
-                            type="number"
-                            bind:value={item.add}
-                            max={item.pendiente}
-                        />
+                        <div class="number-container">
+                            <input
+                                style="flex-grow: 1;"
+                                type="number"
+                                placeholder="Agregar..."
+                                bind:value={item.add}
+                                max={item.pendiente}
+                            />
+                        </div>
                     </div>
                 {/each}
             </div>
@@ -208,6 +213,8 @@
     }
     .new-item {
         grid-area: new-item;
+        align-self: self-end;
+        margin-left: auto;
     }
     .items {
         grid-area: items;
@@ -227,9 +234,13 @@
         flex-wrap: wrap;
         flex-direction: row;
         align-items: center;
+        width: 100%;
         gap: 1rem;
     }
     input {
         width: 100%;
+    }
+    button {
+        width: auto;
     }
 </style>
