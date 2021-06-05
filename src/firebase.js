@@ -13,21 +13,24 @@ const firebaseConfig = {
   appId: "1:1018493948173:web:948f05ee871c3743df6044",
   measurementId: "G-Q47X7GZVGL",
 };
-
+let test = false
 const app = firebase.initializeApp(firebaseConfig);
 
 export const auth = app.auth();
-//! deactrivate emulator
-auth.useEmulator("http://localhost:9099");
-export const db = app.firestore();
-db.useEmulator("localhost", 8080);
-const rtdb = app.database();
-rtdb.useEmulator("localhost", 9000);
-export const rt = rtdb.ref();
 
+export const db = app.firestore();
+
+const rtdb = app.database();
+if (test) {
+  //! deactrivate emulator
+  auth.useEmulator("http://localhost:9099");
+  db.useEmulator("localhost", 8080);
+  rtdb.useEmulator("localhost", 9000);
+  export const rt = rtdb.ref();
+}
 /**
  * * si se traban lo puertos limpiar con :
- * ! search $PORT process 
+ * ! search $PORT process
  * ? netstat -ano | findstr :5001
  * * Protocol localAddress RemoteAddress Estado PID
  * ! matar el proceso $PID

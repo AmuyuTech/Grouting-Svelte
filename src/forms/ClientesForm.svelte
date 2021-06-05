@@ -1,6 +1,6 @@
 <script>
 import { registrarCliente } from "../firebaseAPI";
-
+import { toast } from '@zerodevx/svelte-toast'
 
   export let params = {};
   $: {
@@ -136,7 +136,7 @@ import { registrarCliente } from "../firebaseAPI";
     style="margin-left: auto;"
     on:click={aceptar}>Aceptar</button
   >
-  <button class="button" on:click={cancelar}>Cancelar</button>
+  <button class="button" on:click={cancelar} style="margin-left: 2rem;">Cancelar</button>
 </div>
 
 <style>
@@ -200,5 +200,8 @@ import { registrarCliente } from "../firebaseAPI";
     width: 100%;
     padding-left: 1rem;
     border-radius: 0.75rem;
+  }
+  button {
+    width: 10rem;
   }
 </style>
