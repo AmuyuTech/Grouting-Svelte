@@ -1,7 +1,44 @@
-import { auth, db, rt } from "./firebase";
 import { authState } from "rxfire/auth";
-import { async } from "rxjs";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/database";
 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDhvu01irK5L0cBV-BpD60QO584MCtEosY",
+  authDomain: "inventarioconstructora.firebaseapp.com",
+  databaseURL: "https://inventarioconstructora.firebaseio.com",
+  projectId: "inventarioconstructora",
+  storageBucket: "inventarioconstructora.appspot.com",
+  messagingSenderId: "1018493948173",
+  appId: "1:1018493948173:web:948f05ee871c3743df6044",
+  measurementId: "G-Q47X7GZVGL",
+};
+let test = false;
+firebase.initializeApp(firebaseConfig);
+
+
+if (test) {
+  //! deactrivate emulator
+  firebase.auth().useEmulator("http://localhost:9099");
+  firebase.firestore().useEmulator("localhost", 8080);
+  firebase.database().useEmulator("localhost", 9000);
+}
+
+/**
+ * * si se traban lo puertos limpiar con :
+ * ! search $PORT process
+ * ? netstat -ano | findstr :5001
+ * * Protocol localAddress RemoteAddress Estado PID
+ * ! matar el proceso $PID
+ * ? taskkill /F /PID 2564
+ */
+
+
+export let auth = firebase.auth()
+export let db = firebase.firestore()
+export let rt = firebase.database().ref()
 // User
 export const User = authState(auth);
 // colecciones
@@ -27,7 +64,7 @@ export const Usuarios$ = _UsuariosCollection.orderBy("nombre");
 //Special data
 export async function getStocks(productId$) {
   return await rt
-    .child("s                                             tocks")
+    .child("stocks")
     .child(productId$)
     .get();
 }

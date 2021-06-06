@@ -1,6 +1,7 @@
 <script>
   import { push } from "svelte-spa-router";
   import Datepicker from "../components/Datepicker/Datepicker.svelte";
+  import { Collection } from 'sveltefire'
   let search = "";
   let facturas = [];
   let pagesize = 10;
@@ -23,8 +24,8 @@
   function toStr(d) {
     var dd = d.getDate();
 
-    var mm = today.getMonth() + 1;
-    var yyyy = today.getFullYear();
+    var mm = d.getMonth() + 1;
+    var yyyy = d.getFullYear();
     if (dd < 10) {
       dd = "0" + dd;
     }
@@ -33,6 +34,13 @@
       mm = "0" + mm;
     }
     return `${yyyy}/${mm}/${dd}`;
+  }
+  let query = ref => ref.orderBy('fecha').limit(pagesize)
+  function nextPage(last$) {
+    query =  ref => ref.orderBy('fecha').startAfter(last$['fecha']).limit(pagesize)
+  }
+  function prevPAge(first$) {
+    query =  ref => ref.orderBy('fecha').endBefore(last$['fecha']).limitToLast(pagesize)
   }
 </script>
 
@@ -63,7 +71,7 @@
   <h1 style="margin-left: 1rem;">Facturas</h1>
 </div>
 <div class="controls-row">
-  <div class="input-container">
+  <!--div class="input-container">
     <svg
       aria-hidden="true"
       focusable="false"
@@ -85,7 +93,7 @@
         /></g
       ></svg
     >
-    <!--input  bind:value={search} on:keyup={filterData} class="text-input input" placeholder="Buscar..." -->
+    <!--input  bind:value={search} on:keyup={filterData} class="text-input input" placeholder="Buscar...">
     <Datepicker
       on:datechange={ondesdeChange}
       selected={desdeAux}
@@ -95,7 +103,7 @@
         return false;
       }}
     />
-  </div>
+  </div-->
   <Datepicker
     on:datechange={ondesdeChange}
     selected={desdeAux}
@@ -117,60 +125,57 @@
     >Registrar Factura</button
   >
 </div>
-<div style="padding: 2rem;">
-  <div class="table-container">
-    <table class="table-body">
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Points</th>
-      </tr>
-      <tr>
-        <td>Jill</td>
-        <td>Smith</td>
-        <td>50</td>
-      </tr>
-      <tr>
-        <td>Eve</td>
-        <td>Jackson</td>
-        <td>94</td>
-      </tr>
-      <tr>
-        <td>Adam</td>
-        <td>Johnson</td>
-        <td>67</td>
-      </tr>
-    </table>
-    <div class="table-footer">
-      <span>## de ### </span>
-
-      <button style="margin-left: auto;" class="footer-button">
-        <svg viewBox="0 0 24 24" focusable="false" class="footer-icon"
-          ><path
-            d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-          /></svg
-        >
-      </button>
-      <button class="footer-button">
-        <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
-          ><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg
-        >
-      </button>
-      <button class="footer-button">
-        <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
-          ><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg
-        >
-      </button>
-      <button class="footer-button">
-        <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
-          ><path
-            d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-          /></svg
-        >
-      </button>
+<Collection path={'FACTURAS'} {query} let:data let:first let:last>
+  <div style="padding: 2rem;">
+    <div class="table-container">
+      <table class="table-body">
+        
+        <tr>
+          <th>Fecha</th>
+          <th>Proveedor</th>
+          <th>Estado</th>
+        </tr>
+        {#each data as fact}
+        <tr>
+          <td>{fact.fecha}</td>
+          <td>{fact.proveedor}</td>
+          <td>{fact.estado}</td>
+        </tr>
+        {/each}
+      </table>
+      
+      <div class="table-footer">
+        <p style="margin-left: 2rem;">## de ### </p>
+  
+        <button style="margin-left: auto;" class="footer-button">
+          <svg viewBox="0 0 24 24" focusable="false" class="footer-icon"
+            ><path
+              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+            /></svg
+          >
+        </button>
+        <button class="footer-button" on:click={prevPAge(first)}>
+          <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
+            ><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg
+          >
+        </button>
+        <button class="footer-button" on:click={nextPage(last)}>
+          <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
+            ><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg
+          >
+        </button>
+        <button class="footer-button" style="margin-right: 2rem;">
+          <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
+            ><path
+              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+            /></svg
+          >
+        </button>
+      </div>
     </div>
   </div>
-</div>
+  <span slot="loading">Cargando...</span>
+</Collection>
 
 <style>
   .table-container {
@@ -178,6 +183,7 @@
     overflow: hidden;
     overflow-x: auto;
     box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+    width: 100%;
   }
   table {
     border-collapse: collapse;
@@ -204,11 +210,10 @@
     padding-bottom: 1rem;
   }
   .table-footer {
-    margin: 0.5rem;
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
-    padding-left: 1rem;
+    width: 100%;
   }
   .footer-button {
     width: 2.5rem;

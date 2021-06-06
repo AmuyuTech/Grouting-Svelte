@@ -15,9 +15,8 @@
     let cells;
   
     // function helpers
-    const onChange = date => {
-        
-      dispatch("datechange",  new Date(year, month, date));
+    const onChange = date$ => {
+      dispatch("datechange",  new Date(year, month, date$));
     };
   
     const allow = (year, month, date) => {
@@ -36,6 +35,7 @@
       margin-top: 8px;
       padding: 6px;
       width: 370px;
+      background-color: #fff;
     }
     .row {
       display: flex;

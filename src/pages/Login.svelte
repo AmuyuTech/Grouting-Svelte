@@ -1,5 +1,5 @@
 <script>
-    import {auth} from "../firebase";
+    import {auth} from "../firebaseAPI";
     import { replace }  from 'svelte-spa-router'
     import { toast } from '@zerodevx/svelte-toast'
     let src = "./assets/img/bg-login.jpg"
