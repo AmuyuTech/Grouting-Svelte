@@ -35,12 +35,22 @@
     }
     return `${yyyy}/${mm}/${dd}`;
   }
-  let query = ref => ref.orderBy('fecha').limit(pagesize)
+  function getQuery(ref$) {
+    let aux = ref$
+    if (datefilterStart  !== ''){
+      aux = aux.where('fecha', '>=', datefilterStart)
+    }
+    if (datefilterEnd  !== ''){
+      aux = aux.where('fecha', '<=', datefilterEnd)
+    }
+    return aux
+  }
+  let query = ref => ref.orderBy('fecha', 'desc').limit(pagesize)
   function nextPage(last$) {
-    query =  ref => ref.orderBy('fecha').startAfter(last$['fecha']).limit(pagesize)
+    query =  ref => getQuery(ref).orderBy('fecha', 'desc').startAfter(last$['fecha']).limit(pagesize)
   }
   function prevPAge(first$) {
-    query =  ref => ref.orderBy('fecha').endBefore(last$['fecha']).limitToLast(pagesize)
+    query =  ref => getQuery(ref).orderBy('fecha', 'desc').endBefore(first$['fecha']).limitToLast(pagesize)
   }
 </script>
 
@@ -145,7 +155,7 @@
       </table>
       
       <div class="table-footer">
-        <p style="margin-left: 2rem;">## de ### </p>
+        <!-- No implementable??  revirsar p style="margin-left: 2rem;">## de ### </p-->
   
         <button style="margin-left: auto;" class="footer-button">
           <svg viewBox="0 0 24 24" focusable="false" class="footer-icon"

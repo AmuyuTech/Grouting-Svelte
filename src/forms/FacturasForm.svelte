@@ -1,4 +1,7 @@
 <script>
+    import {pop, replace} from 'svelte-spa-router'
+import { actualizarFactura, registrarFactura } from '../firebaseAPI';
+import facturas from './../assets/facturas'
     export let params = {};
     let disabled = false;
     $: {
@@ -13,6 +16,10 @@
     let fecha = "";
     let items = [];
     let despachos = [];
+
+    function registerAll() {
+        facturas.forEach(f => registrarFactura(f))
+    }
 
     function addItem() {
         items = [
@@ -65,6 +72,56 @@
             },
         ];
     }
+    function cancelar() {
+        pop()
+    }
+    function aceptar() {
+    let data = {
+      numero,
+      estado: calcularEstado(),
+      usuario: 'dd',
+      proveedor,
+      items,
+      despachos
+    };
+    toast.push("Subiendo", {
+      initial: 0,
+      progress: 0,
+      dismissable: false,
+      theme: {
+        "--toastBackground": "#ffeb3b",
+        "--toastProgressBackground": " #f4d03f ",
+      },
+    });
+    let promesa
+    if(params.id === 'New') {
+        promesa = registrarFactura(data)
+    }else {
+        promesa = actualizarFactura(data, params.id)
+    }
+    promesa.then(
+      (s) => {
+        toast.pop();
+        toast.push("Exito!", {
+          theme: {
+            "--toastBackground": "#48BB78",
+            "--toastProgressBackground": "#2F855A",
+          },
+        });
+        replace('/Productos');
+      },
+      (e) => {
+        toast.pop();
+        console.error(e);
+        toast.push("Error! porfavor intente de nuevo", {
+          theme: {
+            "--toastBackground": "#F56565",
+            "--toastProgressBackground": "#C53030",
+          },
+        });
+      }
+    );
+  }
 </script>
 
 <h1>{params.id === "New" ? "Registrar Factura" : " Registrar Despachos"}</h1>
@@ -174,6 +231,16 @@
         {/each}
     </div>
 </div>
+<div class="row" style="width: 100%; right: 0; bottom: 0;">
+    <button on:click={registerAll}>REGISTRAR TODO</button>
+    <button
+      class="button"
+      style="margin-left: auto;"
+      on:click={aceptar}>Aceptar</button
+    >
+    <button class="button" on:click={cancelar}>Cancelar</button>
+  </div>
+  
 
 <style>
     .gridd {

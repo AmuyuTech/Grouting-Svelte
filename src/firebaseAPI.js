@@ -15,7 +15,7 @@ const firebaseConfig = {
   appId: "1:1018493948173:web:948f05ee871c3743df6044",
   measurementId: "G-Q47X7GZVGL",
 };
-let test = false;
+let test = true;
 firebase.initializeApp(firebaseConfig);
 
 
@@ -103,8 +103,8 @@ export function registrarUsuario(Usuario$) {
 export function actualizarUsuario(Usuario$, Id$) {
   _UsuariosCollection.doc(Id$).update(Usuario$);
 }
-export function actualizarDespacho(Despacho$, Id$) {
-  _DespachosCollection.doc(Id$).update(Despacho$);
+export function actualizarFactura(Factura$, Id$) {
+  _FacturasCollection.doc(Id$).update(Factura$);
 }
 export function actualizarCredito(Credito$, Id$) {
   _CreditosCollection.doc(Id$).update(Credito$);
