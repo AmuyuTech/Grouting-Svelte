@@ -289,7 +289,7 @@ import facturas from './../assets/facturas'
     .despachos {
         grid-area: despachos;
     }
-    .name-container {
+    :global(.name-container) {
         width: auto;
         flex-grow: 1;
     }

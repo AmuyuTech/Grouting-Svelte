@@ -13,6 +13,7 @@ import MainPage from "./pages/MainPage.svelte";
 import ProductForm from "./forms/ProductForm.svelte";
 import ClientesForm from "./forms/ClientesForm.svelte";
 import FacturasForm from "./forms/FacturasForm.svelte"
+import GastosForm from './forms/GastosForm.svelte'
 
 export default {
   // Exact path
@@ -29,6 +30,7 @@ export default {
   "/Productos/:id": ProductForm,
   "/Clientes/:id": ClientesForm,
   "/Facturas/:id": FacturasForm,
+  "/Gastos/:id": GastosForm,
   //'':,
 
   // Using named parameters, with last being optional

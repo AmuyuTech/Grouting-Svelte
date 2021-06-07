@@ -72,33 +72,14 @@ async function getProductoNextId() {
   return await rt.child("ids").child("productos").get();
 }
 //Escritores * write*
-export function registrarCliente(Cliente$) {
-  _ClientesCollection.add(Cliente$);
-}
-export function registrarCredito(Credito$) {
-  _CreditosCollection.add(Credito$);
-}
-export function registrarDespacho(Despacho$) {
-  _DespachosCollection.add(Despacho$);
-}
-export function registrarFactura(Factura$) {
-  _FacturasCollection.add(Factura$);
-}
-export function registrarGasto(Gasto$) {
-  _GastosCollection.add(Gasto$);
-}
-export async function registrarProducto(Producto$) {
-  _ProductosCollection.add(Producto$);
-}
-export function registrarAlmacen(Almacen$) {
-  _AlmacenesCollection.add(Almacen$);
-}
-export function registrarVenta(Venta$) {
-  _VentasCollection.add(Venta$);
-}
-export function registrarUsuario(Usuario$) {
-  _UsuariosCollection.add(Usuario$);
-}
+export function registrarCliente(Cliente$)          {  return setDoc(_ClientesCollection, Cliente$);}
+export function registrarCredito(Credito$)          {  return setDoc(_CreditosCollection, Credito$);}
+export function registrarFactura(Factura$)          {  return setDoc(_FacturasCollection, Factura$);}
+export function registrarGasto(Gasto$)              {  return setDoc(_GastosCollection, Gasto$);}
+export async function registrarProducto(Producto$)  {  return setDoc(_ProductosCollection, Producto$);}
+export function registrarAlmacen(Almacen$)          {  return setDoc(_AlmacenesCollection, Almacen$);}
+export function registrarVenta(Venta$)              {  return setDoc(_VentasCollection, Venta$);}
+export function registrarUsuario(Usuario$)          {  return setDoc(_UsuariosCollection, Usuario$);}
 //Editores *Update*
 export function actualizarUsuario(Usuario$, Id$) {
   _UsuariosCollection.doc(Id$).update(Usuario$);
@@ -114,4 +95,9 @@ export function actualizarCliente(Cliente$) {
 }
 export function actualizarProducto(Producto$) {
   _ProductosCollection.doc(Id$).update(Producto$);
+}
+function setDoc(ref$, data$) {
+  const id = ref$.doc().id
+  const data = {...data$, id}
+  return ref$.doc(id).set(data)
 }
