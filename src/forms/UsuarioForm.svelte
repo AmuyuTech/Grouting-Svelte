@@ -1,5 +1,6 @@
 <script>
-const { text, bind }=require("svelte/internal")
+import { registrarUsuario } from "../firebaseAPI";
+
 
   let nombre = ''
   let ci = ''
@@ -8,6 +9,48 @@ const { text, bind }=require("svelte/internal")
   let pass = ''
   let repass = ''
   let almacen = ''
+  let administrador = false
+  function aceptar() {
+    toast.push("Subiendo", {
+      initial: 0,
+      progress: 0,
+      dismissable: false,
+      theme: {
+        "--toastBackground": "#ffeb3b",
+        "--toastProgressBackground": " #f4d03f ",
+      },
+    });
+    registrarUsuario({
+      nombre, ci, telefono, correo, pass, almacen, administrador
+    }).then(
+      (s) => {
+        toast.pop();
+        toast.push("Exito!", {
+          theme: {
+            "--toastBackground": "#48BB78",
+            "--toastProgressBackground": "#2F855A",
+          },
+        });
+        replace('/Productos');
+      },
+      (e) => {
+        toast.pop();
+        console.error(e);
+        toast.push("Error! porfavor intente de nuevo", {
+          theme: {
+            "--toastBackground": "#F56565",
+            "--toastProgressBackground": "#C53030",
+          },
+        });
+      }
+    );
+    
+  }
+  function cancelar() {
+    pop()
+  }
+  
+
 </script>
 
 <div class="gridd">
@@ -51,6 +94,9 @@ const { text, bind }=require("svelte/internal")
   </div>
 </div>
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
+  <label>
+    <input type="checkbox" bind:value={administrador}>
+  </label>
   <button
     class="button"
     style="margin-left: auto;"
@@ -58,7 +104,7 @@ const { text, bind }=require("svelte/internal")
   >
   <button class="button" on:click={cancelar}>Cancelar</button>
 </div>
-
+ 
 <style>
   .gridd {
     display: grid;
