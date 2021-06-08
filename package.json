@@ -23,6 +23,7 @@
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
+    "simple-svelte-autocomplete": "^1.3.2",
     "svelte": "^3.0.0",
     "svelte-file-dropzone": "0.0.15",
     "svelte-jester": "^1.7.0"
