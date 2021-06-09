@@ -51,6 +51,7 @@ const _ProductosCollection = db.collection("PRODUCTOS");
 const _AlmacenesCollection = db.collection("REGISTROSALMACEN");
 const _VentasCollection = db.collection("REGISTROSVENTAS");
 const _UsuariosCollection = db.collection("USUARIOS");
+const _BucketsCollection = db.collection("BUCKETS");
 //observers (*read*)
 export const Clientes$ = _ClientesCollection.orderBy("nombre");
 export const Creditos$ = _CreditosCollection.orderBy("fecha", "desc");
@@ -61,6 +62,7 @@ export const Productos$ = _ProductosCollection.orderBy("nombre");
 export const Almacenes$ = _AlmacenesCollection.orderBy("fecha", "desc");
 export const Ventas$ = _VentasCollection.orderBy("fecha", "desc");
 export const Usuarios$ = _UsuariosCollection.orderBy("nombre");
+export const ProductosB$ = _BucketsCollection.doc('productos')
 //Special data
 export async function getStocks(productId$) {
   return await rt

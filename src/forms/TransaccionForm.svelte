@@ -3,6 +3,8 @@
   let origen = 'elalto'
   let destino = 'elalto'
   let items = []
+
+  
 </script>
 <h1>Registro de Transaaccion</h1>
 <div class="row">

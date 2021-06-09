@@ -1,5 +1,6 @@
+import { set } from "lodash";
 import {readable} from "svelte/store";
-import {Clientes$, Creditos$, Despachos$, Facturas$, Gastos$, Productos$, Usuarios$, Ventas$} from "./firebaseAPI"
+import {Clientes$, Creditos$, Despachos$, Facturas$, Gastos$, Productos$, ProductosB$, Usuarios$, Ventas$} from "./firebaseAPI"
 
 
 export const Productos = readable([], set => {
@@ -14,6 +15,19 @@ export const Productos = readable([], set => {
         set(data)
     })
 })
+export const ProductosB = readable([], set => {
+    ProductosB$.onSnapshot(snapshot => {
+        let data = []
+        let payload = snapshot.data() 
+        Object.keys(payload).forEach(p => {
+            data.push({
+                id: p,
+                ...payload[p]
+            })
+        })
+    })
+})
+/*
 export const Clientes = readable([], set => {
     Clientes$.onSnapshot(snapshot => {
         let data = []
@@ -91,4 +105,4 @@ export const Ventas = readable([], set => {
             })
         })
     })
-})
+})*/
