@@ -2,10 +2,10 @@
   import Dropzone from "./../components/Dropzone/Dropzone.svelte";
   import imageCompression from "browser-image-compression";
   import { pop, replace } from "svelte-spa-router";
-  import { registrarProducto } from "../firebaseAPI";
+  import { registerTestProducts, registrarProducto } from "../firebaseAPI";
   import { onMount } from "svelte";
   import { toast } from '@zerodevx/svelte-toast'
-  import products from './../assets/products.js'
+  
   export let params = {};
   const IMGBB_KEY = "70fa84e6fd037e5fea9b30d1ab78222a";
   onMount(async () => {
@@ -37,7 +37,7 @@
     );
   }
   function uploadAll(){
-    products.forEach(p => registrarProducto(p))
+    registerTestProducts()
   }
   function aceptar() {
     let data = {
@@ -224,6 +224,7 @@
 </div>
 
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
+  <button on:click={uploadAll}>Regitrar Todo</button>
   <button
     class="button"
     style="margin-left: auto;"

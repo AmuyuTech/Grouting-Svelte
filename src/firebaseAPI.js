@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
+import products from './assets/products.js'
 
 
 const firebaseConfig = {
@@ -48,7 +49,7 @@ const _DespachosCollection = db.collection("DESPACHOS");
 const _FacturasCollection = db.collection("FACTURAS");
 const _GastosCollection = db.collection("GASTOS");
 const _ProductosCollection = db.collection("PRODUCTOS");
-const _AlmacenesCollection = db.collection("REGISTROSALMACEN");
+const _AlmacenesCollection = db.collection("TRANSACCIONES");
 const _VentasCollection = db.collection("REGISTROSVENTAS");
 const _UsuariosCollection = db.collection("USUARIOS");
 const _BucketsCollection = db.collection("BUCKETS");
@@ -78,7 +79,7 @@ export function registrarCliente(Cliente$)          {  return setDoc(_ClientesCo
 export function registrarCredito(Credito$)          {  return setDoc(_CreditosCollection, Credito$);}
 export function registrarFactura(Factura$)          {  return setDoc(_FacturasCollection, Factura$);}
 export function registrarGasto(Gasto$)              {  return setDoc(_GastosCollection, Gasto$);}
-export async function registrarProducto(Producto$)  {  return setDoc(_ProductosCollection, Producto$);}
+export function registrarProducto(Producto$)        {  return setDoc(_ProductosCollection, Producto$);}
 export function registrarAlmacen(Almacen$)          {  return setDoc(_AlmacenesCollection, Almacen$);}
 export function registrarVenta(Venta$)              {  return setDoc(_VentasCollection, Venta$);}
 export function registrarUsuario(Usuario$)          {  return setDoc(_UsuariosCollection, Usuario$);}
@@ -99,7 +100,18 @@ export function actualizarProducto(Producto$) {
   _ProductosCollection.doc(Id$).update(Producto$);
 }
 function setDoc(ref$, data$) {
-  const id = ref$.doc().id
+  const doc = ref$.doc()
+  const id = doc.id
+  console.log('id: ', id);
   const data = {...data$, id}
-  return ref$.doc(id).set(data)
+  return doc.set(data)
+}
+export function registerTestProducts() {
+  const payload = db.batch()
+  products.forEach(p => {
+    const doc = _ProductosCollection.doc()
+    const data = {...p, id: doc.id}
+    payload.set(doc, data)
+  });
+  payload.commit()
 }
