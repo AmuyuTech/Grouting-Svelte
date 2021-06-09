@@ -12,90 +12,90 @@ admin.initializeApp();
 
 const db = admin.firestore()
 const rt = admin.database()
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
 
-exports.CrearBucket = functions.firestore.document('PRODUCTOS/{ProductId$}').onWrite((doc, ctx) => {
-    const data = doc.data()
+
+exports.CrearBucket = functions.firestore
+  .document('PRODUCTOS/{ProductId}')
+  .onCreate((snap, context) => {
+    const data = snap.data()
     const bucket = {
-        nombre: data.nombre,
-        photourl: data.photourl
+      nombre: data.nombre,
+      photourl: data.photourl
     }
     const id = data.id
-    const Pbucket = db.collection('BUCKETS').doc('productos')
-    return Pbucket.update({ [id]: bucket })
-})
-exports.ActualizarBucket = functions.firestore.document('PRODUCTOS/{ProductId$}').onUpdate((doc, ctx) => {
+    return db.collection('BUCKETS').doc('productos').set({ [id]: bucket }, { merge: true })
+
+  })
+exports.ActualizarBucket = functions.firestore
+  .document('PRODUCTOS/{ProductId}')
+  .onUpdate((doc, ctx) => {
     const data = doc.after.data()
     const bucket = {
-        nombre: data.nombre,
-        photourl: data.photourl
+      nombre: data.nombre,
+      photourl: data.photourl
     }
     const id = data.id
-    const Pbucket = db.collection('BUCKETS').doc('productos')
-    return Pbucket.update({ [id]: bucket })
-})
-exports.CrearStock = functions.firestore.document('PRODUCTOS/{ProductId$}').onWrite((doc, ctx) => {
+    return db.collection('BUCKETS').doc('productos').set({ [id]: bucket }, { merge: true })
+  })
+exports.CrearStock = functions.firestore
+  .document('PRODUCTOS/{ProductId}')
+  .onCreate((doc, ctx) => {
     const id = doc.data().id
     const ref = rt.ref(`productos/${id}/`)
     return ref.set({
-        elalto: 0,
-        sopocachi: 0,
-        zonasur: 0
+      elalto: 0,
+      sopocachi: 0,
+      zonasur: 0
     })
-})
-exports.ActualizarStock = functions.firestore.document('TRANSACCIONES/{ProductId$}').onWrite((doc, ctx) => {
+  })
+exports.ActualizarStock = functions.firestore
+  .document('TRANSACCIONES/{ProductId}').onCreate((doc, ctx) => {
     const data = doc.data()
     const origen = data.origen
     const destino = data.destino
     const transacciones = []
     data.items.forEach(element => {
-        const pid = element.id
-        if (destino === 'elalto' || destino === 'sopocachi' || destino === 'zonasur') {
-            transacciones.push(rt.ref(`productos/${pid}/${destino}`).transaction((current_value) => {
-                return (current_value || 0) + element.cantidad
-            }))
-        }
-        if (origen === 'elalto' || origen === 'sopocachi' || origen === 'zonasur') {
-            transacciones.push(rt.ref(`productos/${pid}/${origen}`).transaction((current_value) => {
-                return (current_value || 0) - element.cantidad
-            }))
-        }
+      const pid = element.id
+      if (destino === 'elalto' || destino === 'sopocachi' || destino === 'zonasur') {
+        transacciones.push(rt.ref(`productos/${pid}/${destino}`).transaction((current_value) => {
+          return (current_value || 0) + element.cantidad
+        }))
+      }
+      if (origen === 'elalto' || origen === 'sopocachi' || origen === 'zonasur') {
+        transacciones.push(rt.ref(`productos/${pid}/${origen}`).transaction((current_value) => {
+          return (current_value || 0) - element.cantidad
+        }))
+      }
     })
     return Promise.all(transacciones)
-});
-exports.RegistrarVenta = functions.firestore.document('VENTAS/{VentasId$}').onWrite(async (doc, ctx) => {
-    const data = snapshot.data()
-    const prods = data.items
-    const ref = admin.firestore().collection('TRANSACCIONES')
-    const usuario = await admin.firestore().collection('USUARIOS').doc(data.asesorId).get()
-    let al = null
-    if (usuario.exists) {
-      al  = usuario.data().almacen
-      // log('test', {al})
-    }
-    let payload = {
-        fecha: data.fecha,
-        venta: data.numero,
-        destino: snapshot.id,
-        origen: al,
-        usuario: data.asesor
-    }
-    let items = []
-    // const usuario = await admin.auth().getUser(data.asesorId).then(v => v).catch(err => null)
-    for (let i = 0; i < prods.length; i++) {
-      items.push({
-        cantidad: prods[i].cantidad,
-        id: prods[i].producto,
-        nombre: prods[i].nombre
-      })
-    }
-    return ref.add(payload)
+  });
+exports.RegistrarVenta = functions.firestore.document('VENTAS/{VentasId}').onCreate(async (snapshot, ctx) => {
+  const data = snapshot.data()
+  const prods = data.items
+  const ref = admin.firestore().collection('TRANSACCIONES')
+  const usuario = await admin.firestore().collection('USUARIOS').doc(data.asesorId).get()
+  let al = null
+  if (usuario.exists) {
+    al = usuario.data().almacen
+    // log('test', {al})
+  }
+  let payload = {
+    fecha: data.fecha,
+    venta: data.numero,
+    destino: snapshot.id,
+    origen: al,
+    usuario: data.asesor
+  }
+  let items = []
+  // const usuario = await admin.auth().getUser(data.asesorId).then(v => v).catch(err => null)
+  for (let i = 0; i < prods.length; i++) {
+    items.push({
+      cantidad: prods[i].cantidad,
+      id: prods[i].producto,
+      nombre: prods[i].nombre
+    })
+  }
+  return ref.add(payload)
 })
 
 
@@ -118,22 +118,22 @@ exports.createrUserAccount = functions.firestore.document('USUARIOS/{userId}')
 exports.updateUserClailms = functions.firestore.document('USUARIOS/{userId}')
   .onUpdate(change => {
     const mdata = change.after.data()
-    return admin.auth().setCustomUserClaims(mdata.dni, { admin: mdata.admin, al: mdata.almacen } )
+    return admin.auth().setCustomUserClaims(mdata.dni, { admin: mdata.admin, al: mdata.almacen })
   })
 exports.updateUserData = functions.firestore.document('USUARIOS/{userId}')
   .onUpdate(change => {
-    const  mData = change.after.data()
+    const mData = change.after.data()
     return admin.auth().updateUser(change.after.id, {
       email: mData.correo,
       displayName: mData.nombre
     })
-    }
+  }
   )
 exports.CreateUserClaims = functions.auth.user()
-  .onCreate( async user => {
+  .onCreate(async user => {
     const udata = await admin.firestore().collection('USUARIOS').doc(user.uid).get()
     const us = udata.data()
-     return admin
+    return admin
       .auth()
       .setCustomUserClaims(user.uid, { admin: us.admin, al: us.almacen })
   })
