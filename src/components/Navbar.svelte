@@ -139,7 +139,7 @@
                 <span class="link-text">Facturas</span>
             </a>
         </li>
-        <!-- Despachos Link -->
+        <!-- Despachos Link 
         <li class="nav-item">
             <a href="#/Despachos" class="nav-link">
                 <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="truck-loading" role="img"
@@ -156,7 +156,7 @@
                 </svg>
                 <span class="link-text">Despachos</span>
             </a>
-        </li>
+        </li-->
         <!--Creditos Link -->
         <li class="nav-item">
             <a href="#/Creditos" class="nav-link">

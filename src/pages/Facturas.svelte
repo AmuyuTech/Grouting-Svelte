@@ -1,7 +1,7 @@
 <script>
   import { push } from "svelte-spa-router";
   import Datepicker from "../components/Datepicker/Datepicker.svelte";
-  import { Collection } from 'sveltefire'
+  import { Collection } from "sveltefire";
   let search = "";
   let facturas = [];
   let pagesize = 10;
@@ -16,10 +16,12 @@
   const ondesdeChange = (d) => {
     datefilterStart = toStr(d.detail);
     desdeAux = d.detail;
+    query = query;
   };
   const onhastaChange = (d) => {
     datefilterEnd = toStr(d.detail);
     hastaAux = d.detail;
+    query = query;
   };
   function toStr(d) {
     var dd = d.getDate();
@@ -37,21 +39,29 @@
   }
   function getQuery(ref$) {
     let aux = ref$
-    if (datefilterStart  !== ''){
-      aux = aux.where('fecha', '>=', datefilterStart)
+    if (datefilterStart !== '') {
+        aux = aux.where('fecha', '>=', datefilterStart)
     }
-    if (datefilterEnd  !== ''){
-      aux = aux.where('fecha', '<=', datefilterEnd)
+    if (datefilterEnd !== '') {
+        aux = aux.where('fecha', '<=', datefilterEnd)
     }
     return aux
-  }
-  let query = ref => ref.orderBy('fecha', 'desc').limit(pagesize)
-  function nextPage(last$) {
-    query =  ref => getQuery(ref).orderBy('fecha', 'desc').startAfter(last$['fecha']).limit(pagesize)
-  }
-  function prevPAge(first$) {
-    query =  ref => getQuery(ref).orderBy('fecha', 'desc').endBefore(first$['fecha']).limitToLast(pagesize)
-  }
+}
+let query = ref => getQuery(ref).orderBy('fecha', 'desc').limit(pagesize)
+
+function nextPage(last$) {
+    query = ref => getQuery(ref).orderBy('fecha', 'desc').startAfter(last$['fecha']).limit(pagesize)
+}
+
+function prevPAge(first$) {
+    query = ref => getQuery(ref).orderBy('fecha', 'desc').endBefore(first$['fecha']).limitToLast(pagesize)
+}
+function firstPage() {
+  query = ref => getQuery(ref).orderBy('fecha', 'desc').limit(pagesize)
+}
+function lastPage() {
+  query = ref => getQuery(ref).orderBy('fecha', 'desc').limitToLast(pagesize)
+}
 </script>
 
 <div class="header-row">
@@ -135,29 +145,32 @@
     >Registrar Factura</button
   >
 </div>
-<Collection path={'FACTURAS'} {query} let:data let:first let:last>
+<Collection path={"FACTURAS"} {query} let:data let:first let:last let:error>
   <div style="padding: 2rem;">
     <div class="table-container">
       <table class="table-body">
-        
         <tr>
           <th>Fecha</th>
           <th>Proveedor</th>
           <th>Estado</th>
         </tr>
         {#each data as fact}
-        <tr>
-          <td>{fact.fecha}</td>
-          <td>{fact.proveedor}</td>
-          <td>{fact.estado}</td>
-        </tr>
+          <tr>
+            <td>{fact.fecha}</td>
+            <td>{fact.proveedor}</td>
+            <td>{fact.estado}</td>
+          </tr>
         {/each}
       </table>
-      
+
       <div class="table-footer">
         <!-- No implementable??  revirsar p style="margin-left: 2rem;">## de ### </p-->
-  
-        <button style="margin-left: auto;" class="footer-button">
+
+        <button
+          style="margin-left: auto;"
+          class="footer-button"
+          on:click={firstPage}
+        >
           <svg viewBox="0 0 24 24" focusable="false" class="footer-icon"
             ><path
               d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
@@ -174,7 +187,11 @@
             ><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg
           >
         </button>
-        <button class="footer-button" style="margin-right: 2rem;">
+        <button
+          class="footer-button"
+          style="margin-right: 2rem;"
+          on:click={lastPage}
+        >
           <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
             ><path
               d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
@@ -185,6 +202,7 @@
     </div>
   </div>
   <span slot="loading">Cargando...</span>
+  <span slot="fallback">Error: {error}</span>
 </Collection>
 
 <style>

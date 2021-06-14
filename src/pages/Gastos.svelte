@@ -51,7 +51,7 @@ function getQuery(ref$) {
     }
     return aux
 }
-let query = ref => ref.orderBy('fecha', 'desc').limit(pagesize)
+let query = ref => getQuery(ref).orderBy('fecha', 'desc').limit(pagesize)
 
 function nextPage(last$) {
     query = ref => getQuery(ref).orderBy('fecha', 'desc').startAfter(last$['fecha']).limit(pagesize)

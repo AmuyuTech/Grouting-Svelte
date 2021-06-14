@@ -28,11 +28,11 @@
             <form>
                 <div class="input-box">
                     <span>Correo Electronico</span>
-                    <input  type="email" name="" bind:value={correo}>
+                    <input class="inputt" type="email" name="" bind:value={correo}>
                 </div>
                 <div class="input-box">
                     <span>Contraseña</span>
-                    <input  type="password" name="" bind:value={pass} >
+                    <input class="inputt" type="password" name="" bind:value={pass} >
                 </div>
                 <div class="input-box" >
                     <button class="button"name="" on:click={login}>Iniciar Sesion</button>
@@ -107,7 +107,7 @@
         color: var(--bgsecondary);
         font-weight: 300;
     }
-    :global(.input) {
+    :global(.inputt) {
         width: 100%;
         padding: 10px  20px;
         outline: none;

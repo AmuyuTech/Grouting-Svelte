@@ -14,7 +14,7 @@ import ProductForm from "./forms/ProductForm.svelte";
 import ClientesForm from "./forms/ClientesForm.svelte";
 import FacturasForm from "./forms/FacturasForm.svelte"
 import GastosForm from './forms/GastosForm.svelte'
-import UsuariosForm from './forms/UsuariosForm.svelte'
+import UsuarioForm from './forms/UsuarioForm.svelte'
 import TransaccionForm from './forms/TransaccionForm.svelte'
 import CreditosForm from './forms/CreditosForm.svelte'
 
@@ -34,8 +34,8 @@ export default {
   "/Clientes/:id": ClientesForm,
   "/Facturas/:id": FacturasForm,
   "/Gastos/:id": GastosForm,
-  "/Usuarios/:id": UsuariosForm,
-  "/Transacciones/:id": TransaccionForm,
+  "/Usuarios/:id": UsuarioForm,
+  "/Almacenes/:id": TransaccionForm,
   "/Creditos/:id": CreditosForm,
   //'':,
 

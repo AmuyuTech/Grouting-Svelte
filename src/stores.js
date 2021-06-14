@@ -1,7 +1,8 @@
-import { set } from "lodash";
+import { authState } from "rxfire/auth";
 import {readable} from "svelte/store";
-import {Clientes$, Creditos$, Despachos$, Facturas$, Gastos$, Productos$, ProductosB$, Usuarios$, Ventas$} from "./firebaseAPI"
+import {auth, Clientes$, Creditos$, Despachos$, Facturas$, Gastos$, Productos$, ProductosB$, Usuarios$, Ventas$} from "./firebaseAPI"
 
+export const User = readable(null, set => authState(auth).subscribe(u => set(u)))
 
 export const Productos = readable([], set => {
     Productos$.onSnapshot(snapshot => {
@@ -25,6 +26,8 @@ export const ProductosB = readable([], set => {
                 ...payload[p]
             })
         })
+        // console.log(data)
+        set(data)
     })
 })
 /*

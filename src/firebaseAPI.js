@@ -102,7 +102,6 @@ export function actualizarProducto(Producto$) {
 function setDoc(ref$, data$) {
   const doc = ref$.doc()
   const id = doc.id
-  console.log('id: ', id);
   const data = {...data$, id}
   return doc.set(data)
 }
