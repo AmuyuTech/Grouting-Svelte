@@ -105,7 +105,7 @@ exports.createrUserAccount = functions.firestore.document('USUARIOS/{userId}')
     return admin
       .auth()
       .createUser({
-        uid: userinfo.dni,
+        uid: userinfo.ci,
         displayName: userinfo.nombre,
         email: userinfo.correo,
         password: userinfo.pass,
@@ -118,7 +118,7 @@ exports.createrUserAccount = functions.firestore.document('USUARIOS/{userId}')
 exports.updateUserClailms = functions.firestore.document('USUARIOS/{userId}')
   .onUpdate(change => {
     const mdata = change.after.data()
-    return admin.auth().setCustomUserClaims(mdata.dni, { admin: mdata.admin, al: mdata.almacen })
+    return admin.auth().setCustomUserClaims(mdata.ci, { admin: mdata.admin, al: mdata.almacen })
   })
 exports.updateUserData = functions.firestore.document('USUARIOS/{userId}')
   .onUpdate(change => {

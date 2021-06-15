@@ -1,5 +1,5 @@
 <script>
-import { registrarUsuario } from "../firebaseAPI";
+import { registrarUsuario, registerTestUsers } from "../firebaseAPI";
 
 
   let nombre = ''
@@ -21,7 +21,7 @@ import { registrarUsuario } from "../firebaseAPI";
       },
     });
     registrarUsuario({
-      nombre, ci, telefono, correo, pass, almacen, administrador
+      nombre, ci, telefono, correo, pass, almacen, admin: administrador
     }).then(
       (s) => {
         toast.pop();
@@ -97,6 +97,9 @@ import { registrarUsuario } from "../firebaseAPI";
   <label>
     <input type="checkbox" bind:value={administrador}>
   </label>
+  <button on:click={registerTestUsers}>
+    REgistrar Todo
+  </button>
   <button
     class="button"
     style="margin-left: auto;"

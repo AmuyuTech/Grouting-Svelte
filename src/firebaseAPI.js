@@ -4,6 +4,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
 import products from './assets/products.js'
+import usuarios from './assets/usuarios.js'
 
 
 const firebaseConfig = {
@@ -82,7 +83,7 @@ export function registrarGasto(Gasto$)              {  return setDoc(_GastosColl
 export function registrarProducto(Producto$)        {  return setDoc(_ProductosCollection, Producto$);}
 export function registrarAlmacen(Almacen$)          {  return setDoc(_AlmacenesCollection, Almacen$);}
 export function registrarVenta(Venta$)              {  return setDoc(_VentasCollection, Venta$);}
-export function registrarUsuario(Usuario$)          {  return setDoc(_UsuariosCollection, Usuario$);}
+export function registrarUsuario(Usuario$)          {  return setUsr(_UsuariosCollection, Usuario$);}
 //Editores *Update*
 export function actualizarUsuario(Usuario$, Id$) {
   _UsuariosCollection.doc(Id$).update(Usuario$);
@@ -105,6 +106,10 @@ function setDoc(ref$, data$) {
   const data = {...data$, id}
   return doc.set(data)
 }
+function setUsr(ref$, data$) {
+  const doc = ref$.doc(data$.ci)
+  return doc.set(data)
+}
 export function registerTestProducts() {
   const payload = db.batch()
   products.forEach(p => {
@@ -112,5 +117,14 @@ export function registerTestProducts() {
     const data = {...p, id: doc.id}
     payload.set(doc, data)
   });
+  payload.commit()
+}
+export function registerTestUsers() {
+  const payload = db.batch()
+  usuarios.forEach( u => {
+    const doc = _UsuariosCollection.doc(u.ci)
+    const data = {...u, id: doc.id}
+    payload.set(doc, data)
+  })
   payload.commit()
 }

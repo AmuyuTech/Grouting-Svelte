@@ -1,7 +1,27 @@
 <script>
 	import Usuarios from './Usuarios.svelte';
+  import { Collection } from "sveltefire"
     let search = ''
     function filterData(){}
+let pagesize = 10
+function getQuery(ref$) {
+  return ref$
+}
+let query = ref => getQuery(ref).orderBy('nombre', 'desc').limit(pagesize)
+
+function nextPage(last$) {
+    query = ref => getQuery(ref).orderBy('nombre', 'desc').startAfter(last$['nombre']).limit(pagesize)
+}
+
+function prevPAge(first$) {
+    query = ref => getQuery(ref).orderBy('nombre', 'desc').endBefore(first$['nombre']).limitToLast(pagesize)
+}
+function firstPage() {
+  query = ref => getQuery(ref).orderBy('nombre', 'desc').limit(pagesize)
+}
+function lastPage() {
+  query = ref => getQuery(ref).orderBy('nombre', 'desc').limitToLast(pagesize)
+}
 </script>
 
 <div class="header-row">
@@ -44,8 +64,110 @@
     >
     <input  bind:value={search} on:keyup={filterData} class="text-input input" placeholder="Buscar...">
   </div>
-
-  <button>Reporte de Stock</button>
-  <button>Catalogo</button>
-  <button class="button"style="margin-left: auto;">Registrar Producto</button>
+  <button class="button"style="margin-left: auto;">Registrar Usuario</button>
 </div>
+<Collection path={'USUARIOS'} {query} let:data let:first let:last>
+    <div style="padding: 2rem;">
+      <div class="table-container">
+        <table class="table-body">
+          <tr>
+            <th>CI</th>
+            <th>Nombre</th>
+            <th>Almacen</th>
+            <th>Telefono</th>
+          </tr>
+          {#each data as usr}
+          <tr>
+            <td>{usr.ci}</td>
+            <td>{usr.nombre}</td>
+            <td>{usr.almacen}</td>
+            <td>{usr.telefono}</td>
+          </tr>
+          {/each}
+        </table>
+
+        <div class="table-footer">
+          <!-- No implementable??  revirsar p style="margin-left: 2rem;">## de ### </p-->
+
+          <button style="margin-left: auto;" class="footer-button" on:click={firstPage}>
+            <svg viewBox="0 0 24 24" focusable="false" class="footer-icon"
+              ><path
+                d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+              /></svg
+            >
+          </button>
+          <button class="footer-button" on:click={prevPAge(first)}>
+            <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
+              ><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg
+            >
+          </button>
+          <button class="footer-button" on:click={nextPage(last)}>
+            <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
+              ><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg
+            >
+          </button>
+          <button class="footer-button" style="margin-right: 2rem;" on:click={lastPage}>
+            <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
+              ><path
+                d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+              /></svg
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+    <span slot="loading">Cargando...</span>
+  </Collection>
+<style>
+  .table-container {
+      border-radius: 1rem;
+      overflow: hidden;
+      overflow-x: auto;
+      box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+      width: 100%;
+  }
+  
+  table {
+      border-collapse: collapse;
+  
+      width: 100%;
+  }
+  
+  th {
+      font-family: Lato-Bold;
+      font-size: 18px;
+      color: #fff;
+      line-height: 1.4;
+      background-color: #6c7ae0;
+  }
+  
+  tr:nth-child(even) {
+      background-color: #f8f6ff;
+  }
+  
+  td {
+      padding-left: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+  }
+  
+  th {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+  }
+  
+  .table-footer {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+  }
+  
+  .footer-button {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: transparent;
+      border-color: transparent;
+  }
+  </style>
+  
