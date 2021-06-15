@@ -5,6 +5,7 @@ import "firebase/firestore";
 import "firebase/database";
 import products from './assets/products.js'
 import usuarios from './assets/usuarios.js'
+import ventas from './assets/ventas.js'
 
 
 const firebaseConfig = {
@@ -123,6 +124,15 @@ export function registerTestUsers() {
   const payload = db.batch()
   usuarios.forEach( u => {
     const doc = _UsuariosCollection.doc(u.ci)
+    const data = {...u, id: doc.id}
+    payload.set(doc, data)
+  })
+  payload.commit()
+}
+export function registerTestVentas() {
+  const payload = db.batch()
+  ventas.forEach( u => {
+    const doc = _VentasCollection.doc()
     const data = {...u, id: doc.id}
     payload.set(doc, data)
   })

@@ -20,10 +20,12 @@ function registerGasto() {
 const ondesdeChange = (d) => {
     datefilterStart = toStr(d.detail);
     desdeAux = d.detail;
+    query = query;
 };
 const onhastaChange = (d) => {
     datefilterEnd = toStr(d.detail);
     hastaAux = d.detail;
+    query = query;
 };
 
 function toStr(d) {

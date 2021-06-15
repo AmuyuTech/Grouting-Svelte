@@ -16,10 +16,13 @@
   const ondesdeChange = (d) => {
     datefilterStart = toStr(d.detail);
     desdeAux = d.detail;
+    query = query;
+
   };
   const onhastaChange = (d) => {
     datefilterEnd = toStr(d.detail);
     hastaAux = d.detail;
+    query = query;
   };
 
   function toStr(d) {
@@ -47,7 +50,7 @@
     }
     return aux;
   }
-  let query = (ref) => ref.orderBy("fecha", "desc").limit(pagesize);
+  let query = (ref) => getQuery(ref).orderBy("fecha", "desc").limit(pagesize);
 
   function nextPage(last$) {
     query = (ref) =>

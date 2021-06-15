@@ -14,7 +14,7 @@ const db = admin.firestore()
 const rt = admin.database()
 
 
-exports.CrearBucket = functions.firestore
+exports.CrearBucketProducts = functions.firestore
   .document('PRODUCTOS/{ProductId}')
   .onCreate((snap, context) => {
     const data = snap.data()
@@ -26,8 +26,31 @@ exports.CrearBucket = functions.firestore
     return db.collection('BUCKETS').doc('productos').set({ [id]: bucket }, { merge: true })
 
   })
-exports.ActualizarBucket = functions.firestore
+exports.ActualizarBucketProductos = functions.firestore
   .document('PRODUCTOS/{ProductId}')
+  .onUpdate((doc, ctx) => {
+    const data = doc.after.data()
+    const bucket = {
+      nombre: data.nombre,
+      photourl: data.photourl
+    }
+    const id = data.id
+    return db.collection('BUCKETS').doc('usuarios').set({ [id]: bucket }, { merge: true })
+  })
+  exports.CrearBucketUsuarios = functions.firestore
+  .document('USUARIOS/{UserId}')
+  .onCreate((snap, context) => {
+    const data = snap.data()
+    const bucket = {
+      nombre: data.nombre,
+      // photourl: data.photourl
+    }
+    const id = data.id
+    return db.collection('BUCKETS').doc('usuarios').set({ [id]: bucket }, { merge: true })
+
+  })
+exports.ActualizarBucketUsuarios = functions.firestore
+  .document('USUARIOS/{UserId}')
   .onUpdate((doc, ctx) => {
     const data = doc.after.data()
     const bucket = {

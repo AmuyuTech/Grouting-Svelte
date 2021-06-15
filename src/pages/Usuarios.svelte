@@ -1,9 +1,13 @@
 <script>
 	import Usuarios from './Usuarios.svelte';
   import { Collection } from "sveltefire"
+import { push } from "svelte-spa-router";
     let search = ''
     function filterData(){}
 let pagesize = 10
+function register() {
+  push('Usuarios/New')
+}
 function getQuery(ref$) {
   return ref$
 }
@@ -64,7 +68,7 @@ function lastPage() {
     >
     <input  bind:value={search} on:keyup={filterData} class="text-input input" placeholder="Buscar...">
   </div>
-  <button class="button"style="margin-left: auto;">Registrar Usuario</button>
+  <button class="button"style="margin-left: auto;" on:click={register}>Registrar Usuario</button>
 </div>
 <Collection path={'USUARIOS'} {query} let:data let:first let:last>
     <div style="padding: 2rem;">

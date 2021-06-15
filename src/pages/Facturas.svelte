@@ -17,6 +17,7 @@
     datefilterStart = toStr(d.detail);
     desdeAux = d.detail;
     query = query;
+
   };
   const onhastaChange = (d) => {
     datefilterEnd = toStr(d.detail);
