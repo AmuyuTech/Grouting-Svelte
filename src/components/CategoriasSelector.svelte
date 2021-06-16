@@ -15,6 +15,9 @@
         close()
     }
 </script>
+<h2>
+    Añadir Categoria
+</h2>
 <div style="margin-bottom: 2rem;">
     Seleccione categoria
     <AutoComplete

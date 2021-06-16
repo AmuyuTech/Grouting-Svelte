@@ -92,19 +92,19 @@ export function registrarVenta(Venta$)              {  return setDoc(_VentasColl
 export function registrarUsuario(Usuario$)          {  return setUsr(_UsuariosCollection, Usuario$);}
 //Editores *Update*
 export function actualizarUsuario(Usuario$, Id$) {
-  _UsuariosCollection.doc(Id$).update(Usuario$);
+  return _UsuariosCollection.doc(Id$).update(Usuario$);
 }
 export function actualizarFactura(Factura$, Id$) {
-  _FacturasCollection.doc(Id$).update(Factura$);
+  return _FacturasCollection.doc(Id$).update(Factura$);
 }
 export function actualizarCredito(Credito$, Id$) {
-  _CreditosCollection.doc(Id$).update(Credito$);
+  return _CreditosCollection.doc(Id$).update(Credito$);
 }
-export function actualizarCliente(Cliente$) {
-  _ClientesCollection.doc(Id$).update(Cliente$);
+export function actualizarCliente(Cliente$, Id$) {
+  return _ClientesCollection.doc(Id$).update(Cliente$);
 }
-export function actualizarProducto(Producto$) {
-  _ProductosCollection.doc(Id$).update(Producto$);
+export function actualizarProducto(Producto$, Id$) {
+  return _ProductosCollection.doc(Id$).update(Producto$);
 }
 function setDoc(ref$, data$) {
   const doc = ref$.doc()

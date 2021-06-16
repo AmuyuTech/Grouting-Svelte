@@ -2,7 +2,7 @@
     import Dropzone from "./../components/Dropzone/Dropzone.svelte";
     import imageCompression from "browser-image-compression";
     import {pop, replace} from "svelte-spa-router";
-    import {getProducto, registerTestProducts, registrarProducto} from "../firebaseAPI";
+    import {actualizarProducto, getProducto, registerTestProducts, registrarProducto} from "../firebaseAPI";
     import {onMount} from "svelte";
     import {toast} from '@zerodevx/svelte-toast'
     import { getContext } from 'svelte';
@@ -86,7 +86,8 @@
                 "--toastProgressBackground": " #f4d03f ",
             },
         });
-        registrarProducto(data).then(
+        const prom =  params.id === 'New' ? registrarProducto(data) : actualizarProducto(data, params.id)
+        prom.then(
             (s) => {
                 toast.pop();
                 toast.push("Exito!", {
