@@ -1,1302 +1,1658 @@
-export default [
-  {
-    "nombre": "Beer - Corona",
-    "photourl": "http://dummyimage.com/861x602.png/ff4444/ffffff",
-    "precioOficina": 74.0,
-    "precioObras": 5.31,
-    "precioFerreteria": 32.37,
-    "descuentoFerreteria": 25.64,
-    "descuentoObras": 79.14,
-    "descuentoOficina": 7.69,
-    "descripcion": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-    "codigo": "49349-468",
-    "codigodebarras": "60b93dd9fc13ae4dc6000b97"
-  },
-  {
-    "nombre": "Cheese - Ermite Bleu",
-    "photourl": "http://dummyimage.com/785x561.png/cc0000/ffffff",
-    "precioOficina": 46.86,
-    "precioObras": 49.43,
-    "precioFerreteria": 14.67,
-    "descuentoFerreteria": 56.61,
-    "descuentoObras": 73.83,
-    "descuentoOficina": 39.19,
-    "descripcion": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-    "codigo": "0002-3235",
-    "codigodebarras": "60b93dd9fc13ae4dc6000b98"
-  },
-  {
-    "nombre": "Beans - Black Bean, Dry",
-    "photourl": "http://dummyimage.com/789x514.png/ff4444/ffffff",
-    "precioOficina": 33.24,
-    "precioObras": 74.68,
-    "precioFerreteria": 68.67,
-    "descuentoFerreteria": 41.84,
-    "descuentoObras": 84.63,
-    "descuentoOficina": 67.56,
-    "descripcion": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
-    "codigo": "42254-087",
-    "codigodebarras": "60b93dd9fc13ae4dc6000b99"
-  },
-  {
-    "nombre": "Lamb - Shoulder",
-    "photourl": "http://dummyimage.com/931x358.png/5fa2dd/ffffff",
-    "precioOficina": 68.07,
-    "precioObras": 3.81,
-    "precioFerreteria": 67.19,
-    "descuentoFerreteria": 8.28,
-    "descuentoObras": 26.32,
-    "descuentoOficina": 23.56,
-    "descripcion": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
-    "codigo": "58414-8728",
-    "codigodebarras": "60b93dd9fc13ae4dc6000b9a"
-  },
-  {
-    "nombre": "Versatainer Nc - 8288",
-    "photourl": "http://dummyimage.com/883x340.png/dddddd/000000",
-    "precioOficina": 22.37,
-    "precioObras": 39.03,
-    "precioFerreteria": 91.6,
-    "descuentoFerreteria": 8.03,
-    "descuentoObras": 6.64,
-    "descuentoOficina": 38.2,
-    "descripcion": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
-    "codigo": "43598-390",
-    "codigodebarras": "60b93dd9fc13ae4dc6000b9b"
-  },
-  {
-    "nombre": "Tomatoes - Cherry, Yellow",
-    "photourl": "http://dummyimage.com/996x64.png/ff4444/ffffff",
-    "precioOficina": 15.68,
-    "precioObras": 35.88,
-    "precioFerreteria": 66.72,
-    "descuentoFerreteria": 4.36,
-    "descuentoObras": 5.47,
-    "descuentoOficina": 11.69,
-    "descripcion": "In congue. Etiam justo. Etiam pretium iaculis justo.",
-    "codigo": "41190-255",
-    "codigodebarras": "60b93dd9fc13ae4dc6000b9c"
-  },
-  {
-    "nombre": "Chicken - Livers",
-    "photourl": "http://dummyimage.com/828x132.png/5fa2dd/ffffff",
-    "precioOficina": 99.87,
-    "precioObras": 56.83,
-    "precioFerreteria": 90.76,
-    "descuentoFerreteria": 87.99,
-    "descuentoObras": 3.82,
-    "descuentoOficina": 93.6,
-    "descripcion": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
-    "codigo": "63941-190",
-    "codigodebarras": "60b93dd9fc13ae4dc6000b9d"
-  },
-  {
-    "nombre": "Wiberg Cure",
-    "photourl": "http://dummyimage.com/823x380.png/5fa2dd/ffffff",
-    "precioOficina": 96.03,
-    "precioObras": 36.55,
-    "precioFerreteria": 16.11,
-    "descuentoFerreteria": 49.97,
-    "descuentoObras": 9.13,
-    "descuentoOficina": 31.26,
-    "descripcion": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-    "codigo": "63323-658",
-    "codigodebarras": "60b93dd9fc13ae4dc6000b9e"
-  },
-  {
-    "nombre": "Flower - Daisies",
-    "photourl": "http://dummyimage.com/657x85.png/cc0000/ffffff",
-    "precioOficina": 57.63,
-    "precioObras": 95.97,
-    "precioFerreteria": 16.62,
-    "descuentoFerreteria": 33.17,
-    "descuentoObras": 41.59,
-    "descuentoOficina": 13.9,
-    "descripcion": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-    "codigo": "54868-6237",
-    "codigodebarras": "60b93dd9fc13ae4dc6000b9f"
-  },
-  {
-    "nombre": "Garlic - Primerba, Paste",
-    "photourl": "http://dummyimage.com/1003x330.png/ff4444/ffffff",
-    "precioOficina": 55.13,
-    "precioObras": 87.89,
-    "precioFerreteria": 33.57,
-    "descuentoFerreteria": 4.22,
-    "descuentoObras": 53.94,
-    "descuentoOficina": 93.36,
-    "descripcion": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
-    "codigo": "41167-0086",
-    "codigodebarras": "60b93dd9fc13ae4dc6000ba0"
-  },
-  {
-    "nombre": "Glove - Cutting",
-    "photourl": "http://dummyimage.com/766x181.png/ff4444/ffffff",
-    "precioOficina": 60.96,
-    "precioObras": 76.86,
-    "precioFerreteria": 58.98,
-    "descuentoFerreteria": 95.59,
-    "descuentoObras": 85.93,
-    "descuentoOficina": 68.82,
-    "descripcion": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
-    "codigo": "68016-402",
-    "codigodebarras": "60b93dd9fc13ae4dc6000ba1"
-  },
-  {
-    "nombre": "Cheese Cloth",
-    "photourl": "http://dummyimage.com/711x461.png/cc0000/ffffff",
-    "precioOficina": 41.44,
-    "precioObras": 3.51,
-    "precioFerreteria": 13.62,
-    "descuentoFerreteria": 49.98,
-    "descuentoObras": 66.6,
-    "descuentoOficina": 46.05,
-    "descripcion": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-    "codigo": "53603-3004",
-    "codigodebarras": "60b93dd9fc13ae4dc6000ba2"
-  },
-  {
-    "nombre": "Pineapple - Regular",
-    "photourl": "http://dummyimage.com/945x219.png/cc0000/ffffff",
-    "precioOficina": 75.56,
-    "precioObras": 7.93,
-    "precioFerreteria": 83.24,
-    "descuentoFerreteria": 37.28,
-    "descuentoObras": 19.78,
-    "descuentoOficina": 57.85,
-    "descripcion": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
-    "codigo": "42546-270",
-    "codigodebarras": "60b93dd9fc13ae4dc6000ba3"
-  },
-  {
-    "nombre": "Sole - Iqf",
-    "photourl": "http://dummyimage.com/805x663.png/dddddd/000000",
-    "precioOficina": 13.06,
-    "precioObras": 49.63,
-    "precioFerreteria": 30.47,
-    "descuentoFerreteria": 37.16,
-    "descuentoObras": 86.05,
-    "descuentoOficina": 3.73,
-    "descripcion": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-    "codigo": "42549-589",
-    "codigodebarras": "60b93dd9fc13ae4dc6000ba4"
-  },
-  {
-    "nombre": "Cape Capensis - Fillet",
-    "photourl": "http://dummyimage.com/655x200.png/5fa2dd/ffffff",
-    "precioOficina": 75.62,
-    "precioObras": 25.08,
-    "precioFerreteria": 32.8,
-    "descuentoFerreteria": 79.97,
-    "descuentoObras": 33.39,
-    "descuentoOficina": 60.41,
-    "descripcion": "In congue. Etiam justo. Etiam pretium iaculis justo.",
-    "codigo": "0404-5991",
-    "codigodebarras": "60b93dd9fc13ae4dc6000ba5"
-  },
-  {
-    "nombre": "Veal - Osso Bucco",
-    "photourl": "http://dummyimage.com/929x552.png/dddddd/000000",
-    "precioOficina": 75.15,
-    "precioObras": 32.27,
-    "precioFerreteria": 26.24,
-    "descuentoFerreteria": 75.56,
-    "descuentoObras": 57.98,
-    "descuentoOficina": 98.08,
-    "descripcion": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
-    "codigo": "68828-060",
-    "codigodebarras": "60b93dd9fc13ae4dc6000ba6"
-  },
-  {
-    "nombre": "Sugar - Fine",
-    "photourl": "http://dummyimage.com/656x559.png/ff4444/ffffff",
-    "precioOficina": 97.86,
-    "precioObras": 12.15,
-    "precioFerreteria": 28.85,
-    "descuentoFerreteria": 9.79,
-    "descuentoObras": 57.14,
-    "descuentoOficina": 14.74,
-    "descripcion": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
-    "codigo": "57520-0363",
-    "codigodebarras": "60b93dd9fc13ae4dc6000ba7"
-  },
-  {
-    "nombre": "Huck Towels White",
-    "photourl": "http://dummyimage.com/670x652.png/cc0000/ffffff",
-    "precioOficina": 42.74,
-    "precioObras": 29.08,
-    "precioFerreteria": 87.38,
-    "descuentoFerreteria": 70.02,
-    "descuentoObras": 43.39,
-    "descuentoOficina": 37.86,
-    "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-    "codigo": "62577-613",
-    "codigodebarras": "60b93dd9fc13ae4dc6000ba8"
-  },
-  {
-    "nombre": "Table Cloth 62x114 Colour",
-    "photourl": "http://dummyimage.com/681x219.png/ff4444/ffffff",
-    "precioOficina": 37.74,
-    "precioObras": 30.07,
-    "precioFerreteria": 98.06,
-    "descuentoFerreteria": 96.76,
-    "descuentoObras": 90.89,
-    "descuentoOficina": 3.31,
-    "descripcion": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
-    "codigo": "36987-3190",
-    "codigodebarras": "60b93dd9fc13ae4dc6000ba9"
-  },
-  {
-    "nombre": "Yogurt - Banana, 175 Gr",
-    "photourl": "http://dummyimage.com/982x215.png/ff4444/ffffff",
-    "precioOficina": 60.29,
-    "precioObras": 75.91,
-    "precioFerreteria": 57.47,
-    "descuentoFerreteria": 93.07,
-    "descuentoObras": 43.98,
-    "descuentoOficina": 35.25,
-    "descripcion": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-    "codigo": "64942-0810",
-    "codigodebarras": "60b93dd9fc13ae4dc6000baa"
-  },
-  {
-    "nombre": "Bread - Multigrain",
-    "photourl": "http://dummyimage.com/686x247.png/dddddd/000000",
-    "precioOficina": 28.33,
-    "precioObras": 84.76,
-    "precioFerreteria": 67.93,
-    "descuentoFerreteria": 4.58,
-    "descuentoObras": 5.86,
-    "descuentoOficina": 12.94,
-    "descripcion": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-    "codigo": "13734-107",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bab"
-  },
-  {
-    "nombre": "Syrup - Monin - Granny Smith",
-    "photourl": "http://dummyimage.com/905x597.png/cc0000/ffffff",
-    "precioOficina": 7.33,
-    "precioObras": 62.77,
-    "precioFerreteria": 88.03,
-    "descuentoFerreteria": 7.96,
-    "descuentoObras": 78.12,
-    "descuentoOficina": 21.93,
-    "descripcion": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-    "codigo": "24208-561",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bac"
-  },
-  {
-    "nombre": "Juice - Orange, 341 Ml",
-    "photourl": "http://dummyimage.com/724x678.png/dddddd/000000",
-    "precioOficina": 84.11,
-    "precioObras": 84.76,
-    "precioFerreteria": 53.1,
-    "descuentoFerreteria": 47.9,
-    "descuentoObras": 40.98,
-    "descuentoOficina": 41.0,
-    "descripcion": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-    "codigo": "14222-1900",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bad"
-  },
-  {
-    "nombre": "Energy Drink - Redbull 355ml",
-    "photourl": "http://dummyimage.com/870x591.png/dddddd/000000",
-    "precioOficina": 51.63,
-    "precioObras": 59.85,
-    "precioFerreteria": 31.22,
-    "descuentoFerreteria": 71.45,
-    "descuentoObras": 75.76,
-    "descuentoOficina": 69.7,
-    "descripcion": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
-    "codigo": "41250-094",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bae"
-  },
-  {
-    "nombre": "Juice - Lagoon Mango",
-    "photourl": "http://dummyimage.com/668x591.png/ff4444/ffffff",
-    "precioOficina": 92.54,
-    "precioObras": 5.32,
-    "precioFerreteria": 11.7,
-    "descuentoFerreteria": 98.08,
-    "descuentoObras": 51.43,
-    "descuentoOficina": 23.91,
-    "descripcion": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
-    "codigo": "49349-797",
-    "codigodebarras": "60b93dd9fc13ae4dc6000baf"
-  },
-  {
-    "nombre": "Wine - White, Pelee Island",
-    "photourl": "http://dummyimage.com/886x254.png/ff4444/ffffff",
-    "precioOficina": 18.99,
-    "precioObras": 43.11,
-    "precioFerreteria": 60.9,
-    "descuentoFerreteria": 88.71,
-    "descuentoObras": 94.7,
-    "descuentoOficina": 2.44,
-    "descripcion": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
-    "codigo": "67544-562",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bb0"
-  },
-  {
-    "nombre": "Wine - Mondavi Coastal Private",
-    "photourl": "http://dummyimage.com/802x334.png/5fa2dd/ffffff",
-    "precioOficina": 70.12,
-    "precioObras": 21.55,
-    "precioFerreteria": 48.12,
-    "descuentoFerreteria": 31.01,
-    "descuentoObras": 35.86,
-    "descuentoOficina": 17.19,
-    "descripcion": "In congue. Etiam justo. Etiam pretium iaculis justo.",
-    "codigo": "50593-005",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bb1"
-  },
-  {
-    "nombre": "Versatainer Nc - 8288",
-    "photourl": "http://dummyimage.com/922x714.png/dddddd/000000",
-    "precioOficina": 1.35,
-    "precioObras": 24.11,
-    "precioFerreteria": 7.99,
-    "descuentoFerreteria": 14.0,
-    "descuentoObras": 43.25,
-    "descuentoOficina": 66.12,
-    "descripcion": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
-    "codigo": "55154-7810",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bb2"
-  },
-  {
-    "nombre": "Kaffir Lime Leaves",
-    "photourl": "http://dummyimage.com/656x226.png/5fa2dd/ffffff",
-    "precioOficina": 47.14,
-    "precioObras": 78.27,
-    "precioFerreteria": 82.91,
-    "descuentoFerreteria": 88.94,
-    "descuentoObras": 63.67,
-    "descuentoOficina": 77.04,
-    "descripcion": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-    "codigo": "54569-4737",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bb3"
-  },
-  {
-    "nombre": "Bagel - Plain",
-    "photourl": "http://dummyimage.com/955x636.png/cc0000/ffffff",
-    "precioOficina": 81.39,
-    "precioObras": 35.49,
-    "precioFerreteria": 80.16,
-    "descuentoFerreteria": 87.42,
-    "descuentoObras": 70.08,
-    "descuentoOficina": 50.9,
-    "descripcion": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
-    "codigo": "64778-0217",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bb4"
-  },
-  {
-    "nombre": "Sprouts - Alfalfa",
-    "photourl": "http://dummyimage.com/803x415.png/cc0000/ffffff",
-    "precioOficina": 42.91,
-    "precioObras": 76.07,
-    "precioFerreteria": 60.26,
-    "descuentoFerreteria": 63.9,
-    "descuentoObras": 37.59,
-    "descuentoOficina": 32.16,
-    "descripcion": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-    "codigo": "52125-206",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bb5"
-  },
-  {
-    "nombre": "Lobster - Cooked",
-    "photourl": "http://dummyimage.com/1016x201.png/cc0000/ffffff",
-    "precioOficina": 47.66,
-    "precioObras": 48.68,
-    "precioFerreteria": 40.91,
-    "descuentoFerreteria": 1.8,
-    "descuentoObras": 22.41,
-    "descuentoOficina": 71.43,
-    "descripcion": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
-    "codigo": "68016-116",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bb6"
-  },
-  {
-    "nombre": "Juice - Orange, 341 Ml",
-    "photourl": "http://dummyimage.com/729x122.png/ff4444/ffffff",
-    "precioOficina": 46.1,
-    "precioObras": 71.44,
-    "precioFerreteria": 96.3,
-    "descuentoFerreteria": 84.44,
-    "descuentoObras": 30.8,
-    "descuentoOficina": 73.08,
-    "descripcion": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
-    "codigo": "0093-7602",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bb7"
-  },
-  {
-    "nombre": "Cheese - Goat With Herbs",
-    "photourl": "http://dummyimage.com/965x218.png/ff4444/ffffff",
-    "precioOficina": 29.28,
-    "precioObras": 69.02,
-    "precioFerreteria": 2.54,
-    "descuentoFerreteria": 97.25,
-    "descuentoObras": 81.19,
-    "descuentoOficina": 50.12,
-    "descripcion": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
-    "codigo": "63377-024",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bb8"
-  },
-  {
-    "nombre": "Beer - Original Organic Lager",
-    "photourl": "http://dummyimage.com/797x640.png/5fa2dd/ffffff",
-    "precioOficina": 90.91,
-    "precioObras": 51.66,
-    "precioFerreteria": 41.08,
-    "descuentoFerreteria": 17.57,
-    "descuentoObras": 16.18,
-    "descuentoOficina": 61.27,
-    "descripcion": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-    "codigo": "54575-434",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bb9"
-  },
-  {
-    "nombre": "Broom - Push",
-    "photourl": "http://dummyimage.com/778x684.png/dddddd/000000",
-    "precioOficina": 52.24,
-    "precioObras": 18.49,
-    "precioFerreteria": 59.58,
-    "descuentoFerreteria": 89.95,
-    "descuentoObras": 21.97,
-    "descuentoOficina": 54.82,
-    "descripcion": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
-    "codigo": "55316-094",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bba"
-  },
-  {
-    "nombre": "Lemonade - Strawberry, 591 Ml",
-    "photourl": "http://dummyimage.com/1015x243.png/ff4444/ffffff",
-    "precioOficina": 87.06,
-    "precioObras": 85.01,
-    "precioFerreteria": 27.71,
-    "descuentoFerreteria": 82.65,
-    "descuentoObras": 22.65,
-    "descuentoOficina": 4.73,
-    "descripcion": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
-    "codigo": "43406-0026",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bbb"
-  },
-  {
-    "nombre": "Carrots - Purple, Organic",
-    "photourl": "http://dummyimage.com/923x420.png/5fa2dd/ffffff",
-    "precioOficina": 95.05,
-    "precioObras": 7.39,
-    "precioFerreteria": 76.88,
-    "descuentoFerreteria": 16.48,
-    "descuentoObras": 54.73,
-    "descuentoOficina": 17.88,
-    "descripcion": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    "codigo": "50436-6338",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bbc"
-  },
-  {
-    "nombre": "Veal - Chops, Split, Frenched",
-    "photourl": "http://dummyimage.com/861x225.png/cc0000/ffffff",
-    "precioOficina": 72.98,
-    "precioObras": 3.98,
-    "precioFerreteria": 73.26,
-    "descuentoFerreteria": 87.87,
-    "descuentoObras": 60.14,
-    "descuentoOficina": 19.01,
-    "descripcion": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-    "codigo": "51706-505",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bbd"
-  },
-  {
-    "nombre": "Veal - Inside",
-    "photourl": "http://dummyimage.com/763x323.png/5fa2dd/ffffff",
-    "precioOficina": 58.38,
-    "precioObras": 54.65,
-    "precioFerreteria": 3.7,
-    "descuentoFerreteria": 22.94,
-    "descuentoObras": 56.84,
-    "descuentoOficina": 67.94,
-    "descripcion": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
-    "codigo": "11523-7160",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bbe"
-  },
-  {
-    "nombre": "Sage Derby",
-    "photourl": "http://dummyimage.com/1015x343.png/ff4444/ffffff",
-    "precioOficina": 56.63,
-    "precioObras": 62.44,
-    "precioFerreteria": 63.53,
-    "descuentoFerreteria": 30.59,
-    "descuentoObras": 55.65,
-    "descuentoOficina": 4.56,
-    "descripcion": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-    "codigo": "55154-1054",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bbf"
-  },
-  {
-    "nombre": "Island Oasis - Pina Colada",
-    "photourl": "http://dummyimage.com/920x605.png/ff4444/ffffff",
-    "precioOficina": 84.71,
-    "precioObras": 39.59,
-    "precioFerreteria": 29.12,
-    "descuentoFerreteria": 64.7,
-    "descuentoObras": 79.71,
-    "descuentoOficina": 18.26,
-    "descripcion": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
-    "codigo": "0173-0859",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bc0"
-  },
-  {
-    "nombre": "Wine - Pinot Noir Pond Haddock",
-    "photourl": "http://dummyimage.com/810x362.png/dddddd/000000",
-    "precioOficina": 67.18,
-    "precioObras": 13.89,
-    "precioFerreteria": 6.9,
-    "descuentoFerreteria": 27.69,
-    "descuentoObras": 10.54,
-    "descuentoOficina": 13.0,
-    "descripcion": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
-    "codigo": "43975-220",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bc1"
-  },
-  {
-    "nombre": "Longos - Chicken Caeser Salad",
-    "photourl": "http://dummyimage.com/866x548.png/ff4444/ffffff",
-    "precioOficina": 35.77,
-    "precioObras": 1.65,
-    "precioFerreteria": 81.87,
-    "descuentoFerreteria": 42.7,
-    "descuentoObras": 29.08,
-    "descuentoOficina": 25.85,
-    "descripcion": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    "codigo": "0487-5901",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bc2"
-  },
-  {
-    "nombre": "Bagel - Everything Presliced",
-    "photourl": "http://dummyimage.com/945x218.png/dddddd/000000",
-    "precioOficina": 69.95,
-    "precioObras": 71.99,
-    "precioFerreteria": 99.15,
-    "descuentoFerreteria": 20.56,
-    "descuentoObras": 72.28,
-    "descuentoOficina": 35.06,
-    "descripcion": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-    "codigo": "36987-2447",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bc3"
-  },
-  {
-    "nombre": "Pepper - Paprika, Spanish",
-    "photourl": "http://dummyimage.com/658x232.png/dddddd/000000",
-    "precioOficina": 43.83,
-    "precioObras": 58.58,
-    "precioFerreteria": 16.84,
-    "descuentoFerreteria": 94.85,
-    "descuentoObras": 38.18,
-    "descuentoOficina": 57.05,
-    "descripcion": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
-    "codigo": "60344-4001",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bc4"
-  },
-  {
-    "nombre": "Turkey Tenderloin Frozen",
-    "photourl": "http://dummyimage.com/695x75.png/cc0000/ffffff",
-    "precioOficina": 47.64,
-    "precioObras": 48.77,
-    "precioFerreteria": 44.09,
-    "descuentoFerreteria": 12.49,
-    "descuentoObras": 61.99,
-    "descuentoOficina": 60.61,
-    "descripcion": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
-    "codigo": "49288-0628",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bc5"
-  },
-  {
-    "nombre": "Wine - Ruffino Chianti",
-    "photourl": "http://dummyimage.com/1020x427.png/ff4444/ffffff",
-    "precioOficina": 87.46,
-    "precioObras": 35.71,
-    "precioFerreteria": 97.17,
-    "descuentoFerreteria": 67.79,
-    "descuentoObras": 81.06,
-    "descuentoOficina": 67.63,
-    "descripcion": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
-    "codigo": "49288-0876",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bc6"
-  },
-  {
-    "nombre": "Garlic - Primerba, Paste",
-    "photourl": "http://dummyimage.com/689x388.png/ff4444/ffffff",
-    "precioOficina": 6.79,
-    "precioObras": 95.95,
-    "precioFerreteria": 98.21,
-    "descuentoFerreteria": 62.15,
-    "descuentoObras": 79.66,
-    "descuentoOficina": 13.26,
-    "descripcion": "In congue. Etiam justo. Etiam pretium iaculis justo.",
-    "codigo": "58980-402",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bc7"
-  },
-  {
-    "nombre": "Goulash Seasoning",
-    "photourl": "http://dummyimage.com/679x696.png/cc0000/ffffff",
-    "precioOficina": 22.17,
-    "precioObras": 61.44,
-    "precioFerreteria": 99.18,
-    "descuentoFerreteria": 18.5,
-    "descuentoObras": 98.86,
-    "descuentoOficina": 57.79,
-    "descripcion": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
-    "codigo": "55648-572",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bc8"
-  },
-  {
-    "nombre": "Aspic - Amber",
-    "photourl": "http://dummyimage.com/643x592.png/ff4444/ffffff",
-    "precioOficina": 30.2,
-    "precioObras": 80.77,
-    "precioFerreteria": 32.56,
-    "descuentoFerreteria": 28.71,
-    "descuentoObras": 26.92,
-    "descuentoOficina": 8.23,
-    "descripcion": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
-    "codigo": "53808-0784",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bc9"
-  },
-  {
-    "nombre": "Bread - Roll, Whole Wheat",
-    "photourl": "http://dummyimage.com/757x456.png/dddddd/000000",
-    "precioOficina": 73.16,
-    "precioObras": 15.41,
-    "precioFerreteria": 4.98,
-    "descuentoFerreteria": 13.43,
-    "descuentoObras": 60.61,
-    "descuentoOficina": 1.36,
-    "descripcion": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
-    "codigo": "49967-359",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bca"
-  },
-  {
-    "nombre": "Cabbage Roll",
-    "photourl": "http://dummyimage.com/938x166.png/dddddd/000000",
-    "precioOficina": 60.44,
-    "precioObras": 46.9,
-    "precioFerreteria": 83.11,
-    "descuentoFerreteria": 65.37,
-    "descuentoObras": 58.85,
-    "descuentoOficina": 17.04,
-    "descripcion": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
-    "codigo": "64725-0004",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bcb"
-  },
-  {
-    "nombre": "Marsala - Sperone, Fine, D.o.c.",
-    "photourl": "http://dummyimage.com/997x52.png/ff4444/ffffff",
-    "precioOficina": 54.05,
-    "precioObras": 38.73,
-    "precioFerreteria": 24.17,
-    "descuentoFerreteria": 17.54,
-    "descuentoObras": 66.09,
-    "descuentoOficina": 89.7,
-    "descripcion": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-    "codigo": "40042-052",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bcc"
-  },
-  {
-    "nombre": "Beer - Steamwhistle",
-    "photourl": "http://dummyimage.com/764x155.png/5fa2dd/ffffff",
-    "precioOficina": 26.84,
-    "precioObras": 22.56,
-    "precioFerreteria": 19.78,
-    "descuentoFerreteria": 57.96,
-    "descuentoObras": 11.87,
-    "descuentoOficina": 9.47,
-    "descripcion": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
-    "codigo": "44911-0088",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bcd"
-  },
-  {
-    "nombre": "The Pop Shoppe - Root Beer",
-    "photourl": "http://dummyimage.com/801x694.png/ff4444/ffffff",
-    "precioOficina": 14.89,
-    "precioObras": 71.13,
-    "precioFerreteria": 68.58,
-    "descuentoFerreteria": 89.94,
-    "descuentoObras": 71.62,
-    "descuentoOficina": 23.23,
-    "descripcion": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-    "codigo": "43063-264",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bce"
-  },
-  {
-    "nombre": "Port - 74 Brights",
-    "photourl": "http://dummyimage.com/745x685.png/ff4444/ffffff",
-    "precioOficina": 63.46,
-    "precioObras": 50.82,
-    "precioFerreteria": 77.37,
-    "descuentoFerreteria": 88.8,
-    "descuentoObras": 65.61,
-    "descuentoOficina": 59.04,
-    "descripcion": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-    "codigo": "0363-0632",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bcf"
-  },
-  {
-    "nombre": "Carbonated Water - Strawberry",
-    "photourl": "http://dummyimage.com/987x424.png/dddddd/000000",
-    "precioOficina": 81.63,
-    "precioObras": 5.4,
-    "precioFerreteria": 96.98,
-    "descuentoFerreteria": 89.45,
-    "descuentoObras": 74.63,
-    "descuentoOficina": 65.25,
-    "descripcion": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-    "codigo": "64735-021",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bd0"
-  },
-  {
-    "nombre": "Cabbage - Red",
-    "photourl": "http://dummyimage.com/1013x526.png/cc0000/ffffff",
-    "precioOficina": 61.01,
-    "precioObras": 77.58,
-    "precioFerreteria": 79.65,
-    "descuentoFerreteria": 97.98,
-    "descuentoObras": 19.35,
-    "descuentoOficina": 50.47,
-    "descripcion": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-    "codigo": "65734-348",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bd1"
-  },
-  {
-    "nombre": "Cookie - Dough Variety",
-    "photourl": "http://dummyimage.com/925x463.png/cc0000/ffffff",
-    "precioOficina": 52.31,
-    "precioObras": 57.78,
-    "precioFerreteria": 13.48,
-    "descuentoFerreteria": 29.2,
-    "descuentoObras": 77.38,
-    "descuentoOficina": 8.29,
-    "descripcion": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-    "codigo": "76509-050",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bd2"
-  },
-  {
-    "nombre": "Pasta - Detalini, White, Fresh",
-    "photourl": "http://dummyimage.com/818x275.png/cc0000/ffffff",
-    "precioOficina": 81.99,
-    "precioObras": 81.94,
-    "precioFerreteria": 21.79,
-    "descuentoFerreteria": 83.11,
-    "descuentoObras": 91.08,
-    "descuentoOficina": 19.68,
-    "descripcion": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
-    "codigo": "43419-019",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bd3"
-  },
-  {
-    "nombre": "Soup - Chicken And Wild Rice",
-    "photourl": "http://dummyimage.com/793x509.png/5fa2dd/ffffff",
-    "precioOficina": 55.0,
-    "precioObras": 29.31,
-    "precioFerreteria": 9.18,
-    "descuentoFerreteria": 94.7,
-    "descuentoObras": 2.46,
-    "descuentoOficina": 29.55,
-    "descripcion": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
-    "codigo": "43353-422",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bd4"
-  },
-  {
-    "nombre": "Bar Mix - Lime",
-    "photourl": "http://dummyimage.com/833x659.png/cc0000/ffffff",
-    "precioOficina": 56.2,
-    "precioObras": 10.16,
-    "precioFerreteria": 23.32,
-    "descuentoFerreteria": 78.07,
-    "descuentoObras": 45.12,
-    "descuentoOficina": 88.77,
-    "descripcion": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-    "codigo": "59262-348",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bd5"
-  },
-  {
-    "nombre": "Cocoa Feuilletine",
-    "photourl": "http://dummyimage.com/995x368.png/cc0000/ffffff",
-    "precioOficina": 85.67,
-    "precioObras": 69.38,
-    "precioFerreteria": 52.1,
-    "descuentoFerreteria": 70.08,
-    "descuentoObras": 49.34,
-    "descuentoOficina": 4.15,
-    "descripcion": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-    "codigo": "51079-433",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bd6"
-  },
-  {
-    "nombre": "Bar Nature Valley",
-    "photourl": "http://dummyimage.com/992x505.png/dddddd/000000",
-    "precioOficina": 31.99,
-    "precioObras": 64.05,
-    "precioFerreteria": 83.2,
-    "descuentoFerreteria": 44.86,
-    "descuentoObras": 41.51,
-    "descuentoOficina": 40.21,
-    "descripcion": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
-    "codigo": "33261-209",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bd7"
-  },
-  {
-    "nombre": "Wine - Clavet Saint Emilion",
-    "photourl": "http://dummyimage.com/1019x648.png/5fa2dd/ffffff",
-    "precioOficina": 41.59,
-    "precioObras": 88.15,
-    "precioFerreteria": 27.61,
-    "descuentoFerreteria": 74.84,
-    "descuentoObras": 20.77,
-    "descuentoOficina": 67.35,
-    "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-    "codigo": "49349-961",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bd8"
-  },
-  {
-    "nombre": "Soup Campbells Turkey Veg.",
-    "photourl": "http://dummyimage.com/859x51.png/ff4444/ffffff",
-    "precioOficina": 53.47,
-    "precioObras": 40.76,
-    "precioFerreteria": 36.78,
-    "descuentoFerreteria": 48.54,
-    "descuentoObras": 85.18,
-    "descuentoOficina": 85.43,
-    "descripcion": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "codigo": "64980-302",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bd9"
-  },
-  {
-    "nombre": "Sobe - Lizard Fuel",
-    "photourl": "http://dummyimage.com/834x594.png/5fa2dd/ffffff",
-    "precioOficina": 13.32,
-    "precioObras": 24.51,
-    "precioFerreteria": 30.99,
-    "descuentoFerreteria": 4.78,
-    "descuentoObras": 93.77,
-    "descuentoOficina": 80.89,
-    "descripcion": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-    "codigo": "98132-750",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bda"
-  },
-  {
-    "nombre": "Salmon Steak - Cohoe 8 Oz",
-    "photourl": "http://dummyimage.com/918x158.png/ff4444/ffffff",
-    "precioOficina": 44.96,
-    "precioObras": 96.82,
-    "precioFerreteria": 54.44,
-    "descuentoFerreteria": 20.66,
-    "descuentoObras": 97.03,
-    "descuentoOficina": 39.33,
-    "descripcion": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-    "codigo": "51027-0007",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bdb"
-  },
-  {
-    "nombre": "Kellogs Cereal In A Cup",
-    "photourl": "http://dummyimage.com/879x95.png/dddddd/000000",
-    "precioOficina": 51.39,
-    "precioObras": 37.09,
-    "precioFerreteria": 51.57,
-    "descuentoFerreteria": 24.31,
-    "descuentoObras": 25.06,
-    "descuentoOficina": 30.07,
-    "descripcion": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-    "codigo": "51389-104",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bdc"
-  },
-  {
-    "nombre": "Beef - Chuck, Boneless",
-    "photourl": "http://dummyimage.com/704x610.png/cc0000/ffffff",
-    "precioOficina": 85.95,
-    "precioObras": 97.88,
-    "precioFerreteria": 15.18,
-    "descuentoFerreteria": 91.1,
-    "descuentoObras": 77.03,
-    "descuentoOficina": 67.43,
-    "descripcion": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
-    "codigo": "0363-0666",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bdd"
-  },
-  {
-    "nombre": "Apple - Granny Smith",
-    "photourl": "http://dummyimage.com/833x709.png/5fa2dd/ffffff",
-    "precioOficina": 11.36,
-    "precioObras": 46.37,
-    "precioFerreteria": 62.69,
-    "descuentoFerreteria": 77.22,
-    "descuentoObras": 81.32,
-    "descuentoOficina": 6.1,
-    "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-    "codigo": "68001-151",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bde"
-  },
-  {
-    "nombre": "Beef - Bones, Marrow",
-    "photourl": "http://dummyimage.com/981x626.png/ff4444/ffffff",
-    "precioOficina": 17.8,
-    "precioObras": 2.72,
-    "precioFerreteria": 94.2,
-    "descuentoFerreteria": 54.83,
-    "descuentoObras": 67.46,
-    "descuentoOficina": 51.31,
-    "descripcion": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-    "codigo": "0126-0074",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bdf"
-  },
-  {
-    "nombre": "Butter - Pod",
-    "photourl": "http://dummyimage.com/882x713.png/dddddd/000000",
-    "precioOficina": 58.65,
-    "precioObras": 21.58,
-    "precioFerreteria": 80.86,
-    "descuentoFerreteria": 93.42,
-    "descuentoObras": 70.54,
-    "descuentoOficina": 60.16,
-    "descripcion": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    "codigo": "0006-0080",
-    "codigodebarras": "60b93dd9fc13ae4dc6000be0"
-  },
-  {
-    "nombre": "Beer - Blue Light",
-    "photourl": "http://dummyimage.com/805x60.png/5fa2dd/ffffff",
-    "precioOficina": 25.98,
-    "precioObras": 66.66,
-    "precioFerreteria": 48.46,
-    "descuentoFerreteria": 1.7,
-    "descuentoObras": 84.06,
-    "descuentoOficina": 88.68,
-    "descripcion": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-    "codigo": "12634-129",
-    "codigodebarras": "60b93dd9fc13ae4dc6000be1"
-  },
-  {
-    "nombre": "Onions - Red",
-    "photourl": "http://dummyimage.com/793x132.png/ff4444/ffffff",
-    "precioOficina": 85.07,
-    "precioObras": 51.44,
-    "precioFerreteria": 40.93,
-    "descuentoFerreteria": 1.27,
-    "descuentoObras": 64.69,
-    "descuentoOficina": 56.62,
-    "descripcion": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
-    "codigo": "43742-0066",
-    "codigodebarras": "60b93dd9fc13ae4dc6000be2"
-  },
-  {
-    "nombre": "Venison - Liver",
-    "photourl": "http://dummyimage.com/734x267.png/dddddd/000000",
-    "precioOficina": 56.02,
-    "precioObras": 3.98,
-    "precioFerreteria": 80.87,
-    "descuentoFerreteria": 84.2,
-    "descuentoObras": 76.74,
-    "descuentoOficina": 62.9,
-    "descripcion": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
-    "codigo": "21695-888",
-    "codigodebarras": "60b93dd9fc13ae4dc6000be3"
-  },
-  {
-    "nombre": "Soup - Verve - Chipotle Chicken",
-    "photourl": "http://dummyimage.com/926x86.png/cc0000/ffffff",
-    "precioOficina": 95.92,
-    "precioObras": 50.83,
-    "precioFerreteria": 68.83,
-    "descuentoFerreteria": 89.85,
-    "descuentoObras": 10.36,
-    "descuentoOficina": 9.78,
-    "descripcion": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
-    "codigo": "61919-326",
-    "codigodebarras": "60b93dd9fc13ae4dc6000be4"
-  },
-  {
-    "nombre": "Truffle Cups Green",
-    "photourl": "http://dummyimage.com/687x443.png/cc0000/ffffff",
-    "precioOficina": 92.27,
-    "precioObras": 91.68,
-    "precioFerreteria": 26.54,
-    "descuentoFerreteria": 95.51,
-    "descuentoObras": 38.51,
-    "descuentoOficina": 20.71,
-    "descripcion": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-    "codigo": "68084-343",
-    "codigodebarras": "60b93dd9fc13ae4dc6000be5"
-  },
-  {
-    "nombre": "Pastry - Cheese Baked Scones",
-    "photourl": "http://dummyimage.com/1009x201.png/cc0000/ffffff",
-    "precioOficina": 31.28,
-    "precioObras": 22.32,
-    "precioFerreteria": 10.7,
-    "descuentoFerreteria": 42.99,
-    "descuentoObras": 2.99,
-    "descuentoOficina": 63.01,
-    "descripcion": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-    "codigo": "64997-300",
-    "codigodebarras": "60b93dd9fc13ae4dc6000be6"
-  },
-  {
-    "nombre": "Shrimp - 21/25, Peel And Deviened",
-    "photourl": "http://dummyimage.com/709x664.png/dddddd/000000",
-    "precioOficina": 29.5,
-    "precioObras": 50.5,
-    "precioFerreteria": 95.33,
-    "descuentoFerreteria": 54.23,
-    "descuentoObras": 36.09,
-    "descuentoOficina": 57.8,
-    "descripcion": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    "codigo": "0264-7730",
-    "codigodebarras": "60b93dd9fc13ae4dc6000be7"
-  },
-  {
-    "nombre": "Oranges",
-    "photourl": "http://dummyimage.com/1002x116.png/5fa2dd/ffffff",
-    "precioOficina": 92.81,
-    "precioObras": 3.07,
-    "precioFerreteria": 6.84,
-    "descuentoFerreteria": 41.87,
-    "descuentoObras": 63.8,
-    "descuentoOficina": 21.81,
-    "descripcion": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-    "codigo": "49288-0259",
-    "codigodebarras": "60b93dd9fc13ae4dc6000be8"
-  },
-  {
-    "nombre": "Bouillion - Fish",
-    "photourl": "http://dummyimage.com/930x181.png/cc0000/ffffff",
-    "precioOficina": 43.94,
-    "precioObras": 71.46,
-    "precioFerreteria": 49.11,
-    "descuentoFerreteria": 10.74,
-    "descuentoObras": 78.4,
-    "descuentoOficina": 60.14,
-    "descripcion": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
-    "codigo": "63629-1587",
-    "codigodebarras": "60b93dd9fc13ae4dc6000be9"
-  },
-  {
-    "nombre": "Crackers - Water",
-    "photourl": "http://dummyimage.com/946x188.png/ff4444/ffffff",
-    "precioOficina": 87.54,
-    "precioObras": 66.95,
-    "precioFerreteria": 79.85,
-    "descuentoFerreteria": 96.62,
-    "descuentoObras": 84.52,
-    "descuentoOficina": 79.15,
-    "descripcion": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
-    "codigo": "0085-1366",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bea"
-  },
-  {
-    "nombre": "Container - Clear 32 Oz",
-    "photourl": "http://dummyimage.com/925x85.png/cc0000/ffffff",
-    "precioOficina": 95.42,
-    "precioObras": 43.29,
-    "precioFerreteria": 41.62,
-    "descuentoFerreteria": 7.9,
-    "descuentoObras": 77.23,
-    "descuentoOficina": 50.01,
-    "descripcion": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-    "codigo": "0904-5818",
-    "codigodebarras": "60b93dd9fc13ae4dc6000beb"
-  },
-  {
-    "nombre": "Buttons",
-    "photourl": "http://dummyimage.com/773x539.png/ff4444/ffffff",
-    "precioOficina": 81.2,
-    "precioObras": 74.59,
-    "precioFerreteria": 94.78,
-    "descuentoFerreteria": 63.87,
-    "descuentoObras": 56.72,
-    "descuentoOficina": 43.16,
-    "descripcion": "In congue. Etiam justo. Etiam pretium iaculis justo.",
-    "codigo": "21695-421",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bec"
-  },
-  {
-    "nombre": "Chicken - Whole",
-    "photourl": "http://dummyimage.com/700x476.png/5fa2dd/ffffff",
-    "precioOficina": 18.84,
-    "precioObras": 86.88,
-    "precioFerreteria": 74.3,
-    "descuentoFerreteria": 4.55,
-    "descuentoObras": 61.92,
-    "descuentoOficina": 34.48,
-    "descripcion": "In congue. Etiam justo. Etiam pretium iaculis justo.",
-    "codigo": "55154-2088",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bed"
-  },
-  {
-    "nombre": "Lettuce - Treviso",
-    "photourl": "http://dummyimage.com/706x609.png/5fa2dd/ffffff",
-    "precioOficina": 30.5,
-    "precioObras": 87.98,
-    "precioFerreteria": 58.11,
-    "descuentoFerreteria": 65.09,
-    "descuentoObras": 29.45,
-    "descuentoOficina": 31.06,
-    "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-    "codigo": "68180-481",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bee"
-  },
-  {
-    "nombre": "Jameson - Irish Whiskey",
-    "photourl": "http://dummyimage.com/717x562.png/cc0000/ffffff",
-    "precioOficina": 88.34,
-    "precioObras": 66.04,
-    "precioFerreteria": 27.31,
-    "descuentoFerreteria": 14.15,
-    "descuentoObras": 9.86,
-    "descuentoOficina": 18.1,
-    "descripcion": "In congue. Etiam justo. Etiam pretium iaculis justo.",
-    "codigo": "43547-269",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bef"
-  },
-  {
-    "nombre": "Bacardi Breezer - Tropical",
-    "photourl": "http://dummyimage.com/1013x413.png/ff4444/ffffff",
-    "precioOficina": 48.37,
-    "precioObras": 72.78,
-    "precioFerreteria": 36.07,
-    "descuentoFerreteria": 15.45,
-    "descuentoObras": 93.09,
-    "descuentoOficina": 89.96,
-    "descripcion": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
-    "codigo": "33992-1412",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bf0"
-  },
-  {
-    "nombre": "Shrimp - Black Tiger 6 - 8",
-    "photourl": "http://dummyimage.com/905x196.png/5fa2dd/ffffff",
-    "precioOficina": 29.56,
-    "precioObras": 19.37,
-    "precioFerreteria": 42.4,
-    "descuentoFerreteria": 43.57,
-    "descuentoObras": 6.82,
-    "descuentoOficina": 33.77,
-    "descripcion": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
-    "codigo": "63629-3642",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bf1"
-  },
-  {
-    "nombre": "Cup - Paper 10oz 92959",
-    "photourl": "http://dummyimage.com/847x655.png/dddddd/000000",
-    "precioOficina": 49.54,
-    "precioObras": 6.68,
-    "precioFerreteria": 23.71,
-    "descuentoFerreteria": 34.31,
-    "descuentoObras": 79.28,
-    "descuentoOficina": 77.53,
-    "descripcion": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-    "codigo": "0228-2269",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bf2"
-  },
-  {
-    "nombre": "Appetizer - Asian Shrimp Roll",
-    "photourl": "http://dummyimage.com/920x531.png/dddddd/000000",
-    "precioOficina": 67.6,
-    "precioObras": 16.85,
-    "precioFerreteria": 19.28,
-    "descuentoFerreteria": 58.74,
-    "descuentoObras": 37.7,
-    "descuentoOficina": 93.22,
-    "descripcion": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
-    "codigo": "55154-0358",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bf3"
-  },
-  {
-    "nombre": "Seabream Whole Farmed",
-    "photourl": "http://dummyimage.com/913x420.png/5fa2dd/ffffff",
-    "precioOficina": 75.26,
-    "precioObras": 55.84,
-    "precioFerreteria": 90.73,
-    "descuentoFerreteria": 29.61,
-    "descuentoObras": 24.05,
-    "descuentoOficina": 4.6,
-    "descripcion": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-    "codigo": "29033-002",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bf4"
-  },
-  {
-    "nombre": "Yogurt - Blueberry, 175 Gr",
-    "photourl": "http://dummyimage.com/802x210.png/dddddd/000000",
-    "precioOficina": 39.65,
-    "precioObras": 2.07,
-    "precioFerreteria": 40.32,
-    "descuentoFerreteria": 24.7,
-    "descuentoObras": 88.23,
-    "descuentoOficina": 66.24,
-    "descripcion": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
-    "codigo": "51079-519",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bf5"
-  },
-  {
-    "nombre": "Shrimp - 150 - 250",
-    "photourl": "http://dummyimage.com/970x426.png/5fa2dd/ffffff",
-    "precioOficina": 5.17,
-    "precioObras": 86.96,
-    "precioFerreteria": 8.72,
-    "descuentoFerreteria": 24.73,
-    "descuentoObras": 78.72,
-    "descuentoOficina": 22.08,
-    "descripcion": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-    "codigo": "0069-3110",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bf6"
-  },
-  {
-    "nombre": "Bandage - Flexible Neon",
-    "photourl": "http://dummyimage.com/1024x68.png/cc0000/ffffff",
-    "precioOficina": 34.57,
-    "precioObras": 88.33,
-    "precioFerreteria": 8.69,
-    "descuentoFerreteria": 40.2,
-    "descuentoObras": 88.1,
-    "descuentoOficina": 63.37,
-    "descripcion": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
-    "codigo": "0310-0209",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bf7"
-  },
-  {
-    "nombre": "Lettuce - Treviso",
-    "photourl": "http://dummyimage.com/741x384.png/5fa2dd/ffffff",
-    "precioOficina": 45.49,
-    "precioObras": 21.91,
-    "precioFerreteria": 55.79,
-    "descuentoFerreteria": 57.79,
-    "descuentoObras": 69.34,
-    "descuentoOficina": 25.53,
-    "descripcion": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
-    "codigo": "68026-101",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bf8"
-  },
-  {
-    "nombre": "Sauce - Salsa",
-    "photourl": "http://dummyimage.com/984x254.png/cc0000/ffffff",
-    "precioOficina": 14.49,
-    "precioObras": 7.38,
-    "precioFerreteria": 93.47,
-    "descuentoFerreteria": 16.06,
-    "descuentoObras": 12.74,
-    "descuentoOficina": 43.63,
-    "descripcion": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-    "codigo": "17714-011",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bf9"
-  },
-  {
-    "nombre": "Gatorade - Lemon Lime",
-    "photourl": "http://dummyimage.com/925x654.png/ff4444/ffffff",
-    "precioOficina": 66.82,
-    "precioObras": 73.29,
-    "precioFerreteria": 2.62,
-    "descuentoFerreteria": 58.44,
-    "descuentoObras": 32.44,
-    "descuentoOficina": 87.52,
-    "descripcion": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-    "codigo": "62011-0003",
-    "codigodebarras": "60b93dd9fc13ae4dc6000bfa"
-  }
-]
+export default [{
+  "nombre": "Bread Crumbs - Japanese Style",
+  "photourl": "http://dummyimage.com/912x307.png/cc0000/ffffff",
+  "precioOficina": 29.61,
+  "precioObras": 11.64,
+  "precioFerreteria": 92.02,
+  "descuentoFerreteria": 99.6,
+  "descuentoObras": 40.81,
+  "descuentoOficina": 54.86,
+  "descripcion": "Phasellus in felis. Donec semper sapien a libero. Nam dui.",
+  "coodigo": "41250-034",
+  "coodigodebarras": "1963639463423",
+  "categorias": [
+    "chamomile",
+    "kohlrabi",
+    "oregano",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Grenadillo",
+  "photourl": "http://dummyimage.com/756x604.png/cc0000/ffffff",
+  "precioOficina": 39.94,
+  "precioObras": 43.69,
+  "precioFerreteria": 58.4,
+  "descuentoFerreteria": 76.04,
+  "descuentoObras": 70.53,
+  "descuentoOficina": 8.36,
+  "descripcion": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
+  "coodigo": "63629-5250",
+  "coodigodebarras": "0176426768259",
+  "categorias": [
+    "kohlrabi",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Lobak",
+  "photourl": "http://dummyimage.com/873x304.png/dddddd/000000",
+  "precioOficina": 20.74,
+  "precioObras": 45.11,
+  "precioFerreteria": 53.33,
+  "descuentoFerreteria": 71.42,
+  "descuentoObras": 9.3,
+  "descuentoOficina": 27.02,
+  "descripcion": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+  "coodigo": "50580-228",
+  "coodigodebarras": "5623433185407",
+  "categorias": [
+    "mushroom",
+    "delicata",
+    "chamomile",
+    "oregano"
+  ]
+}, {
+  "nombre": "Cookie Dough - Double",
+  "photourl": "http://dummyimage.com/870x283.png/cc0000/ffffff",
+  "precioOficina": 81.72,
+  "precioObras": 95.15,
+  "precioFerreteria": 3.93,
+  "descuentoFerreteria": 71.33,
+  "descuentoObras": 82.93,
+  "descuentoOficina": 62.63,
+  "descripcion": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+  "coodigo": "0310-0130",
+  "coodigodebarras": "4231362810027",
+  "categorias": [
+    "mushroom",
+    "oregano",
+    "chamomile",
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Tomato Paste",
+  "photourl": "http://dummyimage.com/896x406.png/5fa2dd/ffffff",
+  "precioOficina": 54.81,
+  "precioObras": 84.92,
+  "precioFerreteria": 3.54,
+  "descuentoFerreteria": 98.59,
+  "descuentoObras": 79.14,
+  "descuentoOficina": 71.7,
+  "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+  "coodigo": "36987-3218",
+  "coodigodebarras": "1463733191239",
+  "categorias": [
+    "mushroom",
+    "rhubarb",
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Absolut Citron",
+  "photourl": "http://dummyimage.com/689x466.png/ff4444/ffffff",
+  "precioOficina": 59.81,
+  "precioObras": 21.18,
+  "precioFerreteria": 68.53,
+  "descuentoFerreteria": 23.33,
+  "descuentoObras": 39.94,
+  "descuentoOficina": 39.06,
+  "descripcion": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
+  "coodigo": "49580-0242",
+  "coodigodebarras": "6712123859229",
+  "categorias": [
+    "rhubarb",
+    "oregano",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Cumin - Whole",
+  "photourl": "http://dummyimage.com/842x99.png/5fa2dd/ffffff",
+  "precioOficina": 54.17,
+  "precioObras": 57.42,
+  "precioFerreteria": 64.21,
+  "descuentoFerreteria": 67.81,
+  "descuentoObras": 74.23,
+  "descuentoOficina": 76.87,
+  "descripcion": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+  "coodigo": "51824-044",
+  "coodigodebarras": "6422063391946",
+  "categorias": [
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Quinoa",
+  "photourl": "http://dummyimage.com/927x559.png/5fa2dd/ffffff",
+  "precioOficina": 56.26,
+  "precioObras": 66.54,
+  "precioFerreteria": 96.7,
+  "descuentoFerreteria": 37.38,
+  "descuentoObras": 96.56,
+  "descuentoOficina": 59.26,
+  "descripcion": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+  "coodigo": "61958-0405",
+  "coodigodebarras": "8371880193702",
+  "categorias": [
+    "chamomile"
+  ]
+}, {
+  "nombre": "Veal - Kidney",
+  "photourl": "http://dummyimage.com/644x341.png/cc0000/ffffff",
+  "precioOficina": 19.77,
+  "precioObras": 17.77,
+  "precioFerreteria": 59.38,
+  "descuentoFerreteria": 16.55,
+  "descuentoObras": 41.8,
+  "descuentoOficina": 70.85,
+  "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+  "coodigo": "63629-3092",
+  "coodigodebarras": "4398854954418",
+  "categorias": [
+    "chamomile",
+    "rhubarb",
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Wine - White, Pinot Grigio",
+  "photourl": "http://dummyimage.com/819x268.png/cc0000/ffffff",
+  "precioOficina": 38.53,
+  "precioObras": 82.23,
+  "precioFerreteria": 37.96,
+  "descuentoFerreteria": 2.59,
+  "descuentoObras": 59.84,
+  "descuentoOficina": 47.12,
+  "descripcion": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+  "coodigo": "0179-0157",
+  "coodigodebarras": "1515992141297",
+  "categorias": [
+    "mushroom"
+  ]
+}, {
+  "nombre": "Wine - Red, Cooking",
+  "photourl": "http://dummyimage.com/845x172.png/cc0000/ffffff",
+  "precioOficina": 66.68,
+  "precioObras": 6.52,
+  "precioFerreteria": 34.16,
+  "descuentoFerreteria": 8.14,
+  "descuentoObras": 2.52,
+  "descuentoOficina": 67.51,
+  "descripcion": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+  "coodigo": "0268-1253",
+  "coodigodebarras": "7215902193766",
+  "categorias": [
+    "rhubarb",
+    "oregano"
+  ]
+}, {
+  "nombre": "Momiji Oroshi Chili Sauce",
+  "photourl": "http://dummyimage.com/973x603.png/ff4444/ffffff",
+  "precioOficina": 28.06,
+  "precioObras": 39.03,
+  "precioFerreteria": 51.32,
+  "descuentoFerreteria": 12.47,
+  "descuentoObras": 83.09,
+  "descuentoOficina": 53.37,
+  "descripcion": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+  "coodigo": "56062-701",
+  "coodigodebarras": "2128284063534",
+  "categorias": [
+    "delicata"
+  ]
+}, {
+  "nombre": "Shortbread - Cookie Crumbs",
+  "photourl": "http://dummyimage.com/749x405.png/ff4444/ffffff",
+  "precioOficina": 48.88,
+  "precioObras": 13.93,
+  "precioFerreteria": 3.86,
+  "descuentoFerreteria": 81.3,
+  "descuentoObras": 72.46,
+  "descuentoOficina": 94.67,
+  "descripcion": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+  "coodigo": "47219-311",
+  "coodigodebarras": "8897320062115",
+  "categorias": [
+    "chamomile",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Potato - Sweet",
+  "photourl": "http://dummyimage.com/649x85.png/ff4444/ffffff",
+  "precioOficina": 32.81,
+  "precioObras": 49.11,
+  "precioFerreteria": 88.11,
+  "descuentoFerreteria": 72.22,
+  "descuentoObras": 88.81,
+  "descuentoOficina": 57.19,
+  "descripcion": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+  "coodigo": "30142-424",
+  "coodigodebarras": "4606203788805",
+  "categorias": [
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Cake Sheet Combo Party Pack",
+  "photourl": "http://dummyimage.com/643x90.png/dddddd/000000",
+  "precioOficina": 71.04,
+  "precioObras": 61.05,
+  "precioFerreteria": 64.26,
+  "descuentoFerreteria": 38.2,
+  "descuentoObras": 42.22,
+  "descuentoOficina": 60.37,
+  "descripcion": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+  "coodigo": "52233-003",
+  "coodigodebarras": "8548767178346",
+  "categorias": [
+    "chamomile",
+    "kohlrabi",
+    "rhubarb",
+    "oregano"
+  ]
+}, {
+  "nombre": "Wine - Trimbach Pinot Blanc",
+  "photourl": "http://dummyimage.com/792x401.png/5fa2dd/ffffff",
+  "precioOficina": 25.68,
+  "precioObras": 29.98,
+  "precioFerreteria": 30.16,
+  "descuentoFerreteria": 16.04,
+  "descuentoObras": 1.13,
+  "descuentoOficina": 85.65,
+  "descripcion": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+  "coodigo": "12462-502",
+  "coodigodebarras": "2153856331506",
+  "categorias": [
+    "chamomile",
+    "delicata"
+  ]
+}, {
+  "nombre": "Lid Coffee Cup 8oz Blk",
+  "photourl": "http://dummyimage.com/688x312.png/cc0000/ffffff",
+  "precioOficina": 86.98,
+  "precioObras": 75.37,
+  "precioFerreteria": 18.45,
+  "descuentoFerreteria": 70.58,
+  "descuentoObras": 75.34,
+  "descuentoOficina": 34.81,
+  "descripcion": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+  "coodigo": "42549-499",
+  "coodigodebarras": "3390959562238",
+  "categorias": [
+    "oregano",
+    "mushroom",
+    "chamomile",
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Plaintain",
+  "photourl": "http://dummyimage.com/692x268.png/cc0000/ffffff",
+  "precioOficina": 49.44,
+  "precioObras": 15.81,
+  "precioFerreteria": 63.3,
+  "descuentoFerreteria": 2.45,
+  "descuentoObras": 32.79,
+  "descuentoOficina": 22.7,
+  "descripcion": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+  "coodigo": "76168-010",
+  "coodigodebarras": "8811561787023",
+  "categorias": [
+    "rhubarb",
+    "oregano",
+    "chamomile",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Capicola - Hot",
+  "photourl": "http://dummyimage.com/690x233.png/5fa2dd/ffffff",
+  "precioOficina": 3.2,
+  "precioObras": 98.46,
+  "precioFerreteria": 94.54,
+  "descuentoFerreteria": 50.59,
+  "descuentoObras": 59.47,
+  "descuentoOficina": 93.33,
+  "descripcion": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+  "coodigo": "27505-003",
+  "coodigodebarras": "6604544269776",
+  "categorias": [
+    "kohlrabi",
+    "oregano",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Potatoes - Pei 10 Oz",
+  "photourl": "http://dummyimage.com/814x530.png/ff4444/ffffff",
+  "precioOficina": 75.0,
+  "precioObras": 58.54,
+  "precioFerreteria": 4.6,
+  "descuentoFerreteria": 42.41,
+  "descuentoObras": 98.78,
+  "descuentoOficina": 15.63,
+  "descripcion": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+  "coodigo": "52533-120",
+  "coodigodebarras": "0448741096664",
+  "categorias": [
+    "kohlrabi",
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Squid - Tubes / Tenticles 10/20",
+  "photourl": "http://dummyimage.com/866x710.png/dddddd/000000",
+  "precioOficina": 84.33,
+  "precioObras": 22.01,
+  "precioFerreteria": 60.61,
+  "descuentoFerreteria": 75.22,
+  "descuentoObras": 49.81,
+  "descuentoOficina": 59.95,
+  "descripcion": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+  "coodigo": "55154-2305",
+  "coodigodebarras": "0030124303932",
+  "categorias": [
+    "chamomile",
+    "rhubarb",
+    "oregano",
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Icecream - Dstk Super Cone",
+  "photourl": "http://dummyimage.com/720x517.png/ff4444/ffffff",
+  "precioOficina": 39.7,
+  "precioObras": 73.96,
+  "precioFerreteria": 48.33,
+  "descuentoFerreteria": 28.44,
+  "descuentoObras": 8.88,
+  "descuentoOficina": 48.32,
+  "descripcion": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
+  "coodigo": "68788-0600",
+  "coodigodebarras": "4604594746360",
+  "categorias": [
+    "mushroom",
+    "oregano",
+    "chamomile",
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Beer - Corona",
+  "photourl": "http://dummyimage.com/817x486.png/ff4444/ffffff",
+  "precioOficina": 36.25,
+  "precioObras": 98.86,
+  "precioFerreteria": 77.01,
+  "descuentoFerreteria": 86.51,
+  "descuentoObras": 92.73,
+  "descuentoOficina": 93.43,
+  "descripcion": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+  "coodigo": "63629-3190",
+  "coodigodebarras": "8063951282210",
+  "categorias": [
+    "delicata",
+    "mushroom",
+    "oregano",
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Cheese - Brick With Pepper",
+  "photourl": "http://dummyimage.com/908x607.png/cc0000/ffffff",
+  "precioOficina": 84.68,
+  "precioObras": 19.92,
+  "precioFerreteria": 17.56,
+  "descuentoFerreteria": 49.53,
+  "descuentoObras": 98.63,
+  "descuentoOficina": 28.94,
+  "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+  "coodigo": "59779-615",
+  "coodigodebarras": "0835172105054",
+  "categorias": [
+    "kohlrabi",
+    "oregano"
+  ]
+}, {
+  "nombre": "Cocktail Napkin Blue",
+  "photourl": "http://dummyimage.com/967x384.png/5fa2dd/ffffff",
+  "precioOficina": 18.86,
+  "precioObras": 50.37,
+  "precioFerreteria": 41.96,
+  "descuentoFerreteria": 73.3,
+  "descuentoObras": 3.18,
+  "descuentoOficina": 99.22,
+  "descripcion": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+  "coodigo": "66391-0301",
+  "coodigodebarras": "7891899128777",
+  "categorias": [
+    "chamomile"
+  ]
+}, {
+  "nombre": "Bread - Raisin Walnut Oval",
+  "photourl": "http://dummyimage.com/922x315.png/ff4444/ffffff",
+  "precioOficina": 56.82,
+  "precioObras": 16.26,
+  "precioFerreteria": 6.92,
+  "descuentoFerreteria": 14.23,
+  "descuentoObras": 24.52,
+  "descuentoOficina": 32.57,
+  "descripcion": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+  "coodigo": "51079-468",
+  "coodigodebarras": "8038312325104",
+  "categorias": [
+    "rhubarb",
+    "oregano"
+  ]
+}, {
+  "nombre": "Veal - Shank, Pieces",
+  "photourl": "http://dummyimage.com/947x384.png/cc0000/ffffff",
+  "precioOficina": 96.12,
+  "precioObras": 52.18,
+  "precioFerreteria": 76.38,
+  "descuentoFerreteria": 80.14,
+  "descuentoObras": 34.22,
+  "descuentoOficina": 71.56,
+  "descripcion": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+  "coodigo": "41250-884",
+  "coodigodebarras": "0550712376606",
+  "categorias": [
+    "oregano"
+  ]
+}, {
+  "nombre": "Sobe - Green Tea",
+  "photourl": "http://dummyimage.com/727x427.png/5fa2dd/ffffff",
+  "precioOficina": 46.03,
+  "precioObras": 90.4,
+  "precioFerreteria": 15.47,
+  "descuentoFerreteria": 84.71,
+  "descuentoObras": 77.22,
+  "descuentoOficina": 81.77,
+  "descripcion": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+  "coodigo": "57520-0776",
+  "coodigodebarras": "4102780874987",
+  "categorias": [
+    "oregano",
+    "delicata"
+  ]
+}, {
+  "nombre": "Longos - Chicken Cordon Bleu",
+  "photourl": "http://dummyimage.com/816x664.png/dddddd/000000",
+  "precioOficina": 78.88,
+  "precioObras": 70.76,
+  "precioFerreteria": 50.56,
+  "descuentoFerreteria": 83.06,
+  "descuentoObras": 16.77,
+  "descuentoOficina": 82.84,
+  "descripcion": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+  "coodigo": "16590-308",
+  "coodigodebarras": "0781780059547",
+  "categorias": [
+    "kohlrabi",
+    "rhubarb",
+    "mushroom",
+    "oregano"
+  ]
+}, {
+  "nombre": "Five Alive Citrus",
+  "photourl": "http://dummyimage.com/953x545.png/dddddd/000000",
+  "precioOficina": 5.29,
+  "precioObras": 54.58,
+  "precioFerreteria": 8.53,
+  "descuentoFerreteria": 78.08,
+  "descuentoObras": 70.39,
+  "descuentoOficina": 51.17,
+  "descripcion": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+  "coodigo": "42213-161",
+  "coodigodebarras": "1319229666275",
+  "categorias": [
+    "oregano",
+    "rhubarb",
+    "kohlrabi",
+    "chamomile"
+  ]
+}, {
+  "nombre": "Tea - Herbal Orange Spice",
+  "photourl": "http://dummyimage.com/739x160.png/cc0000/ffffff",
+  "precioOficina": 94.62,
+  "precioObras": 95.74,
+  "precioFerreteria": 33.16,
+  "descuentoFerreteria": 75.97,
+  "descuentoObras": 88.9,
+  "descuentoOficina": 14.5,
+  "descripcion": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+  "coodigo": "65691-0108",
+  "coodigodebarras": "1442545423046",
+  "categorias": [
+    "delicata",
+    "oregano",
+    "chamomile",
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Sage - Fresh",
+  "photourl": "http://dummyimage.com/687x97.png/5fa2dd/ffffff",
+  "precioOficina": 26.45,
+  "precioObras": 66.64,
+  "precioFerreteria": 63.69,
+  "descuentoFerreteria": 66.18,
+  "descuentoObras": 86.08,
+  "descuentoOficina": 63.35,
+  "descripcion": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+  "coodigo": "0268-6705",
+  "coodigodebarras": "1303162025614",
+  "categorias": [
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Wine - Red, Cabernet Sauvignon",
+  "photourl": "http://dummyimage.com/646x260.png/dddddd/000000",
+  "precioOficina": 40.82,
+  "precioObras": 62.3,
+  "precioFerreteria": 13.65,
+  "descuentoFerreteria": 30.66,
+  "descuentoObras": 14.92,
+  "descuentoOficina": 14.34,
+  "descripcion": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
+  "coodigo": "0409-9137",
+  "coodigodebarras": "7081606919657",
+  "categorias": [
+    "kohlrabi",
+    "delicata"
+  ]
+}, {
+  "nombre": "Lentils - Red, Dry",
+  "photourl": "http://dummyimage.com/871x119.png/5fa2dd/ffffff",
+  "precioOficina": 43.01,
+  "precioObras": 36.34,
+  "precioFerreteria": 2.21,
+  "descuentoFerreteria": 60.02,
+  "descuentoObras": 15.17,
+  "descuentoOficina": 2.29,
+  "descripcion": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+  "coodigo": "63354-130",
+  "coodigodebarras": "7707956334534",
+  "categorias": [
+    "delicata",
+    "oregano"
+  ]
+}, {
+  "nombre": "Soho Lychee Liqueur",
+  "photourl": "http://dummyimage.com/975x338.png/5fa2dd/ffffff",
+  "precioOficina": 19.03,
+  "precioObras": 31.03,
+  "precioFerreteria": 24.64,
+  "descuentoFerreteria": 88.26,
+  "descuentoObras": 85.01,
+  "descuentoOficina": 99.14,
+  "descripcion": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+  "coodigo": "62011-0099",
+  "coodigodebarras": "8511099780440",
+  "categorias": [
+    "rhubarb",
+    "chamomile",
+    "oregano",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Quiche Assorted",
+  "photourl": "http://dummyimage.com/983x243.png/dddddd/000000",
+  "precioOficina": 6.42,
+  "precioObras": 27.59,
+  "precioFerreteria": 93.74,
+  "descuentoFerreteria": 24.81,
+  "descuentoObras": 27.63,
+  "descuentoOficina": 86.67,
+  "descripcion": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
+  "coodigo": "62699-1114",
+  "coodigodebarras": "1560771859529",
+  "categorias": [
+    "chamomile"
+  ]
+}, {
+  "nombre": "Coffee - Hazelnut Cream",
+  "photourl": "http://dummyimage.com/750x434.png/5fa2dd/ffffff",
+  "precioOficina": 65.56,
+  "precioObras": 75.83,
+  "precioFerreteria": 82.06,
+  "descuentoFerreteria": 68.49,
+  "descuentoObras": 7.43,
+  "descuentoOficina": 13.14,
+  "descripcion": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
+  "coodigo": "68180-897",
+  "coodigodebarras": "2133185689955",
+  "categorias": [
+    "rhubarb",
+    "kohlrabi",
+    "oregano"
+  ]
+}, {
+  "nombre": "Longos - Chicken Wings",
+  "photourl": "http://dummyimage.com/654x694.png/cc0000/ffffff",
+  "precioOficina": 29.03,
+  "precioObras": 86.99,
+  "precioFerreteria": 77.75,
+  "descuentoFerreteria": 56.41,
+  "descuentoObras": 75.69,
+  "descuentoOficina": 72.27,
+  "descripcion": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+  "coodigo": "68462-201",
+  "coodigodebarras": "4085425649475",
+  "categorias": [
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Oil - Olive Bertolli",
+  "photourl": "http://dummyimage.com/867x575.png/5fa2dd/ffffff",
+  "precioOficina": 31.19,
+  "precioObras": 85.56,
+  "precioFerreteria": 98.34,
+  "descuentoFerreteria": 82.18,
+  "descuentoObras": 88.92,
+  "descuentoOficina": 87.49,
+  "descripcion": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+  "coodigo": "59078-016",
+  "coodigodebarras": "3083864073117",
+  "categorias": [
+    "mushroom"
+  ]
+}, {
+  "nombre": "Corn - Cream, Canned",
+  "photourl": "http://dummyimage.com/980x309.png/ff4444/ffffff",
+  "precioOficina": 2.47,
+  "precioObras": 59.2,
+  "precioFerreteria": 13.36,
+  "descuentoFerreteria": 41.11,
+  "descuentoObras": 74.99,
+  "descuentoOficina": 13.96,
+  "descripcion": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+  "coodigo": "56062-469",
+  "coodigodebarras": "6107832338822",
+  "categorias": [
+    "kohlrabi",
+    "chamomile"
+  ]
+}, {
+  "nombre": "Salmon - Atlantic, No Skin",
+  "photourl": "http://dummyimage.com/719x86.png/ff4444/ffffff",
+  "precioOficina": 10.91,
+  "precioObras": 14.54,
+  "precioFerreteria": 64.04,
+  "descuentoFerreteria": 83.59,
+  "descuentoObras": 57.9,
+  "descuentoOficina": 92.07,
+  "descripcion": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+  "coodigo": "58292-010",
+  "coodigodebarras": "7532225985193",
+  "categorias": [
+    "oregano",
+    "chamomile",
+    "kohlrabi",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Container - Clear 32 Oz",
+  "photourl": "http://dummyimage.com/676x344.png/5fa2dd/ffffff",
+  "precioOficina": 95.24,
+  "precioObras": 88.54,
+  "precioFerreteria": 49.77,
+  "descuentoFerreteria": 14.12,
+  "descuentoObras": 52.88,
+  "descuentoOficina": 81.5,
+  "descripcion": "Fusce consequat. Nulla nisl. Nunc nisl.",
+  "coodigo": "53119-575",
+  "coodigodebarras": "6419875793364",
+  "categorias": [
+    "rhubarb",
+    "delicata",
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Dc - Frozen Momji",
+  "photourl": "http://dummyimage.com/1021x346.png/cc0000/ffffff",
+  "precioOficina": 34.93,
+  "precioObras": 11.84,
+  "precioFerreteria": 20.81,
+  "descuentoFerreteria": 69.42,
+  "descuentoObras": 69.79,
+  "descuentoOficina": 94.93,
+  "descripcion": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+  "coodigo": "43269-734",
+  "coodigodebarras": "3747214619011",
+  "categorias": [
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Longos - Greek Salad",
+  "photourl": "http://dummyimage.com/777x152.png/ff4444/ffffff",
+  "precioOficina": 51.12,
+  "precioObras": 20.49,
+  "precioFerreteria": 27.99,
+  "descuentoFerreteria": 50.94,
+  "descuentoObras": 21.25,
+  "descuentoOficina": 73.59,
+  "descripcion": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
+  "coodigo": "51345-057",
+  "coodigodebarras": "4391465700584",
+  "categorias": [
+    "kohlrabi",
+    "rhubarb",
+    "chamomile",
+    "delicata"
+  ]
+}, {
+  "nombre": "Tart - Raisin And Pecan",
+  "photourl": "http://dummyimage.com/869x558.png/5fa2dd/ffffff",
+  "precioOficina": 29.36,
+  "precioObras": 93.27,
+  "precioFerreteria": 20.24,
+  "descuentoFerreteria": 68.64,
+  "descuentoObras": 26.67,
+  "descuentoOficina": 24.79,
+  "descripcion": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+  "coodigo": "21130-080",
+  "coodigodebarras": "1514906086228",
+  "categorias": [
+    "rhubarb",
+    "oregano",
+    "delicata"
+  ]
+}, {
+  "nombre": "Bread - Raisin Walnut Oval",
+  "photourl": "http://dummyimage.com/1023x385.png/cc0000/ffffff",
+  "precioOficina": 58.04,
+  "precioObras": 75.84,
+  "precioFerreteria": 66.33,
+  "descuentoFerreteria": 82.02,
+  "descuentoObras": 20.47,
+  "descuentoOficina": 77.89,
+  "descripcion": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+  "coodigo": "68084-486",
+  "coodigodebarras": "3676560550463",
+  "categorias": [
+    "kohlrabi",
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Curry Powder",
+  "photourl": "http://dummyimage.com/696x99.png/ff4444/ffffff",
+  "precioOficina": 24.6,
+  "precioObras": 3.08,
+  "precioFerreteria": 99.06,
+  "descuentoFerreteria": 43.6,
+  "descuentoObras": 99.95,
+  "descuentoOficina": 15.55,
+  "descripcion": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
+  "coodigo": "0615-7505",
+  "coodigodebarras": "5103185146954",
+  "categorias": [
+    "mushroom",
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Pastry - Carrot Muffin - Mini",
+  "photourl": "http://dummyimage.com/815x247.png/5fa2dd/ffffff",
+  "precioOficina": 81.59,
+  "precioObras": 69.81,
+  "precioFerreteria": 39.63,
+  "descuentoFerreteria": 46.84,
+  "descuentoObras": 64.41,
+  "descuentoOficina": 51.27,
+  "descripcion": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+  "coodigo": "55301-871",
+  "coodigodebarras": "3419854855335",
+  "categorias": [
+    "oregano"
+  ]
+}, {
+  "nombre": "Whmis Spray Bottle Graduated",
+  "photourl": "http://dummyimage.com/865x121.png/ff4444/ffffff",
+  "precioOficina": 52.4,
+  "precioObras": 12.4,
+  "precioFerreteria": 24.08,
+  "descuentoFerreteria": 12.18,
+  "descuentoObras": 12.38,
+  "descuentoOficina": 50.89,
+  "descripcion": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+  "coodigo": "56062-184",
+  "coodigodebarras": "5160953865361",
+  "categorias": [
+    "rhubarb",
+    "delicata",
+    "mushroom",
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Salmon - Atlantic, Skin On",
+  "photourl": "http://dummyimage.com/1022x441.png/cc0000/ffffff",
+  "precioOficina": 22.88,
+  "precioObras": 55.82,
+  "precioFerreteria": 92.2,
+  "descuentoFerreteria": 30.88,
+  "descuentoObras": 75.26,
+  "descuentoOficina": 11.49,
+  "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+  "coodigo": "0363-0582",
+  "coodigodebarras": "7354228824014",
+  "categorias": [
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Pork Casing",
+  "photourl": "http://dummyimage.com/768x719.png/5fa2dd/ffffff",
+  "precioOficina": 40.64,
+  "precioObras": 76.99,
+  "precioFerreteria": 83.99,
+  "descuentoFerreteria": 90.86,
+  "descuentoObras": 78.62,
+  "descuentoOficina": 16.37,
+  "descripcion": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+  "coodigo": "0603-1584",
+  "coodigodebarras": "8661211613737",
+  "categorias": [
+    "chamomile"
+  ]
+}, {
+  "nombre": "Cookies Oatmeal Raisin",
+  "photourl": "http://dummyimage.com/743x684.png/ff4444/ffffff",
+  "precioOficina": 55.77,
+  "precioObras": 12.79,
+  "precioFerreteria": 40.31,
+  "descuentoFerreteria": 63.91,
+  "descuentoObras": 96.68,
+  "descuentoOficina": 24.4,
+  "descripcion": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
+  "coodigo": "63868-065",
+  "coodigodebarras": "4513693249760",
+  "categorias": [
+    "chamomile"
+  ]
+}, {
+  "nombre": "Trout - Rainbow, Frozen",
+  "photourl": "http://dummyimage.com/920x613.png/5fa2dd/ffffff",
+  "precioOficina": 65.77,
+  "precioObras": 4.1,
+  "precioFerreteria": 53.65,
+  "descuentoFerreteria": 31.15,
+  "descuentoObras": 16.39,
+  "descuentoOficina": 49.94,
+  "descripcion": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+  "coodigo": "53645-1270",
+  "coodigodebarras": "4571578151704",
+  "categorias": [
+    "oregano",
+    "kohlrabi",
+    "chamomile",
+    "delicata"
+  ]
+}, {
+  "nombre": "Cheese - Parmigiano Reggiano",
+  "photourl": "http://dummyimage.com/883x104.png/dddddd/000000",
+  "precioOficina": 7.59,
+  "precioObras": 12.73,
+  "precioFerreteria": 44.26,
+  "descuentoFerreteria": 39.03,
+  "descuentoObras": 83.16,
+  "descuentoOficina": 51.44,
+  "descripcion": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+  "coodigo": "10819-5813",
+  "coodigodebarras": "6146173434014",
+  "categorias": [
+    "rhubarb",
+    "mushroom",
+    "oregano",
+    "delicata"
+  ]
+}, {
+  "nombre": "Mussels - Frozen",
+  "photourl": "http://dummyimage.com/960x373.png/5fa2dd/ffffff",
+  "precioOficina": 73.57,
+  "precioObras": 44.38,
+  "precioFerreteria": 14.47,
+  "descuentoFerreteria": 71.14,
+  "descuentoObras": 70.83,
+  "descuentoOficina": 42.59,
+  "descripcion": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+  "coodigo": "48951-4090",
+  "coodigodebarras": "9758982633175",
+  "categorias": [
+    "kohlrabi",
+    "delicata",
+    "oregano",
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Alize Sunset",
+  "photourl": "http://dummyimage.com/854x313.png/dddddd/000000",
+  "precioOficina": 42.54,
+  "precioObras": 30.34,
+  "precioFerreteria": 94.39,
+  "descuentoFerreteria": 70.17,
+  "descuentoObras": 25.48,
+  "descuentoOficina": 71.73,
+  "descripcion": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+  "coodigo": "53808-0862",
+  "coodigodebarras": "2153707648692",
+  "categorias": [
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Pear - Packum",
+  "photourl": "http://dummyimage.com/821x479.png/ff4444/ffffff",
+  "precioOficina": 8.07,
+  "precioObras": 6.03,
+  "precioFerreteria": 88.73,
+  "descuentoFerreteria": 1.52,
+  "descuentoObras": 65.63,
+  "descuentoOficina": 76.15,
+  "descripcion": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
+  "coodigo": "10544-591",
+  "coodigodebarras": "5541836219027",
+  "categorias": [
+    "oregano"
+  ]
+}, {
+  "nombre": "Potatoes - Instant, Mashed",
+  "photourl": "http://dummyimage.com/648x177.png/ff4444/ffffff",
+  "precioOficina": 86.05,
+  "precioObras": 68.81,
+  "precioFerreteria": 49.8,
+  "descuentoFerreteria": 47.96,
+  "descuentoObras": 12.93,
+  "descuentoOficina": 37.26,
+  "descripcion": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+  "coodigo": "0378-3205",
+  "coodigodebarras": "4172548747765",
+  "categorias": [
+    "oregano",
+    "mushroom",
+    "delicata"
+  ]
+}, {
+  "nombre": "Bagel - 12 Grain Preslice",
+  "photourl": "http://dummyimage.com/913x70.png/dddddd/000000",
+  "precioOficina": 68.31,
+  "precioObras": 9.09,
+  "precioFerreteria": 81.39,
+  "descuentoFerreteria": 29.19,
+  "descuentoObras": 32.08,
+  "descuentoOficina": 48.75,
+  "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+  "coodigo": "65862-286",
+  "coodigodebarras": "4835824469095",
+  "categorias": [
+    "kohlrabi",
+    "oregano",
+    "delicata",
+    "chamomile"
+  ]
+}, {
+  "nombre": "Napkin - Beverge, White 2 - Ply",
+  "photourl": "http://dummyimage.com/919x618.png/cc0000/ffffff",
+  "precioOficina": 6.15,
+  "precioObras": 40.15,
+  "precioFerreteria": 21.47,
+  "descuentoFerreteria": 76.43,
+  "descuentoObras": 60.76,
+  "descuentoOficina": 70.76,
+  "descripcion": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+  "coodigo": "63094-0426",
+  "coodigodebarras": "4616553543154",
+  "categorias": [
+    "mushroom"
+  ]
+}, {
+  "nombre": "Mace",
+  "photourl": "http://dummyimage.com/699x491.png/ff4444/ffffff",
+  "precioOficina": 29.36,
+  "precioObras": 20.11,
+  "precioFerreteria": 4.93,
+  "descuentoFerreteria": 85.45,
+  "descuentoObras": 14.98,
+  "descuentoOficina": 16.49,
+  "descripcion": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+  "coodigo": "48102-017",
+  "coodigodebarras": "7021671374660",
+  "categorias": [
+    "delicata",
+    "chamomile",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Pepper - Gypsy Pepper",
+  "photourl": "http://dummyimage.com/764x653.png/dddddd/000000",
+  "precioOficina": 70.68,
+  "precioObras": 41.58,
+  "precioFerreteria": 72.3,
+  "descuentoFerreteria": 39.05,
+  "descuentoObras": 58.8,
+  "descuentoOficina": 16.7,
+  "descripcion": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+  "coodigo": "43063-092",
+  "coodigodebarras": "7021255088382",
+  "categorias": [
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Soup - Campbells - Chicken Noodle",
+  "photourl": "http://dummyimage.com/800x370.png/cc0000/ffffff",
+  "precioOficina": 32.01,
+  "precioObras": 87.98,
+  "precioFerreteria": 38.34,
+  "descuentoFerreteria": 74.77,
+  "descuentoObras": 29.92,
+  "descuentoOficina": 14.81,
+  "descripcion": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+  "coodigo": "64990-601",
+  "coodigodebarras": "6419050496976",
+  "categorias": [
+    "rhubarb",
+    "delicata",
+    "mushroom",
+    "chamomile"
+  ]
+}, {
+  "nombre": "Huck White Towels",
+  "photourl": "http://dummyimage.com/670x147.png/cc0000/ffffff",
+  "precioOficina": 90.14,
+  "precioObras": 2.14,
+  "precioFerreteria": 34.37,
+  "descuentoFerreteria": 76.16,
+  "descuentoObras": 92.25,
+  "descuentoOficina": 58.14,
+  "descripcion": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+  "coodigo": "43269-614",
+  "coodigodebarras": "4012780635479",
+  "categorias": [
+    "mushroom",
+    "chamomile",
+    "delicata"
+  ]
+}, {
+  "nombre": "Wine - Sherry Dry Sack, William",
+  "photourl": "http://dummyimage.com/981x550.png/dddddd/000000",
+  "precioOficina": 7.4,
+  "precioObras": 34.13,
+  "precioFerreteria": 56.51,
+  "descuentoFerreteria": 42.83,
+  "descuentoObras": 14.15,
+  "descuentoOficina": 7.42,
+  "descripcion": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
+  "coodigo": "0378-6324",
+  "coodigodebarras": "2510853285585",
+  "categorias": [
+    "chamomile"
+  ]
+}, {
+  "nombre": "Cheese - Blue",
+  "photourl": "http://dummyimage.com/973x421.png/ff4444/ffffff",
+  "precioOficina": 28.04,
+  "precioObras": 57.91,
+  "precioFerreteria": 42.83,
+  "descuentoFerreteria": 42.49,
+  "descuentoObras": 92.35,
+  "descuentoOficina": 55.03,
+  "descripcion": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+  "coodigo": "0179-0096",
+  "coodigodebarras": "2172656903468",
+  "categorias": [
+    "delicata",
+    "kohlrabi",
+    "oregano"
+  ]
+}, {
+  "nombre": "Pike - Frozen Fillet",
+  "photourl": "http://dummyimage.com/1011x678.png/dddddd/000000",
+  "precioOficina": 3.4,
+  "precioObras": 77.84,
+  "precioFerreteria": 84.33,
+  "descuentoFerreteria": 39.73,
+  "descuentoObras": 81.96,
+  "descuentoOficina": 48.8,
+  "descripcion": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+  "coodigo": "68258-7152",
+  "coodigodebarras": "7600886708370",
+  "categorias": [
+    "kohlrabi",
+    "mushroom",
+    "chamomile"
+  ]
+}, {
+  "nombre": "Nantuket Peach Orange",
+  "photourl": "http://dummyimage.com/1000x389.png/dddddd/000000",
+  "precioOficina": 75.22,
+  "precioObras": 99.19,
+  "precioFerreteria": 47.0,
+  "descuentoFerreteria": 12.15,
+  "descuentoObras": 7.41,
+  "descuentoOficina": 8.26,
+  "descripcion": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+  "coodigo": "57243-466",
+  "coodigodebarras": "2041004204443",
+  "categorias": [
+    "rhubarb",
+    "chamomile",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Jolt Cola",
+  "photourl": "http://dummyimage.com/683x242.png/dddddd/000000",
+  "precioOficina": 62.88,
+  "precioObras": 38.64,
+  "precioFerreteria": 99.09,
+  "descuentoFerreteria": 89.58,
+  "descuentoObras": 26.04,
+  "descuentoOficina": 66.7,
+  "descripcion": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
+  "coodigo": "49643-408",
+  "coodigodebarras": "8681019750258",
+  "categorias": [
+    "kohlrabi",
+    "oregano",
+    "delicata"
+  ]
+}, {
+  "nombre": "Grapes - Red",
+  "photourl": "http://dummyimage.com/926x555.png/dddddd/000000",
+  "precioOficina": 48.84,
+  "precioObras": 92.48,
+  "precioFerreteria": 51.86,
+  "descuentoFerreteria": 4.64,
+  "descuentoObras": 70.96,
+  "descuentoOficina": 82.68,
+  "descripcion": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+  "coodigo": "68703-040",
+  "coodigodebarras": "9791448888810",
+  "categorias": [
+    "kohlrabi",
+    "delicata"
+  ]
+}, {
+  "nombre": "Jam - Raspberry",
+  "photourl": "http://dummyimage.com/959x78.png/ff4444/ffffff",
+  "precioOficina": 44.23,
+  "precioObras": 40.95,
+  "precioFerreteria": 7.86,
+  "descuentoFerreteria": 2.98,
+  "descuentoObras": 16.46,
+  "descuentoOficina": 56.82,
+  "descripcion": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+  "coodigo": "0378-0390",
+  "coodigodebarras": "6034875172462",
+  "categorias": [
+    "kohlrabi",
+    "oregano"
+  ]
+}, {
+  "nombre": "Coke - Classic, 355 Ml",
+  "photourl": "http://dummyimage.com/880x621.png/5fa2dd/ffffff",
+  "precioOficina": 55.13,
+  "precioObras": 84.0,
+  "precioFerreteria": 30.3,
+  "descuentoFerreteria": 46.33,
+  "descuentoObras": 82.5,
+  "descuentoOficina": 80.27,
+  "descripcion": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+  "coodigo": "0395-0119",
+  "coodigodebarras": "0718572425397",
+  "categorias": [
+    "kohlrabi",
+    "mushroom",
+    "chamomile"
+  ]
+}, {
+  "nombre": "Cherries - Bing, Canned",
+  "photourl": "http://dummyimage.com/954x640.png/dddddd/000000",
+  "precioOficina": 49.21,
+  "precioObras": 83.97,
+  "precioFerreteria": 69.89,
+  "descuentoFerreteria": 29.55,
+  "descuentoObras": 60.6,
+  "descuentoOficina": 43.38,
+  "descripcion": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+  "coodigo": "57520-0633",
+  "coodigodebarras": "2318964463638",
+  "categorias": [
+    "kohlrabi",
+    "mushroom",
+    "chamomile"
+  ]
+}, {
+  "nombre": "Schnappes - Peach, Walkers",
+  "photourl": "http://dummyimage.com/799x359.png/cc0000/ffffff",
+  "precioOficina": 54.2,
+  "precioObras": 72.45,
+  "precioFerreteria": 58.82,
+  "descuentoFerreteria": 48.95,
+  "descuentoObras": 2.29,
+  "descuentoOficina": 50.5,
+  "descripcion": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+  "coodigo": "43353-691",
+  "coodigodebarras": "1166588131638",
+  "categorias": [
+    "kohlrabi",
+    "rhubarb",
+    "chamomile",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Wine - Cave Springs Dry Riesling",
+  "photourl": "http://dummyimage.com/768x415.png/cc0000/ffffff",
+  "precioOficina": 78.47,
+  "precioObras": 22.18,
+  "precioFerreteria": 62.3,
+  "descuentoFerreteria": 18.88,
+  "descuentoObras": 69.93,
+  "descuentoOficina": 78.3,
+  "descripcion": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+  "coodigo": "49999-277",
+  "coodigodebarras": "4855998476633",
+  "categorias": [
+    "kohlrabi",
+    "rhubarb",
+    "delicata"
+  ]
+}, {
+  "nombre": "Crackers - Water",
+  "photourl": "http://dummyimage.com/779x596.png/ff4444/ffffff",
+  "precioOficina": 12.52,
+  "precioObras": 42.01,
+  "precioFerreteria": 46.28,
+  "descuentoFerreteria": 64.68,
+  "descuentoObras": 8.9,
+  "descuentoOficina": 47.35,
+  "descripcion": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+  "coodigo": "10122-321",
+  "coodigodebarras": "3161270091958",
+  "categorias": [
+    "oregano",
+    "mushroom",
+    "rhubarb",
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Wine - Champagne Brut Veuve",
+  "photourl": "http://dummyimage.com/843x152.png/5fa2dd/ffffff",
+  "precioOficina": 74.23,
+  "precioObras": 20.87,
+  "precioFerreteria": 37.0,
+  "descuentoFerreteria": 98.24,
+  "descuentoObras": 24.62,
+  "descuentoOficina": 33.66,
+  "descripcion": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+  "coodigo": "76214-021",
+  "coodigodebarras": "7994920136131",
+  "categorias": [
+    "delicata",
+    "kohlrabi",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Coffee Beans - Chocolate",
+  "photourl": "http://dummyimage.com/887x467.png/ff4444/ffffff",
+  "precioOficina": 33.58,
+  "precioObras": 73.7,
+  "precioFerreteria": 99.43,
+  "descuentoFerreteria": 10.21,
+  "descuentoObras": 17.23,
+  "descuentoOficina": 34.73,
+  "descripcion": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+  "coodigo": "13533-800",
+  "coodigodebarras": "9884851025568",
+  "categorias": [
+    "oregano",
+    "delicata",
+    "kohlrabi",
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Lime Cordial - Roses",
+  "photourl": "http://dummyimage.com/908x559.png/5fa2dd/ffffff",
+  "precioOficina": 79.67,
+  "precioObras": 64.68,
+  "precioFerreteria": 44.58,
+  "descuentoFerreteria": 67.12,
+  "descuentoObras": 51.02,
+  "descuentoOficina": 28.08,
+  "descripcion": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+  "coodigo": "68428-736",
+  "coodigodebarras": "5531828556039",
+  "categorias": [
+    "chamomile",
+    "mushroom",
+    "kohlrabi",
+    "oregano"
+  ]
+}, {
+  "nombre": "Veal - Loin",
+  "photourl": "http://dummyimage.com/759x158.png/cc0000/ffffff",
+  "precioOficina": 36.55,
+  "precioObras": 34.84,
+  "precioFerreteria": 47.74,
+  "descuentoFerreteria": 5.18,
+  "descuentoObras": 17.02,
+  "descuentoOficina": 14.75,
+  "descripcion": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+  "coodigo": "0603-2212",
+  "coodigodebarras": "0709567029144",
+  "categorias": [
+    "mushroom",
+    "oregano",
+    "delicata"
+  ]
+}, {
+  "nombre": "Wine - White, Riesling, Semi - Dry",
+  "photourl": "http://dummyimage.com/695x166.png/dddddd/000000",
+  "precioOficina": 43.87,
+  "precioObras": 22.3,
+  "precioFerreteria": 67.42,
+  "descuentoFerreteria": 75.06,
+  "descuentoObras": 91.7,
+  "descuentoOficina": 7.16,
+  "descripcion": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+  "coodigo": "59779-987",
+  "coodigodebarras": "8529846460813",
+  "categorias": [
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Sauce - Plum",
+  "photourl": "http://dummyimage.com/993x533.png/5fa2dd/ffffff",
+  "precioOficina": 40.28,
+  "precioObras": 62.44,
+  "precioFerreteria": 53.94,
+  "descuentoFerreteria": 35.64,
+  "descuentoObras": 85.22,
+  "descuentoOficina": 47.43,
+  "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+  "coodigo": "13533-631",
+  "coodigodebarras": "0799150272011",
+  "categorias": [
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Mussels - Frozen",
+  "photourl": "http://dummyimage.com/647x229.png/cc0000/ffffff",
+  "precioOficina": 6.03,
+  "precioObras": 47.59,
+  "precioFerreteria": 15.76,
+  "descuentoFerreteria": 25.79,
+  "descuentoObras": 17.06,
+  "descuentoOficina": 57.75,
+  "descripcion": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+  "coodigo": "17478-823",
+  "coodigodebarras": "2799793864860",
+  "categorias": [
+    "chamomile",
+    "mushroom",
+    "oregano",
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Pimento - Canned",
+  "photourl": "http://dummyimage.com/1019x717.png/ff4444/ffffff",
+  "precioOficina": 81.7,
+  "precioObras": 47.62,
+  "precioFerreteria": 93.32,
+  "descuentoFerreteria": 9.03,
+  "descuentoObras": 19.92,
+  "descuentoOficina": 37.89,
+  "descripcion": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+  "coodigo": "63736-339",
+  "coodigodebarras": "8658879316065",
+  "categorias": [
+    "rhubarb",
+    "chamomile",
+    "delicata"
+  ]
+}, {
+  "nombre": "Kellogs Special K Cereal",
+  "photourl": "http://dummyimage.com/712x456.png/cc0000/ffffff",
+  "precioOficina": 44.94,
+  "precioObras": 24.66,
+  "precioFerreteria": 72.5,
+  "descuentoFerreteria": 40.82,
+  "descuentoObras": 67.8,
+  "descuentoOficina": 15.1,
+  "descripcion": "Fusce consequat. Nulla nisl. Nunc nisl.",
+  "coodigo": "0407-0690",
+  "coodigodebarras": "5440427328145",
+  "categorias": [
+    "mushroom",
+    "chamomile",
+    "delicata",
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Soup - Knorr, Country Bean",
+  "photourl": "http://dummyimage.com/730x529.png/ff4444/ffffff",
+  "precioOficina": 82.0,
+  "precioObras": 93.55,
+  "precioFerreteria": 71.36,
+  "descuentoFerreteria": 82.14,
+  "descuentoObras": 76.61,
+  "descuentoOficina": 3.06,
+  "descripcion": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
+  "coodigo": "61387-249",
+  "coodigodebarras": "2423211471471",
+  "categorias": [
+    "oregano",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Shrimp - Black Tiger 8 - 12",
+  "photourl": "http://dummyimage.com/790x178.png/dddddd/000000",
+  "precioOficina": 71.97,
+  "precioObras": 94.71,
+  "precioFerreteria": 92.75,
+  "descuentoFerreteria": 50.35,
+  "descuentoObras": 50.51,
+  "descuentoOficina": 8.47,
+  "descripcion": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+  "coodigo": "55319-616",
+  "coodigodebarras": "8622438519053",
+  "categorias": [
+    "oregano"
+  ]
+}, {
+  "nombre": "Poppy Seed",
+  "photourl": "http://dummyimage.com/1003x152.png/ff4444/ffffff",
+  "precioOficina": 51.05,
+  "precioObras": 3.86,
+  "precioFerreteria": 85.37,
+  "descuentoFerreteria": 37.84,
+  "descuentoObras": 33.42,
+  "descuentoOficina": 73.05,
+  "descripcion": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+  "coodigo": "37000-058",
+  "coodigodebarras": "7018209269411",
+  "categorias": [
+    "delicata",
+    "rhubarb",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Lobak",
+  "photourl": "http://dummyimage.com/909x394.png/dddddd/000000",
+  "precioOficina": 58.3,
+  "precioObras": 90.42,
+  "precioFerreteria": 17.41,
+  "descuentoFerreteria": 77.76,
+  "descuentoObras": 71.34,
+  "descuentoOficina": 65.63,
+  "descripcion": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+  "coodigo": "63824-478",
+  "coodigodebarras": "4202344299964",
+  "categorias": [
+    "kohlrabi"
+  ]
+}, {
+  "nombre": "Mayonnaise - Individual Pkg",
+  "photourl": "http://dummyimage.com/669x271.png/ff4444/ffffff",
+  "precioOficina": 22.18,
+  "precioObras": 41.12,
+  "precioFerreteria": 55.77,
+  "descuentoFerreteria": 41.68,
+  "descuentoObras": 53.8,
+  "descuentoOficina": 72.61,
+  "descripcion": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+  "coodigo": "67046-089",
+  "coodigodebarras": "7011362226836",
+  "categorias": [
+    "oregano",
+    "mushroom",
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Mousse - Mango",
+  "photourl": "http://dummyimage.com/910x694.png/ff4444/ffffff",
+  "precioOficina": 19.33,
+  "precioObras": 86.46,
+  "precioFerreteria": 78.52,
+  "descuentoFerreteria": 63.01,
+  "descuentoObras": 23.15,
+  "descuentoOficina": 18.02,
+  "descripcion": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+  "coodigo": "48951-3122",
+  "coodigodebarras": "9944913065248",
+  "categorias": [
+    "delicata",
+    "rhubarb"
+  ]
+}, {
+  "nombre": "Tandoori Curry Paste",
+  "photourl": "http://dummyimage.com/877x244.png/cc0000/ffffff",
+  "precioOficina": 90.37,
+  "precioObras": 9.94,
+  "precioFerreteria": 98.96,
+  "descuentoFerreteria": 45.4,
+  "descuentoObras": 92.13,
+  "descuentoOficina": 33.75,
+  "descripcion": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+  "coodigo": "51393-7611",
+  "coodigodebarras": "3353371724872",
+  "categorias": [
+    "chamomile",
+    "kohlrabi",
+    "delicata",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Sterno - Chafing Dish Fuel",
+  "photourl": "http://dummyimage.com/910x344.png/cc0000/ffffff",
+  "precioOficina": 48.9,
+  "precioObras": 37.56,
+  "precioFerreteria": 34.46,
+  "descuentoFerreteria": 80.54,
+  "descuentoObras": 46.2,
+  "descuentoOficina": 66.83,
+  "descripcion": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+  "coodigo": "36987-1405",
+  "coodigodebarras": "3876508594909",
+  "categorias": [
+    "mushroom"
+  ]
+}, {
+  "nombre": "Carrots - Mini, Stem On",
+  "photourl": "http://dummyimage.com/800x40.png/cc0000/ffffff",
+  "precioOficina": 15.13,
+  "precioObras": 96.78,
+  "precioFerreteria": 62.9,
+  "descuentoFerreteria": 94.34,
+  "descuentoObras": 25.52,
+  "descuentoOficina": 82.78,
+  "descripcion": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+  "coodigo": "63323-623",
+  "coodigodebarras": "9834852003753",
+  "categorias": [
+    "mushroom"
+  ]
+}, {
+  "nombre": "Wine - Pinot Noir Pond Haddock",
+  "photourl": "http://dummyimage.com/791x670.png/ff4444/ffffff",
+  "precioOficina": 28.26,
+  "precioObras": 9.6,
+  "precioFerreteria": 95.75,
+  "descuentoFerreteria": 22.14,
+  "descuentoObras": 97.89,
+  "descuentoOficina": 65.77,
+  "descripcion": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+  "coodigo": "0041-0346",
+  "coodigodebarras": "6167381224712",
+  "categorias": [
+    "oregano",
+    "delicata"
+  ]
+}, {
+  "nombre": "Nantucket Apple Juice",
+  "photourl": "http://dummyimage.com/737x474.png/dddddd/000000",
+  "precioOficina": 66.6,
+  "precioObras": 11.85,
+  "precioFerreteria": 95.74,
+  "descuentoFerreteria": 47.21,
+  "descuentoObras": 46.49,
+  "descuentoOficina": 18.45,
+  "descripcion": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+  "coodigo": "65224-615",
+  "coodigodebarras": "2087657069677",
+  "categorias": [
+    "oregano",
+    "kohlrabi",
+    "rhubarb",
+    "mushroom"
+  ]
+}, {
+  "nombre": "Appetizer - Cheese Bites",
+  "photourl": "http://dummyimage.com/948x708.png/cc0000/ffffff",
+  "precioOficina": 46.68,
+  "precioObras": 46.39,
+  "precioFerreteria": 73.91,
+  "descuentoFerreteria": 22.93,
+  "descuentoObras": 55.4,
+  "descuentoOficina": 70.02,
+  "descripcion": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+  "coodigo": "55910-306",
+  "coodigodebarras": "7956926955971",
+  "categorias": [
+    "oregano"
+  ]
+}, {
+  "nombre": "Tart - Raisin And Pecan",
+  "photourl": "http://dummyimage.com/810x581.png/5fa2dd/ffffff",
+  "precioOficina": 35.77,
+  "precioObras": 17.31,
+  "precioFerreteria": 91.56,
+  "descuentoFerreteria": 40.06,
+  "descuentoObras": 70.02,
+  "descuentoOficina": 14.29,
+  "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+  "coodigo": "0378-0460",
+  "coodigodebarras": "0117969419073",
+  "categorias": [
+    "mushroom",
+    "chamomile",
+    "rhubarb",
+    "delicata"
+  ]
+}, {
+  "nombre": "Tendrils - Baby Pea, Organic",
+  "photourl": "http://dummyimage.com/701x403.png/cc0000/ffffff",
+  "precioOficina": 22.74,
+  "precioObras": 94.91,
+  "precioFerreteria": 45.59,
+  "descuentoFerreteria": 56.71,
+  "descuentoObras": 47.83,
+  "descuentoOficina": 21.71,
+  "descripcion": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+  "coodigo": "36987-2018",
+  "coodigodebarras": "4749630396719",
+  "categorias": [
+    "rhubarb",
+    "oregano",
+    "delicata",
+    "chamomile"
+  ]
+}, {
+  "nombre": "Peppercorns - Pink",
+  "photourl": "http://dummyimage.com/722x416.png/ff4444/ffffff",
+  "precioOficina": 18.73,
+  "precioObras": 18.86,
+  "precioFerreteria": 8.29,
+  "descuentoFerreteria": 2.91,
+  "descuentoObras": 19.74,
+  "descuentoOficina": 51.44,
+  "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+  "coodigo": "53401-300",
+  "coodigodebarras": "7106464454003",
+  "categorias": [
+    "kohlrabi",
+    "rhubarb",
+    "oregano"
+  ]
+}]

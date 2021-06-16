@@ -1,6 +1,18 @@
 import { authState } from "rxfire/auth";
 import {readable} from "svelte/store";
-import {auth, Clientes$, Creditos$, Despachos$, Facturas$, Gastos$, Productos$, ProductosB$, Usuarios$, Ventas$} from "./firebaseAPI"
+import {
+    auth,
+    CategoriasB$,
+    Clientes$,
+    Creditos$,
+    Despachos$,
+    Facturas$,
+    Gastos$,
+    Productos$,
+    ProductosB$,
+    Usuarios$,
+    Ventas$
+} from "./firebaseAPI"
 
 export const User = readable(null, set => authState(auth).subscribe(u => set(u)))
 
@@ -28,6 +40,11 @@ export const ProductosB = readable([], set => {
         })
         // console.log(data)
         set(data)
+    })
+})
+export const Categorias = readable([], set => {
+    CategoriasB$.onSnapshot(snapshot => {
+        set(Object.keys(snapshot.data()))
     })
 })
 /*

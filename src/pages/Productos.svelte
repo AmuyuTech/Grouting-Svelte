@@ -10,11 +10,7 @@
   let search = ""
   function filterData() {
     const s  = search.trim().toLowerCase()
-    if (s == 0) {
-      filterdedData = Data
-    }else {
-      filterdedData = Data.filter(p => p.nombre.toLowerCase().includes(s))
-    }
+    filterdedData = s.length === 0 ? Data : Data.filter(p => p.nombre.toLowerCase().includes(s));
   }
   function newProd() {
     push('/Productos/New')
@@ -71,12 +67,11 @@
   {#each filterdedData as p}
     
  
-  <div class="cardContainer">
+  <div class="cardContainer" on:click={push(`/Productos/${p.id}`)}>
     <div class="card front">
       <div
         class="img"
-        style="background-image: url({p.photourl});"
-      />
+        style="background-image: url({p.photourl});"></div>
       <div class="info">
         <p>
           {p.nombre}

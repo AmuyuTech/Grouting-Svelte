@@ -17,25 +17,43 @@ const rt = admin.database()
 exports.CrearBucketProducts = functions.firestore
   .document('PRODUCTOS/{ProductId}')
   .onCreate((snap, context) => {
-    const data = snap.data()
-    const bucket = {
-      nombre: data.nombre,
-      photourl: data.photourl
-    }
-    const id = data.id
-    return db.collection('BUCKETS').doc('productos').set({ [id]: bucket }, { merge: true })
+      const payload =  db.batch()
+      const data = snap.data()
+      const bucket = {
+          nombre: data.nombre,
+          photourl: data.photourl
+      }
+      const id = data.id
+      const categorias = {}
+      data.categorias.forEach(c => {
+          categorias[c] = true
+      })
+      const BucketP = db.collection('BUCKETS').doc('productos')
+      const BucketC = db.collection('BUCKETS').doc('categorias')
+      payload.set(BucketP, { [id]: bucket }, {merge: true})
+      payload.set(BucketC, categorias, {merge: true})
+      return payload.commit()
 
   })
 exports.ActualizarBucketProductos = functions.firestore
   .document('PRODUCTOS/{ProductId}')
   .onUpdate((doc, ctx) => {
+    const payload =  db.batch()
     const data = doc.after.data()
     const bucket = {
       nombre: data.nombre,
       photourl: data.photourl
     }
     const id = data.id
-    return db.collection('BUCKETS').doc('usuarios').set({ [id]: bucket }, { merge: true })
+      const categorias = {}
+      data.categorias.forEach(c => {
+          categorias[c] = true
+      })
+      const BucketP = db.collection('BUCKETS').doc('productos')
+      const BucketC = db.collection('BUCKETS').doc('categorias')
+      payload.set(BucketP, { [id]: bucket }, {merge: true})
+      payload.set(BucketC, categorias, {merge: true})
+    return payload.commit()
   })
   exports.CrearBucketUsuarios = functions.firestore
   .document('USUARIOS/{UserId}')
@@ -55,7 +73,7 @@ exports.ActualizarBucketUsuarios = functions.firestore
     const data = doc.after.data()
     const bucket = {
       nombre: data.nombre,
-      photourl: data.photourl
+      // photourl: data.photourl
     }
     const id = data.id
     return db.collection('BUCKETS').doc('productos').set({ [id]: bucket }, { merge: true })

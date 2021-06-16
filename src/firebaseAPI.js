@@ -55,6 +55,10 @@ const _AlmacenesCollection = db.collection("TRANSACCIONES");
 const _VentasCollection = db.collection("REGISTROSVENTAS");
 const _UsuariosCollection = db.collection("USUARIOS");
 const _BucketsCollection = db.collection("BUCKETS");
+// Getters
+export function getProducto(id$) {
+  return _ProductosCollection.doc(id$).get()
+}
 //observers (*read*)
 export const Clientes$ = _ClientesCollection.orderBy("nombre");
 export const Creditos$ = _CreditosCollection.orderBy("fecha", "desc");
@@ -66,6 +70,7 @@ export const Almacenes$ = _AlmacenesCollection.orderBy("fecha", "desc");
 export const Ventas$ = _VentasCollection.orderBy("fecha", "desc");
 export const Usuarios$ = _UsuariosCollection.orderBy("nombre");
 export const ProductosB$ = _BucketsCollection.doc('productos')
+export const CategoriasB$ = _BucketsCollection.doc('categorias')
 //Special data
 export async function getStocks(productId$) {
   return await rt
@@ -111,6 +116,8 @@ function setUsr(ref$, data$) {
   const doc = ref$.doc(data$.ci)
   return doc.set(data)
 }
+
+
 export function registerTestProducts() {
   const payload = db.batch()
   products.forEach(p => {

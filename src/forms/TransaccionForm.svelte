@@ -125,7 +125,6 @@
         bind:selectedItem={item.p}
         labelFieldName={"nombre"}
         valueFieldName={"id"}
-        class="flex-grow: 1; align-self: center;"
         />
         <label style="align-items: center;">
           Cantidad
