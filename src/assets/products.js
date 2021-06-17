@@ -8,8 +8,8 @@ export default [{
   "descuentoObras": 40.81,
   "descuentoOficina": 54.86,
   "descripcion": "Phasellus in felis. Donec semper sapien a libero. Nam dui.",
-  "coodigo": "41250-034",
-  "coodigodebarras": "1963639463423",
+  "codigo": "41250-034",
+  "codigodebarras": "1963639463423",
   "categorias": [
     "chamomile",
     "kohlrabi",
@@ -26,8 +26,8 @@ export default [{
   "descuentoObras": 70.53,
   "descuentoOficina": 8.36,
   "descripcion": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-  "coodigo": "63629-5250",
-  "coodigodebarras": "0176426768259",
+  "codigo": "63629-5250",
+  "codigodebarras": "0176426768259",
   "categorias": [
     "kohlrabi",
     "mushroom"
@@ -42,8 +42,8 @@ export default [{
   "descuentoObras": 9.3,
   "descuentoOficina": 27.02,
   "descripcion": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
-  "coodigo": "50580-228",
-  "coodigodebarras": "5623433185407",
+  "codigo": "50580-228",
+  "codigodebarras": "5623433185407",
   "categorias": [
     "mushroom",
     "delicata",
@@ -60,8 +60,8 @@ export default [{
   "descuentoObras": 82.93,
   "descuentoOficina": 62.63,
   "descripcion": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
-  "coodigo": "0310-0130",
-  "coodigodebarras": "4231362810027",
+  "codigo": "0310-0130",
+  "codigodebarras": "4231362810027",
   "categorias": [
     "mushroom",
     "oregano",
@@ -78,8 +78,8 @@ export default [{
   "descuentoObras": 79.14,
   "descuentoOficina": 71.7,
   "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-  "coodigo": "36987-3218",
-  "coodigodebarras": "1463733191239",
+  "codigo": "36987-3218",
+  "codigodebarras": "1463733191239",
   "categorias": [
     "mushroom",
     "rhubarb",
@@ -95,8 +95,8 @@ export default [{
   "descuentoObras": 39.94,
   "descuentoOficina": 39.06,
   "descripcion": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-  "coodigo": "49580-0242",
-  "coodigodebarras": "6712123859229",
+  "codigo": "49580-0242",
+  "codigodebarras": "6712123859229",
   "categorias": [
     "rhubarb",
     "oregano",
@@ -112,8 +112,8 @@ export default [{
   "descuentoObras": 74.23,
   "descuentoOficina": 76.87,
   "descripcion": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
-  "coodigo": "51824-044",
-  "coodigodebarras": "6422063391946",
+  "codigo": "51824-044",
+  "codigodebarras": "6422063391946",
   "categorias": [
     "rhubarb"
   ]
@@ -127,8 +127,8 @@ export default [{
   "descuentoObras": 96.56,
   "descuentoOficina": 59.26,
   "descripcion": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-  "coodigo": "61958-0405",
-  "coodigodebarras": "8371880193702",
+  "codigo": "61958-0405",
+  "codigodebarras": "8371880193702",
   "categorias": [
     "chamomile"
   ]
@@ -142,8 +142,8 @@ export default [{
   "descuentoObras": 41.8,
   "descuentoOficina": 70.85,
   "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-  "coodigo": "63629-3092",
-  "coodigodebarras": "4398854954418",
+  "codigo": "63629-3092",
+  "codigodebarras": "4398854954418",
   "categorias": [
     "chamomile",
     "rhubarb",
@@ -159,8 +159,8 @@ export default [{
   "descuentoObras": 59.84,
   "descuentoOficina": 47.12,
   "descripcion": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
-  "coodigo": "0179-0157",
-  "coodigodebarras": "1515992141297",
+  "codigo": "0179-0157",
+  "codigodebarras": "1515992141297",
   "categorias": [
     "mushroom"
   ]
@@ -174,8 +174,8 @@ export default [{
   "descuentoObras": 2.52,
   "descuentoOficina": 67.51,
   "descripcion": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
-  "coodigo": "0268-1253",
-  "coodigodebarras": "7215902193766",
+  "codigo": "0268-1253",
+  "codigodebarras": "7215902193766",
   "categorias": [
     "rhubarb",
     "oregano"
@@ -190,8 +190,8 @@ export default [{
   "descuentoObras": 83.09,
   "descuentoOficina": 53.37,
   "descripcion": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-  "coodigo": "56062-701",
-  "coodigodebarras": "2128284063534",
+  "codigo": "56062-701",
+  "codigodebarras": "2128284063534",
   "categorias": [
     "delicata"
   ]
@@ -205,8 +205,8 @@ export default [{
   "descuentoObras": 72.46,
   "descuentoOficina": 94.67,
   "descripcion": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
-  "coodigo": "47219-311",
-  "coodigodebarras": "8897320062115",
+  "codigo": "47219-311",
+  "codigodebarras": "8897320062115",
   "categorias": [
     "chamomile",
     "mushroom"
@@ -221,8 +221,8 @@ export default [{
   "descuentoObras": 88.81,
   "descuentoOficina": 57.19,
   "descripcion": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-  "coodigo": "30142-424",
-  "coodigodebarras": "4606203788805",
+  "codigo": "30142-424",
+  "codigodebarras": "4606203788805",
   "categorias": [
     "rhubarb"
   ]
@@ -236,8 +236,8 @@ export default [{
   "descuentoObras": 42.22,
   "descuentoOficina": 60.37,
   "descripcion": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-  "coodigo": "52233-003",
-  "coodigodebarras": "8548767178346",
+  "codigo": "52233-003",
+  "codigodebarras": "8548767178346",
   "categorias": [
     "chamomile",
     "kohlrabi",
@@ -254,8 +254,8 @@ export default [{
   "descuentoObras": 1.13,
   "descuentoOficina": 85.65,
   "descripcion": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
-  "coodigo": "12462-502",
-  "coodigodebarras": "2153856331506",
+  "codigo": "12462-502",
+  "codigodebarras": "2153856331506",
   "categorias": [
     "chamomile",
     "delicata"
@@ -270,8 +270,8 @@ export default [{
   "descuentoObras": 75.34,
   "descuentoOficina": 34.81,
   "descripcion": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
-  "coodigo": "42549-499",
-  "coodigodebarras": "3390959562238",
+  "codigo": "42549-499",
+  "codigodebarras": "3390959562238",
   "categorias": [
     "oregano",
     "mushroom",
@@ -288,8 +288,8 @@ export default [{
   "descuentoObras": 32.79,
   "descuentoOficina": 22.7,
   "descripcion": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-  "coodigo": "76168-010",
-  "coodigodebarras": "8811561787023",
+  "codigo": "76168-010",
+  "codigodebarras": "8811561787023",
   "categorias": [
     "rhubarb",
     "oregano",
@@ -306,8 +306,8 @@ export default [{
   "descuentoObras": 59.47,
   "descuentoOficina": 93.33,
   "descripcion": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-  "coodigo": "27505-003",
-  "coodigodebarras": "6604544269776",
+  "codigo": "27505-003",
+  "codigodebarras": "6604544269776",
   "categorias": [
     "kohlrabi",
     "oregano",
@@ -323,8 +323,8 @@ export default [{
   "descuentoObras": 98.78,
   "descuentoOficina": 15.63,
   "descripcion": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
-  "coodigo": "52533-120",
-  "coodigodebarras": "0448741096664",
+  "codigo": "52533-120",
+  "codigodebarras": "0448741096664",
   "categorias": [
     "kohlrabi",
     "rhubarb"
@@ -339,8 +339,8 @@ export default [{
   "descuentoObras": 49.81,
   "descuentoOficina": 59.95,
   "descripcion": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
-  "coodigo": "55154-2305",
-  "coodigodebarras": "0030124303932",
+  "codigo": "55154-2305",
+  "codigodebarras": "0030124303932",
   "categorias": [
     "chamomile",
     "rhubarb",
@@ -357,8 +357,8 @@ export default [{
   "descuentoObras": 8.88,
   "descuentoOficina": 48.32,
   "descripcion": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-  "coodigo": "68788-0600",
-  "coodigodebarras": "4604594746360",
+  "codigo": "68788-0600",
+  "codigodebarras": "4604594746360",
   "categorias": [
     "mushroom",
     "oregano",
@@ -375,8 +375,8 @@ export default [{
   "descuentoObras": 92.73,
   "descuentoOficina": 93.43,
   "descripcion": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
-  "coodigo": "63629-3190",
-  "coodigodebarras": "8063951282210",
+  "codigo": "63629-3190",
+  "codigodebarras": "8063951282210",
   "categorias": [
     "delicata",
     "mushroom",
@@ -393,8 +393,8 @@ export default [{
   "descuentoObras": 98.63,
   "descuentoOficina": 28.94,
   "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-  "coodigo": "59779-615",
-  "coodigodebarras": "0835172105054",
+  "codigo": "59779-615",
+  "codigodebarras": "0835172105054",
   "categorias": [
     "kohlrabi",
     "oregano"
@@ -409,8 +409,8 @@ export default [{
   "descuentoObras": 3.18,
   "descuentoOficina": 99.22,
   "descripcion": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
-  "coodigo": "66391-0301",
-  "coodigodebarras": "7891899128777",
+  "codigo": "66391-0301",
+  "codigodebarras": "7891899128777",
   "categorias": [
     "chamomile"
   ]
@@ -424,8 +424,8 @@ export default [{
   "descuentoObras": 24.52,
   "descuentoOficina": 32.57,
   "descripcion": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
-  "coodigo": "51079-468",
-  "coodigodebarras": "8038312325104",
+  "codigo": "51079-468",
+  "codigodebarras": "8038312325104",
   "categorias": [
     "rhubarb",
     "oregano"
@@ -440,8 +440,8 @@ export default [{
   "descuentoObras": 34.22,
   "descuentoOficina": 71.56,
   "descripcion": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
-  "coodigo": "41250-884",
-  "coodigodebarras": "0550712376606",
+  "codigo": "41250-884",
+  "codigodebarras": "0550712376606",
   "categorias": [
     "oregano"
   ]
@@ -455,8 +455,8 @@ export default [{
   "descuentoObras": 77.22,
   "descuentoOficina": 81.77,
   "descripcion": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-  "coodigo": "57520-0776",
-  "coodigodebarras": "4102780874987",
+  "codigo": "57520-0776",
+  "codigodebarras": "4102780874987",
   "categorias": [
     "oregano",
     "delicata"
@@ -471,8 +471,8 @@ export default [{
   "descuentoObras": 16.77,
   "descuentoOficina": 82.84,
   "descripcion": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
-  "coodigo": "16590-308",
-  "coodigodebarras": "0781780059547",
+  "codigo": "16590-308",
+  "codigodebarras": "0781780059547",
   "categorias": [
     "kohlrabi",
     "rhubarb",
@@ -489,8 +489,8 @@ export default [{
   "descuentoObras": 70.39,
   "descuentoOficina": 51.17,
   "descripcion": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
-  "coodigo": "42213-161",
-  "coodigodebarras": "1319229666275",
+  "codigo": "42213-161",
+  "codigodebarras": "1319229666275",
   "categorias": [
     "oregano",
     "rhubarb",
@@ -507,8 +507,8 @@ export default [{
   "descuentoObras": 88.9,
   "descuentoOficina": 14.5,
   "descripcion": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-  "coodigo": "65691-0108",
-  "coodigodebarras": "1442545423046",
+  "codigo": "65691-0108",
+  "codigodebarras": "1442545423046",
   "categorias": [
     "delicata",
     "oregano",
@@ -525,8 +525,8 @@ export default [{
   "descuentoObras": 86.08,
   "descuentoOficina": 63.35,
   "descripcion": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
-  "coodigo": "0268-6705",
-  "coodigodebarras": "1303162025614",
+  "codigo": "0268-6705",
+  "codigodebarras": "1303162025614",
   "categorias": [
     "rhubarb"
   ]
@@ -540,8 +540,8 @@ export default [{
   "descuentoObras": 14.92,
   "descuentoOficina": 14.34,
   "descripcion": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-  "coodigo": "0409-9137",
-  "coodigodebarras": "7081606919657",
+  "codigo": "0409-9137",
+  "codigodebarras": "7081606919657",
   "categorias": [
     "kohlrabi",
     "delicata"
@@ -556,8 +556,8 @@ export default [{
   "descuentoObras": 15.17,
   "descuentoOficina": 2.29,
   "descripcion": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
-  "coodigo": "63354-130",
-  "coodigodebarras": "7707956334534",
+  "codigo": "63354-130",
+  "codigodebarras": "7707956334534",
   "categorias": [
     "delicata",
     "oregano"
@@ -572,8 +572,8 @@ export default [{
   "descuentoObras": 85.01,
   "descuentoOficina": 99.14,
   "descripcion": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-  "coodigo": "62011-0099",
-  "coodigodebarras": "8511099780440",
+  "codigo": "62011-0099",
+  "codigodebarras": "8511099780440",
   "categorias": [
     "rhubarb",
     "chamomile",
@@ -590,8 +590,8 @@ export default [{
   "descuentoObras": 27.63,
   "descuentoOficina": 86.67,
   "descripcion": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-  "coodigo": "62699-1114",
-  "coodigodebarras": "1560771859529",
+  "codigo": "62699-1114",
+  "codigodebarras": "1560771859529",
   "categorias": [
     "chamomile"
   ]
@@ -605,8 +605,8 @@ export default [{
   "descuentoObras": 7.43,
   "descuentoOficina": 13.14,
   "descripcion": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
-  "coodigo": "68180-897",
-  "coodigodebarras": "2133185689955",
+  "codigo": "68180-897",
+  "codigodebarras": "2133185689955",
   "categorias": [
     "rhubarb",
     "kohlrabi",
@@ -622,8 +622,8 @@ export default [{
   "descuentoObras": 75.69,
   "descuentoOficina": 72.27,
   "descripcion": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-  "coodigo": "68462-201",
-  "coodigodebarras": "4085425649475",
+  "codigo": "68462-201",
+  "codigodebarras": "4085425649475",
   "categorias": [
     "kohlrabi"
   ]
@@ -637,8 +637,8 @@ export default [{
   "descuentoObras": 88.92,
   "descuentoOficina": 87.49,
   "descripcion": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
-  "coodigo": "59078-016",
-  "coodigodebarras": "3083864073117",
+  "codigo": "59078-016",
+  "codigodebarras": "3083864073117",
   "categorias": [
     "mushroom"
   ]
@@ -652,8 +652,8 @@ export default [{
   "descuentoObras": 74.99,
   "descuentoOficina": 13.96,
   "descripcion": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-  "coodigo": "56062-469",
-  "coodigodebarras": "6107832338822",
+  "codigo": "56062-469",
+  "codigodebarras": "6107832338822",
   "categorias": [
     "kohlrabi",
     "chamomile"
@@ -668,8 +668,8 @@ export default [{
   "descuentoObras": 57.9,
   "descuentoOficina": 92.07,
   "descripcion": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-  "coodigo": "58292-010",
-  "coodigodebarras": "7532225985193",
+  "codigo": "58292-010",
+  "codigodebarras": "7532225985193",
   "categorias": [
     "oregano",
     "chamomile",
@@ -686,8 +686,8 @@ export default [{
   "descuentoObras": 52.88,
   "descuentoOficina": 81.5,
   "descripcion": "Fusce consequat. Nulla nisl. Nunc nisl.",
-  "coodigo": "53119-575",
-  "coodigodebarras": "6419875793364",
+  "codigo": "53119-575",
+  "codigodebarras": "6419875793364",
   "categorias": [
     "rhubarb",
     "delicata",
@@ -703,8 +703,8 @@ export default [{
   "descuentoObras": 69.79,
   "descuentoOficina": 94.93,
   "descripcion": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
-  "coodigo": "43269-734",
-  "coodigodebarras": "3747214619011",
+  "codigo": "43269-734",
+  "codigodebarras": "3747214619011",
   "categorias": [
     "kohlrabi"
   ]
@@ -718,8 +718,8 @@ export default [{
   "descuentoObras": 21.25,
   "descuentoOficina": 73.59,
   "descripcion": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
-  "coodigo": "51345-057",
-  "coodigodebarras": "4391465700584",
+  "codigo": "51345-057",
+  "codigodebarras": "4391465700584",
   "categorias": [
     "kohlrabi",
     "rhubarb",
@@ -736,8 +736,8 @@ export default [{
   "descuentoObras": 26.67,
   "descuentoOficina": 24.79,
   "descripcion": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
-  "coodigo": "21130-080",
-  "coodigodebarras": "1514906086228",
+  "codigo": "21130-080",
+  "codigodebarras": "1514906086228",
   "categorias": [
     "rhubarb",
     "oregano",
@@ -753,8 +753,8 @@ export default [{
   "descuentoObras": 20.47,
   "descuentoOficina": 77.89,
   "descripcion": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
-  "coodigo": "68084-486",
-  "coodigodebarras": "3676560550463",
+  "codigo": "68084-486",
+  "codigodebarras": "3676560550463",
   "categorias": [
     "kohlrabi",
     "rhubarb"
@@ -769,8 +769,8 @@ export default [{
   "descuentoObras": 99.95,
   "descuentoOficina": 15.55,
   "descripcion": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
-  "coodigo": "0615-7505",
-  "coodigodebarras": "5103185146954",
+  "codigo": "0615-7505",
+  "codigodebarras": "5103185146954",
   "categorias": [
     "mushroom",
     "rhubarb"
@@ -785,8 +785,8 @@ export default [{
   "descuentoObras": 64.41,
   "descuentoOficina": 51.27,
   "descripcion": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
-  "coodigo": "55301-871",
-  "coodigodebarras": "3419854855335",
+  "codigo": "55301-871",
+  "codigodebarras": "3419854855335",
   "categorias": [
     "oregano"
   ]
@@ -800,8 +800,8 @@ export default [{
   "descuentoObras": 12.38,
   "descuentoOficina": 50.89,
   "descripcion": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
-  "coodigo": "56062-184",
-  "coodigodebarras": "5160953865361",
+  "codigo": "56062-184",
+  "codigodebarras": "5160953865361",
   "categorias": [
     "rhubarb",
     "delicata",
@@ -818,8 +818,8 @@ export default [{
   "descuentoObras": 75.26,
   "descuentoOficina": 11.49,
   "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-  "coodigo": "0363-0582",
-  "coodigodebarras": "7354228824014",
+  "codigo": "0363-0582",
+  "codigodebarras": "7354228824014",
   "categorias": [
     "kohlrabi"
   ]
@@ -833,8 +833,8 @@ export default [{
   "descuentoObras": 78.62,
   "descuentoOficina": 16.37,
   "descripcion": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
-  "coodigo": "0603-1584",
-  "coodigodebarras": "8661211613737",
+  "codigo": "0603-1584",
+  "codigodebarras": "8661211613737",
   "categorias": [
     "chamomile"
   ]
@@ -848,8 +848,8 @@ export default [{
   "descuentoObras": 96.68,
   "descuentoOficina": 24.4,
   "descripcion": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-  "coodigo": "63868-065",
-  "coodigodebarras": "4513693249760",
+  "codigo": "63868-065",
+  "codigodebarras": "4513693249760",
   "categorias": [
     "chamomile"
   ]
@@ -863,8 +863,8 @@ export default [{
   "descuentoObras": 16.39,
   "descuentoOficina": 49.94,
   "descripcion": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-  "coodigo": "53645-1270",
-  "coodigodebarras": "4571578151704",
+  "codigo": "53645-1270",
+  "codigodebarras": "4571578151704",
   "categorias": [
     "oregano",
     "kohlrabi",
@@ -881,8 +881,8 @@ export default [{
   "descuentoObras": 83.16,
   "descuentoOficina": 51.44,
   "descripcion": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
-  "coodigo": "10819-5813",
-  "coodigodebarras": "6146173434014",
+  "codigo": "10819-5813",
+  "codigodebarras": "6146173434014",
   "categorias": [
     "rhubarb",
     "mushroom",
@@ -899,8 +899,8 @@ export default [{
   "descuentoObras": 70.83,
   "descuentoOficina": 42.59,
   "descripcion": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-  "coodigo": "48951-4090",
-  "coodigodebarras": "9758982633175",
+  "codigo": "48951-4090",
+  "codigodebarras": "9758982633175",
   "categorias": [
     "kohlrabi",
     "delicata",
@@ -917,8 +917,8 @@ export default [{
   "descuentoObras": 25.48,
   "descuentoOficina": 71.73,
   "descripcion": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-  "coodigo": "53808-0862",
-  "coodigodebarras": "2153707648692",
+  "codigo": "53808-0862",
+  "codigodebarras": "2153707648692",
   "categorias": [
     "rhubarb"
   ]
@@ -932,8 +932,8 @@ export default [{
   "descuentoObras": 65.63,
   "descuentoOficina": 76.15,
   "descripcion": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
-  "coodigo": "10544-591",
-  "coodigodebarras": "5541836219027",
+  "codigo": "10544-591",
+  "codigodebarras": "5541836219027",
   "categorias": [
     "oregano"
   ]
@@ -947,8 +947,8 @@ export default [{
   "descuentoObras": 12.93,
   "descuentoOficina": 37.26,
   "descripcion": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
-  "coodigo": "0378-3205",
-  "coodigodebarras": "4172548747765",
+  "codigo": "0378-3205",
+  "codigodebarras": "4172548747765",
   "categorias": [
     "oregano",
     "mushroom",
@@ -964,8 +964,8 @@ export default [{
   "descuentoObras": 32.08,
   "descuentoOficina": 48.75,
   "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-  "coodigo": "65862-286",
-  "coodigodebarras": "4835824469095",
+  "codigo": "65862-286",
+  "codigodebarras": "4835824469095",
   "categorias": [
     "kohlrabi",
     "oregano",
@@ -982,8 +982,8 @@ export default [{
   "descuentoObras": 60.76,
   "descuentoOficina": 70.76,
   "descripcion": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
-  "coodigo": "63094-0426",
-  "coodigodebarras": "4616553543154",
+  "codigo": "63094-0426",
+  "codigodebarras": "4616553543154",
   "categorias": [
     "mushroom"
   ]
@@ -997,8 +997,8 @@ export default [{
   "descuentoObras": 14.98,
   "descuentoOficina": 16.49,
   "descripcion": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-  "coodigo": "48102-017",
-  "coodigodebarras": "7021671374660",
+  "codigo": "48102-017",
+  "codigodebarras": "7021671374660",
   "categorias": [
     "delicata",
     "chamomile",
@@ -1014,8 +1014,8 @@ export default [{
   "descuentoObras": 58.8,
   "descuentoOficina": 16.7,
   "descripcion": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
-  "coodigo": "43063-092",
-  "coodigodebarras": "7021255088382",
+  "codigo": "43063-092",
+  "codigodebarras": "7021255088382",
   "categorias": [
     "kohlrabi"
   ]
@@ -1029,8 +1029,8 @@ export default [{
   "descuentoObras": 29.92,
   "descuentoOficina": 14.81,
   "descripcion": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-  "coodigo": "64990-601",
-  "coodigodebarras": "6419050496976",
+  "codigo": "64990-601",
+  "codigodebarras": "6419050496976",
   "categorias": [
     "rhubarb",
     "delicata",
@@ -1047,8 +1047,8 @@ export default [{
   "descuentoObras": 92.25,
   "descuentoOficina": 58.14,
   "descripcion": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-  "coodigo": "43269-614",
-  "coodigodebarras": "4012780635479",
+  "codigo": "43269-614",
+  "codigodebarras": "4012780635479",
   "categorias": [
     "mushroom",
     "chamomile",
@@ -1064,8 +1064,8 @@ export default [{
   "descuentoObras": 14.15,
   "descuentoOficina": 7.42,
   "descripcion": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
-  "coodigo": "0378-6324",
-  "coodigodebarras": "2510853285585",
+  "codigo": "0378-6324",
+  "codigodebarras": "2510853285585",
   "categorias": [
     "chamomile"
   ]
@@ -1079,8 +1079,8 @@ export default [{
   "descuentoObras": 92.35,
   "descuentoOficina": 55.03,
   "descripcion": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
-  "coodigo": "0179-0096",
-  "coodigodebarras": "2172656903468",
+  "codigo": "0179-0096",
+  "codigodebarras": "2172656903468",
   "categorias": [
     "delicata",
     "kohlrabi",
@@ -1096,8 +1096,8 @@ export default [{
   "descuentoObras": 81.96,
   "descuentoOficina": 48.8,
   "descripcion": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-  "coodigo": "68258-7152",
-  "coodigodebarras": "7600886708370",
+  "codigo": "68258-7152",
+  "codigodebarras": "7600886708370",
   "categorias": [
     "kohlrabi",
     "mushroom",
@@ -1113,8 +1113,8 @@ export default [{
   "descuentoObras": 7.41,
   "descuentoOficina": 8.26,
   "descripcion": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-  "coodigo": "57243-466",
-  "coodigodebarras": "2041004204443",
+  "codigo": "57243-466",
+  "codigodebarras": "2041004204443",
   "categorias": [
     "rhubarb",
     "chamomile",
@@ -1130,8 +1130,8 @@ export default [{
   "descuentoObras": 26.04,
   "descuentoOficina": 66.7,
   "descripcion": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
-  "coodigo": "49643-408",
-  "coodigodebarras": "8681019750258",
+  "codigo": "49643-408",
+  "codigodebarras": "8681019750258",
   "categorias": [
     "kohlrabi",
     "oregano",
@@ -1147,8 +1147,8 @@ export default [{
   "descuentoObras": 70.96,
   "descuentoOficina": 82.68,
   "descripcion": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-  "coodigo": "68703-040",
-  "coodigodebarras": "9791448888810",
+  "codigo": "68703-040",
+  "codigodebarras": "9791448888810",
   "categorias": [
     "kohlrabi",
     "delicata"
@@ -1163,8 +1163,8 @@ export default [{
   "descuentoObras": 16.46,
   "descuentoOficina": 56.82,
   "descripcion": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-  "coodigo": "0378-0390",
-  "coodigodebarras": "6034875172462",
+  "codigo": "0378-0390",
+  "codigodebarras": "6034875172462",
   "categorias": [
     "kohlrabi",
     "oregano"
@@ -1179,8 +1179,8 @@ export default [{
   "descuentoObras": 82.5,
   "descuentoOficina": 80.27,
   "descripcion": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
-  "coodigo": "0395-0119",
-  "coodigodebarras": "0718572425397",
+  "codigo": "0395-0119",
+  "codigodebarras": "0718572425397",
   "categorias": [
     "kohlrabi",
     "mushroom",
@@ -1196,8 +1196,8 @@ export default [{
   "descuentoObras": 60.6,
   "descuentoOficina": 43.38,
   "descripcion": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
-  "coodigo": "57520-0633",
-  "coodigodebarras": "2318964463638",
+  "codigo": "57520-0633",
+  "codigodebarras": "2318964463638",
   "categorias": [
     "kohlrabi",
     "mushroom",
@@ -1213,8 +1213,8 @@ export default [{
   "descuentoObras": 2.29,
   "descuentoOficina": 50.5,
   "descripcion": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-  "coodigo": "43353-691",
-  "coodigodebarras": "1166588131638",
+  "codigo": "43353-691",
+  "codigodebarras": "1166588131638",
   "categorias": [
     "kohlrabi",
     "rhubarb",
@@ -1231,8 +1231,8 @@ export default [{
   "descuentoObras": 69.93,
   "descuentoOficina": 78.3,
   "descripcion": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
-  "coodigo": "49999-277",
-  "coodigodebarras": "4855998476633",
+  "codigo": "49999-277",
+  "codigodebarras": "4855998476633",
   "categorias": [
     "kohlrabi",
     "rhubarb",
@@ -1248,8 +1248,8 @@ export default [{
   "descuentoObras": 8.9,
   "descuentoOficina": 47.35,
   "descripcion": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-  "coodigo": "10122-321",
-  "coodigodebarras": "3161270091958",
+  "codigo": "10122-321",
+  "codigodebarras": "3161270091958",
   "categorias": [
     "oregano",
     "mushroom",
@@ -1266,8 +1266,8 @@ export default [{
   "descuentoObras": 24.62,
   "descuentoOficina": 33.66,
   "descripcion": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
-  "coodigo": "76214-021",
-  "coodigodebarras": "7994920136131",
+  "codigo": "76214-021",
+  "codigodebarras": "7994920136131",
   "categorias": [
     "delicata",
     "kohlrabi",
@@ -1283,8 +1283,8 @@ export default [{
   "descuentoObras": 17.23,
   "descuentoOficina": 34.73,
   "descripcion": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-  "coodigo": "13533-800",
-  "coodigodebarras": "9884851025568",
+  "codigo": "13533-800",
+  "codigodebarras": "9884851025568",
   "categorias": [
     "oregano",
     "delicata",
@@ -1301,8 +1301,8 @@ export default [{
   "descuentoObras": 51.02,
   "descuentoOficina": 28.08,
   "descripcion": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-  "coodigo": "68428-736",
-  "coodigodebarras": "5531828556039",
+  "codigo": "68428-736",
+  "codigodebarras": "5531828556039",
   "categorias": [
     "chamomile",
     "mushroom",
@@ -1319,8 +1319,8 @@ export default [{
   "descuentoObras": 17.02,
   "descuentoOficina": 14.75,
   "descripcion": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
-  "coodigo": "0603-2212",
-  "coodigodebarras": "0709567029144",
+  "codigo": "0603-2212",
+  "codigodebarras": "0709567029144",
   "categorias": [
     "mushroom",
     "oregano",
@@ -1336,8 +1336,8 @@ export default [{
   "descuentoObras": 91.7,
   "descuentoOficina": 7.16,
   "descripcion": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
-  "coodigo": "59779-987",
-  "coodigodebarras": "8529846460813",
+  "codigo": "59779-987",
+  "codigodebarras": "8529846460813",
   "categorias": [
     "kohlrabi"
   ]
@@ -1351,8 +1351,8 @@ export default [{
   "descuentoObras": 85.22,
   "descuentoOficina": 47.43,
   "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-  "coodigo": "13533-631",
-  "coodigodebarras": "0799150272011",
+  "codigo": "13533-631",
+  "codigodebarras": "0799150272011",
   "categorias": [
     "rhubarb"
   ]
@@ -1366,8 +1366,8 @@ export default [{
   "descuentoObras": 17.06,
   "descuentoOficina": 57.75,
   "descripcion": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
-  "coodigo": "17478-823",
-  "coodigodebarras": "2799793864860",
+  "codigo": "17478-823",
+  "codigodebarras": "2799793864860",
   "categorias": [
     "chamomile",
     "mushroom",
@@ -1384,8 +1384,8 @@ export default [{
   "descuentoObras": 19.92,
   "descuentoOficina": 37.89,
   "descripcion": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-  "coodigo": "63736-339",
-  "coodigodebarras": "8658879316065",
+  "codigo": "63736-339",
+  "codigodebarras": "8658879316065",
   "categorias": [
     "rhubarb",
     "chamomile",
@@ -1401,8 +1401,8 @@ export default [{
   "descuentoObras": 67.8,
   "descuentoOficina": 15.1,
   "descripcion": "Fusce consequat. Nulla nisl. Nunc nisl.",
-  "coodigo": "0407-0690",
-  "coodigodebarras": "5440427328145",
+  "codigo": "0407-0690",
+  "codigodebarras": "5440427328145",
   "categorias": [
     "mushroom",
     "chamomile",
@@ -1419,8 +1419,8 @@ export default [{
   "descuentoObras": 76.61,
   "descuentoOficina": 3.06,
   "descripcion": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-  "coodigo": "61387-249",
-  "coodigodebarras": "2423211471471",
+  "codigo": "61387-249",
+  "codigodebarras": "2423211471471",
   "categorias": [
     "oregano",
     "mushroom"
@@ -1435,8 +1435,8 @@ export default [{
   "descuentoObras": 50.51,
   "descuentoOficina": 8.47,
   "descripcion": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
-  "coodigo": "55319-616",
-  "coodigodebarras": "8622438519053",
+  "codigo": "55319-616",
+  "codigodebarras": "8622438519053",
   "categorias": [
     "oregano"
   ]
@@ -1450,8 +1450,8 @@ export default [{
   "descuentoObras": 33.42,
   "descuentoOficina": 73.05,
   "descripcion": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-  "coodigo": "37000-058",
-  "coodigodebarras": "7018209269411",
+  "codigo": "37000-058",
+  "codigodebarras": "7018209269411",
   "categorias": [
     "delicata",
     "rhubarb",
@@ -1467,8 +1467,8 @@ export default [{
   "descuentoObras": 71.34,
   "descuentoOficina": 65.63,
   "descripcion": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-  "coodigo": "63824-478",
-  "coodigodebarras": "4202344299964",
+  "codigo": "63824-478",
+  "codigodebarras": "4202344299964",
   "categorias": [
     "kohlrabi"
   ]
@@ -1482,8 +1482,8 @@ export default [{
   "descuentoObras": 53.8,
   "descuentoOficina": 72.61,
   "descripcion": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-  "coodigo": "67046-089",
-  "coodigodebarras": "7011362226836",
+  "codigo": "67046-089",
+  "codigodebarras": "7011362226836",
   "categorias": [
     "oregano",
     "mushroom",
@@ -1499,8 +1499,8 @@ export default [{
   "descuentoObras": 23.15,
   "descuentoOficina": 18.02,
   "descripcion": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-  "coodigo": "48951-3122",
-  "coodigodebarras": "9944913065248",
+  "codigo": "48951-3122",
+  "codigodebarras": "9944913065248",
   "categorias": [
     "delicata",
     "rhubarb"
@@ -1515,8 +1515,8 @@ export default [{
   "descuentoObras": 92.13,
   "descuentoOficina": 33.75,
   "descripcion": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-  "coodigo": "51393-7611",
-  "coodigodebarras": "3353371724872",
+  "codigo": "51393-7611",
+  "codigodebarras": "3353371724872",
   "categorias": [
     "chamomile",
     "kohlrabi",
@@ -1533,8 +1533,8 @@ export default [{
   "descuentoObras": 46.2,
   "descuentoOficina": 66.83,
   "descripcion": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-  "coodigo": "36987-1405",
-  "coodigodebarras": "3876508594909",
+  "codigo": "36987-1405",
+  "codigodebarras": "3876508594909",
   "categorias": [
     "mushroom"
   ]
@@ -1548,8 +1548,8 @@ export default [{
   "descuentoObras": 25.52,
   "descuentoOficina": 82.78,
   "descripcion": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-  "coodigo": "63323-623",
-  "coodigodebarras": "9834852003753",
+  "codigo": "63323-623",
+  "codigodebarras": "9834852003753",
   "categorias": [
     "mushroom"
   ]
@@ -1563,8 +1563,8 @@ export default [{
   "descuentoObras": 97.89,
   "descuentoOficina": 65.77,
   "descripcion": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-  "coodigo": "0041-0346",
-  "coodigodebarras": "6167381224712",
+  "codigo": "0041-0346",
+  "codigodebarras": "6167381224712",
   "categorias": [
     "oregano",
     "delicata"
@@ -1579,8 +1579,8 @@ export default [{
   "descuentoObras": 46.49,
   "descuentoOficina": 18.45,
   "descripcion": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
-  "coodigo": "65224-615",
-  "coodigodebarras": "2087657069677",
+  "codigo": "65224-615",
+  "codigodebarras": "2087657069677",
   "categorias": [
     "oregano",
     "kohlrabi",
@@ -1597,8 +1597,8 @@ export default [{
   "descuentoObras": 55.4,
   "descuentoOficina": 70.02,
   "descripcion": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-  "coodigo": "55910-306",
-  "coodigodebarras": "7956926955971",
+  "codigo": "55910-306",
+  "codigodebarras": "7956926955971",
   "categorias": [
     "oregano"
   ]
@@ -1612,8 +1612,8 @@ export default [{
   "descuentoObras": 70.02,
   "descuentoOficina": 14.29,
   "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-  "coodigo": "0378-0460",
-  "coodigodebarras": "0117969419073",
+  "codigo": "0378-0460",
+  "codigodebarras": "0117969419073",
   "categorias": [
     "mushroom",
     "chamomile",
@@ -1630,8 +1630,8 @@ export default [{
   "descuentoObras": 47.83,
   "descuentoOficina": 21.71,
   "descripcion": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-  "coodigo": "36987-2018",
-  "coodigodebarras": "4749630396719",
+  "codigo": "36987-2018",
+  "codigodebarras": "4749630396719",
   "categorias": [
     "rhubarb",
     "oregano",
@@ -1648,8 +1648,8 @@ export default [{
   "descuentoObras": 19.74,
   "descuentoOficina": 51.44,
   "descripcion": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-  "coodigo": "53401-300",
-  "coodigodebarras": "7106464454003",
+  "codigo": "53401-300",
+  "codigodebarras": "7106464454003",
   "categorias": [
     "kohlrabi",
     "rhubarb",

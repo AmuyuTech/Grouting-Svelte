@@ -1,8 +1,13 @@
 <script>
     import {pop, replace} from 'svelte-spa-router'
-import { actualizarFactura, registrarFactura } from '../firebaseAPI';
-import facturas from './../assets/facturas'
+    import {actualizarFactura, registrarFactura} from '../firebaseAPI';
+    import facturas from './../assets/facturas'
+    import AutoComplete from 'simple-svelte-autocomplete'
+    import {ProductosB} from "../stores";
+
     export let params = {};
+    let productos = []
+    ProductosB.subscribe(v => productos = v)
     let disabled = false;
     $: {
         if (params.id === "New") {
@@ -27,17 +32,19 @@ import facturas from './../assets/facturas'
             {
                 cantidad: "",
                 nombre: "",
+                id: '',
                 precioUnitario: "",
                 descuento: "",
             },
         ];
     }
-    function addDespacho() {
-        var today = new Date();
-        var dd = today.getDate();
 
-        var mm = today.getMonth() + 1;
-        var yyyy = today.getFullYear();
+    function addDespacho() {
+        let today = new Date();
+        let dd = today.getDate();
+
+        let mm = today.getMonth() + 1;
+        let yyyy = today.getFullYear();
         if (dd < 10) {
             dd = "0" + dd;
         }
@@ -72,63 +79,65 @@ import facturas from './../assets/facturas'
             },
         ];
     }
+
     function cancelar() {
         pop()
     }
+
     function aceptar() {
-    let data = {
-      numero,
-      estado: calcularEstado(),
-      usuario: 'dd',
-      proveedor,
-      items,
-      despachos
-    };
-    toast.push("Subiendo", {
-      initial: 0,
-      progress: 0,
-      dismissable: false,
-      theme: {
-        "--toastBackground": "#ffeb3b",
-        "--toastProgressBackground": " #f4d03f ",
-      },
-    });
-    let promesa
-    if(params.id === 'New') {
-        promesa = registrarFactura(data)
-    }else {
-        promesa = actualizarFactura(data, params.id)
+        let data = {
+            numero,
+            estado: calcularEstado(),
+            usuario: 'dd',
+            proveedor,
+            items,
+            despachos
+        };
+        toast.push("Subiendo", {
+            initial: 0,
+            progress: 0,
+            dismissable: false,
+            theme: {
+                "--toastBackground": "#ffeb3b",
+                "--toastProgressBackground": " #f4d03f ",
+            },
+        });
+        let promesa
+        if (params.id === 'New') {
+            promesa = registrarFactura(data)
+        } else {
+            promesa = actualizarFactura(data, params.id)
+        }
+        promesa.then(
+            (s) => {
+                toast.pop();
+                toast.push("Exito!", {
+                    theme: {
+                        "--toastBackground": "#48BB78",
+                        "--toastProgressBackground": "#2F855A",
+                    },
+                });
+                replace('/Productos');
+            },
+            (e) => {
+                toast.pop();
+                console.error(e);
+                toast.push("Error! porfavor intente de nuevo", {
+                    theme: {
+                        "--toastBackground": "#F56565",
+                        "--toastProgressBackground": "#C53030",
+                    },
+                });
+            }
+        );
     }
-    promesa.then(
-      (s) => {
-        toast.pop();
-        toast.push("Exito!", {
-          theme: {
-            "--toastBackground": "#48BB78",
-            "--toastProgressBackground": "#2F855A",
-          },
-        });
-        replace('/Productos');
-      },
-      (e) => {
-        toast.pop();
-        console.error(e);
-        toast.push("Error! porfavor intente de nuevo", {
-          theme: {
-            "--toastBackground": "#F56565",
-            "--toastProgressBackground": "#C53030",
-          },
-        });
-      }
-    );
-  }
 </script>
 
 <h1>{params.id === "New" ? "Registrar Factura" : " Registrar Despachos"}</h1>
 <div class="gridd">
     <div class="nro">
         <label for="nro">Numero</label>
-        <input type="text" name="nro" bind:value={numero} {disabled} />
+        <input type="text" name="nro" bind:value={numero} {disabled}/>
     </div>
     <div class="data">
         <p>{usuario}</p>
@@ -136,35 +145,37 @@ import facturas from './../assets/facturas'
     </div>
     <div class="proveedor">
         <label for="prov">Proveedor</label>
-        <input type="text" name="prov" bind:value={proveedor} {disabled} />
+        <input type="text" name="prov" bind:value={proveedor} {disabled}/>
     </div>
     <div class="new-item">
         <button
-            class="button"
-            style="width: auto; margin-left: auto;"
-            on:click={addItem}
-            {disabled}>Agregar Item</button
+                class="button"
+                style="width: auto; margin-left: auto;"
+                on:click={addItem}
+                {disabled}>Agregar Item
+        </button
         >
     </div>
     <div class="items">
         <h3>Items</h3>
-        {#each items as it, i}
+        {#each items as it, idx}
             <div class="line">
                 <div class="number-container">
                     <label for="cantidad">Cantidad</label><input
                         type="number"
                         name="cantidad"
-                        bind:value={items[i].cantidad}
+                        bind:value={it.cantidad}
                         {disabled}
-                    />
+                />
                 </div>
                 <div class="name-container">
-                    <label for="nm">Nombre</label><input
-                        type="text"
-                        name="nm"
-                        bind:value={items[i].nombre}
-                        {disabled}
+                    <AutoComplete
+                            items={productos}
+                            labelFieldName={"nombre"}
+                            onChange="{(v) => {it.nombre = v.nombre; it.id = v.id}}"
                     />
+                />
+                    {JSON.stringify(it)}
                 </div>
                 <div class="number-container">
                     <label for="pu">Precio Unitaio</label><input
@@ -172,7 +183,7 @@ import facturas from './../assets/facturas'
                         name="pu"
                         bind:value={it.precioUnitario}
                         {disabled}
-                    />
+                />
                 </div>
                 <div class="number-container">
                     <label for="desc">Descuento</label><input
@@ -180,13 +191,13 @@ import facturas from './../assets/facturas'
                         name="desc"
                         bind:value={it.descuento}
                         {disabled}
-                    />
+                />
                 </div>
                 <div class="number-container">
                     <p>Total:</p>
                     <p>{it.cantidad * it.precioUnitario - it.descuento}</p>
                 </div>
-                <button class="button" on:click={items.splice(i, 1)}>X</button>
+                <button class="button" on:click={items.splice(idx, 1)}>X</button>
             </div>
         {/each}
     </div>
@@ -195,7 +206,8 @@ import facturas from './../assets/facturas'
             <h3>Despachos</h3>
 
             <button class="button" style="width: auto" on:click={addDespacho}
-                >Registrar Despacho</button
+            >Registrar Despacho
+            </button
             >
         </div>
 
@@ -211,18 +223,18 @@ import facturas from './../assets/facturas'
                     <div class="line">
                         <span style="flex-grow: 1;">{item.nombre}</span>
                         <span style="flex-grow: 1;"
-                            >Cantidad: {item.cantidad}</span
+                        >Cantidad: {item.cantidad}</span
                         >
                         <span style="flex-grow: 1;"
-                            >Pendiente: {item.pendiente}</span
+                        >Pendiente: {item.pendiente}</span
                         >
                         <div class="number-container">
                             <input
-                                style="flex-grow: 1;"
-                                type="number"
-                                placeholder="Agregar..."
-                                bind:value={item.add}
-                                max={item.pendiente}
+                                    style="flex-grow: 1;"
+                                    type="number"
+                                    placeholder="Agregar..."
+                                    bind:value={item.add}
+                                    max={item.pendiente}
                             />
                         </div>
                     </div>
@@ -234,19 +246,21 @@ import facturas from './../assets/facturas'
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
     <button on:click={registerAll}>REGISTRAR TODO</button>
     <button
-      class="button"
-      style="margin-left: auto;"
-      on:click={aceptar}>Aceptar</button
+            class="button"
+            style="margin-left: auto;"
+            on:click={aceptar}>Aceptar
+    </button
     >
     <button class="button" on:click={cancelar}>Cancelar</button>
-  </div>
-  
+</div>
+
 
 <style>
     .gridd {
         display: grid;
         gap: 2rem;
     }
+
     @media only screen and (max-width: 600px) {
         .gridd {
             grid-template-columns: 1fr;
@@ -259,6 +273,7 @@ import facturas from './../assets/facturas'
                 "despachos";
         }
     }
+
     @media only screen and (min-width: 600px) {
         .gridd {
             grid-template-columns: repeat(3, 1fr);
@@ -269,33 +284,42 @@ import facturas from './../assets/facturas'
                 "despachos despachos despachos";
         }
     }
+
     .nro {
         grid-area: nro;
     }
+
     .data {
         grid-area: data;
     }
+
     .proveedor {
         grid-area: proveedor;
     }
+
     .new-item {
         grid-area: new-item;
         align-self: self-end;
         margin-left: auto;
     }
+
     .items {
         grid-area: items;
     }
+
     .despachos {
         grid-area: despachos;
     }
+
     :global(.name-container) {
         width: auto;
         flex-grow: 1;
     }
+
     .number-container {
         width: 8rem;
     }
+
     .line {
         display: inline-flex;
         flex-wrap: wrap;
@@ -304,9 +328,11 @@ import facturas from './../assets/facturas'
         width: 100%;
         gap: 1rem;
     }
+
     input {
         width: 100%;
     }
+
     button {
         width: auto;
     }

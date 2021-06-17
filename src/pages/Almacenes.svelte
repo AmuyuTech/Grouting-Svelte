@@ -146,6 +146,8 @@
             <td>{fact.origen}</td>
             <td>{fact.destino}</td>
           </tr>
+        {:else}
+          
         {/each}
       </table>
 
