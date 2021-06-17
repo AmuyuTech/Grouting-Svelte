@@ -56,7 +56,7 @@
         despachos.forEach((v) => {
             v.items.forEach((x, i) => {
                 if (auxdesp[i] === undefined) {
-                    auxdesp = 0;
+                    auxdesp[i] = 0;
                 }
                 auxdesp[i] += x.add;
             });
@@ -66,10 +66,11 @@
             desp.push({
                 nombre: i.nombre,
                 cantidad: i.cantidad,
-                pendiente: auxdesp[pos],
+                pendiente: i.cantidad - (isNaN(auxdesp[pos]) ? 0 : auxdesp[pos]),
                 add: 0,
             });
         });
+        console.log({desp, items, auxdesp, despachos})
         despachos = [
             ...despachos,
             {
@@ -90,7 +91,7 @@
             estado: calcularEstado(),
             usuario: 'dd',
             proveedor,
-            items,
+            items: items.map(v => { aux = v; delete aux.tmp; return aux}),
             despachos
         };
         toast.push("Subiendo", {
@@ -158,30 +159,42 @@
     </div>
     <div class="items">
         <h3>Items</h3>
-        {#each items as it, idx}
+        {#each items as itm, idx}
             <div class="line">
                 <div class="number-container">
                     <label for="cantidad">Cantidad</label><input
                         type="number"
                         name="cantidad"
-                        bind:value={it.cantidad}
+                        bind:value={itm.cantidad}
                         {disabled}
                 />
                 </div>
                 <div class="name-container">
+                    Producto
                     <AutoComplete
                             items={productos}
+                            title={"Producto"}
                             labelFieldName={"nombre"}
-                            onChange="{(v) => {it.nombre = v.nombre; it.id = v.id}}"
+                            valueFieldName="nombre"
+                            bind:selectedItem={itm.tmp}
+                            bind:value={itm.nombre}
                     />
-                />
-                    {JSON.stringify(it)}
+                    <div style="display: none;">
+                        <AutoComplete
+                            items={productos}
+                            labelFieldName={"nombre"}
+                            valueFieldName="id"
+                            bind:selectedItem={itm.tmp}
+                            bind:value={itm.id}
+                    />
+
+                    </div>
                 </div>
                 <div class="number-container">
                     <label for="pu">Precio Unitaio</label><input
                         type="number"
                         name="pu"
-                        bind:value={it.precioUnitario}
+                        bind:value={itm.precioUnitario}
                         {disabled}
                 />
                 </div>
@@ -189,13 +202,13 @@
                     <label for="desc">Descuento</label><input
                         type="number"
                         name="desc"
-                        bind:value={it.descuento}
+                        bind:value={itm.descuento}
                         {disabled}
                 />
                 </div>
                 <div class="number-container">
                     <p>Total:</p>
-                    <p>{it.cantidad * it.precioUnitario - it.descuento}</p>
+                    <p>{itm.cantidad * itm.precioUnitario - itm.descuento}</p>
                 </div>
                 <button class="button" on:click={items.splice(idx, 1)}>X</button>
             </div>
@@ -314,6 +327,8 @@
     :global(.name-container) {
         width: auto;
         flex-grow: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     .number-container {

@@ -44,6 +44,7 @@ export const ProductosB = readable([], set => {
 })
 export const Categorias = readable([], set => {
     CategoriasB$.onSnapshot(snapshot => {
+        console.log(snapshot.data())
         set(Object.keys(snapshot.data()))
     })
 })
