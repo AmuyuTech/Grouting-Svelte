@@ -1,8 +1,8 @@
 
-    let producto = {
-        cantidad:[]
-    }
-    validarProducto(producto)
+    // let producto = {
+    //     cantidad:[]
+    // }
+    // validarProducto(producto)
     
 export function validarProducto(producto$){
 
@@ -13,7 +13,7 @@ export function validarProducto(producto$){
 
     //Categoria
     namAtr = 'La categoria ';
-    for(i=0 ; i<producto$.categorias.length ; i++){
+    for(let i=0 ; i<producto$.categorias.length() ; i++){
         if( producto$.categorias[i].trim() == '' ){
             ret = namAtr + 'nro: ' + (i+1).toString + ' esta vacia';
             return ret;
@@ -105,14 +105,14 @@ export function calcularEstado(factura$){
 
     //estado: calcularEstado(), Incompleto Pendiente Completo
     
-    for( i = 0 ; i < factura$.items.length ; i++ ){
+    for(let i = 0 ; i < factura$.items.length ; i++ ){
         ia1 = 0;
         ia2 = 0;
         ba1 = false;
         sa1 = factura$.items[i].nombre.trim();
         ia1 = factura$.items[i].cantidad;
-        for( j = 0 ; j < factura$.despachos.length ; j++ ){
-            for( k = 0 ; k < factura$.despachos[j].items.length ; k++ ){
+        for(let j = 0 ; j < factura$.despachos.length ; j++ ){
+            for(let k = 0 ; k < factura$.despachos[j].items.length ; k++ ){
                 sa2 = factura$.despachos[j].items[k].nombre.trim();                
                 if( sa1 == sa2 ){
                     ia2 = ia2 + factura$.despachos[j].items[k].add;
@@ -663,3 +663,8 @@ function validarGastos(gasto$){
 }
 //jesd util.specs.js
 //comando- cd src -> node utils.js -> 
+export function getDate() {
+    const aux = new Date()
+    return `${aux.getFullYear()}/${aux.getMonth()<9 ? '0': ''}${(aux.getMonth() + 1)}/${aux.getDate()}`
+}
+getDate()

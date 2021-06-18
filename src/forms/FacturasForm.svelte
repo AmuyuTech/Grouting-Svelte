@@ -4,6 +4,10 @@
   import facturas from "./../assets/facturas";
   import AutoComplete from "simple-svelte-autocomplete";
   import { ProductosB } from "../stores";
+  import { calcularEstado, getDate } from "../util.js"
+  import {toast} from '@zerodevx/svelte-toast'
+  import {onMount} from "svelte";
+
 
   export let params = {};
   let productos = [];
@@ -18,7 +22,7 @@
   let numero = "";
   let proveedor = "";
   let usuario = "";
-  let fecha = "";
+  let fecha = getDate();
   let items = [];
   let despachos = [];
 
@@ -88,16 +92,18 @@
   function aceptar() {
     let data = {
       numero,
-      estado: calcularEstado(),
       usuario: "dd",
       proveedor,
       items: items.map((v) => {
-        aux = v;
+        let aux = v;
         delete aux.tmp;
         return aux;
       }),
       despachos,
+      fecha,
     };
+    const estado  = calcularEstado(data)
+    data.estado = estado
     toast.push("Subiendo", {
       initial: 0,
       progress: 0,
