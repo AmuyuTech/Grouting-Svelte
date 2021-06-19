@@ -6,7 +6,7 @@ import { push } from "svelte-spa-router";
     function filterData(){}
 let pagesize = 10
 function register() {
-  push('Usuarios/New')
+  push('/Usuarios/New')
 }
 function getQuery(ref$) {
   return ref$
@@ -25,6 +25,9 @@ function firstPage() {
 }
 function lastPage() {
   query = ref => getQuery(ref).orderBy('nombre', 'desc').limitToLast(pagesize)
+}
+function viewUser(id$) {
+  push(`/Usuarios/${id$}`)
 }
 </script>
 
@@ -81,7 +84,7 @@ function lastPage() {
             <th>Telefono</th>
           </tr>
           {#each data as usr}
-          <tr>
+          <tr on:click={() => viewUser(usr.id)}>
             <td>{usr.ci}</td>
             <td>{usr.nombre}</td>
             <td>{usr.almacen}</td>

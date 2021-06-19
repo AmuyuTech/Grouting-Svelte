@@ -1,15 +1,37 @@
 <script>
-import { registrarUsuario, registerTestUsers } from "../firebaseAPI";
+  import { onMount } from "svelte";
 
-
-  let nombre = ''
-  let ci = ''
-  let telefono = ''
-  let correo = ''
-  let pass = ''
-  let repass = ''
-  let almacen = ''
-  let administrador = false
+  import {
+    registrarUsuario,
+    registerTestUsers,
+    actualizarUsuario,
+    getUsuario,
+  } from "../firebaseAPI";
+  export let params = {};
+  let disable = false;
+  onMount(() => {
+    if (params.id !== "New") {
+      disable = true
+      getUsuario(params.id).then((s) => {
+        const u = s.data();
+        nombre = u.nombre
+        ci = u.ci
+        telefono = u.telefono
+        correo = u.correo
+        repass = u.repass
+        almacen = u.almacen
+        administrador = u.administrador
+      });
+    }
+  });
+  let nombre = "";
+  let ci = "";
+  let telefono = "";
+  let correo = "";
+  let pass = "";
+  let repass = "";
+  let almacen = "";
+  let administrador = false;
   function aceptar() {
     toast.push("Subiendo", {
       initial: 0,
@@ -20,9 +42,20 @@ import { registrarUsuario, registerTestUsers } from "../firebaseAPI";
         "--toastProgressBackground": " #f4d03f ",
       },
     });
-    registrarUsuario({
-      nombre, ci, telefono, correo, pass, almacen, admin: administrador
-    }).then(
+    const data = {
+      nombre,
+      ci,
+      telefono,
+      correo,
+      pass,
+      almacen,
+      admin: administrador,
+    };
+    const payload =
+      params.id === "New"
+        ? registrarUsuario(data)
+        : actualizarUsuario(data, params.id);
+    payload.then(
       (s) => {
         toast.pop();
         toast.push("Exito!", {
@@ -31,7 +64,7 @@ import { registrarUsuario, registerTestUsers } from "../firebaseAPI";
             "--toastProgressBackground": "#2F855A",
           },
         });
-        replace('/Productos');
+        replace("/Productos");
       },
       (e) => {
         toast.pop();
@@ -44,41 +77,38 @@ import { registrarUsuario, registerTestUsers } from "../firebaseAPI";
         });
       }
     );
-    
   }
   function cancelar() {
-    pop()
+    pop();
   }
-  
-
 </script>
 
 <div class="gridd">
-  <div class="nombre" >
-    <label for="nombre">Nombre</label>  
-    <input type="text" bind:value={nombre} name="nombre">
+  <div class="nombre">
+    <label for="nombre">Nombre</label>
+    <input type="text" bind:value={nombre} name="nombre" />
   </div>
-  <div class="ci" >
-    <label for ="ci">CI</label>
-    <input type="text" bind:value={ci} name="ci">
-   </div>
-  <div class="telefono" >
+  <div class="ci">
+    <label for="ci">CI</label>
+    <input type="text" bind:value={ci} name="ci" disabled={disable}/>
+  </div>
+  <div class="telefono">
     <label for="telefono">Telefono</label>
-    <input type="text" bind:value={telefono} name="telefono">
+    <input type="text" bind:value={telefono} name="telefono" />
   </div>
-  <div class="correo" >
+  <div class="correo">
     <label for="correo">Correo</label>
-    <input type="email" name="correo" bind:value={correo}>
+    <input type="email" name="correo" bind:value={correo} />
   </div>
-  <div class="pass" >
-    <label for="pass">Contraseña</label>
-    <input type="password" name="pass" bind:value={pass}>
+  <div class="pass">
+    <label for="pass">{disable ? 'Nueva ' : ''}Contraseña</label>
+    <input type="password" name="pass" bind:value={pass} />
   </div>
-  <div class="repass" >
-    <label for="repass">Repita Contraseña</label>
-    <input type="password" name="repass" bind:value={repass}>
+  <div class="repass">
+    <label for="repass">Repita {disable ? 'Nueva ' : ''}Contraseña</label>
+    <input type="password" name="repass" bind:value={repass} />
   </div>
-  <div class="almacen" >
+  <div class="almacen">
     <label>
       <input type="radio" bind:group={almacen} value={"elalto"} />
       Almacen El Alto
@@ -95,19 +125,16 @@ import { registrarUsuario, registerTestUsers } from "../firebaseAPI";
 </div>
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
   <label>
-    <input type="checkbox" bind:value={administrador}>
+    Administrador
+    <input type="checkbox" bind:value={administrador} />
   </label>
-  <button on:click={registerTestUsers}>
-    REgistrar Todo
-  </button>
-  <button
-    class="button"
-    style="margin-left: auto;"
-    on:click={aceptar}>Aceptar</button
+  <button on:click={registerTestUsers}> REgistrar Todo </button>
+  <button class="button" style="margin-left: auto; width: auto;" on:click={aceptar}
+    >Aceptar</button
   >
-  <button class="button" on:click={cancelar}>Cancelar</button>
+  <button class="button" style="width: auto; margin-left: 1rem;" on:click={cancelar}>Cancelar</button>
 </div>
- 
+
 <style>
   .gridd {
     display: grid;
