@@ -1,7 +1,8 @@
 <script>
-    import {auth} from "../firebaseAPI";
+    import {auth, User} from "../firebaseAPI";
     import { replace }  from 'svelte-spa-router'
     import { toast } from '@zerodevx/svelte-toast'
+import { onDestroy, onMount } from "svelte";
     let src = "./assets/img/bg-login.jpg"
     let correo = ''
     let pass = ''
@@ -10,12 +11,24 @@
         auth.signInWithEmailAndPassword(correo, pass).then(
             value => {
                 toast.push('Exito')
-                replace('/Productos')
+                
             }, reason => {
                 toast.push('Correo o Contraseña incorrectos')
             }
         )
     }
+    let usr
+    onMount(()=>{
+        usr = User.subscribe(u=>{
+            if(u){
+            replace('/')
+            }
+        })
+    
+    })
+    onDestroy(()=>{
+        usr.unsubscribe()
+    })
 </script>
 <section>
     <div class="img-box">
@@ -25,7 +38,7 @@
     <div class="content-box">
         <div class="form-box">
             <h2>Inicio de Sesion</h2>
-            <form>
+            <div>
                 <div class="input-box">
                     <span>Correo Electronico</span>
                     <input class="inputt" type="email" name="" bind:value={correo}>
@@ -37,7 +50,7 @@
                 <div class="input-box" >
                     <button class="button"name="" on:click={login}>Iniciar Sesion</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </section>

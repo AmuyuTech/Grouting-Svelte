@@ -44,6 +44,9 @@ export let db = firebase.firestore()
 export let rt = firebase.database().ref()
 // User
 export const User = authState(auth);
+export function LogOut() {
+  auth.signOut()
+}
 // colecciones
 const _ClientesCollection = db.collection("CLIENTES");
 const _CreditosCollection = db.collection("CREDITOS");
