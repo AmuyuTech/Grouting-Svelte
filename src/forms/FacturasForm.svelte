@@ -1,24 +1,37 @@
 <script>
   import { pop, replace } from "svelte-spa-router";
-  import { actualizarFactura, registrarFactura } from "../firebaseAPI";
+  import {
+    actualizarFactura,
+    registrarFactura,
+    getFactura,
+  } from "../firebaseAPI";
   import facturas from "./../assets/facturas";
   import AutoComplete from "simple-svelte-autocomplete";
   import { ProductosB } from "../stores";
-  import { calcularEstado, getDate } from "../util.js"
-  import {toast} from '@zerodevx/svelte-toast'
-  import {onMount} from "svelte";
-
+  import { calcularEstado, getDate } from "../util.js";
+  import { toast } from "@zerodevx/svelte-toast";
+  import { onMount } from "svelte";
 
   export let params = {};
   let productos = [];
   ProductosB.subscribe((v) => (productos = v));
   let disabled = false;
-  $: {
+
+  onMount(async () => {
     if (params.id === "New") {
     } else {
       disabled = true;
+      getFactura(params.id).then((d) => {
+        const aux = d.data();
+        numero = aux.numero;
+        proveedor = aux.proveedor;
+        usuario = aux.usuario;
+        fecha = aux.fecha;
+        items = aux.items;
+        despachos = aux.despachos;
+      });
     }
-  }
+  });
   let numero = "";
   let proveedor = "";
   let usuario = "";
@@ -102,8 +115,8 @@
       despachos,
       fecha,
     };
-    const estado  = calcularEstado(data)
-    data.estado = estado
+    const estado = calcularEstado(data);
+    data.estado = estado;
     toast.push("Subiendo", {
       initial: 0,
       progress: 0,
@@ -188,6 +201,7 @@
             valueFieldName="nombre"
             bind:selectedItem={itm.tmp}
             bind:value={itm.nombre}
+            {disabled}
           />
           <div style="display: none;">
             <AutoComplete

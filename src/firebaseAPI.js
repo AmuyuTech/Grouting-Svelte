@@ -59,6 +59,24 @@ const _BucketsCollection = db.collection("BUCKETS");
 export function getProducto(id$) {
   return _ProductosCollection.doc(id$).get()
 }
+export function getFactura(id$) {
+  return _FacturasCollection.doc(id$).get()
+}
+export function getTransaccion(id$) {
+  return _AlmacenesCollection.doc(id$).get()
+}
+export function getCredito(id$) {
+  return _CreditosCollection.doc(id$).get()
+}
+export function getUsuario(id$) {
+  return _UsuariosCollection.doc(id$).get()
+}
+export function getCliente(id$) {
+  return _ClientesCollection.doc(id$).get()
+}
+export function getGasto(id$) {
+  return _GastosCollection.doc(id$).get()
+}
 //observers (*read*)
 export const Clientes$ = _ClientesCollection.orderBy("nombre");
 export const Creditos$ = _CreditosCollection.orderBy("fecha", "desc");
