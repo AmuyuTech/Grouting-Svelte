@@ -128,6 +128,7 @@ function lastPage() {
   <Datepicker
     on:datechange={ondesdeChange}
     selected={desdeAux}
+    label={'Desde'}
     isAllowed={(date) => {
       const millisecs = date.getTime();
       if (millisecs + 25 * 3600 * 1000 <= Date.now()) return true;
@@ -136,6 +137,7 @@ function lastPage() {
   /><Datepicker
     on:datechange={onhastaChange}
     selected={hastaAux}
+    label={'Hasta'}
     isAllowed={(date) => {
       const millisecs = date.getTime();
       if (millisecs + 25 * 3600 * 1000 <= Date.now()) return true;

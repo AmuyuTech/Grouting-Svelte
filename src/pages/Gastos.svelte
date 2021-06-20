@@ -89,6 +89,7 @@ function lastPage() {
     <Datepicker
     on:datechange={ondesdeChange}
     selected={desdeAux}
+    label={'Desde'}
     isAllowed={(date) => {
       const millisecs = date.getTime();
       if (millisecs + 25 * 3600 * 1000 <= Date.now()) return true;
@@ -97,6 +98,7 @@ function lastPage() {
     <Datepicker
     on:datechange={onhastaChange}
     selected={hastaAux}
+    label={'Hasta'}
     isAllowed={(date) => {
       const millisecs = date.getTime();
       if (millisecs + 25 * 3600 * 1000 <= Date.now()) return true;
@@ -115,7 +117,7 @@ function lastPage() {
             <th>Total</th>
           </tr>
           {#each data as fact}
-          <tr>
+          <tr on:click={() => {push(`/Gastos/${fact.id}`)}}>
             <td>{fact.fecha}</td>
             <td>{fact.nombre}</td>
             <td style="text-align: right; padding-right: 1rem;">Bs. {parseFloat(fact.total).toFixed(2)}</td>

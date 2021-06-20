@@ -46,7 +46,6 @@
       items,
       fecha: "" + fecha(),
     };
-    console.log({data});
     toast.push("Subiendo", {
       initial: 0,
       progress: 0,

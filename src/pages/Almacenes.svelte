@@ -106,6 +106,7 @@
   <Datepicker
     on:datechange={ondesdeChange}
     selected={desdeAux}
+    label={'Desde'}
     isAllowed={(date) => {
       const millisecs = date.getTime();
       if (millisecs + 25 * 3600 * 1000 <= Date.now()) return true;
@@ -115,6 +116,7 @@
   <Datepicker
     on:datechange={onhastaChange}
     selected={hastaAux}
+    label={'Hasta'}
     isAllowed={(date) => {
       const millisecs = date.getTime();
       if (millisecs + 25 * 3600 * 1000 <= Date.now()) return true;
@@ -146,8 +148,6 @@
             <td>{fact.origen}</td>
             <td>{fact.destino}</td>
           </tr>
-        {:else}
-          
         {/each}
       </table>
 
