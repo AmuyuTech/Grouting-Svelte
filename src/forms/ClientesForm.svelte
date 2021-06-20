@@ -1,12 +1,39 @@
 <script>
-import { registrarCliente } from "../firebaseAPI";
-import { toast } from '@zerodevx/svelte-toast'
+  import {
+    actualizarCliente,
+    getCliente,
+    registrarCliente,
+  } from "../firebaseAPI";
+  import { toast } from "@zerodevx/svelte-toast";
+  import AutoComplete from "simple-svelte-autocomplete";
+  import { onDestroy, onMount } from "svelte";
+  import { Usuarios } from "../stores";
+  import { replace } from "svelte-spa-router";
 
-  export let params = {};
-  $: {
-    if (params.id === "new") {
+  let asesores = [];
+  let obs;
+  onMount(async () => {
+    obs = Usuarios.subscribe((a) => {
+      asesores = a;
+    });
+    if (params.id !== "New") {
+      getCliente(params.id).then((snp) => {
+        const data = snp.data();
+        direccion = data.direccion;
+        id = data.id;
+        nit = data.nit;
+        nombre = data.nombre;
+        telefono = data.telefono;
+        zona = data.zona;
+        aux = { nombre: data.asesor, asesorId: aux.asesorId };
+      });
     }
-  }
+  });
+  onDestroy(() => {
+    obs();
+  });
+  export let params = {};
+
   String.prototype.hashCode = function () {
     var hash = 0,
       i,
@@ -26,6 +53,7 @@ import { toast } from '@zerodevx/svelte-toast'
   let telefono = "";
   let zona = "";
   let asesor = "";
+  let aux = {};
   function aceptar() {
     let data = {
       direccion,
@@ -34,7 +62,8 @@ import { toast } from '@zerodevx/svelte-toast'
       nombre,
       telefono,
       zona,
-      asesor
+      asesor: aux.nombre,
+      asesorId: aux.id,
     };
     toast.push("Subiendo", {
       initial: 0,
@@ -45,7 +74,11 @@ import { toast } from '@zerodevx/svelte-toast'
         "--toastProgressBackground": " #f4d03f ",
       },
     });
-    registrarCliente(data).then(
+    const payload =
+      params.id === "New"
+        ? registrarCliente(data)
+        : actualizarCliente(data, params.id);
+    payload.then(
       (s) => {
         toast.pop();
         toast.push("Exito!", {
@@ -93,10 +126,11 @@ import { toast } from '@zerodevx/svelte-toast'
     />
   </div>
   <div class="asesor">
-    <label for="asesor">Asesor</label><input
-      type="text"
-      bind:value={asesor}
-      id="asesor"
+    Asesor
+    <AutoComplete
+      items={asesores}
+      bind:selectedItem={aux}
+      labelFieldName={"nombre"}
     />
   </div>
   <div class="direccion">
@@ -131,12 +165,12 @@ import { toast } from '@zerodevx/svelte-toast'
 </div>
 
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
-  <button
-    class="button"
-    style="margin-left: auto;"
-    on:click={aceptar}>Aceptar</button
+  <button class="button" style="margin-left: auto;" on:click={aceptar}
+    >Aceptar</button
   >
-  <button class="button" on:click={cancelar} style="margin-left: 2rem;">Cancelar</button>
+  <button class="button" on:click={cancelar} style="margin-left: 2rem;"
+    >Cancelar</button
+  >
 </div>
 
 <style>

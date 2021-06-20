@@ -92,6 +92,7 @@ export const Ventas$ = _VentasCollection.orderBy("fecha", "desc");
 export const Usuarios$ = _UsuariosCollection.orderBy("nombre");
 export const ProductosB$ = _BucketsCollection.doc('productos')
 export const CategoriasB$ = _BucketsCollection.doc('categorias')
+export const UsuariosB$ = _BucketsCollection.doc('usuarios')
 //Special data
 export async function getStocks(productId$) {
   return await rt

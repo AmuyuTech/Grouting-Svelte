@@ -69,7 +69,7 @@
   <h1 style="margin-left: 1rem;">Clientes</h1>
 </div>
 <div class="controls-row">
-  <div class="input-container">
+  <!--div class="input-container">
     <svg
       aria-hidden="true"
       focusable="false"
@@ -97,12 +97,12 @@
       class="input text-input"
       placeholder="Buscar..."
     />
-  </div>
+  </div-->
   <button class="button" style="margin-left: auto;" on:click={newCliente}
     >Registrar Cliente</button
   >
 </div>
-<Collection path={"GASTOS"} {query} let:data let:first let:last>
+<Collection path={"CLIENTES"} {query} let:data let:first let:last>
   <div style="padding: 2rem;">
     <div class="table-container">
       <table class="table-body">
@@ -112,7 +112,7 @@
           <th> Telefono </th>
         </tr>
         {#each data as row}
-          <tr>
+          <tr on:click={() => push(`/Clientes/${row.id}`)}>
             <td>{row.nit}</td>
             <td>{row.nombre}</td>
             <td>{row.telefono}</td>

@@ -11,6 +11,7 @@ import {
     Productos$,
     ProductosB$,
     Usuarios$,
+    UsuariosB$,
     Ventas$
 } from "./firebaseAPI"
 
@@ -44,8 +45,21 @@ export const ProductosB = readable([], set => {
 })
 export const Categorias = readable([], set => {
     CategoriasB$.onSnapshot(snapshot => {
-        console.log(snapshot.data())
+        //console.log(snapshot.data())
         set(Object.keys(snapshot.data()))
+    })
+})
+export const Usuarios = readable([], set => {
+    UsuariosB$.onSnapshot(snapshot => {
+        const data = snapshot.data()
+        let arr = []
+        Object.keys(data).forEach(k => {
+            arr.push({
+                id: k,
+                nombre: data[k].nombre
+            })
+        })
+        set(arr)
     })
 })
 /*
