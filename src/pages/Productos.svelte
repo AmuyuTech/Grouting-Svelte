@@ -1,6 +1,7 @@
 <script>
 	import { Productos } from './../stores.js';
   import {push} from 'svelte-spa-router'
+import { GenerarCatalogo } from '../firebaseAPI.js';
   let Data = []
   let filterdedData = []
   Productos.subscribe(productos$ =>  {
@@ -14,6 +15,9 @@
   }
   function newProd() {
     push('/Productos/New')
+  }
+  function catalogo() {
+    GenerarCatalogo().then(d => console.log(d))
   }
 </script>
 
@@ -59,7 +63,7 @@
   </div>
 
   <button>Reporte de Stock</button>
-  <button>Catalogo</button>
+  <button class="button" on:click={catalogo}>Catalogo</button>
   <button class="button" style="margin-left: auto;" on:click={newProd}>Registrar Producto</button>
 </div>
 

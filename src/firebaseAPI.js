@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
+import "firebase/functions"
 import products from './assets/products.js'
 import usuarios from './assets/usuarios.js'
 import ventas from './assets/ventas.js'
@@ -27,6 +28,7 @@ if (test) {
   firebase.auth().useEmulator("http://localhost:9099");
   firebase.firestore().useEmulator("localhost", 8080);
   firebase.database().useEmulator("localhost", 9000);
+  firebase.functions().useEmulator("localhost", 5001);
 }
 
 /**
@@ -42,7 +44,13 @@ if (test) {
 export let auth = firebase.auth()
 export let db = firebase.firestore()
 export let rt = firebase.database().ref()
+let fnc = firebase.functions()
+// Fumnciones
+
+export const GenerarCatalogo = fnc.httpsCallable('generarCatalogo') 
+
 // User
+
 export const User = authState(auth);
 export function LogOut() {
   auth.signOut()

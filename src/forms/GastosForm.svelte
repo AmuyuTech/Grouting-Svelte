@@ -3,12 +3,15 @@
   import { pop, replace } from "svelte-spa-router";
   import gastos from "./../assets/gastos.js";
   import { onMount } from "svelte";
-  import { getDate } from "./../util.js";
+  import { getDate, validarGasto } from "./../util.js";
+  import { User } from "../stores.js";
+  import { toast } from "@zerodevx/svelte-toast";
   export let params = {};
-  let nombre =
-    auth.currentUser === null ? "test" : auth.currentUser.displayName;
+
+  let nombre = "Cargando";
   let fecha = getDate();
   let disabled = false;
+  let usuarioId = ''
   let items = [];
   onMount(async () => {
     if (params.id !== "New") {
@@ -19,9 +22,39 @@
         fecha = data.fecha;
         items = data.items;
       });
+    } else {
+      User.subscribe((u) => {
+        nombre = u?.displayName;
+        usuarioId = u?.uid
+        // console.log({u})
+      });
     }
   });
   function aceptar() {
+    if (params.id !== "New") {
+      return;
+    }
+    let aux = 0 
+    items.forEach(it => aux+=it.total)
+    const payload = {
+      fecha,
+      nombre,
+      usuarioId,
+      items,
+      total: aux,
+    };
+    console.log({payload});
+    const msg = validarGasto(payload);
+    console.log({msg});
+    if (msg !== "True") {
+      toast.push(msg, {
+        theme: {
+          "--toastBackground": "#F56565",
+          "--toastProgressBackground": "#C53030",
+        },
+      });
+      return;
+    }
     toast.push("Subiendo", {
       initial: 0,
       progress: 0,
@@ -31,13 +64,8 @@
         "--toastProgressBackground": " #f4d03f ",
       },
     });
-    registrarGasto({
-      fecha,
-      nombre,
-      usuarioId: auth.currentUser.id,
-      items,
-      total: items.reduce((a, b) => a.total + b.total, 0),
-    }).then(
+
+    registrarGasto(payload).then(
       (s) => {
         toast.pop();
         toast.push("Exito!", {
@@ -46,7 +74,7 @@
             "--toastProgressBackground": "#2F855A",
           },
         });
-        replace("/Productos");
+        replace("/Gastos/");
       },
       (e) => {
         toast.pop();
@@ -109,13 +137,13 @@
     <div class="number-container">
       <label>
         Cantidad
-        <input type="text" bind:value={item.cantidad} {disabled} />
+        <input type="number" bind:value={item.cantidad} {disabled} />
       </label>
     </div>
     <div class="number-container">
       <label>
         Costo
-        <input type="text" bind:value={item.total} {disabled} />
+        <input type="number" bind:value={item.total} {disabled} />
       </label>
     </div>
     <div class="number-container" />

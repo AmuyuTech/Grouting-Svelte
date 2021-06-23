@@ -17,45 +17,45 @@ const rt = admin.database()
 exports.CrearBucketProducts = functions.firestore
   .document('PRODUCTOS/{ProductId}')
   .onCreate((snap, context) => {
-      const payload =  db.batch()
-      const data = snap.data()
-      const bucket = {
-          nombre: data.nombre,
-          photourl: data.photourl
-      }
-      const id = data.id
-      const categorias = {}
-      data.categorias.forEach(c => {
-          categorias[c] = true
-      })
-      const BucketP = db.collection('BUCKETS').doc('productos')
-      const BucketC = db.collection('BUCKETS').doc('categorias')
-      payload.set(BucketP, { [id]: bucket }, {merge: true})
-      payload.set(BucketC, categorias, {merge: true})
-      return payload.commit()
+    const payload = db.batch()
+    const data = snap.data()
+    const bucket = {
+      nombre: data.nombre,
+      photourl: data.photourl
+    }
+    const id = data.id
+    const categorias = {}
+    data.categorias.forEach(c => {
+      categorias[c] = true
+    })
+    const BucketP = db.collection('BUCKETS').doc('productos')
+    const BucketC = db.collection('BUCKETS').doc('categorias')
+    payload.set(BucketP, { [id]: bucket }, { merge: true })
+    payload.set(BucketC, categorias, { merge: true })
+    return payload.commit()
 
   })
 exports.ActualizarBucketProductos = functions.firestore
   .document('PRODUCTOS/{ProductId}')
   .onUpdate((doc, ctx) => {
-    const payload =  db.batch()
+    const payload = db.batch()
     const data = doc.after.data()
     const bucket = {
       nombre: data.nombre,
       photourl: data.photourl
     }
     const id = data.id
-      const categorias = {}
-      data.categorias.forEach(c => {
-          categorias[c] = true
-      })
-      const BucketP = db.collection('BUCKETS').doc('productos')
-      const BucketC = db.collection('BUCKETS').doc('categorias')
-      payload.set(BucketP, { [id]: bucket }, {merge: true})
-      payload.set(BucketC, categorias, {merge: true})
+    const categorias = {}
+    data.categorias.forEach(c => {
+      categorias[c] = true
+    })
+    const BucketP = db.collection('BUCKETS').doc('productos')
+    const BucketC = db.collection('BUCKETS').doc('categorias')
+    payload.set(BucketP, { [id]: bucket }, { merge: true })
+    payload.set(BucketC, categorias, { merge: true })
     return payload.commit()
   })
-  exports.CrearBucketUsuarios = functions.firestore
+exports.CrearBucketUsuarios = functions.firestore
   .document('USUARIOS/{UserId}')
   .onCreate((snap, context) => {
     const data = snap.data()
@@ -178,3 +178,18 @@ exports.CreateUserClaims = functions.auth.user()
       .auth()
       .setCustomUserClaims(user.uid, { admin: us.admin, al: us.almacen })
   })
+exports.generarReporteVentas = functions.https.onCall(async (data, ctx) => {
+  const desde = data.desde
+  const hasta = data.hasta
+  const asesor = data.asesor
+  const ref = db.collection('REGISTROSVENTAS')
+  const query = ref.where('fecha', '>=', desde).where('fecha', '<=', hasta).where('asesorId', '==', asesor)
+  const payload = await query.get().then(snap => {
+    snap.docs.map(snp => snp.data())
+  })
+  return{payload}
+})
+exports.generarCatalogo = functions.https.onCall(async (data, ctx) => {
+  const payload = await db.collection('PRODUCTOS').get().then(snp => snp.docs.map(doc => doc.data()))
+  return {payload}
+})

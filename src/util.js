@@ -258,7 +258,7 @@ export function validarFactura(factura$){
             descuento: number,
         }
     */
-    for( i=0 ; i<factura$.items.length ; i++ ){
+    for(let i=0 ; i<factura$.items.length ; i++ ){
         namAtr ='La cantidad ';
         if(factura$.items[i].cantidad < 0 ){
             ret = namAtr + 'del item' + (i+1).toString() + ' de la factura es menor a cero.';
@@ -294,7 +294,7 @@ export function validarFactura(factura$){
             }
     },
     */ 
-    for( i=1 ; i < factura$.despachos.length ; i++ ){
+    for(let i=1 ; i < factura$.despachos.length ; i++ ){
         //nombre
         namAtr ='El nombre ';
         if(factura$.despachos[i].nombre.trim() == '' ){
@@ -374,7 +374,7 @@ export function validarFactura(factura$){
         ia = 0;
 
         //items
-        for( j=0 ; j < factura$.despachos[i].items.length ; j++ ){
+        for(let j=0 ; j < factura$.despachos[i].items.length ; j++ ){
             //nombre
             namAtr ='El nombre ';
             if(factura$.despachos[i].items[j].nombre.trim() == '' ){
@@ -493,7 +493,7 @@ export function validarUsuario(usuario$){
     }
 
     let b1 = false
-    for(i=0 ; i < usuario$.correo.trim().length ; i++){
+    for(let i=0 ; i < usuario$.correo.trim().length ; i++){
         if(usuario$.correo.trim()[i] == '@'){
             b1 = false
         }
@@ -540,7 +540,7 @@ export function validarUsuario(usuario$){
     return ret;
 }
 
-function validarGastos(gasto$){
+export function validarGasto(gasto$){
 
     let ret = 'True';
     let namAtr = '';
@@ -627,7 +627,7 @@ function validarGastos(gasto$){
         //nombre: '',
         //cantidad: 0,
         //costo: 0
-    for( i=0 ; i < gasto$.items.length ; i++ ){
+    for( let i=0 ; i < gasto$.items.length ; i++ ){
         namAtr ='El nombre ';
         if(gasto$.items[i].nombre.trim() == '' ){
             ret = namAtr + 'del item '+ (i+1).toString() +'del gasto esta vacio.';
@@ -652,12 +652,15 @@ function validarGastos(gasto$){
         ret = namAtr + 'del gasto es menor a cero.';
         return ret;
     }
-    namAtr ='El total de costo de items y el de gastos no concuerdan ';
-    if( gasto$.total != ia ){
-        ret = namAtr;
-        return ret;
-    }
+    // namAtr ='El total de costo de items y el de gastos no concuerdan ';
+    // if( gasto$.total != ia ){
+        // ret = namAtr;
+        // return ret;
+    // }
     ia = 0;
+    if(gasto$.items.length === 0){
+        ret = 'No hay gastos a registrar'
+    }
     //Todo bien -> ret = 'True'
     return ret;
 }
