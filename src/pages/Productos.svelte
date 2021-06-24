@@ -2,6 +2,7 @@
 	import { Productos } from './../stores.js';
   import {push} from 'svelte-spa-router'
 import { GenerarCatalogo } from '../firebaseAPI.js';
+import {getCatalogo} from '../pdfUtils.js'
   let Data = []
   let filterdedData = []
   Productos.subscribe(productos$ =>  {
@@ -17,7 +18,7 @@ import { GenerarCatalogo } from '../firebaseAPI.js';
     push('/Productos/New')
   }
   function catalogo() {
-    GenerarCatalogo().then(d => console.log(d))
+    GenerarCatalogo().then(d => getCatalogo(d.data.payload))
   }
 </script>
 
