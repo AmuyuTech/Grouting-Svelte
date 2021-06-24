@@ -1,12 +1,12 @@
 import pdfMake from "pdfmake/build/pdfmake";
 pdfMake.fonts = {
-   // download default Roboto font from cdnjs.com
-   Roboto: {
-     normal: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf',
-     bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Medium.ttf',
-     italics: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Italic.ttf',
-     bolditalics: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-MediumItalic.ttf'
-   }
+    // download default Roboto font from cdnjs.com
+    Roboto: {
+        normal: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf',
+        bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Medium.ttf',
+        italics: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Italic.ttf',
+        bolditalics: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-MediumItalic.ttf'
+    }
 }
 
 //------------------------------------------FACTURAS----------------------------------------------
@@ -1351,9 +1351,9 @@ export const pdf_usuario = (usuario$) => {
 */
 export function getCatalogo(data$) {
     let data = []
-    data$.forEach(async  d => {
+    data$.forEach(async d => {
         const img = await getData(d.photourl).then(v => v)
-    
+
         data.push(
             [
                 `Nombre: ${d.nombre}`,
@@ -1382,7 +1382,7 @@ export function getCatalogo(data$) {
             ]
         )
     })
-   
+
     var dd = {
         content: [
             header('Catalogo'),
@@ -1394,34 +1394,82 @@ export function getCatalogo(data$) {
                     // dontBreakRows: true,
                     // keepWithHeaderRows: 1,
                     body: data,
-                }, layout: 'noBordsers'
+                }, layout: 'noBorders'
             }
         ],
-        styles: {
-            header: {
-                fontSize: 18,
-                bold: true,
-                margin: [0, 0, 0, 10]
-            },
-            subheader: {
-                fontSize: 16,
-                bold: true,
-                margin: [0, 10, 0, 5]
-            },
-            tableExample: {
-                margin: [0, 0, 0, 0]
-            },
-            tableHeader: {
-                bold: true,
-                fontSize: 13,
-                color: 'black'
-            }
-        }
+        styles: stylesd
     };
     pdfMake.createPdf(dd).open();
 
 }
-function header(nombre$) {
+export function getStocks(data$) {
+    let data = []
+    data$.forEach(d => {
+        data.push([
+            d.nombre,
+            d.elalto + '',
+            d.sopocachi + '',
+            d.zonasur + '',
+            (d.elalto + d.sopocachi + d.zonasur) + "",
+        ])
+    })
+    var dd = {
+        content: [
+            header('Reporte de Stocks', { hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h24" }),
+            {
+                style: 'tableExample',
+                table: {
+                    headerRows: 2,
+                    widths: ['*', 'auto', 'auto', 'auto', 'auto'],
+                    // dontBreakRows: true,
+                    // keepWithHeaderRows: 1,
+                    body: [
+                        // header
+                        [
+                            { text: 'Nombre', style: 'tableHeader', rowSpan: 2, alignment: 'center', width: '*' },
+                            { text: 'Stock en Almacen', style: 'tableHeader', colSpan: 4, alignment: 'center' },
+                            '',
+                            '',
+                            '',
+                        ],
+                        [
+                            '',
+                            { text: 'El Alto', style: 'tableHeader', alignment: 'center' },
+                            { text: 'Sopocachi', style: 'tableHeader', alignment: 'center' },
+                            { text: 'Zona Sur', style: 'tableHeader', alignment: 'center' },
+                            { text: 'Total', style: 'tableHeader', alignment: 'center' },
+                        ],
+                        // coontenido de la tabla
+                        ...data,
+                    ]
+                }, layout: 'lightHorizontalLines',
+            }
+        ],
+        styles: stylesd
+    };
+    pdfMake.createPdf(dd).open();
+}
+const stylesd = {
+    header: {
+        fontSize: 18,
+        bold: true,
+        margin: [0, 0, 0, 10]
+    },
+    subheader: {
+        fontSize: 16,
+        bold: true,
+        margin: [0, 10, 0, 5]
+    },
+    tableExample: {
+        margin: [0, 0, 0, 0]
+    },
+    tableHeader: {
+        bold: true,
+        fontSize: 13,
+        color: 'black'
+    }
+}
+function header(nombre$, format = {}) {
     return ({
         stack: [
             {
@@ -1452,14 +1500,14 @@ function header(nombre$) {
 </svg>`
             },
             { text: nombre$, fontSize: 14 },
-            { text: 'Generado el: ' + (new Date()).toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }), fontSize: 10 },
+            { text: 'Generado el: ' + (new Date()).toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', ...format }), fontSize: 10 },
         ],
         style: 'header',
         alignment: 'center'
     })
 }
 async function getData(url$) {
-    let blob = await fetch(url$, {mode: 'cors'}).then(r => r.blob());
+    let blob = await fetch(url$, { mode: 'cors' }).then(r => r.blob());
     let dataUrl = await new Promise(resolve => {
         let reader = new FileReader();
         reader.onload = () => resolve(reader.result);

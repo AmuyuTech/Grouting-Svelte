@@ -13,7 +13,6 @@ admin.initializeApp();
 const db = admin.firestore()
 const rt = admin.database()
 
-
 exports.CrearBucketProducts = functions.firestore
   .document('PRODUCTOS/{ProductId}')
   .onCreate((snap, context) => {
@@ -76,7 +75,31 @@ exports.ActualizarBucketUsuarios = functions.firestore
       // photourl: data.photourl
     }
     const id = data.id
-    return db.collection('BUCKETS').doc('productos').set({ [id]: bucket }, { merge: true })
+    return db.collection('BUCKETS').doc('usuarios').set({ [id]: bucket }, { merge: true })
+  })
+
+  exports.CrearBucketClientes = functions.firestore
+  .document('CLIENTES/{UserId}')
+  .onCreate((snap, context) => {
+    const data = snap.data()
+    const bucket = {
+      nombre: data.nombre,
+      // photourl: data.photourl
+    }
+    const id = data.id
+    return db.collection('BUCKETS').doc('clientes').set({ [id]: bucket }, { merge: true })
+
+  })
+exports.ActualizarBucketClientes = functions.firestore
+  .document('CLIENTES/{UserId}')
+  .onUpdate((doc, ctx) => {
+    const data = doc.after.data()
+    const bucket = {
+      nombre: data.nombre,
+      // photourl: data.photourl
+    }
+    const id = data.id
+    return db.collection('BUCKETS').doc('clientes').set({ [id]: bucket }, { merge: true })
   })
 exports.CrearStock = functions.firestore
   .document('PRODUCTOS/{ProductId}')
@@ -87,6 +110,12 @@ exports.CrearStock = functions.firestore
       elalto: 0,
       sopocachi: 0,
       zonasur: 0
+    }, (error) => {
+      if (error) {
+        console.log('Data could not be saved.' + error);
+      } else {
+        console.log('Data saved successfully.');
+      }
     })
   })
 exports.ActualizarStock = functions.firestore
@@ -178,11 +207,12 @@ exports.CreateUserClaims = functions.auth.user()
       .auth()
       .setCustomUserClaims(user.uid, { admin: us.admin, al: us.almacen })
   })
-exports.generarReporteVentas = functions.https.onCall(async (data, ctx) => {
+exports.generarReporte = functions.https.onCall(async (data, ctx) => {
   const desde = data.desde
   const hasta = data.hasta
   const asesor = data.asesor
-  const ref = db.collection('REGISTROSVENTAS')
+  const tipo = data.tipo === 'Ventas' ? 'REGISTROSVENTAS' : data.tipo === 'Creaditos' ? 'CREDITOS'  : 'TRANSACCIONES'
+  const ref = db.collection(tipo)
   const query = ref.where('fecha', '>=', desde).where('fecha', '<=', hasta).where('asesorId', '==', asesor)
   const payload = await query.get().then(snap => {
     snap.docs.map(snp => snp.data())
@@ -192,4 +222,18 @@ exports.generarReporteVentas = functions.https.onCall(async (data, ctx) => {
 exports.generarCatalogo = functions.https.onCall(async (data, ctx) => {
   const payload = await db.collection('PRODUCTOS').get().then(snp => snp.docs.map(doc => doc.data()))
   return {payload}
+})
+exports.generarStock = functions.https.onCall(async (d, ctx) => {
+  const  prods = await db.collection('BUCKETS').doc('productos').get().then(snp => snp.data())
+  let data = []
+  const stocks = await rt.ref('productos').get().then(s => s.val())
+  Object.keys(prods).forEach(k => {
+    data.push({
+      nombre: prods[k].nombre,
+      elalto: stocks[k].elalto,
+      sopocachi: stocks[k].sopocachi,
+      zonasur: stocks[k].zonasur,
+    })
+  })
+  return {payload: data}
 })

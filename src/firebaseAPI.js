@@ -48,6 +48,8 @@ let fnc = firebase.functions()
 // Fumnciones
 
 export const GenerarCatalogo = fnc.httpsCallable('generarCatalogo') 
+export const GenerarStocks = fnc.httpsCallable('generarStock') 
+export const GenerarReporteVentas = fnc.httpsCallable('generarReporte') 
 
 // User
 

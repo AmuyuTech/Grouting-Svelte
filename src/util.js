@@ -670,4 +670,6 @@ export function getDate() {
     const aux = new Date()
     return `${aux.getFullYear()}/${aux.getMonth()<9 ? '0': ''}${(aux.getMonth() + 1)}/${aux.getDate()}`
 }
-getDate()
+export function getTipoVenta(tipo$) {
+    return tipo$ == 1 ? 'Efectivo' : tipo$ == 2 ? 'Credito' : 'Otro'
+}

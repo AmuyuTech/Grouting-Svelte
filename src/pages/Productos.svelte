@@ -1,8 +1,8 @@
 <script>
 	import { Productos } from './../stores.js';
   import {push} from 'svelte-spa-router'
-import { GenerarCatalogo } from '../firebaseAPI.js';
-import {getCatalogo} from '../pdfUtils.js'
+import { GenerarCatalogo, GenerarStocks } from '../firebaseAPI.js';
+import {getCatalogo, getStocks} from '../pdfUtils.js'
   let Data = []
   let filterdedData = []
   Productos.subscribe(productos$ =>  {
@@ -19,6 +19,9 @@ import {getCatalogo} from '../pdfUtils.js'
   }
   function catalogo() {
     GenerarCatalogo().then(d => getCatalogo(d.data.payload))
+  }
+  function stocks() {
+    GenerarStocks().then(d => getStocks(d.data.payload))
   }
 </script>
 
@@ -63,7 +66,7 @@ import {getCatalogo} from '../pdfUtils.js'
     <input  bind:value={search} on:keyup={filterData} class="text-input input" placeholder="Buscar...">
   </div>
 
-  <button>Reporte de Stock</button>
+  <button class="button" on:click={stocks}>Reporte de Stock</button>
   <button class="button" on:click={catalogo}>Catalogo</button>
   <button class="button" style="margin-left: auto;" on:click={newProd}>Registrar Producto</button>
 </div>
