@@ -21,4 +21,4 @@ jobs:
       - name: Deploy to Firebase Functions
         uses: BIGG-Kaymo/deploy-firebase-functions@v1.0.1
         env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_INVENTARIOCONSTRUCTORA }}
+          FIREBASE_TOKEN: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_INVENTARIOCONSTRUCTORA }}'
