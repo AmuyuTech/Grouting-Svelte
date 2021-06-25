@@ -1,6 +1,8 @@
 <script>
 	import { Productos } from './../stores.js';
   import {push} from 'svelte-spa-router'
+import { GenerarCatalogo, GenerarStocks } from '../firebaseAPI.js';
+import {getCatalogo, getStocks} from '../pdfUtils.js'
   let Data = []
   let filterdedData = []
   Productos.subscribe(productos$ =>  {
@@ -10,14 +12,16 @@
   let search = ""
   function filterData() {
     const s  = search.trim().toLowerCase()
-    if (s == 0) {
-      filterdedData = Data
-    }else {
-      filterdedData = Data.filter(p => p.nombre.toLowerCase().includes(s))
-    }
+    filterdedData = s.length === 0 ? Data : Data.filter(p => p.nombre.toLowerCase().includes(s));
   }
   function newProd() {
     push('/Productos/New')
+  }
+  function catalogo() {
+    GenerarCatalogo().then(d => getCatalogo(d.data.payload))
+  }
+  function stocks() {
+    GenerarStocks().then(d => getStocks(d.data.payload))
   }
 </script>
 
@@ -62,8 +66,8 @@
     <input  bind:value={search} on:keyup={filterData} class="text-input input" placeholder="Buscar...">
   </div>
 
-  <button>Reporte de Stock</button>
-  <button>Catalogo</button>
+  <button class="button" on:click={stocks}>Reporte de Stock</button>
+  <button class="button" on:click={catalogo}>Catalogo</button>
   <button class="button" style="margin-left: auto;" on:click={newProd}>Registrar Producto</button>
 </div>
 
@@ -71,12 +75,11 @@
   {#each filterdedData as p}
     
  
-  <div class="cardContainer">
+  <div class="cardContainer" on:click={push(`/Productos/${p.id}`)}>
     <div class="card front">
       <div
         class="img"
-        style="background-image: url({p.photourl});"
-      />
+        style="background-image: url({p.photourl});"></div>
       <div class="info">
         <p>
           {p.nombre}

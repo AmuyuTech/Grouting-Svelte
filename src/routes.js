@@ -12,6 +12,12 @@ import NotFound from "./pages/NotFound.svelte";
 import MainPage from "./pages/MainPage.svelte";
 import ProductForm from "./forms/ProductForm.svelte";
 import ClientesForm from "./forms/ClientesForm.svelte";
+import FacturasForm from "./forms/FacturasForm.svelte"
+import GastosForm from './forms/GastosForm.svelte'
+import UsuarioForm from './forms/UsuarioForm.svelte'
+import TransaccionForm from './forms/TransaccionForm.svelte'
+import CreditosForm from './forms/CreditosForm.svelte'
+import VentasForm from './forms/VentasForm.svelte'
 
 export default {
   // Exact path
@@ -27,6 +33,13 @@ export default {
   "/Ventas": Ventas,
   "/Productos/:id": ProductForm,
   "/Clientes/:id": ClientesForm,
+  "/Facturas/:id": FacturasForm,
+  "/Gastos/:id": GastosForm,
+  "/Usuarios/:id": UsuarioForm,
+  "/Almacenes/:id": TransaccionForm,
+  "/Creditos/:id": CreditosForm,
+  "/Ventas/:id": VentasForm,
+
   //'':,
 
   // Using named parameters, with last being optional

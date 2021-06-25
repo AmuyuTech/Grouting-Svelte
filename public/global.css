@@ -41,7 +41,7 @@ input, button, select, textarea {
 }
 
 input:disabled {
-	color: #ccc;
+	color: black;
 }
 
 button {
@@ -60,4 +60,55 @@ button:not(:disabled):active {
 
 button:focus {
 	border-color: #666;
+}
+
+.table-container {
+    border-radius: 1rem;
+    overflow: hidden;
+    overflow-x: auto;
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+
+    width: 100%;
+}
+
+th {
+    font-family: Lato-Bold;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.4;
+    background-color: #6c7ae0;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f6ff;
+}
+
+td {
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+th {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.table-footer {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: transparent;
+    border-color: transparent;
 }

@@ -1,54 +1,53 @@
 <script>
-	import { Clientes } from './../stores.js';
-  
-  import Sort from "./../components/Tabla/Sort.svelte";
-  
-  import Table from "./../components/Tabla/Table.svelte";
-  import { sortNumber, sortString } from "./../components/Tabla/sorting";
+  import { Collection } from "sveltefire";
+  import {push} from 'svelte-spa-router'
+import { registerTestClientes } from "../firebaseAPI";
+import { getContext } from "svelte";
+const { open } = getContext('simple-modal');
+  function registerTest() {
+    registerTestClientes()
+  }
+  function reporte() {
+    open(ReportGenerator, {sw: true, nombre: 'Clientes'})
+  }
   let search = "";
-  let items = [];
- 
-  let Data = []
-  Clientes.subscribe(clientes$ =>  {
-    Data = clientes$
-    items = Data
-  })
-
-
-  let page = 0;
-  let pageSize = 10; 
-
-  function onCellClick(row) {
-  }
-
-  function onSortString(event) {
-    event.detail.rows = sortString(
-      event.detail.rows,
-      event.detail.dir,
-      event.detail.key
-    );
-  }
-
-  function onSortNumber(event) {
-    event.detail.rows = sortNumber(
-      event.detail.rows,
-      event.detail.dir,
-      event.detail.key
-    );
-  }
-  function filterData(){
-    const s = search.trim().toLowerCase()
-    if(s.length >  0){
-      Data = items.filter(v => {
-        return Object.values(v).toString().toLowerCase().indexOf(s) !== -1
-      })
-    }else {
-      Data = items
+  let pagesize = 10
+  function filterData() {
+    const s = search.trim().toLowerCase();
+    if (s.length > 0) {
+      Data = items.filter((v) => {
+        return Object.values(v).toString().toLowerCase().indexOf(s) !== -1;
+      });
+    } else {
+      Data = items;
     }
-    
   }
-  function newCliente(){
-    push('/Clientes/New')
+  function newCliente() {
+    push("/Clientes/New");
+  }
+  let query = (ref) => ref.orderBy("nombre", "desc").limit(pagesize);
+
+  function nextPage(last$) {
+    query = (ref) =>
+      getQuery(ref)
+        .orderBy("nombre", "desc")
+        .startAfter(last$["nombre"])
+        .limit(pagesize);
+  }
+
+  function prevPAge(first$) {
+    query = (ref) =>
+      getQuery(ref)
+        .orderBy("nombre", "desc")
+        .endBefore(first$["nombre"])
+        .limitToLast(pagesize);
+  }
+  function firstPage() {
+    query = (ref) => getQuery(ref).orderBy("nombre", "desc").limit(pagesize);
+  }
+  function lastPage() {
+    query = (ref) =>
+      getQuery(ref).orderBy("nombre", "desc").limitToLast(pagesize);
   }
 </script>
 
@@ -79,7 +78,7 @@
   <h1 style="margin-left: 1rem;">Clientes</h1>
 </div>
 <div class="controls-row">
-  <div class="input-container">
+  <!--div class="input-container">
     <svg
       aria-hidden="true"
       focusable="false"
@@ -107,40 +106,121 @@
       class="input text-input"
       placeholder="Buscar..."
     />
-  </div>
-  <button class="button"style="margin-left: auto;" on:click={newCliente}>Registrar Cliente</button>
+  </div-->
+  <button class="button" on:click={reporte}>Reporte de Deudas</button>
+  <button on:click={registerTest}>REgistar TEst</button>
+  <button class="button" style="margin-left: auto;" on:click={newCliente}
+    >Registrar Cliente</button
+  >
 </div>
+<Collection path={"CLIENTES"} {query} let:data let:first let:last>
+  <div style="padding: 2rem;">
+    <div class="table-container">
+      <table class="table-body">
+        <tr>
+          <th> NIT </th>
+          <th> Nombre </th>
+          <th> Telefono </th>
+        </tr>
+        {#each data as row}
+          <tr on:click={() => push(`/Clientes/${row.id}`)}>
+            <td>{row.nit}</td>
+            <td>{row.nombre}</td>
+            <td>{row.telefono}</td>
+          </tr>
+        {/each}
+      </table>
 
+      <div class="table-footer">
+        <!-- No implementable??  revirsar p style="margin-left: 2rem;">## de ### </p-->
 
-<Table {page} {pageSize} rows={Data} let:rows={rows2} text={search}>
-  <thead slot="head">
-    <tr>
-      <th>
-        NIT
-        <Sort key="nit" on:sort={onSortString} />
-      </th>
-      <th>
-        Nombre
-        <Sort key="nombre" on:sort={onSortString} />
-      </th>
-      <th>
-        Telefono
-        <Sort key="nit" on:sort={onSortNumber} />
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {#each rows2 as row, index (row)}
-      <tr {index} on:click={() => onCellClick(row)}>
-        <td data-label="Name">{row.nit}</td>
-        <td data-label="Lastname">{row.nombre}</td>
-        <td data-label="Age">{row.telefono}</td>
-      </tr>
-    {/each}
-  </tbody>
-</Table>
-
+        <button
+          style="margin-left: auto;"
+          class="footer-button"
+          on:click={firstPage}
+        >
+          <svg viewBox="0 0 24 24" focusable="false" class="footer-icon"
+            ><path
+              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+            /></svg
+          >
+        </button>
+        <button class="footer-button" on:click={prevPAge(first)}>
+          <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
+            ><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg
+          >
+        </button>
+        <button class="footer-button" on:click={nextPage(last)}>
+          <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
+            ><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg
+          >
+        </button>
+        <button
+          class="footer-button"
+          style="margin-right: 2rem;"
+          on:click={lastPage}
+        >
+          <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
+            ><path
+              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+            /></svg
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+  <span slot="loading">Cargando...</span>
+</Collection>
 <style>
+  .table-container {
+      border-radius: 1rem;
+      overflow: hidden;
+      overflow-x: auto;
+      box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+      width: 100%;
+  }
   
-
-</style>
+  table {
+      border-collapse: collapse;
+  
+      width: 100%;
+  }
+  
+  th {
+      font-family: Lato-Bold;
+      font-size: 18px;
+      color: #fff;
+      line-height: 1.4;
+      background-color: #6c7ae0;
+  }
+  
+  tr:nth-child(even) {
+      background-color: #f8f6ff;
+  }
+  
+  td {
+      padding-left: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+  }
+  
+  th {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+  }
+  
+  .table-footer {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+  }
+  
+  .footer-button {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: transparent;
+      border-color: transparent;
+  }
+  </style>
+  
