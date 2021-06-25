@@ -84,6 +84,7 @@ exports.ActualizarBucketUsuarios = functions.firestore
     const data = snap.data()
     const bucket = {
       nombre: data.nombre,
+      nit: data.nit,
       // photourl: data.photourl
     }
     const id = data.id
@@ -96,6 +97,7 @@ exports.ActualizarBucketClientes = functions.firestore
     const data = doc.after.data()
     const bucket = {
       nombre: data.nombre,
+      nit: data.nit,
       // photourl: data.photourl
     }
     const id = data.id
@@ -208,12 +210,21 @@ exports.CreateUserClaims = functions.auth.user()
       .setCustomUserClaims(user.uid, { admin: us.admin, al: us.almacen })
   })
 exports.generarReporte = functions.https.onCall(async (data, ctx) => {
-  const desde = data.desde
-  const hasta = data.hasta
-  const asesor = data.asesor
-  const tipo = data.tipo === 'Ventas' ? 'REGISTROSVENTAS' : data.tipo === 'Creaditos' ? 'CREDITOS'  : 'TRANSACCIONES'
+  const desde   = data.desde
+  const hasta   = data.hasta
+  const asesor  = data.asesor
+  const cliente = data.cliente
+  const tipo = data.tipo === 'Ventas' ? 'REGISTROSVENTAS' : data.tipo === 'Creditos' ? 'CREDITOS'  : data.tipo === 'Gastos' ? 'GASTOS': 'TRANSACCIONES'
   const ref = db.collection(tipo)
-  const query = ref.where('fecha', '>=', desde).where('fecha', '<=', hasta).where('asesorId', '==', asesor)
+  let query = ref.where('fecha', '>=', desde).where('fecha', '<=', hasta)
+  if(tipo === 'CREDITOS' || tippo === 'REGISTROSVENTAS')  {
+    if(asesor !== ''){
+    query = query.where('asesorId', '==', asesor)
+    }
+    if(cliente !== ''){
+      query = query.where('cliente', '==', cliente)
+    }
+  }
   const payload = await query.get().then(snap => {
     snap.docs.map(snp => snp.data())
   })

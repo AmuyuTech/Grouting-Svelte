@@ -7,6 +7,8 @@ import "firebase/functions"
 import products from './assets/products.js'
 import usuarios from './assets/usuarios.js'
 import ventas from './assets/ventas.js'
+import clientes from './assets/clientes.js'
+import { getDate } from "./util.js";
 
 
 const firebaseConfig = {
@@ -49,7 +51,7 @@ let fnc = firebase.functions()
 
 export const GenerarCatalogo = fnc.httpsCallable('generarCatalogo') 
 export const GenerarStocks = fnc.httpsCallable('generarStock') 
-export const GenerarReporteVentas = fnc.httpsCallable('generarReporte') 
+export const GenerarReporte = fnc.httpsCallable('generarReporte') 
 
 // User
 
@@ -90,6 +92,9 @@ export function getCliente(id$) {
 export function getGasto(id$) {
   return _GastosCollection.doc(id$).get()
 }
+export function getVenta(id$) {
+  return _VentasCollection.doc(id$).get()
+}
 //observers (*read*)
 export const Clientes$ = _ClientesCollection.orderBy("nombre");
 export const Creditos$ = _CreditosCollection.orderBy("fecha", "desc");
@@ -103,6 +108,7 @@ export const Usuarios$ = _UsuariosCollection.orderBy("nombre");
 export const ProductosB$ = _BucketsCollection.doc('productos')
 export const CategoriasB$ = _BucketsCollection.doc('categorias')
 export const UsuariosB$ = _BucketsCollection.doc('usuarios')
+export const ClientesB$ = _BucketsCollection.doc('clientes')
 //Special data
 export async function getStocks(productId$) {
   return await rt
@@ -172,6 +178,17 @@ export function registerTestVentas() {
   const payload = db.batch()
   ventas.forEach( u => {
     const doc = _VentasCollection.doc()
+    const mili = 1e3 * u.fecha.seconds + u.fecha.nanoseconds / 1e6
+    const dat = new Date(mili)
+    const data = {...u, id: doc.id, fecha: getDate(dat)}
+    payload.set(doc, data)
+  })
+  payload.commit()
+}
+export function registerTestClientes() {
+  const payload = db.batch()
+  clientes.forEach( u => {
+    const doc = _ClientesCollection.doc()
     const data = {...u, id: doc.id}
     payload.set(doc, data)
   })

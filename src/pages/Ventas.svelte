@@ -3,6 +3,10 @@
   import Datepicker from "../components/Datepicker/Datepicker.svelte";
   import { Collection } from "sveltefire";
   import {registerTestVentas} from "../firebaseAPI";
+import { getContext } from "svelte";
+import ReportGenerator from "../components/ReportGenerator.svelte";
+
+  const { open } = getContext('simple-modal');
   let search = "";
 
   let page = 0;
@@ -13,7 +17,9 @@
   let datefilterEnd = "";
   let desdeAux = new Date();
   let hastaAux = new Date();
-
+  const reporte = () => {
+    open(ReportGenerator, {sw: true, nombre: 'Ventas'})
+  }
   const ondesdeChange = (d) => {
     datefilterStart = toStr(d.detail);
     desdeAux = d.detail;
@@ -115,6 +121,7 @@
       return false;
     }}
   />
+  <button class="button" style="margin-left: 1rem; width: auto;" on:click={reporte}>Generar Reporte</button>
   <button
     class="button"
     style="margin-left: auto;"
@@ -136,7 +143,7 @@
             <td>{fact.fecha}</td>
             <td>{fact.asesor}</td>
             <td>{fact.nombre}</td>
-            <td>{fact.tipo === 1 ? 'Efectivo': (fact.tipo === 2 ? 'Credito' : 'Otro')}</td>
+            <td>{fact.tipo === 1 ? 'Efectivo': (fact.tipo === 2 ? 'Credito' : fact.tipo === 3 ? 'Otro' : fact.tipo)}</td>
           </tr>
         {/each}
       </table>

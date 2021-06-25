@@ -1,6 +1,15 @@
 <script>
   import { Collection } from "sveltefire";
   import {push} from 'svelte-spa-router'
+import { registerTestClientes } from "../firebaseAPI";
+import { getContext } from "svelte";
+const { open } = getContext('simple-modal');
+  function registerTest() {
+    registerTestClientes()
+  }
+  function reporte() {
+    open(ReportGenerator, {sw: true, nombre: 'Clientes'})
+  }
   let search = "";
   let pagesize = 10
   function filterData() {
@@ -98,6 +107,8 @@
       placeholder="Buscar..."
     />
   </div-->
+  <button class="button" on:click={reporte}>Reporte de Deudas</button>
+  <button on:click={registerTest}>REgistar TEst</button>
   <button class="button" style="margin-left: auto;" on:click={newCliente}
     >Registrar Cliente</button
   >

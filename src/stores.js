@@ -4,6 +4,7 @@ import {
     auth,
     CategoriasB$,
     Clientes$,
+    ClientesB$,
     Creditos$,
     Despachos$,
     Facturas$,
@@ -57,6 +58,19 @@ export const Usuarios = readable([], set => {
             arr.push({
                 id: k,
                 nombre: data[k].nombre
+            })
+        })
+        set(arr)
+    })
+})
+export const Clientes = readable([], set => {
+    ClientesB$.onSnapshot(snapshot => {
+        const data = snapshot.data()
+        let arr = []
+        Object.keys(data).forEach(k => {
+            arr.push({
+                id: k,
+                ...data[k]
             })
         })
         set(arr)

@@ -666,10 +666,18 @@ export function validarGasto(gasto$){
 }
 //jesd util.specs.js
 //comando- cd src -> node utils.js -> 
-export function getDate() {
-    const aux = new Date()
+export function getDate(aux = new Date()) {
     return `${aux.getFullYear()}/${aux.getMonth()<9 ? '0': ''}${(aux.getMonth() + 1)}/${aux.getDate()}`
 }
 export function getTipoVenta(tipo$) {
     return tipo$ == 1 ? 'Efectivo' : tipo$ == 2 ? 'Credito' : 'Otro'
+}
+/**
+ * 
+ * @param {string} s$ 
+ * @returns {true} si es una fecha en formato {false} si no lo es
+ */
+export function isValidDate(s$) {
+    //La magia de las expreciones Regulares
+    return /\d{4}\/\d{2}\/\d{2}/g.test(s$)
 }
