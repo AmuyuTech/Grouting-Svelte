@@ -38,7 +38,7 @@ if (test) {
  * ! search $PORT process
  * ? netstat -ano | findstr :5001
  * * Protocol localAddress RemoteAddress Estado PID
- * ! matar el proceso $PID
+ * ! matar el proceso $PIDs
  * ? taskkill /F /PID 2564
  */
 
@@ -157,25 +157,25 @@ function setUsr(ref$, data$) {
 
 
 export function registerTestProducts() {
-  const payload = db.batch()
+  if(test){const payload = db.batch()
   products.forEach(p => {
     const doc = _ProductosCollection.doc()
     const data = {...p, id: doc.id}
     payload.set(doc, data)
   });
-  payload.commit()
+  payload.commit()}
 }
 export function registerTestUsers() {
-  const payload = db.batch()
+  if(test){const payload = db.batch()
   usuarios.forEach( u => {
     const doc = _UsuariosCollection.doc(u.ci)
     const data = {...u, id: doc.id}
     payload.set(doc, data)
   })
-  payload.commit()
+  payload.commit()}
 }
 export function registerTestVentas() {
-  const payload = db.batch()
+  if(test){const payload = db.batch()
   ventas.forEach( u => {
     const doc = _VentasCollection.doc()
     const mili = 1e3 * u.fecha.seconds + u.fecha.nanoseconds / 1e6
@@ -183,14 +183,14 @@ export function registerTestVentas() {
     const data = {...u, id: doc.id, fecha: getDate(dat)}
     payload.set(doc, data)
   })
-  payload.commit()
+  payload.commit()}
 }
 export function registerTestClientes() {
-  const payload = db.batch()
+  if(test){const payload = db.batch()
   clientes.forEach( u => {
     const doc = _ClientesCollection.doc()
     const data = {...u, id: doc.id}
     payload.set(doc, data)
   })
-  payload.commit()
+  payload.commit()}
 }

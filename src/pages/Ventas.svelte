@@ -139,7 +139,7 @@ import ReportGenerator from "../components/ReportGenerator.svelte";
           <th>Tipo</th>
         </tr>
         {#each data as fact}
-          <tr>
+          <tr onclick={() => {console.log('cliuck'); push(`/Ventas/${fact.id}`)}}>
             <td>{fact.fecha}</td>
             <td>{fact.asesor}</td>
             <td>{fact.nombre}</td>

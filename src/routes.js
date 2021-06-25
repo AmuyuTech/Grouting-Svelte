@@ -17,6 +17,7 @@ import GastosForm from './forms/GastosForm.svelte'
 import UsuarioForm from './forms/UsuarioForm.svelte'
 import TransaccionForm from './forms/TransaccionForm.svelte'
 import CreditosForm from './forms/CreditosForm.svelte'
+import VentasForm from './forms/VentasForm.svelte'
 
 export default {
   // Exact path
@@ -37,6 +38,8 @@ export default {
   "/Usuarios/:id": UsuarioForm,
   "/Almacenes/:id": TransaccionForm,
   "/Creditos/:id": CreditosForm,
+  "/Ventas/:id": VentasForm,
+
   //'':,
 
   // Using named parameters, with last being optional
