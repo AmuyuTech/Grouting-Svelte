@@ -14,7 +14,7 @@
         open(CategoriasSelector, { onOk });
     };
     export let params = {};
-    const IMGBB_KEY = "70fa84e6fd037e5fea9b30d1ab78222a";
+    const IMGBB_KEY = IMGBB_API_KEY;
     onMount(async () => {
         if (params.id !== "New") {
             getProducto(params.id).then(d => {

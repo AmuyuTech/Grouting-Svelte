@@ -12,14 +12,13 @@ import { getDate } from "./util.js";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDhvu01irK5L0cBV-BpD60QO584MCtEosY",
-  authDomain: "inventarioconstructora.firebaseapp.com",
-  databaseURL: "https://inventarioconstructora.firebaseio.com",
-  projectId: "inventarioconstructora",
-  storageBucket: "inventarioconstructora.appspot.com",
-  messagingSenderId: "1018493948173",
-  appId: "1:1018493948173:web:948f05ee871c3743df6044",
-  measurementId: "G-Q47X7GZVGL",
+  apiKey: API_KEY,
+  authDomain: AUTH_DOMAIN,
+  projectId: PROJECT_ID,
+  storageBucket: STORAGE_BUCKET,
+  messagingSenderId: MESSAGING_SENDER_ID,
+  appId: APP_ID,
+  measurementId: MEASUREMENT_ID,
 };
 let test = false;
 firebase.initializeApp(firebaseConfig);
