@@ -7,14 +7,14 @@
     import {toast} from '@zerodevx/svelte-toast'
     import { getContext } from 'svelte';
     import CategoriasSelector from './../components/CategoriasSelector.svelte'
- //adsasdasd
+
     const { open } = getContext('simple-modal');
     const onOk = (c) => categorias = [...categorias, c]
     const showCat = () => {
         open(CategoriasSelector, { onOk });
     };
     export let params = {};
-    const IMGBB_KEY = IMGBB_API_KEY;
+    const  IMGBB_API_KEY= IMGBB_KEY;
     onMount(async () => {
         if (params.id !== "New") {
             getProducto(params.id).then(d => {
@@ -23,14 +23,12 @@
                 codigo = p.codigo
                 codigodebarras = p.codigodebarras
                 descripcion = p.descripcion
-                descuentoFerreteria = p.descuentoFerreteria
-                descuentoObras = p.descuentoObras
-                descuentoOficina = p.descuentoOficina
                 nombre = p.nombre
                 photourl = p.photourl
-                precioFerreteria = p.precioFerreteria
-                precioObras = p.precioObras
-                precioOficina = p.precioOficina
+                detalle = p.detalle
+                 precioFactura = p.precioFactura
+                 precioSinFactura =  p.precioSinFactura
+                 descuento = p.descuento
             })
         }
     });
@@ -38,45 +36,40 @@
     export let codigo = "";
     export let codigodebarras = "";
     export let descripcion = "";
-    export let descuentoFerreteria = 0;
-    export let descuentoObras = 0;
-    export let descuentoOficina = 0;
     export let nombre = "";
     export let photourl = "";
-    export let precioFerreteria = 0;
-    export let precioObras = 0;
-    export let precioOficina = 0;
-    $:isValid = () => {
-        return (
-            //categorias.size > 0 &&
-            codigo.trim().length() > 0 &&
-            nombre.trim().length() > 0 &&
-            codigodebarras.trim().length() > 0 &&
-            descripcion.trim().length() > 0 &&
-            photourl.trim().length() > 0
-        );
-    }
+    export let detalle= "";
+    export let precioFactura = 0;
+    export let precioSinFactura = 0;
+    export let descuento = 0;
 
+    $:isValid = () => {
+        
+        if ( codigo.trim().length > 0 &&
+            nombre.trim().length > 0&&
+            codigodebarras.trim().length > 0 &&
+            descripcion.trim().length > 0   &&
+            photourl.trim().length > 0        &&
+            detalle.trim().length > 0           &&   
+            precioFactura  >  0        &&
+            precioSinFactura  >  0   &&
+            descuento > 0
+            ) {
+                return true;
+        }else{
+                return false;
+        }
+    }
     function uploadAll() {
         registerTestProducts()
     }
-
+    
     function aceptar() {
-        let data = {
-            categorias,
-            codigo,
-            codigodebarras,
-            descripcion,
-            descuentoFerreteria,
-            descuentoObras,
-            descuentoOficina,
-            nombre,
-            photourl,
-            //TODO delete_url,
-            precioFerreteria,
-            precioObras,
-            precioOficina,
-        };
+        if (isValid()){
+             let data = { 
+                 categorias,  codigo,  codigodebarras,  descripcion, nombre,  photourl, 
+                detalle,  precioFactura,  precioSinFactura,  descuento      
+            };
         toast.push("Subiendo", {
             initial: 0,
             progress: 0,
@@ -109,8 +102,19 @@
                 });
             }
         );
+    }else{
+    
+        toast.push("Ingresa todos los datos", {
+           
+            duration: 3000,
+            theme: {
+                "--toastBackground": "#F75E59",
+                "--toastProgressBackground": " red ",
+            },
+        });
     }
-
+    }
+  
     function cancelar() {
         pop();
     }
@@ -166,17 +170,13 @@
         } catch (error) {
             console.log(error);
         }
-    }
+    }   
 </script>
-
 <h1>{params.id === "new" ? "Nuevo Producto" : " Editar Producto"}</h1>
 <div class="row">
     <div class="col">
-        <div class="input-containerd">
-            <label for="nombre">Nombre</label>
-            <input type="text" bind:value={nombre} name="nombre"/>
-        </div>
         <div class="row">
+
             <div class="input-containerd">
                 <label for="codigo">Codigo</label>
                 <input type="text" bind:value={codigo} name="codigo"/>
@@ -186,50 +186,33 @@
                 <input type="text" bind:value={codigodebarras} name="codigodebarras"/>
             </div>
         </div>
-        <div class="row">
+        <div class="input-containerd">
+            <label for="nombre">Nombre</label>
+            <input type="text" bind:value={nombre} name="nombre"/>
+        </div>
+        <div class="input-containerd">
+            <label for="detalle">Detalle </label>
+            <textarea  bind:value={detalle} name="detalle"></textarea>
+        </div>
+
+        <div class="row">   
             <div class="input-containerd">
-                <label for="precioFerreteria">Precio Ferreteria</label>
-                <input
-                        type="number"
-                        bind:value={precioFerreteria}
-                        name="precioFerreteria"
-                />
+                <label for="precioFactura">Precio Factura</label>
+                <input type="number" bind:value={precioFactura} name="precioFactura"/>
             </div>
             <div class="input-containerd">
-                <label for="precioObras">Precio Obras</label>
-                <input type="number" bind:value={precioObras} name="precioObras"/>
-            </div>
-            <div class="input-containerd">
-                <label for="precioOficina">Precio Oficina</label>
-                <input type="number" bind:value={precioOficina} name="precioOficina"/>
+                <label for="precioSinFactura">Precio Sin Factura</label>
+                <input type="number" bind:value={precioSinFactura} name="precioSinFactura"/>
             </div>
         </div>
+
         <div class="row">
             <div class="input-containerd">
-                <label for="descuentoFerreteria">Descuento Ferreteria</label>
-                <input
-                        type="number"
-                        bind:value={descuentoFerreteria}
-                        name="descuentoFerreteria"
-                />
-            </div>
-            <div class="input-containerd">
-                <label for="descuentoObras">Descuento Obras</label>
-                <input
-                        type="number"
-                        bind:value={descuentoObras}
-                        name="descuentoObras"
-                />
-            </div>
-            <div class="input-containerd">
-                <label for="descuentoOficina">Descuento Oficina</label>
-                <input
-                        type="number"
-                        bind:value={descuentoOficina}
-                        name="descuentoOficina"
-                />
+                <label for="descuento">Descuento </label>
+                <input type="number" bind:value={descuento} name="descuento"/>
             </div>
         </div>
+    
         <div class="row">
             <div class="input-containerd">
                 <label for="descripcion">Descripcion</label>
@@ -237,6 +220,7 @@
             </div>
         </div>
     </div>
+
     <div class="file-input">
         <Dropzone
                 on:drop={handleFilesSelect}
@@ -338,7 +322,7 @@
         outline: none;
         padding: 0;
         font-size: 14px;
-        font-color: #333333;
+        /* font-color: #333333; */
         font-family: "Open Sans", sans-serif;
         white-space: nowrap;
         align-items: center;
