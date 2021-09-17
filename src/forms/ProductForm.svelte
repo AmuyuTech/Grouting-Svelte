@@ -7,7 +7,7 @@
     import {toast} from '@zerodevx/svelte-toast'
     import { getContext } from 'svelte';
     import CategoriasSelector from './../components/CategoriasSelector.svelte'
-
+ //adsasdasd
     const { open } = getContext('simple-modal');
     const onOk = (c) => categorias = [...categorias, c]
     const showCat = () => {
