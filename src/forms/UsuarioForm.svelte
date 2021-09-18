@@ -1,12 +1,12 @@
 <script>
   import { onMount } from "svelte";
-
   import {
     registrarUsuario,
     registerTestUsers,
     actualizarUsuario,
     getUsuario,
   } from "../firebaseAPI";
+
   export let params = {};
   let disable = false;
   onMount(() => {
@@ -19,8 +19,7 @@
         telefono = u.telefono
         correo = u.correo
         repass = u.repass
-        almacen = u.almacen
-        administrador = u.administrador
+        tipo = u.tipo
       });
     }
   });
@@ -30,8 +29,8 @@
   let correo = "";
   let pass = "";
   let repass = "";
-  let almacen = "";
-  let administrador = false;
+  let tipo = "";
+ 
   function aceptar() {
     toast.push("Subiendo", {
       initial: 0,
@@ -48,8 +47,8 @@
       telefono,
       correo,
       pass,
-      almacen,
-      admin: administrador,
+      tipo,
+      admin: tipo,
     };
     const payload =
       params.id === "New"
@@ -108,26 +107,23 @@
     <label for="repass">Repita {disable ? 'Nueva ' : ''}Contraseña</label>
     <input type="password" name="repass" bind:value={repass} />
   </div>
-  <div class="almacen">
+  <div class="tipo">
     <label>
-      <input type="radio" bind:group={almacen} value={"elalto"} />
-      Almacen El Alto
+      <input type="radio" bind:group={tipo} value={"administrador"} />
+      Administrador
     </label>
     <label>
-      <input type="radio" bind:group={almacen} value={"sopocachi"} />
-      Almacen Sopocachi
+      <input type="radio" bind:group={tipo} value={"responsable"} />
+      Responsable
     </label>
     <label>
-      <input type="radio" bind:group={almacen} value={"zonasur"} />
-      Almacen Zona Sur
+      <input type="radio" bind:group={tipo} value={"vendedor"} />
+      Vendedor
     </label>
   </div>
 </div>
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
-  <label>
-    Administrador
-    <input type="checkbox" bind:value={administrador} />
-  </label>
+ 
   <button on:click={registerTestUsers}> REgistrar Todo </button>
   <button class="button" style="margin-left: auto; width: auto;" on:click={aceptar}
     >Aceptar</button
@@ -147,7 +143,7 @@
         "nombre"
         "correo"
         "telefono"
-        "almacen"
+        "tipo"
         "pass"
         "repass";
     }
@@ -158,8 +154,8 @@
       grid-template-areas:
         "nombre nombre ci"
         "correo correo telefono"
-        "pass pass almacen"
-        "repass repass almacen";
+        "pass pass tipo"
+        "repass repass tipo";
     }
   }
   .nombre {
@@ -180,7 +176,7 @@
   .repass {
     grid-area: repass;
   }
-  .almacen {
-    grid-area: almacen;
+  .tipo {
+    grid-area: tipo;
   }
 </style>
