@@ -20,7 +20,7 @@ const firebaseConfig = {
   appId: APP_ID,
   measurementId: MEASUREMENT_ID,
 };
-let test = false;
+let test = true;
 firebase.initializeApp(firebaseConfig);
 
 
