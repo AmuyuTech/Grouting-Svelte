@@ -20,7 +20,7 @@ const firebaseConfig = {
   appId: APP_ID,
   measurementId: MEASUREMENT_ID,
 };
-let test = false;
+let test = true;
 firebase.initializeApp(firebaseConfig);
 
 
@@ -48,9 +48,9 @@ export let rt = firebase.database().ref()
 let fnc = firebase.functions()
 // Fumnciones
 
-export const GenerarCatalogo = fnc.httpsCallable('generarCatalogo') 
-export const GenerarStocks = fnc.httpsCallable('generarStock') 
-export const GenerarReporte = fnc.httpsCallable('generarReporte') 
+export const GenerarCatalogo = fnc.httpsCallable('generarCatalogo')
+export const GenerarStocks = fnc.httpsCallable('generarStock')
+export const GenerarReporte = fnc.httpsCallable('generarReporte')
 
 // User
 

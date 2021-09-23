@@ -1,11 +1,11 @@
 <script>
-	import { Productos } from './../stores.js';
+  import {Productos, ProductosB} from './../stores.js';
   import {push} from 'svelte-spa-router'
 import { GenerarCatalogo, GenerarStocks } from '../firebaseAPI.js';
 import {getCatalogo, getStocks} from '../pdfUtils.js'
   let Data = []
   let filterdedData = []
-  Productos.subscribe(productos$ =>  {
+  ProductosB.subscribe(productos$ =>  {
     Data = productos$
     filterdedData = Data
   })

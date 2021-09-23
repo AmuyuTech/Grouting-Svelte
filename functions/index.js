@@ -207,7 +207,7 @@ exports.updateUserClailmsb = functions.firestore
     .document("USUARIOS/{userId}")
     .onUpdate((change) => {
       const mdata = change.after.data();
-      return admin.auth().setCustomUserClaims(mdata.ci, {admin: mdata.admin, al: mdata.almacen});
+      return admin.auth().setCustomUserClaims(mdata.ci, {tipo: mdata.tipo});
     });
 exports.updateUserData = functions.firestore
     .document("USUARIOS/{userId}")
@@ -225,8 +225,12 @@ exports.CreateUserClaimsb = functions.auth.user()
       const us = udata.data();
       return admin
           .auth()
-          .setCustomUserClaims(user.uid, {admin: us.admin, al: us.almacen});
+          .setCustomUserClaims(user.uid, {tipo: us.tipo});
     });
+
+//////////Genmerar PDfs///////////////
+
+
 exports.generarReporte = functions.https.onCall(async (data, ctx) => {
   const desde = data.desde;
   const hasta = data.hasta;

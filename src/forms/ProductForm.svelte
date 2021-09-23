@@ -14,7 +14,7 @@
         open(CategoriasSelector, { onOk });
     };
     export let params = {};
-    const IMGBB_KEY = IMGBB_API_KEY;
+    const IMGBB_API_KEY = IMGBB_KEY;
     onMount(async () => {
         if (params.id !== "New") {
             getProducto(params.id).then(d => {
@@ -23,14 +23,12 @@
                 codigo = p.codigo
                 codigodebarras = p.codigodebarras
                 descripcion = p.descripcion
-                descuentoFerreteria = p.descuentoFerreteria
-                descuentoObras = p.descuentoObras
-                descuentoOficina = p.descuentoOficina
+                descuentoFactura = p.descuentoFactura
+                descuentosinFactura = p.descuentosinFactura
                 nombre = p.nombre
                 photourl = p.photourl
-                precioFerreteria = p.precioFerreteria
-                precioObras = p.precioObras
-                precioOficina = p.precioOficina
+                precioFactura = p.precioFactura
+                preciosinFactura = p.preciosinFactura
             })
         }
     });
@@ -38,14 +36,12 @@
     export let codigo = "";
     export let codigodebarras = "";
     export let descripcion = "";
-    export let descuentoFerreteria = 0;
-    export let descuentoObras = 0;
-    export let descuentoOficina = 0;
+    export let descuentoFactura = 0;
+    export let descuentosinFactura = 0;
     export let nombre = "";
     export let photourl = "";
-    export let precioFerreteria = 0;
-    export let precioObras = 0;
-    export let precioOficina = 0;
+    export let precioFactura = 0;
+    export let preciosinFactura = 0;
     $:isValid = () => {
         return (
             //categorias.size > 0 &&
@@ -67,15 +63,13 @@
             codigo,
             codigodebarras,
             descripcion,
-            descuentoFerreteria,
-            descuentoObras,
-            descuentoOficina,
+            descuentoFactura,
+            descuentosinFactura,
             nombre,
             photourl,
             //TODO delete_url,
-            precioFerreteria,
-            precioObras,
-            precioOficina,
+            precioFactura,
+            preciosinFactura,
         };
         toast.push("Subiendo", {
             initial: 0,
@@ -140,7 +134,7 @@
             const formData = new FormData();
             formData.append("image", compressedFile);
 
-            const url = "https://api.imgbb.com/1/upload?key=" + IMGBB_KEY;
+            const url = "https://api.imgbb.com/1/upload?key=" + IMGBB_API_KEY;
 
             let xhr = new XMLHttpRequest();
 
@@ -188,45 +182,33 @@
         </div>
         <div class="row">
             <div class="input-containerd">
-                <label for="precioFerreteria">Precio Ferreteria</label>
+                <label for="precioFactura">Precio Factura</label>
                 <input
                         type="number"
-                        bind:value={precioFerreteria}
-                        name="precioFerreteria"
+                        bind:value={precioFactura}
+                        name="precioFactura"
                 />
             </div>
             <div class="input-containerd">
-                <label for="precioObras">Precio Obras</label>
-                <input type="number" bind:value={precioObras} name="precioObras"/>
-            </div>
-            <div class="input-containerd">
-                <label for="precioOficina">Precio Oficina</label>
-                <input type="number" bind:value={precioOficina} name="precioOficina"/>
+                <label for="preciosinFactura">Precio sin Factura</label>
+                <input type="number" bind:value={preciosinFactura} name="preciosin Factura"/>
             </div>
         </div>
         <div class="row">
             <div class="input-containerd">
-                <label for="descuentoFerreteria">Descuento Ferreteria</label>
+                <label for="descuentoFactura">Descuento Factura</label>
                 <input
                         type="number"
-                        bind:value={descuentoFerreteria}
-                        name="descuentoFerreteria"
+                        bind:value={descuentoFactura}
+                        name="descuentoFactura"
                 />
             </div>
             <div class="input-containerd">
-                <label for="descuentoObras">Descuento Obras</label>
+                <label for="descuentosin Factura">Descuento sin Factura</label>
                 <input
                         type="number"
-                        bind:value={descuentoObras}
-                        name="descuentoObras"
-                />
-            </div>
-            <div class="input-containerd">
-                <label for="descuentoOficina">Descuento Oficina</label>
-                <input
-                        type="number"
-                        bind:value={descuentoOficina}
-                        name="descuentoOficina"
+                        bind:value={descuentosinFactura}
+                        name="descuentosin Factura"
                 />
             </div>
         </div>
