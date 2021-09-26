@@ -247,7 +247,6 @@
     {/each}
 </div>
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
-    <button on:click={uploadAll}>Regitrar Todo</button>
     <button
             class="button"
             style="margin-left: auto;"

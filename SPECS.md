@@ -1,0 +1,139 @@
+# Intruduiccion
+Aca se detalla la estructura de la informacion en la base de datos y las funciones que detonan
+# Producto
+## Modelo
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Nombre                 |String     |name
+|Codigo                 |String     |code
+|Descripcion            |String     |desc
+|Codigo de Barras       |String     |barcode
+|Precio con Factura     |Number     |pcf
+|Descuento con Factura  |Number     |dcf
+|Precio sin Factura     |Number     |psf
+|Descuento sin Factura  |Number     |dsf
+|Photo URL              |String     |url        |URL de la foto en el server de [ImgBB](https://imgbb.com/)
+|Categorias             |[String]   |cats
+TODO: Analizar el como alojar el stock en la base de datos
+```json
+{
+  "IDProducto": {
+    "IDAlmacen1": 0,
+    "IDAlmacen2": 4,
+    "IDAlmacen3": 8
+  }
+}
+```
+en Realtime database u otras opciones en firestore
+## Funciones
+* Generar y Actualizart Bucket
+# Usuario
+## Modelo
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Cedula de Identidad    |String     |dni        |Este sera el valor usado para el UID y al que se hara referencia 
+|Nombre                 |String     |name
+|Telefono               |String     |phone
+|Correo Electronico     |String     |mail       |Este puede o no existir se usasra para el login a manera de nombre de usuario
+|Contrasena             |String     |pass       |Aunque no es muy seguro poner la contrasena sin cifrar, para efectos practicos devera funcionar asi
+|Almacen                |String     |store      |El ID del almacen al que se vincularan todas las transacciones
+|Rol                    |String     |role       |sera un enum "Administrador", "Supervisor", "Vendedor"
+### Administrador
+Tendra a acceso a todos los registros para verlos, y podra realizar todas las operaciones
+### Supervisor
+* No podra crear ni editar usuarios
+* No podra vender (*deacuerdo al backlog*)
+* Devera validar cada venta para que esta tome efecto
+* Tendra acceso a todo lo demas
+### Vendedor
+* Podra realizar Ventas
+* Podra pagar creditos
+* Generar reportes de ventas y creditos pendientes asignados a su usuario
+* Exclusivo uso del mobil
+* No podra acceder a la version web
+## Funciones
+* Al Crear en la Base de Datos
+> Se devera crear un Usuario en la base de datos usando el **_dni_** como **_User ID_**
+> 
+> Se Asignaran los *user claims* al usuario una vez creado para controlar su acceso a la base de datos
+* Al Editarse en la base de datos
+> No se podra ediar el Nombre, Correo Electronico o Cedula de Identidad
+> 
+> Se actualizaran los claims del usuario para que todas las transacciones en adelante tomen como referencia esos parametros
+* Al Eliminarse de la base de datos
+> Se eliminara el acceso al sistema del usuario, y su registro en la base de datos
+> 
+> Ninguna transaccion realizada a su nombre se vera afectada
+> 
+> Se eliminara su nombnre del Bucket
+* Generar Bucket
+> SE pondra el nombre del usuario en el bucket de usuarios
+# Almacenes
+## Modelo
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Nombre                 |String     |name
+|Direccion              |String     |address    
+## Funciones
+* Generar y Actualizar el bucket de Almacenes
+* TODO: Analizart la logica de almacenes
+# Transaccion
+Al Aprovarse una venta se genera una Transaccion que es la modifica los stocks
+## Modelo
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Usuario ID             |String     |uid        |ID del Usuario que realizo la transaccion
+|Nombre de Usuraio      |String     |name       |Nombre del usuario que realizo la transaccion
+|Fecha                  |Timestamp  |date       
+|Origen                 |String     |origin     |**_null_** o el nombre del almacen Origen de los productos
+|Destino                |String     |destiny    |**_null_** o el nombre del Almacen Destino de los productos
+|Origen ID              |String     |originId   |ID del Almacen o ID de la Venta que realizo la transaccion
+|Destino ID             |String     |destinyId  |ID del Almacen o ID de la Factura (Despacho) que realizo la transaccion
+|Productos              |[**_Items_**]|items    |Lista de los stocks a ser alterados en esta transaccion
+### Items
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Nombre Producto        |String     |name
+|ID Producto            |String     |id
+|Cantidad               |String     |quantity   
+## Funciones
+* Al Crear
+> Alterar los stocks de cada producto deacuerdo a la transaccion
+# Factura
+## Modelo
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Usuario ID             |String     |uid        |ID del Usuario que realizo la transaccion
+|Nombre de Usuraio      |String     |name       |Nombre del usuario que realizo la transaccion
+|Fecha                  |Timestamp  |date       
+|Proveedor              |String     |provider   |Nombre del Proveedor
+|Proveedor ID           |String     |providerId |Id Del Proveedor
+|Descuento              |Number     |off
+|Items                 |[**_Items_**]|items    |Lista de los productos comprados y listados en la factura
+|Despachos           |[**_Despachos_**]|dispatches| Lista de los Despachos (Entregas) de productos al almacen
+### Items
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Nombre Producto        |String     |name
+|Id Producto            |String     |id 
+|Precio Unitario        |Number     |unitPrice
+|Cantidad               |Number     |quantity   
+|Descuento              |Number     |off
+### Despachos
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Usuario ID             |String     |uid        |ID del Usuario que realizo la transaccion
+|Nombre de Usuraio      |String     |name       |Nombre del usuario que realizo la transaccion
+|Fecha                  |Timestamp  |date
+|Items                 |[**_ItemsD_**]|items    |Lista de los productos comprados y listados en la factura
+### ItemsD
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Nombre Producto        |String     |name
+|Id Producto            |String     |id
+|Total                  |Number     |total      |Copia de La Cantidad de Items
+|Cantidad Acumulada     |Number     |actual     |Cantidad Acumulada hasta ahora de productos
+|Cantidad a Anadir      |Number     |quantity   |Cantidad anadida en esta transaccion
+## Funciones
+* Al Actualizar
+> Comparar el anterior con la actualiozacion y crear una transaccion por cada nuevo despacho vinculandolo a esta factura

@@ -278,7 +278,7 @@
 </div>
 
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
-  <button on:click={registerAll}>REGISTRAR TODO</button>
+  <!--button on:click={registerAll}>REGISTRAR TODO</button-->
   <button class="button" style="margin-left: auto;" on:click={aceptar}
     >Aceptar
   </button>

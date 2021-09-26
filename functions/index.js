@@ -228,6 +228,11 @@ exports.CreateUserClaimsb = functions.auth.user()
           .setCustomUserClaims(user.uid, {tipo: us.tipo});
     });
 
+exports.GenerarBucketAlmacenes = functions.firestore
+    .document("ALMACENES/{AlmacenId}")
+    .onWrite(async (cambio, ctx) => {
+
+    })
 //////////Genmerar PDfs///////////////
 
 

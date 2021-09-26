@@ -56,20 +56,24 @@ export const GenerarReporte = fnc.httpsCallable('generarReporte')
 
 export const User = authState(auth);
 export function LogOut() {
-  auth.signOut()
+  return auth.signOut()
 }
 // colecciones
-const _ClientesCollection = db.collection("CLIENTES");
-const _CreditosCollection = db.collection("CREDITOS");
+const _ClientesCollection  = db.collection("CLIENTES");
+const _CreditosCollection  = db.collection("CREDITOS");
 const _DespachosCollection = db.collection("DESPACHOS");
-const _FacturasCollection = db.collection("FACTURAS");
-const _GastosCollection = db.collection("GASTOS");
+const _FacturasCollection  = db.collection("FACTURAS");
+const _GastosCollection    = db.collection("GASTOS");
 const _ProductosCollection = db.collection("PRODUCTOS");
-const _AlmacenesCollection = db.collection("TRANSACCIONES");
-const _VentasCollection = db.collection("REGISTROSVENTAS");
-const _UsuariosCollection = db.collection("USUARIOS");
-const _BucketsCollection = db.collection("BUCKETS");
+const _TransaccionesCollection = db.collection("TRANSACCIONES");
+const _VentasCollection    = db.collection("REGISTROSVENTAS");
+const _UsuariosCollection  = db.collection("USUARIOS");
+const _AlmacenesCollection  = db.collection("ALMACENES");
+const _BucketsCollection   = db.collection("BUCKETS");
 // Getters
+export function getAlmacen(id$) {
+  return _AlmacenesCollection.doc(id$).get()
+}
 export function getProducto(id$) {
   return _ProductosCollection.doc(id$).get()
 }
@@ -77,7 +81,7 @@ export function getFactura(id$) {
   return _FacturasCollection.doc(id$).get()
 }
 export function getTransaccion(id$) {
-  return _AlmacenesCollection.doc(id$).get()
+  return _TransaccionesCollection.doc(id$).get()
 }
 export function getCredito(id$) {
   return _CreditosCollection.doc(id$).get()
@@ -95,19 +99,20 @@ export function getVenta(id$) {
   return _VentasCollection.doc(id$).get()
 }
 //observers (*read*)
-export const Clientes$ = _ClientesCollection.orderBy("nombre");
-export const Creditos$ = _CreditosCollection.orderBy("fecha", "desc");
-export const Despachos$ = _DespachosCollection.orderBy("fecha", "desc");
-export const Facturas$ = _FacturasCollection.orderBy("fecha", "desc");
-export const Gastos$ = _GastosCollection.orderBy("fecha", "desc");
-export const Productos$ = _ProductosCollection.orderBy("nombre");
-export const Almacenes$ = _AlmacenesCollection.orderBy("fecha", "desc");
-export const Ventas$ = _VentasCollection.orderBy("fecha", "desc");
-export const Usuarios$ = _UsuariosCollection.orderBy("nombre");
-export const ProductosB$ = _BucketsCollection.doc('productos')
-export const CategoriasB$ = _BucketsCollection.doc('categorias')
-export const UsuariosB$ = _BucketsCollection.doc('usuarios')
-export const ClientesB$ = _BucketsCollection.doc('clientes')
+export const Clientes$      = _ClientesCollection.orderBy("nombre");
+export const Creditos$      = _CreditosCollection.orderBy("fecha", "desc");
+export const Despachos$     = _DespachosCollection.orderBy("fecha", "desc");
+export const Facturas$      = _FacturasCollection.orderBy("fecha", "desc");
+export const Gastos$        = _GastosCollection.orderBy("fecha", "desc");
+export const Productos$     = _ProductosCollection.orderBy("nombre");
+export const Transacciones$ = _TransaccionesCollection.orderBy("fecha", "desc");
+export const Almacenes$     = _AlmacenesCollection.orderBy("nombre", "desc")
+export const Ventas$        = _VentasCollection.orderBy("fecha", "desc");
+export const Usuarios$      = _UsuariosCollection.orderBy("nombre");
+export const ProductosB$    = _BucketsCollection.doc('productos')
+export const CategoriasB$   = _BucketsCollection.doc('categorias')
+export const UsuariosB$     = _BucketsCollection.doc('usuarios')
+export const ClientesB$     = _BucketsCollection.doc('clientes')
 //Special data
 export async function getStocks(productId$) {
   return await rt
@@ -124,6 +129,7 @@ export function registrarCredito(Credito$)          {  return setDoc(_CreditosCo
 export function registrarFactura(Factura$)          {  return setDoc(_FacturasCollection, Factura$);}
 export function registrarGasto(Gasto$)              {  return setDoc(_GastosCollection, Gasto$);}
 export function registrarProducto(Producto$)        {  return setDoc(_ProductosCollection, Producto$);}
+export function registrarTransaccion(Transaccion$)  {  return setDoc(_TransaccionesCollection, Transaccion$);}
 export function registrarAlmacen(Almacen$)          {  return setDoc(_AlmacenesCollection, Almacen$);}
 export function registrarVenta(Venta$)              {  return setDoc(_VentasCollection, Venta$);}
 export function registrarUsuario(Usuario$)          {  return setUsr(_UsuariosCollection, Usuario$);}
@@ -151,7 +157,7 @@ function setDoc(ref$, data$) {
 }
 function setUsr(ref$, data$) {
   const doc = ref$.doc(data$.ci)
-  return doc.set(data)
+  return doc.set(data$)
 }
 
 
@@ -162,7 +168,7 @@ export function registerTestProducts() {
     const data = {...p, id: doc.id}
     payload.set(doc, data)
   });
-  payload.commit()}
+  return payload.commit()}
 }
 export function registerTestUsers() {
   if(test){const payload = db.batch()
@@ -171,7 +177,7 @@ export function registerTestUsers() {
     const data = {...u, id: doc.id}
     payload.set(doc, data)
   })
-  payload.commit()}
+  return payload.commit()}
 }
 export function registerTestVentas() {
   if(test){const payload = db.batch()
@@ -182,7 +188,7 @@ export function registerTestVentas() {
     const data = {...u, id: doc.id, fecha: getDate(dat)}
     payload.set(doc, data)
   })
-  payload.commit()}
+  return payload.commit()}
 }
 export function registerTestClientes() {
   if(test){const payload = db.batch()
@@ -191,5 +197,5 @@ export function registerTestClientes() {
     const data = {...u, id: doc.id}
     payload.set(doc, data)
   })
-  payload.commit()}
+  return payload.commit()}
 }

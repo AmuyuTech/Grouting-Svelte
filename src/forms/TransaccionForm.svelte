@@ -1,6 +1,6 @@
 <script>
   import { pop, replace } from "svelte-spa-router";
-  import { registrarAlmacen } from "../firebaseAPI";
+  import { registrarTransaccion} from "../firebaseAPI";
   import { ProductosB, User } from "../stores";
   import { onMount, onDestroy } from "svelte";
   import AutoComplete from "simple-svelte-autocomplete";
@@ -55,7 +55,7 @@
         "--toastProgressBackground": " #f4d03f ",
       },
     });
-    registrarAlmacen(data).then(
+    registrarTransaccion(data).then(
       (s) => {
         toast.pop();
         toast.push("Exito!", {
