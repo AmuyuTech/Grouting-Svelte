@@ -137,3 +137,71 @@ Al Aprovarse una venta se genera una Transaccion que es la modifica los stocks
 ## Funciones
 * Al Actualizar
 > Comparar el anterior con la actualiozacion y crear una transaccion por cada nuevo despacho vinculandolo a esta factura
+# Venta
+## Modelo
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Usuario                |String     |String     |Id del Usuario que realizo la venta    
+|Fecha                  |Timestamp  |date       |Puede ser "Efectivo", "Credito", "Otro"
+|Tipo                   |String     |type
+|Desuento               |Number     |discount
+|Total                  |Number     |total
+|Items                  |[**_Items_**]|items    
+### Items
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Nombre Producto        |String     |name   
+|Id Producto            |String     |id
+|Cantidad               |Number     |quantity
+|Precio unitario        |Number     |price
+|Descuento              |Number     |discount
+## Funciones
+* Al crear
+> Si la venta es a Credito crear un registro Credito
+> 
+* Al autorizar el Supervisor
+> Registrar una transaccion de venta al aprovarse la venta
+
+# Credito
+## Modelo
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Usuario ID             |String     |uid        |ID del usuario encargado de controlar los pagos
+|Nombre de Usuario      |String     |name       |Nombre del Usuario encargado del credito
+|Fecha de Creacion      |Timestamp  |date
+|Cliente ID             |String     |cid        |ID del Cliente al cual se le realizo la venta
+|Cliente Nombre         |String     |cname      |Nombre del Cliente
+|Total                  |Number     |total      |Total a pagarse del Credito    
+|Pagos                  |[**_Pago_**]|payments  |Histoprial de los pagos de credito
+### Pago
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Fecha                  |Timestamp  |date       |
+|Usuario ID             |String     |uid        |Id del usuario que realizo el pago (De cambiar el ususario a cargo de una venta a credito quedara constancia de que los primeros pagos los realizo el primer usuario)
+|Nombre Usuario         |Striing    |name       |Nombre de usuario que reaalizo el pago
+|Monto                  |Number     |amount     |Monto pagado en la transaccion
+# Cliente
+## Modelo
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|CI/NIT                 |String     |dni        |CI o NIT del cliente (**este sera su ID**)
+|Nombre                 |String     |name
+|Direccion              |String     |address
+|Telefono               |String     |phone
+|Asesor de Ventas       |String     |advisorid  |ID de Usuario que tiene asignado este cliente
+|Nombre de Asesor       |String     |nameadvisor|Nombre del usuario que tiene asignado a  este cliente
+# Gasto
+## Modelo
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Usuario ID             |String     |uid        |Id del usuario que registro el Gasto
+|Nombre Usuario         |String    |name       |Nombre de usuario que registro el GAsto
+|Fecha de Creacion      |Timestamp  |date
+|Total                  |String     |total      
+|Items                  |[**_Item_**]|items     
+### Items
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Nombre                 |String     |name   
+|Cantidad               |Number     |quantity
+|Subtotal               |Number     |total
