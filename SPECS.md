@@ -141,10 +141,12 @@ Al Aprovarse una venta se genera una Transaccion que es la modifica los stocks
 ## Modelo
 |Atributo               |Tipo       |NombreDB   |Observacion        |
 |-----------------------|----------:|-----------|-------------------|
-|Usuario                |String     |String     |Id del Usuario que realizo la venta    
+|Usuario                |String     |uid        |Id del Usuario que realizo la venta    
+|Nombre Usuario         |String     |name
 |Fecha                  |Timestamp  |date       |Puede ser "Efectivo", "Credito", "Otro"
 |Tipo                   |String     |type
 |Desuento               |Number     |discount
+|Verificada             |Bool       |aproved    |Este define si la venta fue o no aprtovada por un supervisor para su aprovacion y que tome efecto
 |Total                  |Number     |total
 |Items                  |[**_Items_**]|items    
 ### Items

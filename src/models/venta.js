@@ -60,16 +60,16 @@ export const VentaConverter = {
         return dat.toObject()
     },
     fromFirestore: (snapshot, options) => {
-        const data = snapshot.data(options)
+        const data: Venta = snapshot.data(options)
         return new Venta(
             data.uid,
             data.name,
             data.date,
-            data.provider,
-            data.providerId,
+            data.tipo,
             data.discount,
-            data.items,
-            data.dispatches
+            data.total,
+            data.aproved,
+            data.items
         )
     }
 }
