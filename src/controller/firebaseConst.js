@@ -8,6 +8,8 @@ export const TransaccionColection = "TRANSACCION"
 export const UsuarioColection = "USUARIO"
 export const VentaColection   = "VENTA"
 export const BucketsColection = "BUCKET"
+/** Aunque se llama coleccion para practicidad y uniformidad es un bucket y no una coleccion **/
+export const ProveedoresColection = "Proveedores"
 // Buckets
 export function parseBucket (data$: any): any[] {
     const ids = Object.keys(data$)

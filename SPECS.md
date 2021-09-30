@@ -26,7 +26,7 @@ TODO: Analizar el como alojar el stock en la base de datos
 ```
 en Realtime database u otras opciones en firestore
 ## Funciones
-* Generar y Actualizart Bucket
+* [X] Generar y Actualizart Bucket
 # Usuario
 ## Modelo
 |Atributo               |Tipo       |NombreDB   |Observacion        |
@@ -38,6 +38,7 @@ en Realtime database u otras opciones en firestore
 |Contrasena             |String     |pass       |Aunque no es muy seguro poner la contrasena sin cifrar, para efectos practicos devera funcionar asi
 |Almacen                |String     |store      |El ID del almacen al que se vincularan todas las transacciones
 |Rol                    |String     |role       |sera un enum "Administrador", "Supervisor", "Vendedor"
+|Status                 |Bool       |status     |Define si el usuario esta habilitado o no para usar el sistema
 ### Administrador
 Tendra a acceso a todos los registros para verlos, y podra realizar todas las operaciones
 ### Supervisor
@@ -53,21 +54,15 @@ Tendra a acceso a todos los registros para verlos, y podra realizar todas las op
 * No podra acceder a la version web
 ## Funciones
 * Al Crear en la Base de Datos
-> Se devera crear un Usuario en la base de datos usando el **_dni_** como **_User ID_**
+> [X] Se devera crear un Usuario en la base de datos usando el **_docId_** como **_User ID_**
 > 
-> Se Asignaran los *user claims* al usuario una vez creado para controlar su acceso a la base de datos
+> [X] Se Asignaran los *user claims* al usuario una vez creado para controlar su acceso a la base de datos
 * Al Editarse en la base de datos
 > No se podra ediar el Nombre, Correo Electronico o Cedula de Identidad
 > 
-> Se actualizaran los claims del usuario para que todas las transacciones en adelante tomen como referencia esos parametros
-* Al Eliminarse de la base de datos
-> Se eliminara el acceso al sistema del usuario, y su registro en la base de datos
-> 
-> Ninguna transaccion realizada a su nombre se vera afectada
-> 
-> Se eliminara su nombnre del Bucket
+> [X] Se actualizaran los claims del usuario para que todas las transacciones en adelante tomen como referencia esos parametros
 * Generar Bucket
-> SE pondra el nombre del usuario en el bucket de usuarios
+> [X] SE pondra el nombre del usuario en el bucket de usuarios
 # Almacenes
 ## Modelo
 |Atributo               |Tipo       |NombreDB   |Observacion        |
@@ -192,6 +187,9 @@ Al Aprovarse una venta se genera una Transaccion que es la modifica los stocks
 |Telefono               |String     |phone
 |Asesor de Ventas       |String     |advisorid  |ID de Usuario que tiene asignado este cliente
 |Nombre de Asesor       |String     |nameadvisor|Nombre del usuario que tiene asignado a  este cliente
+## Funciones
+* On Create or Edit
+> [ ] Crear o Actualizar el Bucket 
 # Gasto
 ## Modelo
 |Atributo               |Tipo       |NombreDB   |Observacion        |
@@ -207,3 +205,11 @@ Al Aprovarse una venta se genera una Transaccion que es la modifica los stocks
 |Nombre                 |String     |name   
 |Cantidad               |Number     |quantity
 |Subtotal               |Number     |total
+# Proveedor
+## Modelo
+|Atributo               |Tipo       |NombreDB   |Observacion        |
+|-----------------------|----------:|-----------|-------------------|
+|Nombre                 |String     |name
+|NIT                    |String     |nit
+## Funciones
+* En este caso solo sera el Bucket

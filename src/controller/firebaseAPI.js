@@ -10,7 +10,7 @@ import {
     CreditoColection,
     FacturaColection,
     GastoColection,
-    ProductoColection,
+    ProductoColection, ProveedoresColection,
     TransaccionColection, UsuarioColection, VentaColection
 } from "./firebaseConst";
 import {Cliente, ClienteConverter} from "../models/cliente";
@@ -22,6 +22,8 @@ import {ProductConverter, Producto} from "../models/producto";
 import {Transaccion, TransaccionConverter} from "../models/transaccion";
 import {Usuario, UsuarioConverter} from "../models/usuario";
 import {Venta, VentaConverter} from "../models/venta";
+import {readable} from "svelte/store";
+import {Subscriber} from "svelte/store";
 
 
 
@@ -245,3 +247,68 @@ export function registarVenta(Venta$: Venta) {
 export function validarVenta(id$: String) {
     return _VentaColection.doc(id$).update({aproved: true})
 }
+// Proveedores
+
+export function crearProveedor(id$, name$) {
+    return _BucketsColection.doc(ProveedoresColection).set({id: id$, name: name$}, {merge: true})
+}
+export function actualizarProveedor(id$, name$) {
+    return crearProveedor(id$, name$)
+}
+
+/** funcion para parsear los buckets **/
+const obs = (set: Subscriber<any[]>, snapshot) => {
+    const ans: any[] = []
+    const data: any = snapshot.data()
+    Object.keys(data).forEach( (id) => {
+        ans.push({
+            id,
+            ...data[id]
+        })
+    })
+    set(data)
+}
+
+////////////////BUCKETS////////////////
+/**
+ * Bucket de productos
+ * @type {Readable<*[]>} - Un store REadable de todos los productos
+ * @return {[{id: String, name: String, url: String}]} - Un vector de productos
+ */
+export const BucketProducts = readable([], ((set) => {
+    _BucketsColection.doc(ProductoColection).onSnapshot((snapshot) => obs(set, snapshot))
+}))
+export const BucketClientes = readable([], ((set) => {
+    _BucketsColection.doc(ClienteColection).onSnapshot((snapshot) => obs(set, snapshot))
+}))
+export const BucketUsuarios = readable([], ((set) => {
+    _BucketsColection.doc(UsuarioColection).onSnapshot((snapshot) => obs(set, snapshot))
+}))
+/**
+ * Bucket de Categorias
+ * El documentoi de categorias es de formato
+ * {
+ *      Categoria1: true,
+ *      Categoria2: true
+ * }
+ * Al parsear llamamos solo a los keys del objeto y tendremos un array de Categorias
+ * @type {Readable<*[]>}
+ */
+export const BucketCategoria = readable([], ((set) => {
+    _BucketsColection.doc("Categorias").onSnapshot((snapshot) => {
+        set(Object.keys(snapshot.data()))
+    })
+}))
+export const BucketProveedores = readable([], ((set) => {
+    _BucketsColection.doc("Proveedores").onSnapshot((snp) => {
+        const ans = []
+        const data = snp.data()
+        Object.keys(data).forEach(id => {
+            ans.push({
+                id,
+                name: data[id]
+            })
+        })
+        set(ans)
+    })
+}))

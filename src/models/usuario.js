@@ -6,7 +6,8 @@ export class Usuario {
         correo,
         contrasena,
         almacen,
-        rol
+        rol,
+        status
     ) {
         this.dni    = dni
         this.name   = nombre
@@ -15,6 +16,7 @@ export class Usuario {
         this.pass   = contrasena
         this.store  = almacen
         this.role   = rol
+        this.status = status
     }
 }
 
@@ -27,7 +29,8 @@ export const UsuarioConverter = {
             mail: usuario.mail,
             pass: usuario.pass,
             store: usuario.store,
-            role: usuario.role
+            role: usuario.role,
+            status: usuario.status
         }
     },
     fromFirestore: (snapshot, options) => {
@@ -39,7 +42,8 @@ export const UsuarioConverter = {
             data.mail,
             data.pass,
             data.store,
-            data.role
+            data.role,
+            data.status
         )
     }
 }
