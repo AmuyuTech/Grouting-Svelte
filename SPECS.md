@@ -14,7 +14,7 @@ Aca se detalla la estructura de la informacion en la base de datos y las funcion
 |Descuento sin Factura  |Number     |dsf
 |Photo URL              |String     |url        |URL de la foto en el server de [ImgBB](https://imgbb.com/)
 |Categorias             |[String]   |cats
-TODO: Analizar el como alojar el stock en la base de datos
+* [X] Analizar el como alojar el stock en la base de datos
 ```json
 {
   "IDProducto": {
@@ -24,7 +24,7 @@ TODO: Analizar el como alojar el stock en la base de datos
   }
 }
 ```
-en Realtime database u otras opciones en firestore
+en Realtime database
 ## Funciones
 * [X] Generar y Actualizart Bucket
 # Usuario
@@ -53,25 +53,31 @@ Tendra a acceso a todos los registros para verlos, y podra realizar todas las op
 * Exclusivo uso del mobil
 * No podra acceder a la version web
 ## Funciones
-* Al Crear en la Base de Datos
-> [X] Se devera crear un Usuario en la base de datos usando el **_docId_** como **_User ID_**
+* [X] Al Crear en la Base de Datos
+>  Se devera crear un Usuario en la base de datos usando el **_docId_** como **_User ID_**
 > 
-> [X] Se Asignaran los *user claims* al usuario una vez creado para controlar su acceso a la base de datos
-* Al Editarse en la base de datos
+>  Se Asignaran los *user claims* al usuario una vez creado para controlar su acceso a la base de datos
+* [X] Al Editarse en la base de datos
 > No se podra ediar el Nombre, Correo Electronico o Cedula de Identidad
 > 
-> [X] Se actualizaran los claims del usuario para que todas las transacciones en adelante tomen como referencia esos parametros
-* Generar Bucket
-> [X] SE pondra el nombre del usuario en el bucket de usuarios
+> Se actualizaran los claims del usuario para que todas las transacciones en adelante tomen como referencia esos parametros
+* [X] Generar Bucket
+> Se pondra el nombre del usuario en el bucket de usuarios
 # Almacenes
 ## Modelo
 |Atributo               |Tipo       |NombreDB   |Observacion        |
 |-----------------------|----------:|-----------|-------------------|
 |Nombre                 |String     |name
 |Direccion              |String     |address    
+Se utilizara un bucket de almacenes en lugar de una coleccion de almacenes asi solo se necesitara el nombre y sera facil de migrar en casoi de que escale
+```json
+"stores": {
+  "IdAlmacen": "Nombre Almacen"
+}
+```
+*En realtime Database para mejor comodidad*
 ## Funciones
 * Generar y Actualizar el bucket de Almacenes
-* TODO: Analizart la logica de almacenes
 # Transaccion
 Al Aprovarse una venta se genera una Transaccion que es la modifica los stocks
 ## Modelo

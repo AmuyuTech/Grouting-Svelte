@@ -11,7 +11,7 @@ export const BucketsColection = "BUCKET"
 /** Aunque se llama coleccion para practicidad y uniformidad es un bucket y no una coleccion **/
 export const ProveedoresColection = "Proveedores"
 // Buckets
-export function parseBucket (data$: any): any[] {
+export function parseBucket (data$) {
     const ids = Object.keys(data$)
     const bucket = []
     ids.forEach((id) => {
@@ -22,6 +22,6 @@ export function parseBucket (data$: any): any[] {
     })
     return bucket
 }
-export function parseCategorias(data$: any): String[] {
+export function parseCategorias(data$) {
     return Object.keys(data$)
 }

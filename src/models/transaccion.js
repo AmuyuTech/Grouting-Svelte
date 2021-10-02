@@ -1,5 +1,3 @@
-import firebase from "firebase";
-
 export class Transaccion {
     constructor(
         uid,
@@ -19,6 +17,19 @@ export class Transaccion {
         this.originId   = origenId
         this.destinyId  = destinoId
         this.productos  = (productos.map((x) => new ItemT(x.name, x.id, x.quantity)))
+    }
+    toObject() {
+        const productos = this.productos.map((x) => x.toObject())
+        return {
+            uid      : this.uid,
+            name     : this.name,
+            date     : this.date,
+            origin   : this.origin,
+            destiny  : this.destiny,
+            originId : this.originId,
+            destinyId: this.destinyId,
+            productos: productos
+        }
     }
 }
 export class ItemT {
@@ -41,17 +52,7 @@ export class ItemT {
 }
 export const TransaccionConverter  = {
     toFirestore: (dato) => {
-        const productos = dato.productos.map((x) => x.toObject())
-        return {
-            uid      : dato.uid,
-            name     : dato.name,
-            date     : dato.date,
-            origin   : dato.origin,
-            destiny  : dato.destiny,
-            originId : dato.originId,
-            destinyId: dato.destinyId,
-            productos: productos
-        }
+        dato.toObject()
     },
     fromFirestore: (snapshot, options) => {
         const data = snapshot.data(options)

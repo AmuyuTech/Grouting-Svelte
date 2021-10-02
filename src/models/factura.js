@@ -16,7 +16,7 @@ export class Factura {
         this.providerId = proveedorId
         this.discount   = descuento
         this.items      = (items.map((x) => new ItemF(x.id, x.name, x.price, x.quantity, x.discount)))
-        this.dispatches = (despachos.map((x: Despacho) => new Despacho(x.uid, x.name, x.date, x.items)))
+        this.dispatches = (despachos.map((x) => new Despacho(x.uid, x.name, x.date, x.items)))
     }
     toObject() {
         let itms = this.items.map((x) => (x.toObject()))

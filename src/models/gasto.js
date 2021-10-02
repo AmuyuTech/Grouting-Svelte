@@ -41,9 +41,9 @@ export class ItemG {
     }
 }
 export const GastoConverter = {
-    toFirestore: (dat: Gasto) => {dat.toObject()},
+    toFirestore: (dat) => {dat.toObject()},
     fromFirestore: (snapshot, options) => {
-        const dat: Gasto = snapshot.data(options)
+        const dat = snapshot.data(options)
         return new Gasto(
             dat.uid,
             dat.name,

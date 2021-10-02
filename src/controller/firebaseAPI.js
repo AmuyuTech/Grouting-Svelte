@@ -14,7 +14,6 @@ import {
     TransaccionColection, UsuarioColection, VentaColection
 } from "./firebaseConst";
 import {Cliente, ClienteConverter} from "../models/cliente";
-import error from "svelte/types/compiler/utils/error";
 import {Credito, CreditoConverter} from "../models/credito";
 import {Factura, FacturaConverter} from "../models/factura";
 import {Gasto, GastoConverter} from "../models/gasto";
@@ -23,20 +22,19 @@ import {Transaccion, TransaccionConverter} from "../models/transaccion";
 import {Usuario, UsuarioConverter} from "../models/usuario";
 import {Venta, VentaConverter} from "../models/venta";
 import {readable} from "svelte/store";
-import {Subscriber} from "svelte/store";
 
 
 
 const firebaseConfig = {
-    apiKey: API_KEY,
-    authDomain: AUTH_DOMAIN,
-    projectId: PROJECT_ID,
-    storageBucket: STORAGE_BUCKET,
-    messagingSenderId: MESSAGING_SENDER_ID,
-    appId: APP_ID,
-    measurementId: MEASUREMENT_ID,
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId,
+    measurementId: process.env.measurementId,
 };
-let test = PRODUCTION;
+let test = process.env.PRODUCTION;
 firebase.initializeApp(firebaseConfig);
 
 
@@ -64,7 +62,9 @@ export function LogOut() {
     return auth.signOut()
 }
 
-
+export function Login(user$, pass$) {
+    return auth.signInWithEmailAndPassword(user$, pass$)
+}
 // Colecciones
 
 const _ClientesCollection = db.collection(ClienteColection)
@@ -79,7 +79,7 @@ const _BucketsColection   = db.collection(BucketsColection)
 
 // Clientes
 
-export async function getCliente(id$): Cliente | null {
+export async function getCliente(id$) {
     return await _ClientesCollection.doc(id$)
         .withConverter(ClienteConverter)
         .get().then((doc) => {
@@ -92,16 +92,16 @@ export async function getCliente(id$): Cliente | null {
             return null
         })
 }
-export function registrarCliente(Cliente$: Cliente) {
+export function registrarCliente(Cliente$) {
     return _ClientesCollection.withConverter(ClienteConverter).add(Cliente$)
 }
-export function actualizarCliente(Cliente$: Cliente, id$: String) {
+export function actualizarCliente(Cliente$, id$) {
     return _ClientesCollection.doc(id$).withConverter(ClienteConverter).update(Cliente$)
 }
 
 // Creditos
 
-export async function getCredito(id$): Credito | null {
+export async function getCredito(id$) {
     return await _CreditosCollection.doc(id$)
         .withConverter(CreditoConverter)
         .get().then((doc) => {
@@ -114,16 +114,16 @@ export async function getCredito(id$): Credito | null {
             return null
         })
 }
-export async function registrarCredito(Credito$: Credito) {
+export async function registrarCredito(Credito$) {
     return _CreditosCollection.withConverter(CreditoConverter).add(Credito$)
 }
-export async function actualizarCredito(Credito$: Credito, Id$: String) {
+export async function actualizarCredito(Credito$, Id$) {
     return _CreditosCollection.doc(Id$).withConverter(CreditoConverter).update(Credito$)
 }
 
 // Factura
 
-export async function getFactura(id$: String): Factura | null {
+export async function getFactura(id$) {
     return await _FacturasCollection.doc(id$)
         .withConverter(FacturaConverter)
         .get().then((doc) => {
@@ -136,16 +136,16 @@ export async function getFactura(id$: String): Factura | null {
             return null
         })
 }
-export async function registrarFactura(Factura$: Factura) {
+export async function registrarFactura(Factura$) {
     return _FacturasCollection.withConverter(FacturaConverter).add(Factura$)
 }
-export async function actualizarFactura(Factura$: Factura, Id$: String) {
+export async function actualizarFactura(Factura$, Id$) {
     return _FacturasCollection.doc(Id$).withConverter(FacturaConverter).update(Factura$)
 }
 
 // Gasto
 
-export async function getGasto(id$: String): Gasto | null {
+export async function getGasto(id$) {
     return await _GastosCollection.doc(id$)
         .withConverter(GastoConverter)
         .get().then((doc) => {
@@ -158,13 +158,13 @@ export async function getGasto(id$: String): Gasto | null {
             return null
         })
 }
-export function registrarGasto(Gasto$: Gasto) {
+export function registrarGasto(Gasto$) {
     return _GastosCollection.withConverter(GastoConverter).add(Gasto$)
 }
 
 // Producto
 
-export async function getProducto(id$: String) {
+export async function getProducto(id$) {
     return await _ProductoCollection.doc(id$)
         .withConverter(ProductConverter)
         .get().then((doc) => {
@@ -177,16 +177,16 @@ export async function getProducto(id$: String) {
             return null
         })
 }
-export function registrarProducto(Producto$: Producto) {
+export function registrarProducto(Producto$) {
     return _ProductoCollection.withConverter(ProductConverter).add(Producto$)
 }
-export function actualizarProducto(Producto$: Producto, id$: String) {
+export function actualizarProducto(Producto$, id$) {
     return _ProductoCollection.withConverter(ProductConverter).doc(id$).update(Producto$)
 }
 
 // Transaccion
 
-export async function getTransaccion(id$: String): Transaccion | null {
+export async function getTransaccion(id$) {
     return await _TransaccionColection.doc(id$)
         .withConverter(TransaccionConverter)
         .get().then((doc) => {
@@ -200,12 +200,12 @@ export async function getTransaccion(id$: String): Transaccion | null {
         })
 }
 
-export function registerTransaction(Transaccion$: Transaccion) {
+export function registerTransaction(Transaccion$) {
     return _TransaccionColection.withConverter(TransaccionConverter).add(Transaccion$)
 }
 
 //Usuario
-export async function getUsuario(id$: String): Usuario | null{
+export async function getUsuario(id$) {
     return await _UsuarioColection.doc(id$)
         .withConverter(UsuarioConverter)
         .get().then((doc) => {
@@ -219,16 +219,16 @@ export async function getUsuario(id$: String): Usuario | null{
         })
 }
 
-export function registrarUsuario(Usuario$: Usuario) {
-    return _UsuarioColection.withConverter(UsuarioConverter).add(Usuario)
+export function registrarUsuario(Usuario$) {
+    return _UsuarioColection.withConverter(UsuarioConverter).add(Usuario$)
 }
-export function actualizarUsuario(Usuario$: Usuario, id$: String) {
+export function actualizarUsuario(Usuario$, id$) {
     return _UsuarioColection.doc(id$).withConverter(UsuarioConverter).update(Usuario$)
 }
 
 //Venta
 
-export async function getVenta(id$: String) {
+export async function getVenta(id$) {
     return await _VentaColection.doc(id$)
         .withConverter(VentaConverter)
         .get().then((doc) => {
@@ -241,14 +241,16 @@ export async function getVenta(id$: String) {
             return null
         })
 }
-export function registarVenta(Venta$: Venta) {
+export function registarVenta(Venta$) {
     return _VentaColection.withConverter(VentaConverter).add(Venta$)
 }
-export function validarVenta(id$: String) {
+export function validarVenta(id$) {
     return _VentaColection.doc(id$).update({aproved: true})
 }
 // Proveedores
+export async function getProveedores(id$) {
 
+}
 export function crearProveedor(id$, name$) {
     return _BucketsColection.doc(ProveedoresColection).set({id: id$, name: name$}, {merge: true})
 }
@@ -257,18 +259,28 @@ export function actualizarProveedor(id$, name$) {
 }
 
 /** funcion para parsear los buckets **/
-const obs = (set: Subscriber<any[]>, snapshot) => {
-    const ans: any[] = []
-    const data: any = snapshot.data()
-    Object.keys(data).forEach( (id) => {
-        ans.push({
-            id,
-            ...data[id]
-        })
-    })
-    set(data)
+const obs = (set, snapshot) => {
+    const data = snapshot.data()
+    set(parseBucket(data))
 }
-
+// Almacenes
+// TODO: Refractorizar el string para mantenimiento
+export async function getAlmacenes(){
+    return await rt.child("stores").get().then((value) => {
+        return  value.exists() ? value.val() : {}
+    }).catch((err) => {
+        console.error(err)
+        return {}
+    })
+}
+export function createAlmacen(name$) {
+    return rt.child("stores").push(
+        name$
+    )
+}
+export function updateAlmacen(id$, name$) {
+    return rt.child("stores").child(id$).set(name$)
+}
 ////////////////BUCKETS////////////////
 /**
  * Bucket de productos
@@ -296,19 +308,20 @@ export const BucketUsuarios = readable([], ((set) => {
  */
 export const BucketCategoria = readable([], ((set) => {
     _BucketsColection.doc("Categorias").onSnapshot((snapshot) => {
-        set(Object.keys(snapshot.data()))
+        set(Object.keys(snapshot.data() || {}))
     })
 }))
 export const BucketProveedores = readable([], ((set) => {
     _BucketsColection.doc("Proveedores").onSnapshot((snp) => {
-        const ans = []
-        const data = snp.data()
-        Object.keys(data).forEach(id => {
-            ans.push({
-                id,
-                name: data[id]
-            })
-        })
-        set(ans)
+        const data = snp.exists ? snp.data() : {}
+        set(parseBucket(data))
     })
 }))
+function parseBucket(data$) {
+    return Object.keys(data$ ? data$ : {}).map(function (id$) {
+        return {
+            id: id$,
+            ...data$[id$]
+        }
+    })
+}

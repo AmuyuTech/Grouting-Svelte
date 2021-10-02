@@ -1,4 +1,5 @@
 export class Venta {
+    // checker: {name: String, id: String}
     constructor(
         uid,
         nombre,
@@ -7,6 +8,9 @@ export class Venta {
         descuento,
         total,
         aprovado,
+        almacen,
+        almacenID,
+        verificador,
         items
     ) {
         this.uid        = uid
@@ -16,6 +20,9 @@ export class Venta {
         this.discount   = descuento
         this.total      = total
         this.aproved    = aprovado
+        this.store      = almacen
+        this.storeId    = almacenID
+        this.checker    = verificador
         this.items      = (items.map((x) => new ItemsV(x.name, x.id, x.quantity, x.price, x.discount)))
     }
     toObject() {
@@ -27,6 +34,9 @@ export class Venta {
             discount: this.discount,
             total: this.total,
             aproved: this.aproved,
+            store: this.store,
+            storeId: this.storeId,
+            checker: this.checker,
             items: (this.items.map((x) => (x.toObject())))
         }
     }
@@ -60,7 +70,7 @@ export const VentaConverter = {
         return dat.toObject()
     },
     fromFirestore: (snapshot, options) => {
-        const data: Venta = snapshot.data(options)
+        const data = snapshot.data(options)
         return new Venta(
             data.uid,
             data.name,
@@ -69,6 +79,9 @@ export const VentaConverter = {
             data.discount,
             data.total,
             data.aproved,
+            data.store,
+            data.storeId,
+            data.checker,
             data.items
         )
     }

@@ -6,7 +6,8 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
-    "emulate": "firebase emulators:start"
+    "emulate": "firebase emulators:start",
+    "test": "jest --setupFiles dotenv/config --verbose true --detectOpenHandles"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
