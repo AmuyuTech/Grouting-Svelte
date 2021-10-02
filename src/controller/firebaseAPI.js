@@ -13,14 +13,14 @@ import {
     ProductoColection, ProveedoresColection,
     TransaccionColection, UsuarioColection, VentaColection
 } from "./firebaseConst";
-import {Cliente, ClienteConverter} from "../models/cliente";
-import {Credito, CreditoConverter} from "../models/credito";
-import {Factura, FacturaConverter} from "../models/factura";
-import {Gasto, GastoConverter} from "../models/gasto";
-import {ProductConverter, Producto} from "../models/producto";
-import {Transaccion, TransaccionConverter} from "../models/transaccion";
-import {Usuario, UsuarioConverter} from "../models/usuario";
-import {Venta, VentaConverter} from "../models/venta";
+import {ClienteConverter} from "../models/cliente";
+import {CreditoConverter} from "../models/credito";
+import {FacturaConverter} from "../models/factura";
+import {GastoConverter} from "../models/gasto";
+import {ProductConverter} from "../models/producto";
+import {TransaccionConverter} from "../models/transaccion";
+import {UsuarioConverter} from "../models/usuario";
+import {VentaConverter} from "../models/venta";
 import {readable} from "svelte/store";
 
 
@@ -88,7 +88,7 @@ export async function getCliente(id$) {
             }else {
                 return null
             }
-        }).catch((err) => {
+        }).catch((_) => {
             return null
         })
 }
@@ -110,7 +110,7 @@ export async function getCredito(id$) {
             }else  {
                 return null
             }
-        }).catch((err) => {
+        }).catch((_) => {
             return null
         })
 }
@@ -132,7 +132,7 @@ export async function getFactura(id$) {
             }else {
                 return null
             }
-        }).catch((err) => {
+        }).catch((_) => {
             return null
         })
 }
@@ -154,7 +154,7 @@ export async function getGasto(id$) {
             }else {
                 return null
             }
-        }).catch((err) => {
+        }).catch((_) => {
             return null
         })
 }
@@ -173,7 +173,7 @@ export async function getProducto(id$) {
             }else {
                 return null
             }
-        }).catch((err) => {
+        }).catch((_) => {
             return null
         })
 }
@@ -195,7 +195,7 @@ export async function getTransaccion(id$) {
             }else {
                 return null
             }
-        }).catch((err) => {
+        }).catch((_) => {
             return null
         })
 }
@@ -214,7 +214,7 @@ export async function getUsuario(id$) {
             }else {
                 return null
             }
-        }).catch((err) => {
+        }).catch((_) => {
             return null
         })
 }
@@ -237,7 +237,7 @@ export async function getVenta(id$) {
             }else {
                 return null
             }
-        }).catch((err) => {
+        }).catch((_) => {
             return null
         })
 }
@@ -265,21 +265,37 @@ const obs = (set, snapshot) => {
 }
 // Almacenes
 // TODO: Refractorizar el string para mantenimiento
-export async function getAlmacenes(){
-    return await rt.child("stores").get().then((value) => {
-        return  value.exists() ? value.val() : {}
-    }).catch((err) => {
-        console.error(err)
-        return {}
+export function getAlmacenes(){
+    return readable([], set => {
+        rt.child("stores").on('value', a => {
+            const aux = Object.keys(a.val()).map((x) => {
+                return {
+                    id: x,
+                    name: a.val()[x]
+                }
+            })
+            set(aux)
+        })
     })
 }
 export function createAlmacen(name$) {
-    return rt.child("stores").push(
-        name$
-    )
+    return rt.child("stores").push().set(name$)
 }
 export function updateAlmacen(id$, name$) {
     return rt.child("stores").child(id$).set(name$)
+}
+// Stocks
+export function getAllStocks(ProductId$) {
+    return readable ({}, set => rt.child(ProductId$).on('value', a => {
+        set(a.exists() ? a.val() : {})
+    }))
+}
+export function  getStockAt(ProductId$, StoreId$) {
+    return readable(0, set => {
+        rt.child(ProductId$).child(StoreId$).on('value', a => {
+            set( a.exists() ? a.val() : 0 )
+        })
+    })
 }
 ////////////////BUCKETS////////////////
 /**

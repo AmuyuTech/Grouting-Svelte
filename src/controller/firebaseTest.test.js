@@ -1,15 +1,16 @@
 import {
     BucketCategoria,
     BucketProducts,
-    BucketUsuarios,
-    Login,
+    BucketUsuarios, createAlmacen, getAllStocks, getAlmacenes, getStockAt, getTransaccion,
+    Login, registerTransaction,
     registrarProducto,
-    registrarUsuario, User
+    registrarUsuario, updateAlmacen, User
 } from "./firebaseAPI";
 import {Producto} from "../models/producto";
 import {Usuario} from "../models/usuario";
 import firebase from "firebase";
 import * as assert from "assert";
+import {ItemT, Transaccion, TransaccionConverter} from "../models/transaccion";
 const Timeout = 10000
 
 describe('TestProducto', () => {
@@ -95,4 +96,88 @@ describe('TestUsuario', () => {
             throw err
         })
     }, Timeout)
+})
+describe('Check Almacenes', () => {
+    const nombre = 'Almacen1'
+    const nombre2 = 'Almacen2'
+    const testID = 'testid'
+    it('should Create Almacen', function () {
+        createAlmacen(nombre).then(() => {
+            expect(1).toEqual(1)
+        }).catch((err) => {
+            throw err
+        })
+    });
+    it('should Udatean Nonexisting Almacen', function () {
+        updateAlmacen(testID, nombre2).then(() => {
+            expect(1).toEqual(1)
+        }).catch((err) => {
+            throw err
+        })
+    });
+    it('should Check Almacenes Bucket', async function () {
+        getAlmacenes().subscribe(value => {
+            if (value.length !== 0) {
+                expect(value).toEqual(
+                    expect.arrayContaining([
+                        expect.objectContaining({
+                            id: testID
+                        })
+                    ])
+                )
+            }
+        })
+    });
+})
+describe('Transacciones Test', () => {
+    const productosT = [
+        new ItemT(
+            'Producto1',
+            'qqwweerr',
+            50
+        ),
+        new ItemT(
+            'Producto 2',
+            'wwqqeerr',
+            40
+        ),
+        new ItemT(
+            'Producto 3',
+            'rreewwqq',
+            10
+        )
+    ]
+    const Transaccion1 = new Transaccion(
+        '1234556',
+        'miguel',
+        'test1',
+        'test2',
+        'Almacen1',
+        'Almmacen2',
+        productosT,
+        firebase.firestore.Timestamp.now()
+    )
+    it('should transform to object', () => {
+        expect(TransaccionConverter.toFirestore(Transaccion1)).toEqual(Transaccion1.toObject())
+    })
+    it('should Create Transaccion', function () {
+        registerTransaction(Transaccion1).then((val) => {
+            getTransaccion(val.id).then((doc) => {
+                if (doc.exists) {
+                    expect(Transaccion1).toEqual(doc.data())
+                }
+            })
+        }).catch((err) => {
+            throw err
+        })
+    });
+    it('should Ckeck sotcks', function () {
+        // Si el objeto qu elle de la base de taton so tiene llaves (no es igual a `{}`) entonces revisar si tiene la propiedad Almacen 1 que se anadio en la prueba anterior como resultado de testear la transacciion
+        getAllStocks('qqwweerr').subscribe(value => {
+            if (Object.keys(value).length > 0) {
+                expect(value).toHaveProperty('Almacen1')
+            }
+        })
+    });
+
 })

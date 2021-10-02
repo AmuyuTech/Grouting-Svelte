@@ -19,7 +19,6 @@ export class Transaccion {
         this.productos  = (productos.map((x) => new ItemT(x.name, x.id, x.quantity)))
     }
     toObject() {
-        const productos = this.productos.map((x) => x.toObject())
         return {
             uid      : this.uid,
             name     : this.name,
@@ -28,7 +27,7 @@ export class Transaccion {
             destiny  : this.destiny,
             originId : this.originId,
             destinyId: this.destinyId,
-            productos: productos
+            productos: this.productos.map((x) => x.toObject())
         }
     }
 }
@@ -52,7 +51,7 @@ export class ItemT {
 }
 export const TransaccionConverter  = {
     toFirestore: (dato) => {
-        dato.toObject()
+        return dato.toObject()
     },
     fromFirestore: (snapshot, options) => {
         const data = snapshot.data(options)

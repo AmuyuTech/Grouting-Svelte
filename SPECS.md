@@ -77,7 +77,7 @@ Se utilizara un bucket de almacenes en lugar de una coleccion de almacenes asi s
 ```
 *En realtime Database para mejor comodidad*
 ## Funciones
-* Generar y Actualizar el bucket de Almacenes
+* [X] Generar y Actualizar el bucket de Almacenes
 # Transaccion
 Al Aprovarse una venta se genera una Transaccion que es la modifica los stocks
 ## Modelo
@@ -98,7 +98,7 @@ Al Aprovarse una venta se genera una Transaccion que es la modifica los stocks
 |ID Producto            |String     |id
 |Cantidad               |String     |quantity   
 ## Funciones
-* Al Crear
+* [X] Al Crear
 > Alterar los stocks de cada producto deacuerdo a la transaccion
 # Factura
 ## Modelo
