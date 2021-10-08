@@ -327,10 +327,10 @@ export function getAlmacenes() {
     });
   });
 }
-export function createAlmacen(name$) {
+export function registrarAlmacen(name$) {
   return rt.child("stores").push().set(name$);
 }
-export function updateAlmacen(id$, name$) {
+export function actualizarAlmacen(id$, name$) {
   return rt.child("stores").child(id$).set(name$);
 }
 // Stocks
