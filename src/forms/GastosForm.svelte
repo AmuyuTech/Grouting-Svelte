@@ -1,5 +1,5 @@
 <script>
-  import { auth, getGasto, registrarGasto } from "../firebaseAPI";
+  import { getGasto, registrarGasto } from "../firebaseAPI";
   import { pop, replace } from "svelte-spa-router";
   import gastos from "./../assets/gastos.js";
   import { onMount } from "svelte";

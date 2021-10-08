@@ -1,14 +1,13 @@
 <script>
-    import {auth, User} from "../firebaseAPI";
     import { replace }  from 'svelte-spa-router'
     import { toast } from '@zerodevx/svelte-toast'
 import { onDestroy, onMount } from "svelte";
+    import {Login, User} from "../controller/firebaseAPI";
     let src = "./assets/img/bg-login.jpg"
     let correo = ''
     let pass = ''
     function login(){
-        console.log('click')
-        auth.signInWithEmailAndPassword(correo, pass).then(
+        Login(correo, pass).then(
             value => {
                 toast.push('Exito')
                 

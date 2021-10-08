@@ -1,3 +1,5 @@
+import firebase from "firebase";
+
 export class Factura {
     constructor(
         uid,
@@ -17,6 +19,45 @@ export class Factura {
         this.discount   = descuento
         this.items      = (items.map((x) => new ItemF(x.id, x.name, x.price, x.quantity, x.discount)))
         this.dispatches = (despachos.map((x) => new Despacho(x.uid, x.name, x.date, x.items)))
+    }
+    addItem(id$, nombre$, precio$, cantidad$, descuento$ = 0) {
+        if(this.dispatches.length > 0 ) {
+            return false
+        } else {
+            this.items.push(new ItemF(
+                id$, nombre$, precio$, cantidad$, descuento$
+            ))
+            return true
+        }
+    }
+    items
+    dispatches
+    addDespacho(uid$, nombre$, date$ = firebase.firestore.Timestamp.now(), valuestoAdd$ = this.items.map((_) => {return 0})) {
+        //sumatoiria para las cantidades actuales
+        const aux = []
+        this.items.forEach( (_) => {aux.push(0)})
+        this.dispatches.forEach((d ) => {
+            d.items.forEach( (i, pos) => {
+                aux[pos] += i.quantity
+            })
+        })
+        this.dispatches.push(
+            new Despacho(
+                uid$,
+                nombre$,
+                date$,
+                this.items.map((x, i) => {
+                    return new ItemsD(
+                        x.id,
+                        x.name,
+                        x.quantity,
+                        aux[i],
+                        valuestoAdd$[i]
+                    )
+
+                })
+            )
+        )
     }
     toObject() {
         let itms = this.items.map((x) => (x.toObject()))

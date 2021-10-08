@@ -9,28 +9,28 @@ import usuarios from './assets/usuarios.js'
 import ventas from './assets/ventas.js'
 import clientes from './assets/clientes.js'
 import { getDate } from "./util.js";
-
-
-const firebaseConfig = {
-  apiKey: API_KEY,
-  authDomain: AUTH_DOMAIN,
-  projectId: PROJECT_ID,
-  storageBucket: STORAGE_BUCKET,
-  messagingSenderId: MESSAGING_SENDER_ID,
-  appId: APP_ID,
-  measurementId: MEASUREMENT_ID,
-};
-let test = PRODUCTION;
-firebase.initializeApp(firebaseConfig);
-
-
-if (test) {
-  //! deactrivate emulator
-  firebase.auth().useEmulator("http://localhost:9099");
-  firebase.firestore().useEmulator("localhost", 8080);
-  firebase.database().useEmulator("localhost", 9000);
-  firebase.functions().useEmulator("localhost", 5001);
-}
+import {auth, db, fnc} from "./controller/firebaseAPI"
+//
+//const firebaseConfig = {
+//  apiKey: process.env.API_KEY,
+//  authDomain: process.env.AUTH_DOMAIN,
+//  projectId: process.env.PROJECT_ID,
+//  storageBucket: process.env.STORAGE_BUCKET,
+//  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+//  appId: process.env.APP_ID,
+//  measurementId: process.env.MEASUREMENT_ID,
+//};
+// let test = process.env.PRODUCTION;
+// firebase.initializeApp(firebaseConfig);
+//
+//
+// if (test) {
+//   //! deactrivate emulator
+//   firebase.auth().useEmulator("http://localhost:9099");
+//   firebase.firestore().useEmulator("localhost", 8080);
+//   firebase.database().useEmulator("localhost", 9000);
+//   firebase.functions().useEmulator("localhost", 5001);
+// }
 
 /**
  * * si se traban lo puertos limpiar con :
@@ -42,10 +42,10 @@ if (test) {
  */
 
 
-export let auth = firebase.auth()
-export let db = firebase.firestore()
-export let rt = firebase.database().ref()
-let fnc = firebase.functions()
+//  export let auth = firebase.auth()
+//  export let db = firebase.firestore()
+//  export let rt = firebase.database().ref()
+//  let fnc = firebase.functions()
 // Fumnciones
 
 export const GenerarCatalogo = fnc.httpsCallable('generarCatalogo')

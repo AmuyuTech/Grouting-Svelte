@@ -1,9 +1,11 @@
 <script>
     import AutoComplete from 'simple-svelte-autocomplete'
     import { getContext } from 'svelte';
-    import {Categorias} from "../stores";
+import { BucketCategoria } from '../controller/firebaseAPI';
+
     let categorias = []
-    Categorias.subscribe(c => categorias = c)
+    
+    BucketCategoria.subscribe(c => categorias = c)
     export let cat = ''
     export let onOk = () => {}
     const { close } = getContext('simple-modal');

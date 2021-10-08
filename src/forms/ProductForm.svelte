@@ -2,75 +2,31 @@
     import Dropzone from "./../components/Dropzone/Dropzone.svelte";
     import imageCompression from "browser-image-compression";
     import {pop, replace} from "svelte-spa-router";
-    import {actualizarProducto, getProducto, registerTestProducts, registrarProducto} from "../firebaseAPI";
     import {onMount} from "svelte";
     import {toast} from '@zerodevx/svelte-toast'
     import { getContext } from 'svelte';
     import CategoriasSelector from './../components/CategoriasSelector.svelte'
+    import {actualizarProveedor, getProducto, registrarProducto, actualizarProducto} from "../controller/firebaseAPI";
+import { Producto } from "../models/producto";
 
     const { open } = getContext('simple-modal');
-    const onOk = (c) => categorias = [...categorias, c]
+
+    let payload = new Producto()
+    const onOk = (c) => payload.cats = [...payload.cats, c]
     const showCat = () => {
         open(CategoriasSelector, { onOk });
     };
     export let params = {};
-    const IMGBB_API_KEY = IMGBB_KEY;
     onMount(async () => {
         if (params.id !== "New") {
             getProducto(params.id).then(d => {
-                const p = d.data()
-                categorias = p.categorias
-                codigo = p.codigo
-                codigodebarras = p.codigodebarras
-                descripcion = p.descripcion
-                descuentoFactura = p.descuentoFactura
-                descuentosinFactura = p.descuentosinFactura
-                nombre = p.nombre
-                photourl = p.photourl
-                precioFactura = p.precioFactura
-                preciosinFactura = p.preciosinFactura
+                payload = d
             })
         }
     });
-    export let categorias = [];
-    export let codigo = "";
-    export let codigodebarras = "";
-    export let descripcion = "";
-    export let descuentoFactura = 0;
-    export let descuentosinFactura = 0;
-    export let nombre = "";
-    export let photourl = "";
-    export let precioFactura = 0;
-    export let preciosinFactura = 0;
-    $:isValid = () => {
-        return (
-            //categorias.size > 0 &&
-            codigo.trim().length() > 0 &&
-            nombre.trim().length() > 0 &&
-            codigodebarras.trim().length() > 0 &&
-            descripcion.trim().length() > 0 &&
-            photourl.trim().length() > 0
-        );
-    }
 
-    function uploadAll() {
-        registerTestProducts()
-    }
 
     function aceptar() {
-        let data = {
-            categorias,
-            codigo,
-            codigodebarras,
-            descripcion,
-            descuentoFactura,
-            descuentosinFactura,
-            nombre,
-            photourl,
-            //TODO delete_url,
-            precioFactura,
-            preciosinFactura,
-        };
         toast.push("Subiendo", {
             initial: 0,
             progress: 0,
@@ -80,7 +36,7 @@
                 "--toastProgressBackground": " #f4d03f ",
             },
         });
-        const prom =  params.id === 'New' ? registrarProducto(data) : actualizarProducto(data, params.id)
+        const prom =  params.id === 'New' ? registrarProducto(payload) : actualizarProducto(payload, params.id)
         prom.then(
             (s) => {
                 toast.pop();
@@ -122,19 +78,11 @@
         };
         try {
             const compressedFile = await imageCompression(imageFile, options);
-            console.log(
-                "compressedFile instanceof Blob",
-                compressedFile instanceof Blob
-            ); // true
-            console.log(
-                `compressedFile size ${compressedFile.size / 1024 / 1024} MB`
-            ); // smaller than maxSizeMB
-
             //const data = await imageCompression.getDataUrlFromFile(compressedFile);
             const formData = new FormData();
             formData.append("image", compressedFile);
 
-            const url = "https://api.imgbb.com/1/upload?key=" + IMGBB_API_KEY;
+            const url = "https://api.imgbb.com/1/upload?key=" + process.env.IMGBB_API_KEY;
 
             let xhr = new XMLHttpRequest();
 
@@ -147,8 +95,7 @@
             xhr.addEventListener("readystatechange", function (e) {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     //updateProgress(i, 100); // <- Add this
-                    photourl = JSON.parse(xhr.response).data.display_url;
-                    console.log({photourl});
+                    payload.url = JSON.parse(xhr.response).data.display_url;
                 } else if (xhr.readyState === 4 && xhr.status !== 200) {
                     // Error. Inform the user
                 }
@@ -168,16 +115,16 @@
     <div class="col">
         <div class="input-containerd">
             <label for="nombre">Nombre</label>
-            <input type="text" bind:value={nombre} name="nombre"/>
+            <input type="text" bind:value={payload.name} name="nombre"/>
         </div>
         <div class="row">
             <div class="input-containerd">
                 <label for="codigo">Codigo</label>
-                <input type="text" bind:value={codigo} name="codigo"/>
+                <input type="text" bind:value={payload.code} name="codigo"/>
             </div>
             <div class="input-containerd">
                 <label for="codigodebarras">Codigo de Barras</label>
-                <input type="text" bind:value={codigodebarras} name="codigodebarras"/>
+                <input type="text" bind:value={payload.barcode} name="codigodebarras"/>
             </div>
         </div>
         <div class="row">
@@ -185,13 +132,13 @@
                 <label for="precioFactura">Precio Factura</label>
                 <input
                         type="number"
-                        bind:value={precioFactura}
+                        bind:value={payload.pcf}
                         name="precioFactura"
                 />
             </div>
             <div class="input-containerd">
                 <label for="preciosinFactura">Precio sin Factura</label>
-                <input type="number" bind:value={preciosinFactura} name="preciosin Factura"/>
+                <input type="number" bind:value={payload.psf} name="preciosin Factura"/>
             </div>
         </div>
         <div class="row">
@@ -199,7 +146,7 @@
                 <label for="descuentoFactura">Descuento Factura</label>
                 <input
                         type="number"
-                        bind:value={descuentoFactura}
+                        bind:value={payload.dcf}
                         name="descuentoFactura"
                 />
             </div>
@@ -207,7 +154,7 @@
                 <label for="descuentosin Factura">Descuento sin Factura</label>
                 <input
                         type="number"
-                        bind:value={descuentosinFactura}
+                        bind:value={payload.dsf}
                         name="descuentosin Factura"
                 />
             </div>
@@ -215,16 +162,16 @@
         <div class="row">
             <div class="input-containerd">
                 <label for="descripcion">Descripcion</label>
-                <textarea bind:value={descripcion} name="descripcion"></textarea>
+                <textarea bind:value={payload.desc} name="descripcion"></textarea>
             </div>
         </div>
     </div>
     <div class="file-input">
         <Dropzone
                 on:drop={handleFilesSelect}
-                containerStyles={photourl.length === 0
+                containerStyles={payload.url.length === 0
         ? ""
-        : "background-image: url(" + photourl + ");"}
+        : "background-image: url(" + payload.url + ");"}
                 multiple={false}
         />
     </div>
@@ -236,11 +183,11 @@
             Añadir categoria
         </button>
     </div>
-    {#each categorias as c, i}
+    {#each payload.cats as c, i}
         <div class="chip">
             <div class="chip-head">{c[0]}</div>
             <div class="chip-content">{c}</div>
-            <div class="chip-close" on:click={() => {categorias.splice(i, 1); categorias = categorias}}>
+            <div class="chip-close" on:click={() => {payload.cats.splice(i, 1)}}>
                 <svg class="chip-svg" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"></path></svg>
             </div>
         </div>
@@ -297,13 +244,13 @@
         margin: 1rem;
     }
 
-    input {
+    :global(input) {
         width: 100%;
         padding-left: 1rem;
         border-radius: 0.75rem;
     }
 
-    textarea {
+    :global(textarea) {
         width: 100%;
         padding-left: 1rem;
         border-radius: 0.75rem;

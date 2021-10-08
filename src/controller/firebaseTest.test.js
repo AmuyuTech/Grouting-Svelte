@@ -1,8 +1,9 @@
 import {
+    actualizarFactura,
     BucketCategoria,
     BucketProducts,
-    BucketUsuarios, createAlmacen, getAllStocks, getAlmacenes, getStockAt, getTransaccion,
-    Login, registerTransaction,
+    BucketUsuarios, createAlmacen, getAllStocks, getAlmacenes, getFactura, getStockAt, getTransaccion, getUsuario,
+    Login, registerTransaction, registrarFactura,
     registrarProducto,
     registrarUsuario, updateAlmacen, User
 } from "./firebaseAPI";
@@ -11,6 +12,7 @@ import {Usuario} from "../models/usuario";
 import firebase from "firebase";
 import * as assert from "assert";
 import {ItemT, Transaccion, TransaccionConverter} from "../models/transaccion";
+import {Factura} from "../models/factura";
 const Timeout = 10000
 
 describe('TestProducto', () => {
@@ -64,8 +66,10 @@ describe('TestUsuario', () => {
         false
     )
     it('Crear Usuario', () => {
-        registrarUsuario(UsuarioA).then(() => {
-            expect(1).toEqual(1)
+        registrarUsuario(UsuarioA).then((snp) => {
+            getUsuario(snp.id).then((snp) => {
+                expect(snp.data()).toEqual(UsuarioA)
+            })
         }).catch((err) => {
             throw err
         })
@@ -180,4 +184,36 @@ describe('Transacciones Test', () => {
         })
     });
 
+})
+describe('Factura Testing', () => {
+    const FacturaA = new Factura(
+        'uid',
+        'Nombre de Prueba',
+        firebase.firestore.Timestamp.now(),
+        'test Provider',
+        'qwerty',
+        10.0,
+        [],
+        []
+    )
+    it('should REvisar Factura Functions', function () {
+        expect(FacturaA.addItem('asdf', 'PF1', 34.5, 100, 90.0)).toBeTruthy()
+        expect(FacturaA.addItem('asdg', 'PF2', 34.5, 100, 80.0)).toBeTruthy()
+        expect(FacturaA.addItem('asdh', 'PF3', 34.5, 100, 70.0)).toBeTruthy()
+        FacturaA.addDespacho('uid2', 'nombre2', firebase.firestore.Timestamp.now(), [40, 30, 20])
+        expect(FacturaA.addItem('asdh', 'PF3', 34.5, 100, 70.0)).toBeFalsy()
+    });
+
+    it('should Upload Factura', function () {
+        registrarFactura(FacturaA).then((snp) => {
+            getFactura(snp.id).then((dat) => {
+                expect(dat).toEqual(FacturaA)
+            })
+        })
+    });
+    it('should updateFactura', function () {
+        getAllStocks('asdf').subscribe((value) => {
+
+        })
+    });
 })

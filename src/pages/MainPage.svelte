@@ -3,7 +3,7 @@
     import Router, { replace } from 'svelte-spa-router'
     import routes from "../routes";
     import { onDestroy, onMount } from "svelte";
-import { User } from "../firebaseAPI";
+    import {User} from "../controller/firebaseAPI";
     let prefix = ''
     let usr
     onMount(()=>{

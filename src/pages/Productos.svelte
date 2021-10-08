@@ -1,18 +1,23 @@
 <script>
-  import {Productos, ProductosB} from './../stores.js';
   import {push} from 'svelte-spa-router'
-import { GenerarCatalogo, GenerarStocks } from '../firebaseAPI.js';
-import {getCatalogo, getStocks} from '../pdfUtils.js'
+  import { GenerarCatalogo, GenerarStocks } from '../firebaseAPI.js';
+  import {getCatalogo, getStocks} from '../pdfUtils.js'
+  import {BucketProducts} from "../controller/firebaseAPI";
+
+  const f_name = 'name'
+  const f_url  = 'url'
+  const f_id   = 'id'
+
   let Data = []
-  let filterdedData = []
-  ProductosB.subscribe(productos$ =>  {
+  let filteredData = []
+  BucketProducts.subscribe(productos$ =>  {
     Data = productos$
-    filterdedData = Data
+    filteredData = Data
   })
   let search = ""
   function filterData() {
     const s  = search.trim().toLowerCase()
-    filterdedData = s.length === 0 ? Data : Data.filter(p => p.nombre.toLowerCase().includes(s));
+    filteredData = s.length === 0 ? Data : Data.filter(p => p.nombre.toLowerCase().includes(s));
   }
   function newProd() {
     push('/Productos/New')
@@ -72,17 +77,17 @@ import {getCatalogo, getStocks} from '../pdfUtils.js'
 </div>
 
 <div class="grid">
-  {#each filterdedData as p}
+  {#each filteredData as p}
     
  
-  <div class="cardContainer" on:click={push(`/Productos/${p.id}`)}>
+  <div class="cardContainer" on:click={push(`/Productos/${p[f_id]}`)}>
     <div class="card front">
       <div
         class="img"
-        style="background-image: url({p.photourl});"></div>
+        style="background-image: url({p[f_url]});"></div>
       <div class="info">
         <p>
-          {p.nombre}
+          {p[f_name]}
         </p>
       </div>
     </div>

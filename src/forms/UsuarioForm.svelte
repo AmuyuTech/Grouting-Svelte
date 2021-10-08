@@ -1,37 +1,29 @@
 <script>
+  import { Usuario, roles } from "../models/usuario";
   import { onMount } from "svelte";
+  import { getUsuario, registrarUsuario, actualizarUsuario, getAlmacenes } from "../controller/firebaseAPI";
+  import  AutoComplete from "simple-svelte-autocomplete"
+  import { replace, pop } from "svelte-spa-router";
+  import {toast} from '@zerodevx/svelte-toast'
 
-  import {
-    registrarUsuario,
-    registerTestUsers,
-    actualizarUsuario,
-    getUsuario,
-  } from "../firebaseAPI";
   export let params = {};
   let disable = false;
+  let payload = new Usuario()
+  const is_new = params.id === 'New'
+  let almacenes = []
+  let repass = ''
+  getAlmacenes().subscribe((s) => {
+      almacenes = s 
+    })
+
   onMount(() => {
     if (params.id !== "New") {
       disable = true
-      getUsuario(params.id).then((s) => {
-        const u = s.data();
-        nombre = u.nombre
-        ci = u.ci
-        telefono = u.telefono
-        correo = u.correo
-        repass = u.repass
-        almacen = u.almacen
-        administrador = u.administrador
-      });
+        getUsuario(params.id).then(s => {
+            payload = s.data()
+          })
     }
   });
-  let nombre = "";
-  let ci = "";
-  let telefono = "";
-  let correo = "";
-  let pass = "";
-  let repass = "";
-  let almacen = "";
-  let administrador = false;
   function aceptar() {
     toast.push("Subiendo", {
       initial: 0,
@@ -42,20 +34,11 @@
         "--toastProgressBackground": " #f4d03f ",
       },
     });
-    const data = {
-      nombre,
-      ci,
-      telefono,
-      correo,
-      pass,
-      almacen,
-      admin: administrador,
-    };
-    const payload =
-      params.id === "New"
+    const promise =
+        is_new
         ? registrarUsuario(data)
         : actualizarUsuario(data, params.id);
-    payload.then(
+    promise.then(
       (s) => {
         toast.pop();
         toast.push("Exito!", {
@@ -64,7 +47,7 @@
             "--toastProgressBackground": "#2F855A",
           },
         });
-        replace("/Productos");
+        replace("/Usuarios");
       },
       (e) => {
         toast.pop();
@@ -82,53 +65,53 @@
     pop();
   }
 </script>
-
+<h1>{is_new ? "Nuevo Usuario" : "Editar Usuario"}</h1>
 <div class="gridd">
-  <div class="nombre">
+  <div class="nombre input-containerd">
     <label for="nombre">Nombre</label>
-    <input type="text" bind:value={nombre} name="nombre" />
+    <input type="text" bind:value={payload.name} name="nombre" disabled={!is_new}/>
   </div>
-  <div class="ci">
+  <div class="ci input-containerd">
     <label for="ci">CI</label>
-    <input type="text" bind:value={ci} name="ci" disabled={disable}/>
+    <input type="text" bind:value={payload.dni} name="ci" disabled={disable}/>
   </div>
-  <div class="telefono">
+  <div class="telefono input-containerd">
     <label for="telefono">Telefono</label>
-    <input type="text" bind:value={telefono} name="telefono" />
+    <input type="text" bind:value={payload.phone} name="telefono" />
   </div>
-  <div class="correo">
+  <div class="correo input-containerd">
     <label for="correo">Correo</label>
-    <input type="email" name="correo" bind:value={correo} />
+    <input type="email" name="correo" bind:value={payload.mail} />
   </div>
-  <div class="pass">
+  <div class="pass input-containerd">
     <label for="pass">{disable ? 'Nueva ' : ''}Contraseña</label>
-    <input type="password" name="pass" bind:value={pass} />
+    <input type="password" name="pass" bind:value={payload.pass} />
   </div>
-  <div class="repass">
+  <div class="repass input-containerd">
     <label for="repass">Repita {disable ? 'Nueva ' : ''}Contraseña</label>
     <input type="password" name="repass" bind:value={repass} />
   </div>
-  <div class="almacen">
-    <label>
-      <input type="radio" bind:group={almacen} value={"elalto"} />
-      Almacen El Alto
+  <div class="almacen input-containerd">
+    <label for="almacen">
+      Almacen
     </label>
-    <label>
-      <input type="radio" bind:group={almacen} value={"sopocachi"} />
-      Almacen Sopocachi
-    </label>
-    <label>
-      <input type="radio" bind:group={almacen} value={"zonasur"} />
-      Almacen Zona Sur
-    </label>
+    <AutoComplete
+        items = {almacenes}
+        labelFieldName = "name"
+        valueFieldName = "id"
+        bind:value     = {payload.store}
+        name="almacen"
+        />
+  <label for="permisos">Permisos</label>
+  <AutoComplete
+      items = {roles}
+      bind:selectedItem = {payload.role}
+      name={'permisos'}
+      />
+
   </div>
 </div>
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
-  <label>
-    Administrador
-    <input type="checkbox" bind:value={administrador} />
-  </label>
-  <button on:click={registerTestUsers}> REgistrar Todo </button>
   <button class="button" style="margin-left: auto; width: auto;" on:click={aceptar}
     >Aceptar</button
   >

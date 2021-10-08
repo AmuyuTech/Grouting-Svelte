@@ -1,7 +1,6 @@
 import { authState } from "rxfire/auth";
 import {readable} from "svelte/store";
 import {
-    auth,
     CategoriasB$,
     Clientes$,
     ClientesB$,
@@ -15,6 +14,8 @@ import {
     UsuariosB$,
     Ventas$
 } from "./firebaseAPI"
+import firebase from "firebase";
+import {auth} from "./controller/firebaseAPI";
 
 export const User = readable(null, set => authState(auth).subscribe(u => set(u)))
 
