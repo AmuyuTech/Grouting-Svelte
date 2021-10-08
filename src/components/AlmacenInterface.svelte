@@ -6,7 +6,7 @@
     let almacenes = []
       // generamos un id unico para un nuevo almacen en base a un nuemro aleatorio
       const uuid = Math.random().toString(36).substr(2,8)
-      getAlmacenes.subscribe(c => almacenes = [{name: "Nuevo Almacen", id: uuid}, ...c])
+      getAlmacenes().subscribe((c) => {almacenes = [{name: "Nuevo Almacen", id: uuid}, ...c]})
       export let cat = {}
     const { close } = getContext('simple-modal');
     function _onCancel() {
@@ -26,6 +26,7 @@
     Seleccione Almacen
     <AutoComplete
             items={almacenes}
+        labelFieldName="name"
             bind:selectedItem={cat}
     />
 </div>

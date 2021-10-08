@@ -2,6 +2,9 @@
   import { push } from "svelte-spa-router";
   import Datepicker from "../components/Datepicker/Datepicker.svelte";
   import { Collection } from "sveltefire";
+  import {getContext} from 'svelte'
+  import AlmacenInterface from "../components/AlmacenInterface.svelte"
+    const {open} = getContext('simple-modal')
   let search = "";
 
   let page = 0;
@@ -13,6 +16,9 @@
   let desdeAux = new Date();
   let hastaAux = new Date();
 
+  const openStoreManager = () => {
+      open(AlmacenInterface, {})
+    }
   const ondesdeChange = (d) => {
     datefilterStart = toStr(d.detail);
     desdeAux = d.detail;
@@ -123,6 +129,12 @@
       return false;
     }}
   />
+  <button
+    class="button"
+    on:click={openStoreManager}
+    >
+    Administrar Almacenes
+  </button>
   <button
     class="button"
     style="margin-left: auto;"
