@@ -1,16 +1,20 @@
 <script>
   import { pop, replace } from "svelte-spa-router";
-  import { registrarTransaccion} from "../firebaseAPI";
+  import { registrarTransaccion } from "../firebaseAPI";
   import { ProductosB, User } from "../stores";
   import { onMount, onDestroy } from "svelte";
   import AutoComplete from "simple-svelte-autocomplete";
-  import { toast } from '@zerodevx/svelte-toast'
+  import { toast } from "@zerodevx/svelte-toast";
+  import { BucketProducts, getAlmacenes } from "../controller/firebaseAPI";
   let unsub;
   let productos = [];
+  let almacenes = [];
   onMount(() => {
-    unsub = ProductosB.subscribe((p) => {
-      console.log({p})
-      productos = [...p];
+    BucketProducts().subscribe((b) => {
+      productos = b;
+    });
+    getAlmacenes().subscribe((d) => {
+      almacenes = d;
     });
   });
   onDestroy(() => unsub());
@@ -19,26 +23,29 @@
   let destino = "elalto";
   let items = [];
   //!  User.subscribe((s) => (nombre = s ? 'test' :s.displayName));
-  function fecha () {
+  function fecha() {
     const today = new Date();
     return `${today.getFullYear()}/${
       today.getMonth() + 1 >= 10
         ? today.getMonth() + 1
         : "0" + (today.getMonth() + 1)
     }/${today.getDate > 10 ? today.getDate() : "0" + today.getDate()}`;
-  };
+  }
   function addItem() {
-    items = [...items, {
-      p: {},
-      cantidad: "",
-    }];
+    items = [
+      ...items,
+      {
+        p: {},
+        cantidad: "",
+      },
+    ];
   }
   function aceptar() {
-    items = items.map(it => ({
+    items = items.map((it) => ({
       nombre: it.p.nombre,
       id: it.p.id,
-      cantidad: it.cantidad
-    }))
+      cantidad: it.cantidad,
+    }));
     let data = {
       nombre,
       origen,
@@ -118,18 +125,24 @@
 </div>
 {#each items as item, i}
   <div class="row" style="width: 100%; align-items: center;">
-      Nombre
-      <AutoComplete
-        items={productos}
-        bind:selectedItem={item.p}
-        labelFieldName={"nombre"}
-        valueFieldName={"id"}
-        />
-        <label style="align-items: center;">
-          Cantidad
-          <input type="number" bind:value={item.cantidad}>
-        </label>
-        <button class="button" on:click={() => {items.splice(i, 1); items = items}}>X</button>
+    Nombre
+    <AutoComplete
+      items={productos}
+      bind:selectedItem={item.p}
+      labelFieldName={"nombre"}
+      valueFieldName={"id"}
+    />
+    <label style="align-items: center;">
+      Cantidad
+      <input type="number" bind:value={item.cantidad} />
+    </label>
+    <button
+      class="button"
+      on:click={() => {
+        items.splice(i, 1);
+        items = items;
+      }}>X</button
+    >
   </div>
 {/each}
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
@@ -138,6 +151,7 @@
   >
   <button class="button" on:click={cancelar}>Cancelar</button>
 </div>
+
 <style>
   .box {
     flex-grow: 1;

@@ -1,30 +1,44 @@
 <script>
   import { Usuario, roles } from "../models/usuario";
   import { onMount } from "svelte";
-  import { getUsuario, registrarUsuario, actualizarUsuario, getAlmacenes } from "../controller/firebaseAPI";
-  import  AutoComplete from "simple-svelte-autocomplete"
+  import {
+    getUsuario,
+    registrarUsuario,
+    actualizarUsuario,
+    getAlmacenes,
+  } from "../controller/firebaseAPI";
+  import AutoComplete from "simple-svelte-autocomplete";
   import { replace, pop } from "svelte-spa-router";
-  import {toast} from '@zerodevx/svelte-toast'
+  import { toast } from "@zerodevx/svelte-toast";
 
   export let params = {};
   let disable = false;
-  let payload = new Usuario()
-  const is_new = params.id === 'New'
-  let almacenes = []
-  let repass = ''
+  let payload = new Usuario();
+  const is_new = params.id === "New";
+  let almacenes = [];
+  let repass = "";
   getAlmacenes().subscribe((s) => {
-      almacenes = s 
-    })
+    almacenes = s;
+  });
 
   onMount(() => {
     if (params.id !== "New") {
-      disable = true
-        getUsuario(params.id).then(s => {
-            payload = s.data()
-          })
+      disable = true;
+      getUsuario(params.id).then((s) => {
+        payload = s.data();
+      });
     }
   });
   function aceptar() {
+    if (payload.pass !== repass) {
+      toast.push("Error las  contrasenas no coiciden", {
+        theme: {
+          "--toastBackground": "#F56565",
+          "--toastProgressBackground": "#C53030",
+        },
+      });
+        return
+    }
     toast.push("Subiendo", {
       initial: 0,
       progress: 0,
@@ -34,10 +48,9 @@
         "--toastProgressBackground": " #f4d03f ",
       },
     });
-    const promise =
-        is_new
-        ? registrarUsuario(data)
-        : actualizarUsuario(data, params.id);
+    const promise = is_new
+      ? registrarUsuario(payload)
+      : actualizarUsuario(payload, params.id);
     promise.then(
       (s) => {
         toast.pop();
@@ -65,15 +78,21 @@
     pop();
   }
 </script>
+
 <h1>{is_new ? "Nuevo Usuario" : "Editar Usuario"}</h1>
 <div class="gridd">
   <div class="nombre input-containerd">
     <label for="nombre">Nombre</label>
-    <input type="text" bind:value={payload.name} name="nombre" disabled={!is_new}/>
+    <input
+      type="text"
+      bind:value={payload.name}
+      name="nombre"
+      disabled={!is_new}
+    />
   </div>
   <div class="ci input-containerd">
     <label for="ci">CI</label>
-    <input type="text" bind:value={payload.dni} name="ci" disabled={disable}/>
+    <input type="text" bind:value={payload.dni} name="ci" disabled={disable} />
   </div>
   <div class="telefono input-containerd">
     <label for="telefono">Telefono</label>
@@ -84,38 +103,41 @@
     <input type="email" name="correo" bind:value={payload.mail} />
   </div>
   <div class="pass input-containerd">
-    <label for="pass">{disable ? 'Nueva ' : ''}Contraseña</label>
+    <label for="pass">{disable ? "Nueva " : ""}Contraseña</label>
     <input type="password" name="pass" bind:value={payload.pass} />
   </div>
   <div class="repass input-containerd">
-    <label for="repass">Repita {disable ? 'Nueva ' : ''}Contraseña</label>
+    <label for="repass">Repita {disable ? "Nueva " : ""}Contraseña</label>
     <input type="password" name="repass" bind:value={repass} />
   </div>
   <div class="almacen input-containerd">
-    <label for="almacen">
-      Almacen
-    </label>
+    <label for="almacen"> Almacen </label>
     <AutoComplete
-        items = {almacenes}
-        labelFieldName = "name"
-        valueFieldName = "id"
-        bind:value     = {payload.store}
-        name="almacen"
-        />
-  <label for="permisos">Permisos</label>
-  <AutoComplete
-      items = {roles}
-      bind:selectedItem = {payload.role}
-      name={'permisos'}
-      />
-
+      items={almacenes}
+      labelFieldName="name"
+      valueFieldName="id"
+      bind:value={payload.store}
+      name="almacen"
+    />
+    <label for="permisos">Permisos</label>
+    <AutoComplete
+      items={roles}
+      bind:selectedItem={payload.role}
+      name={"permisos"}
+    />
   </div>
 </div>
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
-  <button class="button" style="margin-left: auto; width: auto;" on:click={aceptar}
-    >Aceptar</button
+  <button
+    class="button"
+    style="margin-left: auto; width: auto;"
+    on:click={aceptar}>Aceptar</button
   >
-  <button class="button" style="width: auto; margin-left: 1rem;" on:click={cancelar}>Cancelar</button>
+  <button
+    class="button"
+    style="width: auto; margin-left: 1rem;"
+    on:click={cancelar}>Cancelar</button
+  >
 </div>
 
 <style>
