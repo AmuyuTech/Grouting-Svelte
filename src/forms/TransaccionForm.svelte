@@ -1,58 +1,49 @@
 <script>
   import { pop, replace } from "svelte-spa-router";
-  import { registrarTransaccion } from "../firebaseAPI";
   import { ProductosB, User } from "../stores";
   import { onMount, onDestroy } from "svelte";
   import AutoComplete from "simple-svelte-autocomplete";
   import { toast } from "@zerodevx/svelte-toast";
-  import { BucketProducts, getAlmacenes } from "../controller/firebaseAPI";
-  let unsub;
+  import {
+    BucketProducts,
+    getAlmacenes,
+    getTransaccion,
+    registrarTransaction,
+  } from "../controller/firebaseAPI";
+  import { Transaccion } from "../models/transaccion";
+
+  let payload = new Transaccion();
   let productos = [];
   let almacenes = [];
+  export let params = {};
   onMount(() => {
-    BucketProducts().subscribe((b) => {
+    BucketProducts.subscribe((b) => {
       productos = b;
     });
     getAlmacenes().subscribe((d) => {
       almacenes = d;
     });
+
+    if (params.id !== "New") {
+      getTransaccion(params.id).then((snp) => {
+        payload = snp;
+      });
+    } else {
+      User.subscribe((value) => {
+        if (value) {
+          payload.uid = value?.uid;
+          payload.name = value?.displayName;
+        }
+      });
+    }
   });
-  onDestroy(() => unsub());
-  let nombre = "test";
-  let origen = "elalto";
-  let destino = "elalto";
-  let items = [];
-  //!  User.subscribe((s) => (nombre = s ? 'test' :s.displayName));
-  function fecha() {
-    const today = new Date();
-    return `${today.getFullYear()}/${
-      today.getMonth() + 1 >= 10
-        ? today.getMonth() + 1
-        : "0" + (today.getMonth() + 1)
-    }/${today.getDate > 10 ? today.getDate() : "0" + today.getDate()}`;
-  }
+
   function addItem() {
-    items = [
-      ...items,
-      {
-        p: {},
-        cantidad: "",
-      },
-    ];
+    payload.addItem();
+    payload = payload;
   }
+
   function aceptar() {
-    items = items.map((it) => ({
-      nombre: it.p.nombre,
-      id: it.p.id,
-      cantidad: it.cantidad,
-    }));
-    let data = {
-      nombre,
-      origen,
-      destino,
-      items,
-      fecha: "" + fecha(),
-    };
     toast.push("Subiendo", {
       initial: 0,
       progress: 0,
@@ -62,7 +53,7 @@
         "--toastProgressBackground": " #f4d03f ",
       },
     });
-    registrarTransaccion(data).then(
+    registrarTransaction(payload).then(
       (s) => {
         toast.pop();
         toast.push("Exito!", {
@@ -85,37 +76,43 @@
       }
     );
   }
+
   function cancelar() {
     pop();
   }
+
+  let auxa = { name: "", id: "" };
+  let auxb = { name: "", id: "" };
+  $: {
+    if (auxa !== undefined) {
+      payload.setOrigen(auxa);
+    }
+    if (auxb !== undefined) {
+      payload.setDestino(auxb);
+    }
+
+    payload = payload;
+  }
 </script>
 
-<h1>Registro de Transaaccion</h1>
+<h1>Registro de Transaccion</h1>
 <div class="row" style="width: 100%;">
-  <p style="margin-left: 1rem;">Usuario: {nombre}</p>
-  <p style="margin-right: auto; margin-left: 1rem;">
-    Fecha: {new Date().toLocaleString("es-BO")}
+  <p style="margin-left: 1rem;">Usuario: {payload.name}</p>
+  <p style="margin-right: 1rem; margin-left: auto;">
+    Fecha: {payload.date.toDate().toLocaleString("es-BO")}
   </p>
 </div>
 <div class="row">
   <div class="box">
     <label>
       Origen
-      <select bind:value={origen}>
-        <option value={"elalto"}>El Alto</option>
-        <option value={"sopocachi"}>Sopocachi</option>
-        <option value={"zonasur"}>Zona Sur</option>
-      </select>
+      <AutoComplete items={almacenes} labelFieldName="name" bind:value={auxa} />
     </label>
   </div>
   <div class="box">
     <label>
       Destino
-      <select bind:value={destino}>
-        <option value={"elalto"}>El Alto</option>
-        <option value={"sopocachi"}>Sopocachi</option>
-        <option value={"zonasur"}>Zona Sur</option>
-      </select>
+      <AutoComplete items={almacenes} labelFieldName="name" bind:value={auxb} />
     </label>
   </div>
 </div>
@@ -123,32 +120,34 @@
   <h3>Items</h3>
   <button class="button" on:click={addItem}>Agregar Item</button>
 </div>
-{#each items as item, i}
+{#each payload.productos as item, i}
   <div class="row" style="width: 100%; align-items: center;">
     Nombre
     <AutoComplete
       items={productos}
-      bind:selectedItem={item.p}
-      labelFieldName={"nombre"}
-      valueFieldName={"id"}
+      labelFieldName="name"
+      onChange={(o) => {
+        item.setProducto(o ? o : { name: "", id: "" });
+        return true;
+      }}
     />
     <label style="align-items: center;">
       Cantidad
-      <input type="number" bind:value={item.cantidad} />
+      <input type="number" bind:value={item.quantity} />
     </label>
     <button
       class="button"
       on:click={() => {
-        items.splice(i, 1);
-        items = items;
-      }}>X</button
-    >
+        payload.productos.splice(i, 1);
+      }}
+      >X
+    </button>
   </div>
 {/each}
 <div class="row" style="width: 100%; right: 0; bottom: 0;">
   <button class="button" style="margin-left: auto;" on:click={aceptar}
-    >Aceptar</button
-  >
+    >Aceptar
+  </button>
   <button class="button" on:click={cancelar}>Cancelar</button>
 </div>
 
@@ -156,14 +155,17 @@
   .box {
     flex-grow: 1;
   }
+
   .button {
     width: auto;
     margin: 1rem;
   }
+
   .row {
     align-items: center;
     gap: 1rem;
   }
+
   :global(.autocomplete) {
     flex-grow: 1;
   }

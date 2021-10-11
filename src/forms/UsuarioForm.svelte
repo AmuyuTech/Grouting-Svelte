@@ -5,7 +5,7 @@
     getUsuario,
     registrarUsuario,
     actualizarUsuario,
-    getAlmacenes,
+    getAlmacenes, User,
   } from "../controller/firebaseAPI";
   import AutoComplete from "simple-svelte-autocomplete";
   import { replace, pop } from "svelte-spa-router";
@@ -25,7 +25,7 @@
     if (params.id !== "New") {
       disable = true;
       getUsuario(params.id).then((s) => {
-        payload = s.data();
+        payload = s;
       });
     }
   });
@@ -116,7 +116,7 @@
       items={almacenes}
       labelFieldName="name"
       valueFieldName="id"
-      bind:value={payload.store}
+      bind:selectedItem={payload.store}
       name="almacen"
     />
     <label for="permisos">Permisos</label>

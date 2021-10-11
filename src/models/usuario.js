@@ -5,7 +5,7 @@ export class Usuario {
     telefono = "",
     correo = "",
     contrasena = "",
-    almacen = "",
+    almacen = {},
     rol = "",
     status = ""
   ) {
@@ -47,4 +47,3 @@ export const UsuarioConverter = {
     );
   },
 };
-

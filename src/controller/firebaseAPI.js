@@ -58,6 +58,7 @@ export const GenerarReporte = fnc.httpsCallable("generarReporte");
 // User
 
 export const User = authState(auth);
+
 export function LogOut() {
   return auth.signOut();
 }
@@ -227,7 +228,7 @@ export async function getTransaccion(id$) {
     });
 }
 
-export function registerTransaction(Transaccion$) {
+export function registrarTransaction(Transaccion$) {
   return _TransaccionColection
     .withConverter(TransaccionConverter)
     .add(Transaccion$);

@@ -1,12 +1,14 @@
+import firebase from "firebase";
+
 export class Transaccion {
     constructor(
-        uid,
-        nombre,
-        origen,
-        destino,
-        origenId,
-        destinoId,
-        productos,
+        uid='',
+        nombre='',
+        origen='',
+        destino='',
+        origenId='',
+        destinoId='',
+        productos=[],
         fecha = firebase.firestore.Timestamp.now()
     ) {
         this.uid        = uid
@@ -17,6 +19,28 @@ export class Transaccion {
         this.originId   = origenId
         this.destinyId  = destinoId
         this.productos  = (productos.map((x) => new ItemT(x.name, x.id, x.quantity)))
+    }
+    addItem() {
+        this.productos.push(new ItemT('', '', 0))
+    }
+    setOrigen({name, id}) {
+        this.origin = name
+        this.originId = id
+    }
+    setDestino({name, id}) {
+        this.destiny = name
+        this.destinyId = id
+    }
+    toString() {
+        return ''  +
+        this.uid       + ' ++ ' +
+        this.name      + ' ++ ' +
+        this.date      + ' ++ ' +
+        this.origin    + ' ++ ' +
+        this.destiny   + ' ++ ' +
+        this.originId  + ' ++ ' +
+        this.destinyId + ' ++ ' +
+        this.productos.join(' == ')
     }
     toObject() {
         return {
@@ -41,12 +65,19 @@ export class ItemT {
         this.id = pid
         this.quantity = cantidad
     }
+    setProducto({name, id}) {
+        this.name = name
+        this.id = id
+    }
     toObject() {
         return {
             name: this.name,
             id: this.id,
             quantity: this.quantity
         }
+    }
+    toString() {
+        return '[' + this.name + '++' + this.id + '++' + this.quantity + ']'
     }
 }
 export const TransaccionConverter  = {

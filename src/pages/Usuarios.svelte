@@ -2,6 +2,7 @@
 	import Usuarios from './Usuarios.svelte';
   import { Collection } from "sveltefire"
 import { push } from "svelte-spa-router";
+import { UsuarioColection } from '../controller/firebaseConst';
     let search = ''
     function filterData(){}
 let pagesize = 10
@@ -11,20 +12,20 @@ function register() {
 function getQuery(ref$) {
   return ref$
 }
-let query = ref => getQuery(ref).orderBy('nombre', 'desc').limit(pagesize)
+let query = ref => getQuery(ref).orderBy('name', 'desc').limit(pagesize)
 
 function nextPage(last$) {
-    query = ref => getQuery(ref).orderBy('nombre', 'desc').startAfter(last$['nombre']).limit(pagesize)
+    query = ref => getQuery(ref).orderBy('name', 'desc').startAfter(last$['name']).limit(pagesize)
 }
 
 function prevPAge(first$) {
-    query = ref => getQuery(ref).orderBy('nombre', 'desc').endBefore(first$['nombre']).limitToLast(pagesize)
+    query = ref => getQuery(ref).orderBy('name', 'desc').endBefore(first$['name']).limitToLast(pagesize)
 }
 function firstPage() {
-  query = ref => getQuery(ref).orderBy('nombre', 'desc').limit(pagesize)
+  query = ref => getQuery(ref).orderBy('name', 'desc').limit(pagesize)
 }
 function lastPage() {
-  query = ref => getQuery(ref).orderBy('nombre', 'desc').limitToLast(pagesize)
+  query = ref => getQuery(ref).orderBy('name', 'desc').limitToLast(pagesize)
 }
 function viewUser(id$) {
   push(`/Usuarios/${id$}`)
@@ -73,7 +74,7 @@ function viewUser(id$) {
   </div>
   <button class="button"style="margin-left: auto;" on:click={register}>Registrar Usuario</button>
 </div>
-<Collection path={'USUARIOS'} {query} let:data let:first let:last>
+<Collection path={UsuarioColection} {query} let:data let:first let:last>
     <div style="padding: 2rem;">
       <div class="table-container">
         <table class="table-body">
@@ -85,10 +86,10 @@ function viewUser(id$) {
           </tr>
           {#each data as usr}
           <tr on:click={() => viewUser(usr.id)}>
-            <td>{usr.ci}</td>
-            <td>{usr.nombre}</td>
-            <td>{usr.almacen}</td>
-            <td>{usr.telefono}</td>
+            <td>{usr.dni}</td>
+            <td>{usr.name}</td>
+            <td>{usr.store.name}</td>
+            <td>{usr.phone}</td>
           </tr>
           {/each}
         </table>

@@ -1,11 +1,12 @@
 import {
+    actualizarAlmacen,
     actualizarFactura,
     BucketCategoria,
     BucketProducts,
-    BucketUsuarios, createAlmacen, getAllStocks, getAlmacenes, getFactura, getStockAt, getTransaccion, getUsuario,
-    Login, registerTransaction, registrarFactura,
+    BucketUsuarios, getAllStocks, getAlmacenes, getFactura, getStockAt, getTransaccion, getUsuario,
+    Login, registrarTransaction, registrarAlmacen, registrarFactura,
     registrarProducto,
-    registrarUsuario, updateAlmacen, User
+    registrarUsuario
 } from "./firebaseAPI";
 import {Producto} from "../models/producto";
 import {Usuario} from "../models/usuario";
@@ -106,14 +107,14 @@ describe('Check Almacenes', () => {
     const nombre2 = 'Almacen2'
     const testID = 'testid'
     it('should Create Almacen', function () {
-        createAlmacen(nombre).then(() => {
+        registrarAlmacen(nombre).then((snp) => {
             expect(1).toEqual(1)
         }).catch((err) => {
             throw err
         })
     });
     it('should Udatean Nonexisting Almacen', function () {
-        updateAlmacen(testID, nombre2).then(() => {
+        actualizarAlmacen(testID, nombre2).then(() => {
             expect(1).toEqual(1)
         }).catch((err) => {
             throw err
@@ -165,7 +166,7 @@ describe('Transacciones Test', () => {
         expect(TransaccionConverter.toFirestore(Transaccion1)).toEqual(Transaccion1.toObject())
     })
     it('should Create Transaccion', function () {
-        registerTransaction(Transaccion1).then((val) => {
+        registrarTransaction(Transaccion1).then((val) => {
             getTransaccion(val.id).then((doc) => {
                 if (doc.exists) {
                     expect(Transaccion1).toEqual(doc.data())

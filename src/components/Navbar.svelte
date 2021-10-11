@@ -9,7 +9,7 @@
   <ul class="navbar-nav">
     <li class="logo">
       <a href="/#" class="nav-link">
-        <span class="link-text logo-text">Grouting BO</span>
+        <span class="link-text logo-text">SNEAKER SPORTS</span>
         <svg
           aria-hidden="true"
           focusable="false"
