@@ -2,14 +2,14 @@ import firebase from "firebase";
 
 export class Factura {
     constructor(
-        uid,
-        nombre,
-        fecha,
-        proveedor,
-        proveedorId,
-        descuento,
-        items,
-        despachos
+        uid = '',
+        nombre = '',
+        fecha = '',
+        proveedor = '',
+        proveedorId = '',
+        descuento = '',
+        items = [],
+        despachos = []
     ) {
         this.uid        = uid
         this.name       = nombre

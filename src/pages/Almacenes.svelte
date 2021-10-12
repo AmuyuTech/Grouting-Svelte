@@ -4,6 +4,7 @@
   import { Collection } from "sveltefire";
   import {getContext} from 'svelte'
   import AlmacenInterface from "../components/AlmacenInterface.svelte"
+  import {TransaccionColection} from "../controller/firebaseConst";
     const {open} = getContext('simple-modal')
   let search = "";
 
@@ -49,14 +50,14 @@
   function getQuery(ref$) {
     let aux = ref$;
     if (datefilterStart !== "") {
-      aux = aux.where("fecha", ">=", datefilterStart);
+      aux = aux.where("date", ">=", datefilterStart);
     }
     if (datefilterEnd !== "") {
-      aux = aux.where("fecha", "<=", datefilterEnd);
+      aux = aux.where("date", "<=", datefilterEnd);
     }
     return aux;
   }
-  let query = (ref) => getQuery(ref).orderBy("fecha", "desc").limit(pagesize);
+  let query = (ref) => getQuery(ref).orderBy("date", "desc").limit(pagesize);
 
   function nextPage(last$) {
     query = (ref) =>
@@ -69,16 +70,16 @@
   function prevPAge(first$) {
     query = (ref) =>
       getQuery(ref)
-        .orderBy("fecha", "desc")
-        .endBefore(first$["fecha"])
+        .orderBy("date", "desc")
+        .endBefore(first$)
         .limitToLast(pagesize);
   }
   function firstPage() {
-    query = (ref) => getQuery(ref).orderBy("fecha", "desc").limit(pagesize);
+    query = (ref) => getQuery(ref).orderBy("date", "desc").limit(pagesize);
   }
   function lastPage() {
     query = (ref) =>
-      getQuery(ref).orderBy("fecha", "desc").limitToLast(pagesize);
+      getQuery(ref).orderBy("date", "desc").limitToLast(pagesize);
   }
 </script>
 
@@ -143,7 +144,7 @@
     }}>Registrar Transaccion</button
   >
 </div>
-<Collection path={"TRANSACCIONES"} {query} let:data let:first let:last>
+<Collection path={TransaccionColection} {query} let:data let:first let:last>
   <div style="padding: 2rem;">
     <div class="table-container">
       <table class="table-body">
@@ -155,10 +156,10 @@
         </tr>
         {#each data as fact}
           <tr>
-            <td>{fact.fecha}</td>
-            <td>{fact.nombre}</td>
-            <td>{fact.origen}</td>
-            <td>{fact.destino}</td>
+            <td>{fact.date.toDate().toLocaleString("es_BO",{day: "2-digit", month: 'short', year: '2-digit'})}</td>
+            <td>{fact.name}</td>
+            <td>{fact.origin}</td>
+            <td>{fact.destiny}</td>
           </tr>
         {/each}
       </table>

@@ -10,7 +10,6 @@ const TransaccionColection = "TRANSACCION";
 const UsuarioColection = "USUARIO";
 const VentaColection = "VENTA";
 const BucketsColection = "BUCKET";
-
 const WildCard = "/{docId}";
 /**------------------------------------**/
 // // Create and Deploy Your First Cloud Functions
@@ -164,9 +163,39 @@ function lessToPath(id$, store$, cant$) {
 }
 
 // Clientes
+exports.BucketClientes = firestoreF
+    .document(ClienteColection+WildCard)
+    .onWrite((snp) => {
+        const data = snp.after.data()
+        const payload = {}
+        payload[snp.after.id] = {
+            name: data.name,
+            nit:   data.nit
+        }
+        const transaccion = db.batch()
+        transaccion.set(BCollection.doc(ClienteColection), payload, {merge: true})
+        const before = snp.before.data()
 
+        if (data.asesorId !== before.asesorId) {
+            transaccion.set(BCollection.doc(ClienteColection).collection(BucketsColection).doc(before.asesorId), deleteFieldPayload(before.asesorId), {merge: true})
+        }
+        transaccion.set(BCollection.doc().collection(BucketsColection).doc(data.asesorId), payload, {merge: true})
+        return transaccion.commit()
+    })
 // Proveedores
-
+// Utils
+/**
+ * Returns an object containing and order for delete every field listed in @fields
+ * @param fields$ a list of every field to delete in the doc
+ * @returns {{}} an object to delete every path  usin the doc.set(this, {merge: true}) order in firestore
+ */
+function deleteFieldPayload(...fields$) {
+    const aux = {}
+    fields$.forEach(f => {
+        aux[f] = firebase.firestore.FieldValue.delete()
+    })
+    return aux
+}
 //////////Genmerar PDfs///////////////
 
 exports.generarReporte = functions.https.onCall(async (data, ctx) => {
