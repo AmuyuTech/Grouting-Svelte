@@ -250,9 +250,6 @@ export class TransaccionQuery  {
     const hasta = new Date(hasta$.getTime())
     desde.setHours(0,0,0,0)
     hasta.setHours(23,59,59,0)
-    console.log(desde)
-    console.log(hasta)
-    console.log(usuario$)
     const aux = _TransaccionColection
       .withConverter(TransaccionConverter)
       .orderBy("date", "desc")
@@ -290,17 +287,14 @@ export class TransaccionQuery  {
       .then((snp) => this.UpdateData(snp, 'first'))
   }
   UpdateData = (value, ctx) => {
-    console.log(ctx)
     if (!value.empty) {
 //    data = [...value.docs.map((v) => v.data())];
 //    first = value.docs[0];
 //    last = value.docs[value.size - 1];
       this.data = [...value.docs.map((v) => v.data())];
-      console.log(this.data)
       this.first = value.docs[0];
       this.last = value.docs[value.size - 1];this
     } else {
-      console.log('vacio')
       this.data = []
       this.first = null
       this.last = null

@@ -99,7 +99,7 @@
 <div class="row" style="width: 100%;">
   <p style="margin-left: 1rem;">Usuario: {payload.name}</p>
   <p style="margin-right: 1rem; margin-left: auto;">
-    Fecha: {payload.date.toDate().toLocaleString("es-BO")}
+    Fecha: {(new Date(payload.date)).toLocaleString("es-BO")}
   </p>
 </div>
 <div class="row">

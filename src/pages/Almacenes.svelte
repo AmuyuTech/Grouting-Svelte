@@ -3,8 +3,8 @@
   import Datepicker from "../components/Datepicker/Datepicker.svelte";
   import { getContext, onMount } from "svelte";
   import AlmacenInterface from "../components/AlmacenInterface.svelte";
-  import firebase from "firebase";
-  import { TransaccionQuery } from "../controller/firebaseAPI";
+  import { BucketUsuarios, TransaccionQuery } from "../controller/firebaseAPI";
+  import AutoComplete from "simple-svelte-autocomplete";
   const { open } = getContext("simple-modal");
 
   let TransaccionInterface = new TransaccionQuery();
@@ -17,9 +17,14 @@
 
   let usuario = {};
 
+  let usuarios = [];
   onMount(() => {
     TransaccionInterface.getFirstPage(desde, hasta, usuario).then((s) => {
       TransaccionInterface = TransaccionInterface;
+    });
+
+    BucketUsuarios.subscribe((s) => {
+      usuarios = [{name: 'Todos', id: null}, ...s];
     });
   });
 
@@ -28,12 +33,22 @@
   };
 
   const ondesdeChange = (d) => {
-    const desde$ = firebase.firestore.Timestamp.fromDate(d.detail);
-    const hasta$ = firebase.firestore.Timestamp.fromDate(hasta);
+    desde = d.detail;
+    TransaccionInterface.getFirstPage(desde, hasta, usuario).then(() => {
+      TransaccionInterface = TransaccionInterface;
+    });
   };
   const onhastaChange = (d) => {
-    const haste$ = firebase.firestore.Timestamp.fromDate(d.detail);
-    const desde$ = firebase.firestore.Timestamp.fromDate(desde);
+    hasta = d.detail;
+    TransaccionInterface.getFirstPage(desde, hasta, usuario).then(() => {
+      TransaccionInterface = TransaccionInterface;
+    });
+  };
+  const onUserChange = (u) => {
+    usuario = u;
+    TransaccionInterface.getFirstPage(desde, hasta, usuario).then(() => {
+      TransaccionInterface = TransaccionInterface;
+    });
   };
 
   function beforeToday(date$) {
@@ -101,6 +116,16 @@
     label={"Hasta"}
     isAllowed={beforeToday}
   />
+  <label>
+    Usuario
+    <AutoComplete
+      items={usuarios}
+      bind:value={usuario}
+      labelFieldName="name"
+      name="user"
+      onChange={onUserChange}
+    />
+  </label>
   <button class="button" on:click={openStoreManager}>
     Administrar Almacenes
   </button>
@@ -124,9 +149,7 @@
       </tr>
       {#each TransaccionInterface.data as tr}
         <tr>
-          <td
-            >{(new Date(tr.date)).toLocaleString(locale)}</td
-          >
+          <td>{new Date(tr.date).toLocaleString(locale)}</td>
           <td>{tr.name}</td>
           <td>{tr.origin}</td>
           <td>{tr.destiny}</td>
