@@ -129,7 +129,7 @@ exports.ValidarVenta = firestoreF
         destiny: adata.storeId,
         originId: null,
         destinyId: adata.items,
-        productos: firebase.firestore.Timestamp.now(),
+        productos: firebase.firestore.Timestamp.now().toMillis(),
       };
       return db.collection(TransaccionColection).add(payload);
     }

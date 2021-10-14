@@ -45,6 +45,7 @@ if (test) {
   firebase.database().useEmulator("localhost", 9000);
   firebase.functions().useEmulator("localhost", 5001);
 }
+const _PageSize = 10;
 export let auth = firebase.auth();
 export let db = firebase.firestore();
 export let rt = firebase.database().ref();
@@ -234,6 +235,82 @@ export function registrarTransaction(Transaccion$) {
     .add(Transaccion$);
 }
 
+export class TransaccionQuery  {
+  constructor() {
+    if(!TransaccionQuery.instance) {
+      TransaccionQuery.instance = this
+    }
+    return TransaccionQuery.instance
+  }
+  data = []
+  first = null
+  last = null
+  getTransaccionesQ(desde$, hasta$, usuario$) {
+    const desde = new Date(desde$.getTime())
+    const hasta = new Date(hasta$.getTime())
+    desde.setHours(0,0,0,0)
+    hasta.setHours(23,59,59,0)
+    console.log(desde)
+    console.log(hasta)
+    console.log(usuario$)
+    const aux = _TransaccionColection
+      .withConverter(TransaccionConverter)
+      .orderBy("date", "desc")
+      .where("date", ">", desde.getTime())
+      .where("date", "<", hasta.getTime());
+    if (usuario$ !== null && usuario$?.id !== null && usuario$ !== {} && usuario$ && usuario$?.id !== undefined) {
+      return aux.where("uid", "==", usuario$.id);
+    }
+    return aux;
+  }
+  async getPrevPage(desde$, hasta$, usuario$) {
+    return await this.getTransaccionesQ(desde$, hasta$, usuario$)
+      .limit(_PageSize)
+      .endBefore(this.first)
+      .get()
+        .then((snp) => this.UpdateData(snp, 'prev'))
+  }
+  async getNextPage(desde$, hasta$, usuario$) {
+    return await this.getTransaccionesQ(desde$, hasta$, usuario$)
+      .limit(_PageSize)
+      .startAfter(this.last)
+      .get()
+        .then((snp) => this.UpdateData(snp, 'next'))
+  }
+  async getLastPage(desde$, hasta$, ususario$) {
+    return await this.getTransaccionesQ(desde$, hasta$, ususario$)
+      .limitToLast(_PageSize)
+      .get()
+        .then((snp) => this.UpdateData(snp, 'last'))
+  }
+  async getFirstPage(desde$, hasta$, usuario$) {
+    return await this.getTransaccionesQ(desde$, hasta$, usuario$)
+      .limit(_PageSize)
+      .get()
+      .then((snp) => this.UpdateData(snp, 'first'))
+  }
+  UpdateData = (value, ctx) => {
+    console.log(ctx)
+    if (!value.empty) {
+//    data = [...value.docs.map((v) => v.data())];
+//    first = value.docs[0];
+//    last = value.docs[value.size - 1];
+      this.data = [...value.docs.map((v) => v.data())];
+      console.log(this.data)
+      this.first = value.docs[0];
+      this.last = value.docs[value.size - 1];this
+    } else {
+      console.log('vacio')
+      this.data = []
+      this.first = null
+      this.last = null
+  //    data = []
+      //    first = null
+//      last = null
+    }
+    return this.data
+  }
+}
 //Usuario
 export async function getUsuario(id$) {
   return await _UsuarioColection
@@ -401,4 +478,3 @@ function parseBucket(data$) {
     };
   });
 }
-

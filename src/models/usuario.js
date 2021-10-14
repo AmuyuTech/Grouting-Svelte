@@ -28,7 +28,7 @@ export const UsuarioConverter = {
       phone: usuario.phone,
       mail: usuario.mail,
       pass: usuario.pass,
-      store: usuario.store,
+      store: { name: usuario.store.name, id: usuario.store.id },
       role: usuario.role,
       status: usuario.status,
     };

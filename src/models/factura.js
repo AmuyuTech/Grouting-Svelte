@@ -32,7 +32,7 @@ export class Factura {
     }
     items
     dispatches
-    addDespacho(uid$, nombre$, date$ = firebase.firestore.Timestamp.now(), valuestoAdd$ = this.items.map((_) => {return 0})) {
+    addDespacho(uid$, nombre$, date$ = firebase.firestore.Timestamp.now().toMillis(), valuestoAdd$ = this.items.map((_) => {return 0})) {
         //sumatoiria para las cantidades actuales
         const aux = []
         this.items.forEach( (_) => {aux.push(0)})

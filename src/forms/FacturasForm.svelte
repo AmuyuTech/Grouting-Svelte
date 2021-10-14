@@ -1,33 +1,43 @@
 <script>
   import { pop, replace } from "svelte-spa-router";
+  import {
+    actualizarFactura,
+    registrarFactura,
+    getFactura,
+  } from "../firebaseAPI";
   import facturas from "./../assets/facturas";
   import AutoComplete from "simple-svelte-autocomplete";
   import { ProductosB } from "../stores";
   import { calcularEstado, getDate } from "../util.js";
   import { toast } from "@zerodevx/svelte-toast";
   import { onMount } from "svelte";
-  import {getFactura, User} from "../controller/firebaseAPI";
-  import {Factura} from "../models/factura";
 
   export let params = {};
   let productos = [];
+  ProductosB.subscribe((v) => (productos = v));
   let disabled = false;
-  let payload = new Factura()
+
   onMount(async () => {
-    ProductosB.subscribe((v) => (productos = v));
-    if (params.id !== "New"){
+    if (params.id === "New") {
+    } else {
       disabled = true;
       getFactura(params.id).then((d) => {
-        payload = d
+        const aux = d.data();
+        numero = aux.numero;
+        proveedor = aux.proveedor;
+        usuario = aux.usuario;
+        fecha = aux.fecha;
+        items = aux.items;
+        despachos = aux.despachos;
       });
-    }else {
-      User.subscribe((usr) => {
-        payload.name = usr.displayName
-        payload.uid = usr.uid
-      })
     }
   });
-
+  let numero = "";
+  let proveedor = "";
+  let usuario = "";
+  let fecha = getDate();
+  let items = [];
+  let despachos = [];
 
   function registerAll() {
     facturas.forEach((f) => registrarFactura(f));

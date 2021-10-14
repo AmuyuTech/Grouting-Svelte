@@ -9,7 +9,7 @@ export class Transaccion {
         origenId='',
         destinoId='',
         productos=[],
-        fecha = firebase.firestore.Timestamp.now()
+        fecha = firebase.firestore.Timestamp.now().toMillis()
     ) {
         this.uid        = uid
         this.name       = nombre
