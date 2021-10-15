@@ -170,16 +170,16 @@ exports.BucketClientes = firestoreF
         const payload = {}
         payload[snp.after.id] = {
             name: data.name,
-            nit:   data.nit
+            dni:   data.dni
         }
         const transaccion = db.batch()
         transaccion.set(BCollection.doc(ClienteColection), payload, {merge: true})
         const before = snp.before.data()
 
-        if (data.asesorId !== before.asesorId) {
+        if (data.asesorId !== before?.asesorId && before) {
             transaccion.set(BCollection.doc(ClienteColection).collection(BucketsColection).doc(before.asesorId), deleteFieldPayload(before.asesorId), {merge: true})
         }
-        transaccion.set(BCollection.doc().collection(BucketsColection).doc(data.asesorId), payload, {merge: true})
+        transaccion.set(BCollection.doc(ClienteColection).collection(BucketsColection).doc(data.advisorId), payload, {merge: true})
         return transaccion.commit()
     })
 // Proveedores

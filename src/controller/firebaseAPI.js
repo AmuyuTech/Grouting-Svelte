@@ -235,27 +235,33 @@ export function registrarTransaction(Transaccion$) {
     .add(Transaccion$);
 }
 
-export class TransaccionQuery  {
+export class TransaccionQuery {
   constructor() {
-    if(!TransaccionQuery.instance) {
-      TransaccionQuery.instance = this
+    if (!TransaccionQuery.instance) {
+      TransaccionQuery.instance = this;
     }
-    return TransaccionQuery.instance
+    return TransaccionQuery.instance;
   }
-  data = []
-  first = null
-  last = null
+  data = [];
+  first = null;
+  last = null;
   getTransaccionesQ(desde$, hasta$, usuario$) {
-    const desde = new Date(desde$.getTime())
-    const hasta = new Date(hasta$.getTime())
-    desde.setHours(0,0,0,0)
-    hasta.setHours(23,59,59,0)
+    const desde = new Date(desde$.getTime());
+    const hasta = new Date(hasta$.getTime());
+    desde.setHours(0, 0, 0, 0);
+    hasta.setHours(23, 59, 59, 0);
     const aux = _TransaccionColection
       .withConverter(TransaccionConverter)
       .orderBy("date", "desc")
       .where("date", ">", desde.getTime())
       .where("date", "<", hasta.getTime());
-    if (usuario$ !== null && usuario$?.id !== null && usuario$ !== {} && usuario$ && usuario$?.id !== undefined) {
+    if (
+      usuario$ !== null &&
+      usuario$?.id !== null &&
+      usuario$ !== {} &&
+      usuario$ &&
+      usuario$?.id !== undefined
+    ) {
       return aux.where("uid", "==", usuario$.id);
     }
     return aux;
@@ -265,45 +271,46 @@ export class TransaccionQuery  {
       .limit(_PageSize)
       .endBefore(this.first)
       .get()
-        .then((snp) => this.UpdateData(snp, 'prev'))
+      .then((snp) => this.UpdateData(snp, "prev"));
   }
   async getNextPage(desde$, hasta$, usuario$) {
     return await this.getTransaccionesQ(desde$, hasta$, usuario$)
       .limit(_PageSize)
       .startAfter(this.last)
       .get()
-        .then((snp) => this.UpdateData(snp, 'next'))
+      .then((snp) => this.UpdateData(snp, "next"));
   }
   async getLastPage(desde$, hasta$, ususario$) {
     return await this.getTransaccionesQ(desde$, hasta$, ususario$)
       .limitToLast(_PageSize)
       .get()
-        .then((snp) => this.UpdateData(snp, 'last'))
+      .then((snp) => this.UpdateData(snp, "last"));
   }
   async getFirstPage(desde$, hasta$, usuario$) {
     return await this.getTransaccionesQ(desde$, hasta$, usuario$)
       .limit(_PageSize)
       .get()
-      .then((snp) => this.UpdateData(snp, 'first'))
+      .then((snp) => this.UpdateData(snp, "first"));
   }
   UpdateData = (value, ctx) => {
     if (!value.empty) {
-//    data = [...value.docs.map((v) => v.data())];
-//    first = value.docs[0];
-//    last = value.docs[value.size - 1];
+      //    data = [...value.docs.map((v) => v.data())];
+      //    first = value.docs[0];
+      //    last = value.docs[value.size - 1];
       this.data = [...value.docs.map((v) => v.data())];
       this.first = value.docs[0];
-      this.last = value.docs[value.size - 1];this
+      this.last = value.docs[value.size - 1];
+      this;
     } else {
-      this.data = []
-      this.first = null
-      this.last = null
-  //    data = []
+      this.data = [];
+      this.first = null;
+      this.last = null;
+      //    data = []
       //    first = null
-//      last = null
+      //      last = null
     }
-    return this.data
-  }
+    return this.data;
+  };
 }
 //Usuario
 export async function getUsuario(id$) {
@@ -438,6 +445,21 @@ export const BucketClientes = readable([], (set) => {
     .doc(ClienteColection)
     .onSnapshot((snapshot) => obs(set, snapshot));
 });
+export async function UserBucketclientes(uid$) {
+  return await _BucketsColection
+    .doc(ClienteColection)
+    .collection(BucketsColection)
+    .doc(uid$)
+    .get()
+    .then((snp) => {
+      return Object.keys(snp.data()).map((k) => {
+        return { id: k, ...snp.data()[k] };
+      });
+    })
+    .catch((err) => {
+      return [];
+    });
+}
 export const BucketUsuarios = readable([], (set) => {
   _BucketsColection
     .doc(UsuarioColection)

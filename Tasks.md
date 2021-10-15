@@ -2,10 +2,10 @@
 Nota: La siguiente lista contiene solo las funciones que se analizaron inicialmente  y por tanto no es fija y puede variar deacuerdo a las especificaciones del cliente
 
 
-* [ ] Lista con paginacion para la pagina de Transacciones 
+* [X] Lista con paginacion para la pagina de Transacciones 
 
-> - [ ] Filtrar por intervalos de tiempo
-> - [ ] Filtrar por Usuarios
+> - [X] Filtrar por intervalos de tiempo
+> - [X] Filtrar por Usuarios
 
 * [ ] Lista con un Bucket para lo Clientes
 

@@ -1,53 +1,73 @@
 <script>
   import { Collection } from "sveltefire";
-  import {push} from 'svelte-spa-router'
-import { registerTestClientes } from "../firebaseAPI";
-import { getContext } from "svelte";
-const { open } = getContext('simple-modal');
-  function registerTest() {
-    registerTestClientes()
-  }
+  import { push } from "svelte-spa-router";
+  import { getContext, onMount } from "svelte";
+  import ReportGenerator from "../components/ReportGenerator.svelte";
+  import {BucketClientes, BucketUsuarios, UserBucketclientes} from "../controller/firebaseAPI";
+  import AutoComplete from "simple-svelte-autocomplete";
+  const { open } = getContext("simple-modal");
+
   function reporte() {
-    open(ReportGenerator, {sw: true, nombre: 'Clientes'})
+    open(ReportGenerator, { sw: true, nombre: "Clientes" });
   }
-  let search = "";
-  let pagesize = 10
-  function filterData() {
-    const s = search.trim().toLowerCase();
-    if (s.length > 0) {
-      Data = items.filter((v) => {
-        return Object.values(v).toString().toLowerCase().indexOf(s) !== -1;
-      });
-    } else {
-      Data = items;
-    }
-  }
+
   function newCliente() {
     push("/Clientes/New");
   }
-  let query = (ref) => ref.orderBy("nombre", "desc").limit(pagesize);
 
-  function nextPage(last$) {
-    query = (ref) =>
-      getQuery(ref)
-        .orderBy("nombre", "desc")
-        .startAfter(last$["nombre"])
-        .limit(pagesize);
-  }
+  let clientes = [];
 
-  function prevPAge(first$) {
-    query = (ref) =>
-      getQuery(ref)
-        .orderBy("nombre", "desc")
-        .endBefore(first$["nombre"])
-        .limitToLast(pagesize);
-  }
-  function firstPage() {
-    query = (ref) => getQuery(ref).orderBy("nombre", "desc").limit(pagesize);
-  }
-  function lastPage() {
-    query = (ref) =>
-      getQuery(ref).orderBy("nombre", "desc").limitToLast(pagesize);
+  let selection = {};
+
+  let lista = [];
+
+  let busqueda = "";
+
+  let asesores = []
+
+  const todos = {name: 'Todos', id: null}
+
+  let uns
+  onMount(() => {
+    uns = BucketClientes.subscribe((s) => {
+      clientes = s;
+      lista = s;
+    });
+    BucketUsuarios.subscribe((s) => {
+      asesores = [todos, s]
+    })
+  });
+
+  $: () => {
+    if (busqueda.length > 0) {
+      lista = clientes.filter((s) => {
+        return s.dni === busqueda || s.name === busqueda;
+      });
+    } else {
+      lista = clientes;
+    }
+  };
+
+  const onSelectionChange = (s) => {
+    try {
+      uns()
+    }catch (e) {
+
+    }
+    if(!s) {
+      return
+    }
+    if (s === todos) {
+      uns = BucketClientes.subscribe((ss) => {
+        clientes = ss
+        lista = clientes
+      })
+    } else {
+      UserBucketclientes(s.id).then((dd) => {
+        clientes = dd
+        lista = clientes
+      })
+    }
   }
 </script>
 
@@ -78,7 +98,7 @@ const { open } = getContext('simple-modal');
   <h1 style="margin-left: 1rem;">Clientes</h1>
 </div>
 <div class="controls-row">
-  <!--div class="input-container">
+  <div class="input-container">
     <svg
       aria-hidden="true"
       focusable="false"
@@ -101,126 +121,90 @@ const { open } = getContext('simple-modal');
       ></svg
     >
     <input
-      bind:value={search}
-      on:keyup={filterData}
+      bind:value={busqueda}
       class="input text-input"
       placeholder="Buscar..."
     />
-  </div-->
+  </div>
+  <label>Asesor
+  <AutoComplete
+    items={asesores}
+    labelFieldName="name"
+    onChange={onSelectionChange}
+    />
+  </label>
   <button class="button" on:click={reporte}>Reporte de Deudas</button>
-  <button on:click={registerTest}>REgistar TEst</button>
   <button class="button" style="margin-left: auto;" on:click={newCliente}
     >Registrar Cliente</button
   >
 </div>
-<Collection path={"CLIENTES"} {query} let:data let:first let:last>
   <div style="padding: 2rem;">
     <div class="table-container">
       <table class="table-body">
         <tr>
           <th> NIT </th>
           <th> Nombre </th>
-          <th> Telefono </th>
         </tr>
-        {#each data as row}
+        {#each lista as row}
           <tr on:click={() => push(`/Clientes/${row.id}`)}>
-            <td>{row.nit}</td>
-            <td>{row.nombre}</td>
-            <td>{row.telefono}</td>
+            <td>{row.dni}</td>
+            <td>{row.name}</td>
           </tr>
         {/each}
       </table>
 
-      <div class="table-footer">
-        <!-- No implementable??  revirsar p style="margin-left: 2rem;">## de ### </p-->
-
-        <button
-          style="margin-left: auto;"
-          class="footer-button"
-          on:click={firstPage}
-        >
-          <svg viewBox="0 0 24 24" focusable="false" class="footer-icon"
-            ><path
-              d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-            /></svg
-          >
-        </button>
-        <button class="footer-button" on:click={prevPAge(first)}>
-          <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
-            ><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg
-          >
-        </button>
-        <button class="footer-button" on:click={nextPage(last)}>
-          <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
-            ><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg
-          >
-        </button>
-        <button
-          class="footer-button"
-          style="margin-right: 2rem;"
-          on:click={lastPage}
-        >
-          <svg viewBox="0 0 24 24" focusable="false" class="mat-paginator-icon"
-            ><path
-              d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-            /></svg
-          >
-        </button>
-      </div>
     </div>
   </div>
-  <span slot="loading">Cargando...</span>
-</Collection>
+
 <style>
   .table-container {
-      border-radius: 1rem;
-      overflow: hidden;
-      overflow-x: auto;
-      box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
-      width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    overflow-x: auto;
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+    width: 100%;
   }
-  
+
   table {
-      border-collapse: collapse;
-  
-      width: 100%;
+    border-collapse: collapse;
+
+    width: 100%;
   }
-  
+
   th {
-      font-family: Lato-Bold;
-      font-size: 18px;
-      color: #fff;
-      line-height: 1.4;
-      background-color: #6c7ae0;
+    font-family: Lato-Bold;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.4;
+    background-color: #6c7ae0;
   }
-  
+
   tr:nth-child(even) {
-      background-color: #f8f6ff;
+    background-color: #f8f6ff;
   }
-  
+
   td {
-      padding-left: 1rem;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
-  
+
   th {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
-  
+
   .table-footer {
-      display: inline-flex;
-      flex-wrap: wrap;
-      align-items: center;
-      width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
   }
-  
+
   .footer-button {
-      width: 2.5rem;
-      height: 2.5rem;
-      background-color: transparent;
-      border-color: transparent;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: transparent;
+    border-color: transparent;
   }
-  </style>
-  
+</style>
