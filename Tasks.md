@@ -7,16 +7,18 @@ Nota: La siguiente lista contiene solo las funciones que se analizaron inicialme
 > - [X] Filtrar por intervalos de tiempo
 > - [X] Filtrar por Usuarios
 
-* [ ] Lista con un Bucket para lo Clientes
+* [X] Lista con un Bucket para lo Clientes
+
+> - [X] Filtrar por Nombre
+> - [X] Filtrar por CI
+> - [X] Filtrar por Asesor
+
+* [ ] Lista con un Bucket para lso Usuario ( Se cambio a lista con paginacion para leer mejor la informacion de los usuarios en la tabla)
 
 > - [ ] Filtrar por Nombre
 > - [ ] Filtrar por CI
-> - [ ] Filtrar por Asesor
-
-* [ ] Lista con un Bucket para lso Usuario
-
-> - [ ] Filtrar por Nombre
-> - [ ] Filtrar por CI
+> - [ ] Filtrar por Almacen (**_Nueva Funcion_**)
+> - [ ] Filtrar por Rol (**_Nueva Funcion_**)
 
 * [X] Lista con un Bucket para los Productos
 * [ ] Lista con  paginacion para los Creditos

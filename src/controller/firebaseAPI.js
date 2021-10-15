@@ -340,6 +340,74 @@ export function actualizarUsuario(Usuario$, id$) {
     .update(Usuario$);
 }
 
+export class UsuarioQuery {
+  constructor() {
+    if (!UsuarioQuery.instance) {
+      UsuarioQuery.instance = this;
+    }
+    return UsuarioQuery.instance;
+  }
+  data = [];
+  first = null;
+  last = null;
+
+  getTransaccionesQ(almacen$, rol$) {
+    let aux = _UsuarioColection
+      .withConverter(UsuarioConverter)
+      .orderBy("name", "desc");
+    if (almacen$ && almacen$.length > 0) {
+      aux = aux.where("store", "==", almacen$);
+    }
+    if (rol$ && rol$.length > 0) {
+      aux = aux.where("role", '==', rol$)
+    }
+    return aux;
+  }
+  async getPrevPage(almacen$, rol$) {
+    return await this.getTransaccionesQ(almacen$, rol$)
+      .limit(_PageSize)
+      .endBefore(this.first)
+      .get()
+      .then((snp) => this.UpdateData(snp, "prev"));
+  }
+  async getNextPage(almacen$, rol$) {
+    return await this.getTransaccionesQ(almacen$, rol$)
+      .limit(_PageSize)
+      .startAfter(this.last)
+      .get()
+      .then((snp) => this.UpdateData(snp, "next"));
+  }
+  async getLastPage(almacen$, rol$) {
+    return await this.getTransaccionesQ(almacen$, rol$)
+      .limitToLast(_PageSize)
+      .get()
+      .then((snp) => this.UpdateData(snp, "last"));
+  }
+  async getFirstPage(almacen$, rol$) {
+    return await this.getTransaccionesQ(almacen$, rol$)
+      .limit(_PageSize)
+      .get()
+      .then((snp) => this.UpdateData(snp, "first"));
+  }
+  UpdateData = (value, ctx) => {
+    if (!value.empty) {
+      //    data = [...value.docs.map((v) => v.data())];
+      //    first = value.docs[0];
+      //    last = value.docs[value.size - 1];
+      this.data = [...value.docs.map((v) => v.data())];
+      this.first = value.docs[0];
+      this.last = value.docs[value.size - 1];
+    } else {
+      this.data = [];
+      this.first = null;
+      this.last = null;
+      //    data = []
+      //    first = null
+      //      last = null
+    }
+    return this.data;
+  };
+}
 //Venta
 
 export async function getVenta(id$) {
